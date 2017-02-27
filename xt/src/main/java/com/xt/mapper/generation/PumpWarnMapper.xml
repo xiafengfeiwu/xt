@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.PumpWarnMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpWarn">
+    <id column="warn_id" jdbcType="BIGINT" property="warnId" />
+    <result column="warn_no" jdbcType="VARCHAR" property="warnNo" />
+    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
+    <result column="warn_level" jdbcType="CHAR" property="warnLevel" />
+    <result column="warn_descript" jdbcType="VARCHAR" property="warnDescript" />
+    <result column="warn_happen_time" jdbcType="TIMESTAMP" property="warnHappenTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    warn_id, warn_no, pump_id, warn_code, warn_level, warn_descript, warn_happen_time
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.PumpWarnExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_pump_warn
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_pump_warn
+    where warn_id = #{warnId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_pump_warn
+    where warn_id = #{warnId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpWarnExample">
+    delete from w_pump_warn
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.PumpWarn">
+    insert into w_pump_warn (warn_id, warn_no, pump_id, 
+      warn_code, warn_level, warn_descript, 
+      warn_happen_time)
+    values (#{warnId,jdbcType=BIGINT}, #{warnNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=BIGINT}, 
+      #{warnCode,jdbcType=VARCHAR}, #{warnLevel,jdbcType=CHAR}, #{warnDescript,jdbcType=VARCHAR}, 
+      #{warnHappenTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.PumpWarn">
+    insert into w_pump_warn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="warnId != null">
+        warn_id,
+      </if>
+      <if test="warnNo != null">
+        warn_no,
+      </if>
+      <if test="pumpId != null">
+        pump_id,
+      </if>
+      <if test="warnCode != null">
+        warn_code,
+      </if>
+      <if test="warnLevel != null">
+        warn_level,
+      </if>
+      <if test="warnDescript != null">
+        warn_descript,
+      </if>
+      <if test="warnHappenTime != null">
+        warn_happen_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="warnId != null">
+        #{warnId,jdbcType=BIGINT},
+      </if>
+      <if test="warnNo != null">
+        #{warnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="warnCode != null">
+        #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        #{warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="warnDescript != null">
+        #{warnDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="warnHappenTime != null">
+        #{warnHappenTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.PumpWarnExample" resultType="java.lang.Long">
+    select count(*) from w_pump_warn
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_pump_warn
+    <set>
+      <if test="record.warnId != null">
+        warn_id = #{record.warnId,jdbcType=BIGINT},
+      </if>
+      <if test="record.warnNo != null">
+        warn_no = #{record.warnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.warnCode != null">
+        warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnLevel != null">
+        warn_level = #{record.warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="record.warnDescript != null">
+        warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnHappenTime != null">
+        warn_happen_time = #{record.warnHappenTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_pump_warn
+    set warn_id = #{record.warnId,jdbcType=BIGINT},
+      warn_no = #{record.warnNo,jdbcType=VARCHAR},
+      pump_id = #{record.pumpId,jdbcType=BIGINT},
+      warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      warn_level = #{record.warnLevel,jdbcType=CHAR},
+      warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
+      warn_happen_time = #{record.warnHappenTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.PumpWarn">
+    update w_pump_warn
+    <set>
+      <if test="warnNo != null">
+        warn_no = #{warnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpId != null">
+        pump_id = #{pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="warnCode != null">
+        warn_code = #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        warn_level = #{warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="warnDescript != null">
+        warn_descript = #{warnDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="warnHappenTime != null">
+        warn_happen_time = #{warnHappenTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where warn_id = #{warnId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpWarn">
+    update w_pump_warn
+    set warn_no = #{warnNo,jdbcType=VARCHAR},
+      pump_id = #{pumpId,jdbcType=BIGINT},
+      warn_code = #{warnCode,jdbcType=VARCHAR},
+      warn_level = #{warnLevel,jdbcType=CHAR},
+      warn_descript = #{warnDescript,jdbcType=VARCHAR},
+      warn_happen_time = #{warnHappenTime,jdbcType=TIMESTAMP}
+    where warn_id = #{warnId,jdbcType=BIGINT}
+  </update>
+</mapper>

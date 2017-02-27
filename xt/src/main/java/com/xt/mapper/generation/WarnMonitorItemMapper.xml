@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.WarnMonitorItemMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.WarnMonitorItem">
+    <id column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="item_descript" jdbcType="VARCHAR" property="itemDescript" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    item_name, item_code, item_descript
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.WarnMonitorItemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_warn_monitor_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_warn_monitor_item
+    where item_name = #{itemName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from w_warn_monitor_item
+    where item_name = #{itemName,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.WarnMonitorItemExample">
+    delete from w_warn_monitor_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.WarnMonitorItem">
+    insert into w_warn_monitor_item (item_name, item_code, item_descript
+      )
+    values (#{itemName,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{itemDescript,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.WarnMonitorItem">
+    insert into w_warn_monitor_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="itemDescript != null">
+        item_descript,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescript != null">
+        #{itemDescript,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.WarnMonitorItemExample" resultType="java.lang.Long">
+    select count(*) from w_warn_monitor_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_warn_monitor_item
+    <set>
+      <if test="record.itemName != null">
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemCode != null">
+        item_code = #{record.itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemDescript != null">
+        item_descript = #{record.itemDescript,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_warn_monitor_item
+    set item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_code = #{record.itemCode,jdbcType=VARCHAR},
+      item_descript = #{record.itemDescript,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.WarnMonitorItem">
+    update w_warn_monitor_item
+    <set>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDescript != null">
+        item_descript = #{itemDescript,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_name = #{itemName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.WarnMonitorItem">
+    update w_warn_monitor_item
+    set item_code = #{itemCode,jdbcType=VARCHAR},
+      item_descript = #{itemDescript,jdbcType=VARCHAR}
+    where item_name = #{itemName,jdbcType=VARCHAR}
+  </update>
+</mapper>

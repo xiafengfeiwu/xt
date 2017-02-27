@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.WeatherDataMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.WeatherData">
+    <id column="weather_city_code" jdbcType="VARCHAR" property="weatherCityCode" />
+    <id column="collect_date" jdbcType="DATE" property="collectDate" />
+    <result column="cond_code" jdbcType="VARCHAR" property="condCode" />
+    <result column="cond_code_url" jdbcType="VARCHAR" property="condCodeUrl" />
+    <result column="cond_txt" jdbcType="VARCHAR" property="condTxt" />
+    <result column="fl" jdbcType="VARCHAR" property="fl" />
+    <result column="hum" jdbcType="VARCHAR" property="hum" />
+    <result column="pcpn" jdbcType="VARCHAR" property="pcpn" />
+    <result column="pres" jdbcType="VARCHAR" property="pres" />
+    <result column="tmp" jdbcType="VARCHAR" property="tmp" />
+    <result column="vis" jdbcType="VARCHAR" property="vis" />
+    <result column="wind_deg" jdbcType="VARCHAR" property="windDeg" />
+    <result column="wind_dir" jdbcType="VARCHAR" property="windDir" />
+    <result column="wind_sc" jdbcType="VARCHAR" property="windSc" />
+    <result column="wind_spd" jdbcType="VARCHAR" property="windSpd" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    weather_city_code, collect_date, cond_code, cond_code_url, cond_txt, fl, hum, pcpn, 
+    pres, tmp, vis, wind_deg, wind_dir, wind_sc, wind_spd, last_update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.WeatherDataExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.xt.entity.generation.WeatherDataKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_weather_data
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xt.entity.generation.WeatherDataKey">
+    delete from w_weather_data
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.WeatherDataExample">
+    delete from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.WeatherData">
+    insert into w_weather_data (weather_city_code, collect_date, cond_code, 
+      cond_code_url, cond_txt, fl, 
+      hum, pcpn, pres, tmp, 
+      vis, wind_deg, wind_dir, 
+      wind_sc, wind_spd, last_update_time
+      )
+    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=DATE}, #{condCode,jdbcType=VARCHAR}, 
+      #{condCodeUrl,jdbcType=VARCHAR}, #{condTxt,jdbcType=VARCHAR}, #{fl,jdbcType=VARCHAR}, 
+      #{hum,jdbcType=VARCHAR}, #{pcpn,jdbcType=VARCHAR}, #{pres,jdbcType=VARCHAR}, #{tmp,jdbcType=VARCHAR}, 
+      #{vis,jdbcType=VARCHAR}, #{windDeg,jdbcType=VARCHAR}, #{windDir,jdbcType=VARCHAR}, 
+      #{windSc,jdbcType=VARCHAR}, #{windSpd,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.WeatherData">
+    insert into w_weather_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        weather_city_code,
+      </if>
+      <if test="collectDate != null">
+        collect_date,
+      </if>
+      <if test="condCode != null">
+        cond_code,
+      </if>
+      <if test="condCodeUrl != null">
+        cond_code_url,
+      </if>
+      <if test="condTxt != null">
+        cond_txt,
+      </if>
+      <if test="fl != null">
+        fl,
+      </if>
+      <if test="hum != null">
+        hum,
+      </if>
+      <if test="pcpn != null">
+        pcpn,
+      </if>
+      <if test="pres != null">
+        pres,
+      </if>
+      <if test="tmp != null">
+        tmp,
+      </if>
+      <if test="vis != null">
+        vis,
+      </if>
+      <if test="windDeg != null">
+        wind_deg,
+      </if>
+      <if test="windDir != null">
+        wind_dir,
+      </if>
+      <if test="windSc != null">
+        wind_sc,
+      </if>
+      <if test="windSpd != null">
+        wind_spd,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        #{weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectDate != null">
+        #{collectDate,jdbcType=DATE},
+      </if>
+      <if test="condCode != null">
+        #{condCode,jdbcType=VARCHAR},
+      </if>
+      <if test="condCodeUrl != null">
+        #{condCodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="condTxt != null">
+        #{condTxt,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="hum != null">
+        #{hum,jdbcType=VARCHAR},
+      </if>
+      <if test="pcpn != null">
+        #{pcpn,jdbcType=VARCHAR},
+      </if>
+      <if test="pres != null">
+        #{pres,jdbcType=VARCHAR},
+      </if>
+      <if test="tmp != null">
+        #{tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="vis != null">
+        #{vis,jdbcType=VARCHAR},
+      </if>
+      <if test="windDeg != null">
+        #{windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="windDir != null">
+        #{windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="windSc != null">
+        #{windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="windSpd != null">
+        #{windSpd,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.WeatherDataExample" resultType="java.lang.Long">
+    select count(*) from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_weather_data
+    <set>
+      <if test="record.weatherCityCode != null">
+        weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectDate != null">
+        collect_date = #{record.collectDate,jdbcType=DATE},
+      </if>
+      <if test="record.condCode != null">
+        cond_code = #{record.condCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.condCodeUrl != null">
+        cond_code_url = #{record.condCodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.condTxt != null">
+        cond_txt = #{record.condTxt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fl != null">
+        fl = #{record.fl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hum != null">
+        hum = #{record.hum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcpn != null">
+        pcpn = #{record.pcpn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pres != null">
+        pres = #{record.pres,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tmp != null">
+        tmp = #{record.tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vis != null">
+        vis = #{record.vis,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windDeg != null">
+        wind_deg = #{record.windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windDir != null">
+        wind_dir = #{record.windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windSc != null">
+        wind_sc = #{record.windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windSpd != null">
+        wind_spd = #{record.windSpd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateTime != null">
+        last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_weather_data
+    set weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      collect_date = #{record.collectDate,jdbcType=DATE},
+      cond_code = #{record.condCode,jdbcType=VARCHAR},
+      cond_code_url = #{record.condCodeUrl,jdbcType=VARCHAR},
+      cond_txt = #{record.condTxt,jdbcType=VARCHAR},
+      fl = #{record.fl,jdbcType=VARCHAR},
+      hum = #{record.hum,jdbcType=VARCHAR},
+      pcpn = #{record.pcpn,jdbcType=VARCHAR},
+      pres = #{record.pres,jdbcType=VARCHAR},
+      tmp = #{record.tmp,jdbcType=VARCHAR},
+      vis = #{record.vis,jdbcType=VARCHAR},
+      wind_deg = #{record.windDeg,jdbcType=VARCHAR},
+      wind_dir = #{record.windDir,jdbcType=VARCHAR},
+      wind_sc = #{record.windSc,jdbcType=VARCHAR},
+      wind_spd = #{record.windSpd,jdbcType=VARCHAR},
+      last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.WeatherData">
+    update w_weather_data
+    <set>
+      <if test="condCode != null">
+        cond_code = #{condCode,jdbcType=VARCHAR},
+      </if>
+      <if test="condCodeUrl != null">
+        cond_code_url = #{condCodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="condTxt != null">
+        cond_txt = #{condTxt,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        fl = #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="hum != null">
+        hum = #{hum,jdbcType=VARCHAR},
+      </if>
+      <if test="pcpn != null">
+        pcpn = #{pcpn,jdbcType=VARCHAR},
+      </if>
+      <if test="pres != null">
+        pres = #{pres,jdbcType=VARCHAR},
+      </if>
+      <if test="tmp != null">
+        tmp = #{tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="vis != null">
+        vis = #{vis,jdbcType=VARCHAR},
+      </if>
+      <if test="windDeg != null">
+        wind_deg = #{windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="windDir != null">
+        wind_dir = #{windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="windSc != null">
+        wind_sc = #{windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="windSpd != null">
+        wind_spd = #{windSpd,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.WeatherData">
+    update w_weather_data
+    set cond_code = #{condCode,jdbcType=VARCHAR},
+      cond_code_url = #{condCodeUrl,jdbcType=VARCHAR},
+      cond_txt = #{condTxt,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      hum = #{hum,jdbcType=VARCHAR},
+      pcpn = #{pcpn,jdbcType=VARCHAR},
+      pres = #{pres,jdbcType=VARCHAR},
+      tmp = #{tmp,jdbcType=VARCHAR},
+      vis = #{vis,jdbcType=VARCHAR},
+      wind_deg = #{windDeg,jdbcType=VARCHAR},
+      wind_dir = #{windDir,jdbcType=VARCHAR},
+      wind_sc = #{windSc,jdbcType=VARCHAR},
+      wind_spd = #{windSpd,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
+  </update>
+</mapper>

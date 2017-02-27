@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.ComplaintTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.ComplaintType">
+    <id column="complaint_type_id" jdbcType="BIGINT" property="complaintTypeId" />
+    <result column="complaint_type_name" jdbcType="VARCHAR" property="complaintTypeName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    complaint_type_id, complaint_type_name
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.ComplaintTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_complaint_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_complaint_type
+    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_complaint_type
+    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.ComplaintTypeExample">
+    delete from w_complaint_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.ComplaintType">
+    insert into w_complaint_type (complaint_type_id, complaint_type_name
+      )
+    values (#{complaintTypeId,jdbcType=BIGINT}, #{complaintTypeName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.ComplaintType">
+    insert into w_complaint_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="complaintTypeId != null">
+        complaint_type_id,
+      </if>
+      <if test="complaintTypeName != null">
+        complaint_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="complaintTypeId != null">
+        #{complaintTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="complaintTypeName != null">
+        #{complaintTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.ComplaintTypeExample" resultType="java.lang.Long">
+    select count(*) from w_complaint_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_complaint_type
+    <set>
+      <if test="record.complaintTypeId != null">
+        complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.complaintTypeName != null">
+        complaint_type_name = #{record.complaintTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_complaint_type
+    set complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+      complaint_type_name = #{record.complaintTypeName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.ComplaintType">
+    update w_complaint_type
+    <set>
+      <if test="complaintTypeName != null">
+        complaint_type_name = #{complaintTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.ComplaintType">
+    update w_complaint_type
+    set complaint_type_name = #{complaintTypeName,jdbcType=VARCHAR}
+    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+  </update>
+</mapper>

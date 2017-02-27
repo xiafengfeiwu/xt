@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.KnowledgeTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.KnowledgeType">
+    <id column="knowledge_type_id" jdbcType="BIGINT" property="knowledgeTypeId" />
+    <result column="knowledge_type_name" jdbcType="VARCHAR" property="knowledgeTypeName" />
+    <result column="sort_no" jdbcType="INTEGER" property="sortNo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    knowledge_type_id, knowledge_type_name, sort_no
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.KnowledgeTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_knowledge_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_knowledge_type
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_knowledge_type
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.KnowledgeTypeExample">
+    delete from w_knowledge_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.KnowledgeType">
+    insert into w_knowledge_type (knowledge_type_id, knowledge_type_name, 
+      sort_no)
+    values (#{knowledgeTypeId,jdbcType=BIGINT}, #{knowledgeTypeName,jdbcType=VARCHAR}, 
+      #{sortNo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.KnowledgeType">
+    insert into w_knowledge_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="knowledgeTypeId != null">
+        knowledge_type_id,
+      </if>
+      <if test="knowledgeTypeName != null">
+        knowledge_type_name,
+      </if>
+      <if test="sortNo != null">
+        sort_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="knowledgeTypeId != null">
+        #{knowledgeTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="knowledgeTypeName != null">
+        #{knowledgeTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        #{sortNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.KnowledgeTypeExample" resultType="java.lang.Long">
+    select count(*) from w_knowledge_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_knowledge_type
+    <set>
+      <if test="record.knowledgeTypeId != null">
+        knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.knowledgeTypeName != null">
+        knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortNo != null">
+        sort_no = #{record.sortNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_knowledge_type
+    set knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+      knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
+      sort_no = #{record.sortNo,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.KnowledgeType">
+    update w_knowledge_type
+    <set>
+      <if test="knowledgeTypeName != null">
+        knowledge_type_name = #{knowledgeTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        sort_no = #{sortNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.KnowledgeType">
+    update w_knowledge_type
+    set knowledge_type_name = #{knowledgeTypeName,jdbcType=VARCHAR},
+      sort_no = #{sortNo,jdbcType=INTEGER}
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration  
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<properties url="file:///D://EclipseProject_OutLine/xt/generator/generator.properties"/>
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry location="${classPath}" />
+	<context id="iproContext">
+		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${username}" password="${password}" />
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="${javaModelPackage}" targetProject="${javaModelProject}" />
+		<!-- 生成的映射文件报名和位置 -->
+		<sqlMapGenerator targetPackage="${sqlMapPackage}" targetProject="${sqlMapProject}" />
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator targetPackage="${javaClientPackage}" targetProject="${javaClientProject}" type="XMLMAPPER" />
+		
+		<!-- 要生成的那些表 -->
+		<table schema="${schema}" tableName="w_area" domainObjectName="Area" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_complaint" domainObjectName="Complaint" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_complaint_type" domainObjectName="ComplaintType" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_device" domainObjectName="Device" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_device_vender" domainObjectName="DeviceVender" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_jurisdiction" domainObjectName="Jurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_knowledge" domainObjectName="Knowledge" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_knowledge_type" domainObjectName="KnowledgeType" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_manager_area" domainObjectName="ManagerArea" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_packet" domainObjectName="Packet" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_packet_query" domainObjectName="PacketQuery" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_project" domainObjectName="Project" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_project_area" domainObjectName="ProjectArea" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump" domainObjectName="Pump" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_constantly_data" domainObjectName="PumpConstantlyData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_ele" domainObjectName="PumpEle" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_ele_statistics" domainObjectName="PumpEleStatistics" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_warn" domainObjectName="PumpWarn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_warn_group" domainObjectName="PumpWarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_res" domainObjectName="Res" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_role" domainObjectName="Role" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_role_jurisdiction" domainObjectName="RoleJurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_stoppage" domainObjectName="Stoppage" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_stoppage_handle" domainObjectName="StoppageHandle" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_stoppage_handle_evaluate" domainObjectName="StoppageHandleEvaluate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_system_log" domainObjectName="SystemLog" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_vender_product" domainObjectName="VenderProduct" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_verification_code" domainObjectName="VerificationCode" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_visit" domainObjectName="Visit" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_warn_dictionary" domainObjectName="WarnDictionary" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_warn_group" domainObjectName="WarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_warn_group_item" domainObjectName="WarnGroupItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_warn_monitor_item" domainObjectName="WarnMonitorItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_alarm" domainObjectName="WeatherAlarm" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_city" domainObjectName="WeatherCity" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_data" domainObjectName="WeatherData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_icon" domainObjectName="WeatherIcon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_key" domainObjectName="WeatherKey" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+	</context>
+</generatorConfiguration>
