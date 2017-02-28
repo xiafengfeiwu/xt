@@ -129,10 +129,10 @@ public class CollectMainServlet extends HttpServlet {
 					logger.info("Read Data");
 					String readString = Byte2String(readBuf, length);
 					logger.info(String2Byte(readString));
-					
+
 					// pw.write(String2Byte(readString));
 					// pw.flush();
-					
+
 					logger.info("Server Write Data");
 					Thread.sleep(100);
 				}
@@ -191,17 +191,6 @@ public class CollectMainServlet extends HttpServlet {
 					return;
 				}
 				String readString = Byte2String(readBuf, length);
-				// RawDataQueue entity = new RawDataQueue();
-				// entity.setCreateAt(PublicUtil.now());
-				// entity.setStatus("N");
-				// entity.setData(readString.replaceAll(" ", ""));
-				// entity.setType("WYTK");
-				// rawDataQueueService.create(entity);
-				// RawData rawData = new RawData();
-				// rawData.setCreateAt(PublicUtil.now());
-				// rawData.setData(readString.replaceAll(" ", ""));
-				// rawData.setType("WYTK");
-				// rawDataService.create(rawData);
 				pw.write(String2Byte(readString));
 				pw.flush();
 				pw.close();
