@@ -30,7 +30,7 @@
             </ui-select>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-lg btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary">提交</button>
           </div>
         </fieldset>
       </form>

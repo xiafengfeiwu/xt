@@ -196,7 +196,7 @@
 					</div>
 
 					<div class="form-group">
-						<button type="submit" class="btn btn-lg btn-primary">更改授权</button>
+						<button type="submit" class="btn btn-primary">更改授权</button>
 					</div>
 				</fieldset>
 			</form>

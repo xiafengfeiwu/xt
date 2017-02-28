@@ -12,6 +12,8 @@
   <title ng-bind="(pageTitle||'loading...') + '-热泵在线 '"></title>
   <link rel="stylesheet" href="assets/css/vendors.min.css">
   <link rel="stylesheet" href="assets/css/styles.min.css">
+  <link rel="stylesheet" href="assets/pulgins/angular-tree/css/tree-control.css">
+  <link rel="stylesheet" href="assets/pulgins/angular-tree/css/tree-control-attribute.css">
   <!--[if lt IE 9]>
   <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -38,6 +40,7 @@
   <script src="assets/js/vendors.min.js"></script>
   <script src="assets/js/app.min.js"></script>
   <script src="assets/js/controller.min.js"></script>
+  <script src="assets/pulgins/angular-tree/angular-tree-control.js"></script>
   <script src="//cdn.bootcss.com/layer/3.0/layer.min.js"></script>
   <script src="//api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
   <script src="assets/pulgins/echarts/echarts.min.js"></script>
