@@ -29,10 +29,4 @@ public class TxMonitorController {
 		return modelAndView;
 	}
 
-	@RequestMapping("console")
-	public ModelAndView console() {
-		ModelAndView modelAndView = new ModelAndView(BASEPATH + "console");
-		return modelAndView;
-	}
-
 }

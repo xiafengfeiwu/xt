@@ -97,7 +97,57 @@ public class TxManageController {
 		data.put("project", project);
 		return data;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("change-project")
+	public Map<String, Object> changeProject(@RequestBody(required = true) Project project) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (project == null) {
+			data.put("message", "无效的数据");
+			return data;
+		}
+		if (project.getProjectId() == null) {
+			data.put("message", "无效的项目信息");
+			return data;
+		}
+		if (PublicUtil.isEmpty(project.getProjectName())) {
+			data.put("message", "请输入项目名称");
+			return data;
+		}
+		if (PublicUtil.isEmpty(project.getOwnerName())) {
+			data.put("message", "请输入业主名称");
+			return data;
+		}
+		if (PublicUtil.isEmpty(project.getOwnerPhoneNo())) {
+			data.put("message", "请输入业主联系方式");
+			return data;
+		}
+		if (PublicUtil.isEmpty(project.getOwnerType())) {
+			data.put("message", "请选择业主类别");
+			return data;
+		}
+
+		Project _project = projectService.getProjectById(project.getProjectId());
+		if (_project == null) {
+			data.put("message", "无效的区域信息");
+			return data;
+		}
+
+		_project.setProjectName(project.getProjectName());
+		_project.setOwnerName(project.getOwnerName());
+		_project.setOwnerPhoneNo(project.getOwnerPhoneNo());
+		_project.setOwnerType(project.getOwnerType());
+		_project.setModifyTime(new Date());
+
+		projectService.update(_project);
+
+		data.put("success", true);
+		data.put("message", "修改成功");
+		data.put("project", _project);
+		return data;
+	}
+
 	@ResponseBody
 	@RequestMapping("delete-project")
 	public Map<String, Object> deleteProject(Long projectId) {
@@ -107,7 +157,7 @@ public class TxManageController {
 			data.put("message", "无效的数据");
 			return data;
 		}
-		
+
 		// 检查项目下热泵信息
 		projectService.delete(projectId);
 

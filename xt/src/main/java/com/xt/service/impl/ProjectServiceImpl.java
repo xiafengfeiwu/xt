@@ -24,6 +24,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
+	public Project getProjectById(Long projectId) {
+		return projectMapper.selectByPrimaryKey(projectId);
+	}
+
+	@Override
 	public List<Project> getProjectByAreaCode(Long areaId) {
 		ProjectExample example = new ProjectExample();
 		example.createCriteria().andProjectAreaIdEqualTo(areaId);
