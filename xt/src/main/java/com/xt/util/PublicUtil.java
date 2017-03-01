@@ -161,9 +161,9 @@ public class PublicUtil {
 	}
 
 	public static void main(String[] args) {
-		 while (true) {
+	//	 while (true) {
 			 System.out.println(initId());
-		 }
+		// }
 //		System.out.println(isNumber("太行山hang"));
 //		System.out.println(isNumber("11.23"));
 //		System.out.println(isNumber("-120.23"));

@@ -22,7 +22,7 @@
           </div>
           <div class="form-group filled">
             <label class="control-label">角色</label>
-            <ui-select ng-model="roles.selected" theme="select2" search-enabled="false" required>
+            <ui-select ng-model="roles.selected" class="f13" theme="select2" search-enabled="false" required>
               <ui-select-match placeholder="选择一个角色"><span ng-bind="$select.selected.roleName"></span></ui-select-match>
               <ui-select-choices repeat="role in roles | filter: $select.search">
                 <div ng-bind-html="role.roleName | highlight: $select.search"></div>

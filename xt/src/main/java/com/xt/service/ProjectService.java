@@ -9,6 +9,9 @@ public interface ProjectService {
 	// 获取项目数据
 	List<Project> getProjectData();
 
+	// 通过区域获取项目数据
+	List<Project> getProjectByAreaCode(Long areaId);
+
 	// 新增项目
 	void create(Project project);
 

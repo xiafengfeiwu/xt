@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-	<properties url="file:///D://EclipseProject_OutLine/xt/generator/generator.properties"/>
+	<properties url="file:///D://Git//xt//generator//generator.properties"/>
 	<!-- 数据库驱动包位置 -->
 	<classPathEntry location="${classPath}" />
 	<context id="iproContext">

@@ -24,6 +24,14 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
+	public List<Project> getProjectByAreaCode(Long areaId) {
+		ProjectExample example = new ProjectExample();
+		example.createCriteria().andProjectAreaIdEqualTo(areaId);
+		example.setOrderByClause("owner_id asc, create_time asc");
+		return projectMapper.selectByExample(example);
+	}
+
+	@Override
 	public void create(Project project) {
 		projectMapper.insert(project);
 	}
