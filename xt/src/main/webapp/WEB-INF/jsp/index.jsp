@@ -45,5 +45,6 @@
   <script src="//api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
   <script src="assets/pulgins/echarts/echarts.min.js"></script>
   <script src="assets/pulgins/echarts/bmap.js"></script>
+  <script src="assets/pulgins/jcanvas/jcanvas.min.js"></script>
 </body>
 </html>

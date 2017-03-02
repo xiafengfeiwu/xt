@@ -173,6 +173,14 @@ public class TxManageController {
 	}
 
 	@ResponseBody
+	@RequestMapping("project-area-info")
+	public Map<String, Object> projectAreaInfo(Long projectAreaId) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("data", projectAreaService.getByAreaId(projectAreaId));
+		return data;
+	}
+
+	@ResponseBody
 	@RequestMapping("project-area-data")
 	public Map<String, Object> projectAreaData() {
 		Map<String, Object> data = new HashMap<>();

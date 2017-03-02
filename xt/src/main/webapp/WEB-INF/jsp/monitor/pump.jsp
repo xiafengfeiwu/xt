@@ -39,7 +39,7 @@
 					<td class="text-center" ng-click="$event.stopPropagation()">
 						<button type="button" class="btn btn-link btn-round" ng-click="pumpMonitor(pump.id)" data-title="监控" data-placement="left" bs-tooltip>
 							<i class="md md-desktop-windows" style="color:green"></i>
-						</utton>
+						</button>
 					</td>
 				</tr>
 			</tbody>
