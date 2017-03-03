@@ -3,7 +3,7 @@
 <section class="forms-basic" ng-controller="WarnController">
 	<div class="page-header">
 		<h1>
-			<i class="md md-warn"></i> 故障告警
+			故障告警
 		</h1>
 		<p class="lead">
 			此处展示的是热泵故障和告警信息列表。用户可以新增设备的故障信息并能够查看故障的处理情况；运维人员可以通过设备的告警和用户提交的故障信息，及时处理设备异常。</p>

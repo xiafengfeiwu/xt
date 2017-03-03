@@ -3,7 +3,7 @@
 <section class="forms-basic" ng-controller="ReportController">
 	<div class="page-header">
 		<h1>
-			<i class="md md-warn"></i> 用电耗能
+			用电耗能
 		</h1>
 		<p class="lead">此处展示的是热泵运行消耗的电量展示，可以按日用电，月用电，年用电视图分析用电量。</p>
 	</div>

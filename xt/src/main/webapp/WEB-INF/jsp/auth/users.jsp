@@ -1,20 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<section class="tables-data">
-  <div class="page-header">
-    <h1>系统用户</h1>
-    <p class="lead">
-     	 此处展示的是在您的权限范围内的用户数据，系统管理员可以查看所有用户的数据并有用户所有的操作权限，区域管理员只对自己授权内的用户有修改、删除等敏感权限，运维人员没有修改、删除的权限，普通用户没有查看用户的权限。
-    </p>
-  </div>
-</section>
-<div ng-controller="UserController">
-	<div class="table-responsive well no-padding white no-margin">
-		<div class="row">
-	      <div class="col-sm-8">
-	        <h3 class="table-title">共有 <span ng-bind="data.length || 0"></span> 条记录</h3>
-	      </div>
-	      <div class="col-sm-4">
-	      	<form class="form-floating">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<section class="forms-basic" ng-controller="UserController">
+	<div class="page-header">
+		<h1>
+			系统用户
+		</h1>
+		<p class="lead">此处展示的是在您的权限范围内的用户数据，系统管理员可以查看所有用户的数据并有用户所有的操作权限，区域管理员只对自己授权内的用户有修改、删除等敏感权限，运维人员没有修改、删除的权限，普通用户没有查看用户的权限。</p>
+	</div>
+	<div class="row m-b-40">
+
+		<div class="col-sm-12" style="margin-top: -58px">
+			<form class="form-floating pull-right" style="width: 260px">
           		<fieldset>
 			      	<div class="form-group has-success">
 		              <label class="control-label" for="inputSuccess">通过用户名称、登录名、手机号等检索用户</label>
@@ -22,9 +18,13 @@
 		            </div>
 	            </fieldset>
 	        </form>
-	      </div>
-	    </div>
-		<table class="table table-hover table-full m-b-60" id="table-user-2172158" >
+		</div>
+
+		<div class="col-sm-12">
+
+			<div class="table-responsive well no-padding white no-margin">
+
+				<table class="table table-hover table-full m-b-60" id="table-user-2172158" >
 			<thead>
 				<tr fsm-sticky-header scroll-body="'#table-user-2172158'" scroll-stop="64">
 					<th width="30px"><input type="checkbox" class="relative" ng-model="selectAll" ng-click="checkAll()" /></th>
@@ -71,6 +71,8 @@
 				</tr>
 			</tbody>
 		</table>
+			</div>
+		</div>
 	</div>
 	<div class="footer-buttons">
 		<div class="btn btn-primary btn-round m-r-10 btn-footer" ng-show="(data|filter:{selected: true}).length>0" ng-click="removeMore()" data-title="删除 {{(data|filter:{selected: true}).length}} 条记录" bs-tooltip>
@@ -83,4 +85,5 @@
 			<i class="md md-arrow-drop-up"></i>
 		</div>
 	</div>
-</div>
+</section>
+
