@@ -23,7 +23,7 @@
     <li menu-toggle path="/monitor" name="运行监控" icon="md md-camera">
       <a menu-link href="#/monitor/pump" name="热泵监控" icon="md md-subject">热泵监控</a>
       <a menu-link href="#/monitor/warn" name="故障告警" icon="md md-warning">故障告警</a>
-      <a menu-link href="#/monitor/report" name="监控报表" icon="md md-equalizer">监控报表</a>
+      <%-- <a menu-link href="#/monitor/report" name="监控报表" icon="md md-equalizer">监控报表</a>--%>
     </li>
     <li menu-toggle path="/energy" name="用电耗能" icon="md md-trending-up">
       <a menu-link href="#/energy/consumption" name="用电耗能" icon="md md-flash-on">用电耗能</a>
