@@ -5,12 +5,13 @@
     <id column="item_id" jdbcType="BIGINT" property="itemId" />
     <result column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
     <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
     <result column="item_threshold" jdbcType="VARCHAR" property="itemThreshold" />
     <result column="item_operators" jdbcType="CHAR" property="itemOperators" />
     <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
     <result column="warn_level" jdbcType="CHAR" property="warnLevel" />
-    <result column="sms_notice" jdbcType="BIT" property="smsNotice" />
-    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="warn_descript" jdbcType="VARCHAR" property="warnDescript" />
+    <result column="warn_scheme" jdbcType="VARCHAR" property="warnScheme" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    item_id, warn_group_id, item_name, item_threshold, item_operators, warn_code, warn_level, 
-    sms_notice, creator_id, create_time
+    item_id, warn_group_id, item_name, item_code, item_threshold, item_operators, warn_code, 
+    warn_level, warn_descript, warn_scheme, create_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.WarnGroupItemExample" resultMap="BaseResultMap">
     select
@@ -108,13 +109,13 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.WarnGroupItem">
     insert into w_warn_group_item (item_id, warn_group_id, item_name, 
-      item_threshold, item_operators, warn_code, 
-      warn_level, sms_notice, creator_id, 
-      create_time)
+      item_code, item_threshold, item_operators, 
+      warn_code, warn_level, warn_descript, 
+      warn_scheme, create_time)
     values (#{itemId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, 
-      #{itemThreshold,jdbcType=VARCHAR}, #{itemOperators,jdbcType=CHAR}, #{warnCode,jdbcType=VARCHAR}, 
-      #{warnLevel,jdbcType=CHAR}, #{smsNotice,jdbcType=BIT}, #{creatorId,jdbcType=BIGINT}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{itemCode,jdbcType=VARCHAR}, #{itemThreshold,jdbcType=VARCHAR}, #{itemOperators,jdbcType=CHAR}, 
+      #{warnCode,jdbcType=VARCHAR}, #{warnLevel,jdbcType=CHAR}, #{warnDescript,jdbcType=VARCHAR}, 
+      #{warnScheme,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.WarnGroupItem">
     insert into w_warn_group_item
@@ -128,6 +129,9 @@
       <if test="itemName != null">
         item_name,
       </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
       <if test="itemThreshold != null">
         item_threshold,
       </if>
@@ -140,11 +144,11 @@
       <if test="warnLevel != null">
         warn_level,
       </if>
-      <if test="smsNotice != null">
-        sms_notice,
+      <if test="warnDescript != null">
+        warn_descript,
       </if>
-      <if test="creatorId != null">
-        creator_id,
+      <if test="warnScheme != null">
+        warn_scheme,
       </if>
       <if test="createTime != null">
         create_time,
@@ -160,6 +164,9 @@
       <if test="itemName != null">
         #{itemName,jdbcType=VARCHAR},
       </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
       <if test="itemThreshold != null">
         #{itemThreshold,jdbcType=VARCHAR},
       </if>
@@ -172,11 +179,11 @@
       <if test="warnLevel != null">
         #{warnLevel,jdbcType=CHAR},
       </if>
-      <if test="smsNotice != null">
-        #{smsNotice,jdbcType=BIT},
+      <if test="warnDescript != null">
+        #{warnDescript,jdbcType=VARCHAR},
       </if>
-      <if test="creatorId != null">
-        #{creatorId,jdbcType=BIGINT},
+      <if test="warnScheme != null">
+        #{warnScheme,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -201,6 +208,9 @@
       <if test="record.itemName != null">
         item_name = #{record.itemName,jdbcType=VARCHAR},
       </if>
+      <if test="record.itemCode != null">
+        item_code = #{record.itemCode,jdbcType=VARCHAR},
+      </if>
       <if test="record.itemThreshold != null">
         item_threshold = #{record.itemThreshold,jdbcType=VARCHAR},
       </if>
@@ -213,11 +223,11 @@
       <if test="record.warnLevel != null">
         warn_level = #{record.warnLevel,jdbcType=CHAR},
       </if>
-      <if test="record.smsNotice != null">
-        sms_notice = #{record.smsNotice,jdbcType=BIT},
+      <if test="record.warnDescript != null">
+        warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
       </if>
-      <if test="record.creatorId != null">
-        creator_id = #{record.creatorId,jdbcType=BIGINT},
+      <if test="record.warnScheme != null">
+        warn_scheme = #{record.warnScheme,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -232,12 +242,13 @@
     set item_id = #{record.itemId,jdbcType=BIGINT},
       warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
       item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_code = #{record.itemCode,jdbcType=VARCHAR},
       item_threshold = #{record.itemThreshold,jdbcType=VARCHAR},
       item_operators = #{record.itemOperators,jdbcType=CHAR},
       warn_code = #{record.warnCode,jdbcType=VARCHAR},
       warn_level = #{record.warnLevel,jdbcType=CHAR},
-      sms_notice = #{record.smsNotice,jdbcType=BIT},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
+      warn_scheme = #{record.warnScheme,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -252,6 +263,9 @@
       <if test="itemName != null">
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
       <if test="itemThreshold != null">
         item_threshold = #{itemThreshold,jdbcType=VARCHAR},
       </if>
@@ -264,11 +278,11 @@
       <if test="warnLevel != null">
         warn_level = #{warnLevel,jdbcType=CHAR},
       </if>
-      <if test="smsNotice != null">
-        sms_notice = #{smsNotice,jdbcType=BIT},
+      <if test="warnDescript != null">
+        warn_descript = #{warnDescript,jdbcType=VARCHAR},
       </if>
-      <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=BIGINT},
+      <if test="warnScheme != null">
+        warn_scheme = #{warnScheme,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -280,12 +294,13 @@
     update w_warn_group_item
     set warn_group_id = #{warnGroupId,jdbcType=BIGINT},
       item_name = #{itemName,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
       item_threshold = #{itemThreshold,jdbcType=VARCHAR},
       item_operators = #{itemOperators,jdbcType=CHAR},
       warn_code = #{warnCode,jdbcType=VARCHAR},
       warn_level = #{warnLevel,jdbcType=CHAR},
-      sms_notice = #{smsNotice,jdbcType=BIT},
-      creator_id = #{creatorId,jdbcType=BIGINT},
+      warn_descript = #{warnDescript,jdbcType=VARCHAR},
+      warn_scheme = #{warnScheme,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where item_id = #{itemId,jdbcType=BIGINT}
   </update>

@@ -234,63 +234,63 @@ public class KnowledgeTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSortNoIsNull() {
-            addCriterion("sort_no is null");
+        public Criteria andSystemItemIsNull() {
+            addCriterion("system_item is null");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoIsNotNull() {
-            addCriterion("sort_no is not null");
+        public Criteria andSystemItemIsNotNull() {
+            addCriterion("system_item is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoEqualTo(Integer value) {
-            addCriterion("sort_no =", value, "sortNo");
+        public Criteria andSystemItemEqualTo(Boolean value) {
+            addCriterion("system_item =", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoNotEqualTo(Integer value) {
-            addCriterion("sort_no <>", value, "sortNo");
+        public Criteria andSystemItemNotEqualTo(Boolean value) {
+            addCriterion("system_item <>", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoGreaterThan(Integer value) {
-            addCriterion("sort_no >", value, "sortNo");
+        public Criteria andSystemItemGreaterThan(Boolean value) {
+            addCriterion("system_item >", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sort_no >=", value, "sortNo");
+        public Criteria andSystemItemGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("system_item >=", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoLessThan(Integer value) {
-            addCriterion("sort_no <", value, "sortNo");
+        public Criteria andSystemItemLessThan(Boolean value) {
+            addCriterion("system_item <", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoLessThanOrEqualTo(Integer value) {
-            addCriterion("sort_no <=", value, "sortNo");
+        public Criteria andSystemItemLessThanOrEqualTo(Boolean value) {
+            addCriterion("system_item <=", value, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoIn(List<Integer> values) {
-            addCriterion("sort_no in", values, "sortNo");
+        public Criteria andSystemItemIn(List<Boolean> values) {
+            addCriterion("system_item in", values, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoNotIn(List<Integer> values) {
-            addCriterion("sort_no not in", values, "sortNo");
+        public Criteria andSystemItemNotIn(List<Boolean> values) {
+            addCriterion("system_item not in", values, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoBetween(Integer value1, Integer value2) {
-            addCriterion("sort_no between", value1, value2, "sortNo");
+        public Criteria andSystemItemBetween(Boolean value1, Boolean value2) {
+            addCriterion("system_item between", value1, value2, "systemItem");
             return (Criteria) this;
         }
 
-        public Criteria andSortNoNotBetween(Integer value1, Integer value2) {
-            addCriterion("sort_no not between", value1, value2, "sortNo");
+        public Criteria andSystemItemNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("system_item not between", value1, value2, "systemItem");
             return (Criteria) this;
         }
     }

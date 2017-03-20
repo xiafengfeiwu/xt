@@ -235,6 +235,66 @@ public class WarnGroupExample {
             return (Criteria) this;
         }
 
+        public Criteria andOwnerIdIsNull() {
+            addCriterion("owner_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdIsNotNull() {
+            addCriterion("owner_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdEqualTo(Long value) {
+            addCriterion("owner_id =", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotEqualTo(Long value) {
+            addCriterion("owner_id <>", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdGreaterThan(Long value) {
+            addCriterion("owner_id >", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("owner_id >=", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdLessThan(Long value) {
+            addCriterion("owner_id <", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdLessThanOrEqualTo(Long value) {
+            addCriterion("owner_id <=", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdIn(List<Long> values) {
+            addCriterion("owner_id in", values, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotIn(List<Long> values) {
+            addCriterion("owner_id not in", values, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdBetween(Long value1, Long value2) {
+            addCriterion("owner_id between", value1, value2, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotBetween(Long value1, Long value2) {
+            addCriterion("owner_id not between", value1, value2, "ownerId");
+            return (Criteria) this;
+        }
+
         public Criteria andSystemGroupIsNull() {
             addCriterion("system_group is null");
             return (Criteria) this;
@@ -362,66 +422,6 @@ public class WarnGroupExample {
 
         public Criteria andGroupDescriptNotBetween(String value1, String value2) {
             addCriterion("group_descript not between", value1, value2, "groupDescript");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdIsNull() {
-            addCriterion("creator_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdIsNotNull() {
-            addCriterion("creator_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdEqualTo(Long value) {
-            addCriterion("creator_id =", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdNotEqualTo(Long value) {
-            addCriterion("creator_id <>", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdGreaterThan(Long value) {
-            addCriterion("creator_id >", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("creator_id >=", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdLessThan(Long value) {
-            addCriterion("creator_id <", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdLessThanOrEqualTo(Long value) {
-            addCriterion("creator_id <=", value, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdIn(List<Long> values) {
-            addCriterion("creator_id in", values, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdNotIn(List<Long> values) {
-            addCriterion("creator_id not in", values, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdBetween(Long value1, Long value2) {
-            addCriterion("creator_id between", value1, value2, "creatorId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIdNotBetween(Long value1, Long value2) {
-            addCriterion("creator_id not between", value1, value2, "creatorId");
             return (Criteria) this;
         }
 

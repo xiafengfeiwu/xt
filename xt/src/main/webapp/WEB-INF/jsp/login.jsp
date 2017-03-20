@@ -62,7 +62,7 @@ input {
 	border-radius: 5px;
 	margin: auto;
 }
-p{width: 278px;margin: auto;text-align: right;font-size: 12px;line-height: 24px;}
+p{width: 278px;margin: auto;font-size: 12px;line-height: 24px;text-align: left;}
 </style>
 </head>
 <body>
@@ -72,7 +72,7 @@ p{width: 278px;margin: auto;text-align: right;font-size: 12px;line-height: 24px;
 			<input type="text" required="required" placeholder="用户名" name="username" value="admin"/>
 			<input type="password" required="required" placeholder="密码" name="password" value="123456"/>
 			<button class="but" type="submit">登录</button>
-			<p><a href="javascript:void(0);">忘记密码</a></p>
+			<p><span style="color:red">${message }</span> &nbsp; <a style="float: right;" href="javascript:void(0);">忘记密码？</a></p>
 		</form>
 	</div>
 </body>

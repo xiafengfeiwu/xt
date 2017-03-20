@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.generation.DeviceProductMapper">
+  <resultMap id="BaseResultMap" type="com.xt.entity.generation.DeviceProduct">
+    <id column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_type" jdbcType="CHAR" property="productType" />
+    <result column="product_vender_id" jdbcType="BIGINT" property="productVenderId" />
+    <result column="product_spec" jdbcType="VARCHAR" property="productSpec" />
+    <result column="product_pi" jdbcType="VARCHAR" property="productPi" />
+    <result column="product_power_spec" jdbcType="VARCHAR" property="productPowerSpec" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xt.entity.generation.DeviceProduct">
+    <result column="product_descript" jdbcType="LONGVARCHAR" property="productDescript" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    product_id, product_name, product_type, product_vender_id, product_spec, product_pi, 
+    product_power_spec, create_time, modify_time
+  </sql>
+  <sql id="Blob_Column_List">
+    product_descript
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.xt.entity.generation.DeviceProductExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from w_device_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.xt.entity.generation.DeviceProductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_device_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from w_device_product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_device_product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.entity.generation.DeviceProductExample">
+    delete from w_device_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.entity.generation.DeviceProduct">
+    insert into w_device_product (product_id, product_name, product_type, 
+      product_vender_id, product_spec, product_pi, 
+      product_power_spec, create_time, modify_time, 
+      product_descript)
+    values (#{productId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{productType,jdbcType=CHAR}, 
+      #{productVenderId,jdbcType=BIGINT}, #{productSpec,jdbcType=VARCHAR}, #{productPi,jdbcType=VARCHAR}, 
+      #{productPowerSpec,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{productDescript,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.entity.generation.DeviceProduct">
+    insert into w_device_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="productVenderId != null">
+        product_vender_id,
+      </if>
+      <if test="productSpec != null">
+        product_spec,
+      </if>
+      <if test="productPi != null">
+        product_pi,
+      </if>
+      <if test="productPowerSpec != null">
+        product_power_spec,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="productDescript != null">
+        product_descript,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=CHAR},
+      </if>
+      <if test="productVenderId != null">
+        #{productVenderId,jdbcType=BIGINT},
+      </if>
+      <if test="productSpec != null">
+        #{productSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="productPi != null">
+        #{productPi,jdbcType=VARCHAR},
+      </if>
+      <if test="productPowerSpec != null">
+        #{productPowerSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productDescript != null">
+        #{productDescript,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.entity.generation.DeviceProductExample" resultType="java.lang.Long">
+    select count(*) from w_device_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_device_product
+    <set>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productType != null">
+        product_type = #{record.productType,jdbcType=CHAR},
+      </if>
+      <if test="record.productVenderId != null">
+        product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productSpec != null">
+        product_spec = #{record.productSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPi != null">
+        product_pi = #{record.productPi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPowerSpec != null">
+        product_power_spec = #{record.productPowerSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null">
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.productDescript != null">
+        product_descript = #{record.productDescript,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update w_device_product
+    set product_id = #{record.productId,jdbcType=BIGINT},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_type = #{record.productType,jdbcType=CHAR},
+      product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+      product_spec = #{record.productSpec,jdbcType=VARCHAR},
+      product_pi = #{record.productPi,jdbcType=VARCHAR},
+      product_power_spec = #{record.productPowerSpec,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      product_descript = #{record.productDescript,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_device_product
+    set product_id = #{record.productId,jdbcType=BIGINT},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_type = #{record.productType,jdbcType=CHAR},
+      product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+      product_spec = #{record.productSpec,jdbcType=VARCHAR},
+      product_pi = #{record.productPi,jdbcType=VARCHAR},
+      product_power_spec = #{record.productPowerSpec,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.DeviceProduct">
+    update w_device_product
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        product_type = #{productType,jdbcType=CHAR},
+      </if>
+      <if test="productVenderId != null">
+        product_vender_id = #{productVenderId,jdbcType=BIGINT},
+      </if>
+      <if test="productSpec != null">
+        product_spec = #{productSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="productPi != null">
+        product_pi = #{productPi,jdbcType=VARCHAR},
+      </if>
+      <if test="productPowerSpec != null">
+        product_power_spec = #{productPowerSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productDescript != null">
+        product_descript = #{productDescript,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xt.entity.generation.DeviceProduct">
+    update w_device_product
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=CHAR},
+      product_vender_id = #{productVenderId,jdbcType=BIGINT},
+      product_spec = #{productSpec,jdbcType=VARCHAR},
+      product_pi = #{productPi,jdbcType=VARCHAR},
+      product_power_spec = #{productPowerSpec,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      product_descript = #{productDescript,jdbcType=LONGVARCHAR}
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.DeviceProduct">
+    update w_device_product
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=CHAR},
+      product_vender_id = #{productVenderId,jdbcType=BIGINT},
+      product_spec = #{productSpec,jdbcType=VARCHAR},
+      product_pi = #{productPi,jdbcType=VARCHAR},
+      product_power_spec = #{productPowerSpec,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+</mapper>

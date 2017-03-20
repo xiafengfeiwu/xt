@@ -1,6 +1,5 @@
 package com.xt.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import com.xt.entity.generation.WeatherAlarm;
 import com.xt.entity.generation.WeatherCity;
 import com.xt.entity.generation.WeatherCityExample;
 import com.xt.entity.generation.WeatherData;
+import com.xt.entity.generation.WeatherDataExample;
 import com.xt.entity.generation.WeatherDataKey;
 import com.xt.entity.generation.WeatherIcon;
 import com.xt.entity.generation.WeatherKey;
@@ -36,11 +36,15 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 	WeatherCityMapper weatherCityMapper;
 
 	@Override
-	public WeatherData findTodayCityWeatherByCode(String cityCode) {
-		WeatherDataKey key = new WeatherDataKey();
-		key.setWeatherCityCode(cityCode);
-		key.setCollectDate(new Date());
-		return weatherDataMapper.selectByPrimaryKey(key);
+	public WeatherData findCityWeatherByCode(String cityCode) {
+		WeatherDataExample example = new WeatherDataExample();
+		example.createCriteria().andWeatherCityCodeEqualTo(cityCode);
+		example.setOrderByClause("collect_date desc limit 0,1");
+		List<WeatherData> datas = weatherDataMapper.selectByExample(example);
+		if (datas.size() > 0) {
+			return datas.get(0);
+		}
+		return null;
 	}
 
 	@Override

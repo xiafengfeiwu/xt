@@ -11,7 +11,7 @@ import com.xt.entity.generation.WeatherKey;
 public interface CityWeatherService {
 	
 	// 通过城市编码获取城市天气详情
-	WeatherData findTodayCityWeatherByCode(String cityCode);
+	WeatherData findCityWeatherByCode(String cityCode);
 
 	// 通过天气编码获取城市天气图标
 	WeatherIcon findWeatherIconByCode(String weatherCode);

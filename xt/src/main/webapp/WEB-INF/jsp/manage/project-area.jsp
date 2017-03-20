@@ -3,13 +3,11 @@
 <section class="forms-basic" ng-controller="ProjectAreaController">
 	<div class="page-header">
 		<div class="actions">
-	  		<a menu-link class="btn black-text" href="#/manage/project" name="项目管理" data-title="点击返回项目管理" data-placement="left" bs-tooltip>
-	  			<i class="md md-reply f12" style="color:#33cc99">返回项目管理</i>
-	  		</a>
-	    </div>
-		<h1>
-			项目区域
-		</h1>
+			<a menu-link class="btn black-text" href="#/manage/project" name="项目管理" data-title="项目管理" data-placement="left" bs-tooltip>
+				<i class="md md-view-list f12" style="color: #33cc99">项目管理</i>
+			</a>
+		</div>
+		<h1>项目区域</h1>
 		<p class="lead">
 			此处展示的是平台项目开展的区域列表，只有管理员和区域负责人可以查看和管理该项目内容，区域负责人只能查看自己负责区域内的项目区域。
 		</p>

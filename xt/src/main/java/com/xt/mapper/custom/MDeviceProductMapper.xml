@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.custom.MDeviceProductMapper">
+	<select id="selectAll" parameterType="String" resultType="MDeviceProduct">
+		SELECT
+		p.product_id, p.product_name, p.product_type,
+		p.product_vender_id, v.vender_name as product_vender_name, p.product_spec, p.product_pi,
+		p.product_power_spec, p.create_time, p.modify_time,
+		p.product_descript FROM `w_device_product` p left join `w_device_vender` v on
+		p.product_vender_id=v.vender_id order by ${orderByClause}
+	</select>
+</mapper>

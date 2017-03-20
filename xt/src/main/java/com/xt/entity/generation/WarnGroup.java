@@ -7,11 +7,11 @@ public class WarnGroup {
 
     private String groupName;
 
+    private Long ownerId;
+
     private Boolean systemGroup;
 
     private String groupDescript;
-
-    private Long creatorId;
 
     private Date createTime;
 
@@ -31,6 +31,14 @@ public class WarnGroup {
         this.groupName = groupName;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public Boolean getSystemGroup() {
         return systemGroup;
     }
@@ -45,14 +53,6 @@ public class WarnGroup {
 
     public void setGroupDescript(String groupDescript) {
         this.groupDescript = groupDescript;
-    }
-
-    public Long getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Long creatorId) {
-        this.creatorId = creatorId;
     }
 
     public Date getCreateTime() {

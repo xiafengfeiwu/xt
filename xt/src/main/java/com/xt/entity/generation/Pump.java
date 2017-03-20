@@ -1,6 +1,5 @@
 package com.xt.entity.generation;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Pump {
@@ -8,23 +7,21 @@ public class Pump {
 
     private Long projectId;
 
+    private Long ownerId;
+
     private String pumpName;
+
+    private String pumpCode;
 
     private Long productId;
 
     private String pumpSn;
-
-    private BigDecimal heatingArea;
-
-    private BigDecimal heatingTemp;
 
     private Date installDate;
 
     private String areaLongitude;
 
     private String areaLatitude;
-
-    private String areaDetail;
 
     private Date createTime;
 
@@ -46,12 +43,28 @@ public class Pump {
         this.projectId = projectId;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public String getPumpName() {
         return pumpName;
     }
 
     public void setPumpName(String pumpName) {
         this.pumpName = pumpName;
+    }
+
+    public String getPumpCode() {
+        return pumpCode;
+    }
+
+    public void setPumpCode(String pumpCode) {
+        this.pumpCode = pumpCode;
     }
 
     public Long getProductId() {
@@ -68,22 +81,6 @@ public class Pump {
 
     public void setPumpSn(String pumpSn) {
         this.pumpSn = pumpSn;
-    }
-
-    public BigDecimal getHeatingArea() {
-        return heatingArea;
-    }
-
-    public void setHeatingArea(BigDecimal heatingArea) {
-        this.heatingArea = heatingArea;
-    }
-
-    public BigDecimal getHeatingTemp() {
-        return heatingTemp;
-    }
-
-    public void setHeatingTemp(BigDecimal heatingTemp) {
-        this.heatingTemp = heatingTemp;
     }
 
     public Date getInstallDate() {
@@ -108,14 +105,6 @@ public class Pump {
 
     public void setAreaLatitude(String areaLatitude) {
         this.areaLatitude = areaLatitude;
-    }
-
-    public String getAreaDetail() {
-        return areaDetail;
-    }
-
-    public void setAreaDetail(String areaDetail) {
-        this.areaDetail = areaDetail;
     }
 
     public Date getCreateTime() {

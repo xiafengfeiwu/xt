@@ -62,7 +62,7 @@
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0 0 1 * * ?</param-value>
+			<param-value>0/10 * * * * ?</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>

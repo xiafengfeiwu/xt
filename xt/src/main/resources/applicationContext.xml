@@ -37,7 +37,7 @@
 			</list>
 		</property>
 	</bean>
-		
+	
 	<bean id="jobFactory" class="com.xt.factory.JobFactory"></bean>
 	
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

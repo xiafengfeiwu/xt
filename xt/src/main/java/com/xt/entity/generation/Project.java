@@ -1,5 +1,6 @@
 package com.xt.entity.generation;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Project {
@@ -18,6 +19,12 @@ public class Project {
     private String ownerPhoneNo;
 
     private String ownerType;
+
+    private BigDecimal heatingArea;
+
+    private BigDecimal heatingTemp;
+
+    private String projectAddress;
 
     private Date createTime;
 
@@ -85,6 +92,30 @@ public class Project {
 
     public void setOwnerType(String ownerType) {
         this.ownerType = ownerType;
+    }
+
+    public BigDecimal getHeatingArea() {
+        return heatingArea;
+    }
+
+    public void setHeatingArea(BigDecimal heatingArea) {
+        this.heatingArea = heatingArea;
+    }
+
+    public BigDecimal getHeatingTemp() {
+        return heatingTemp;
+    }
+
+    public void setHeatingTemp(BigDecimal heatingTemp) {
+        this.heatingTemp = heatingTemp;
+    }
+
+    public String getProjectAddress() {
+        return projectAddress;
+    }
+
+    public void setProjectAddress(String projectAddress) {
+        this.projectAddress = projectAddress;
     }
 
     public Date getCreateTime() {

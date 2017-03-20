@@ -10,6 +10,9 @@
     <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
     <result column="owner_phone_no" jdbcType="VARCHAR" property="ownerPhoneNo" />
     <result column="owner_type" jdbcType="CHAR" property="ownerType" />
+    <result column="heating_area" jdbcType="DECIMAL" property="heatingArea" />
+    <result column="heating_temp" jdbcType="DECIMAL" property="heatingTemp" />
+    <result column="project_address" jdbcType="VARCHAR" property="projectAddress" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
@@ -73,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     project_id, project_code, project_name, project_area_id, owner_id, owner_name, owner_phone_no, 
-    owner_type, create_time, modify_time
+    owner_type, heating_area, heating_temp, project_address, create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.ProjectExample" resultMap="BaseResultMap">
     select
@@ -109,11 +112,13 @@
   <insert id="insert" parameterType="com.xt.entity.generation.Project">
     insert into w_project (project_id, project_code, project_name, 
       project_area_id, owner_id, owner_name, 
-      owner_phone_no, owner_type, create_time, 
+      owner_phone_no, owner_type, heating_area, 
+      heating_temp, project_address, create_time, 
       modify_time)
     values (#{projectId,jdbcType=BIGINT}, #{projectCode,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
       #{projectAreaId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, #{ownerName,jdbcType=VARCHAR}, 
-      #{ownerPhoneNo,jdbcType=VARCHAR}, #{ownerType,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{ownerPhoneNo,jdbcType=VARCHAR}, #{ownerType,jdbcType=CHAR}, #{heatingArea,jdbcType=DECIMAL}, 
+      #{heatingTemp,jdbcType=DECIMAL}, #{projectAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Project">
@@ -142,6 +147,15 @@
       </if>
       <if test="ownerType != null">
         owner_type,
+      </if>
+      <if test="heatingArea != null">
+        heating_area,
+      </if>
+      <if test="heatingTemp != null">
+        heating_temp,
+      </if>
+      <if test="projectAddress != null">
+        project_address,
       </if>
       <if test="createTime != null">
         create_time,
@@ -174,6 +188,15 @@
       </if>
       <if test="ownerType != null">
         #{ownerType,jdbcType=CHAR},
+      </if>
+      <if test="heatingArea != null">
+        #{heatingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="heatingTemp != null">
+        #{heatingTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="projectAddress != null">
+        #{projectAddress,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -216,6 +239,15 @@
       <if test="record.ownerType != null">
         owner_type = #{record.ownerType,jdbcType=CHAR},
       </if>
+      <if test="record.heatingArea != null">
+        heating_area = #{record.heatingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="record.heatingTemp != null">
+        heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.projectAddress != null">
+        project_address = #{record.projectAddress,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -237,6 +269,9 @@
       owner_name = #{record.ownerName,jdbcType=VARCHAR},
       owner_phone_no = #{record.ownerPhoneNo,jdbcType=VARCHAR},
       owner_type = #{record.ownerType,jdbcType=CHAR},
+      heating_area = #{record.heatingArea,jdbcType=DECIMAL},
+      heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
+      project_address = #{record.projectAddress,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -267,6 +302,15 @@
       <if test="ownerType != null">
         owner_type = #{ownerType,jdbcType=CHAR},
       </if>
+      <if test="heatingArea != null">
+        heating_area = #{heatingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="heatingTemp != null">
+        heating_temp = #{heatingTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="projectAddress != null">
+        project_address = #{projectAddress,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -285,6 +329,9 @@
       owner_name = #{ownerName,jdbcType=VARCHAR},
       owner_phone_no = #{ownerPhoneNo,jdbcType=VARCHAR},
       owner_type = #{ownerType,jdbcType=CHAR},
+      heating_area = #{heatingArea,jdbcType=DECIMAL},
+      heating_temp = #{heatingTemp,jdbcType=DECIMAL},
+      project_address = #{projectAddress,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where project_id = #{projectId,jdbcType=BIGINT}

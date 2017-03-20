@@ -9,12 +9,12 @@
   </div>
   <div class="user-logged-in">
     <div class="content">
-      <div class="user-name">Admin <span class="text-muted f9">系統管理员</span></div>
-      <div class="user-email">18518436862</div>
+      <div class="user-name">${userName } <span class="text-muted f9">${userRole.roleName }</span></div>
+      <div class="user-email">${userPhone }</div>
       <div class="user-actions">
         <i class="md md-person"></i>
         <a menu-link class="m-r-5" href="#/auth/user-info" name="个人中心" style="list-style-type:none;display: inline;">个人中心</a> |  
-        <a menu-link class="m-r-5" href="https://www.team-union.com" name="退出" style="list-style-type:none;display: inline;">退出</a>
+        <a menu-link class="m-r-5" href="logout.jspx" name="退出" style="list-style-type:none;display: inline;">退出</a>
       </div>
     </div>
   </div>
@@ -22,7 +22,8 @@
     <a menu-link href="#/dashboard" icon="md md-blur-on">全局监控（GIS）</a>
     <li menu-toggle path="/monitor" name="运行监控" icon="md md-camera">
       <a menu-link href="#/monitor/pump" name="热泵监控" icon="md md-subject">热泵监控</a>
-      <a menu-link href="#/monitor/warn" name="故障告警" icon="md md-warning">故障告警</a>
+      <a menu-link href="#/monitor/warn-group" name="热泵告警组" icon="md md-warning">热泵告警组</a>
+      <%-- 告警组 告警项  热泵设置告警组，  告警组添加用户字段（有系统告警组，不可修改，用户可以自定义告警组），热泵分配告警组 --%>
       <%-- <a menu-link href="#/monitor/report" name="监控报表" icon="md md-equalizer">监控报表</a>--%>
     </li>
     <li menu-toggle path="/energy" name="用电耗能" icon="md md-trending-up">
@@ -31,11 +32,11 @@
     </li>
     <li menu-toggle path="/manage" name="综合管理" icon="md md-now-widgets">
       <a menu-link href="#/manage/project" name="项目管理" icon="md md-style">项目管理</a>
-      <a menu-link href="#/manage/device" name="设备管理" icon="md md-memory">设备管理</a>
+      <a menu-link href="#/manage/device-product" name="产品管理" icon="md md-memory">产品管理</a>
     </li>
     <li menu-toggle path="/service" name="售后服务" icon="md md-mood">
       <a menu-link href="#/service/support" name="技术支持" icon="md md-help">技术支持</a>
-      <a menu-link href="#/service/repair" name="故障报修" icon="md md-error">故障报修</a>
+      <a menu-link href="#/service/repair" name="设备报修" icon="md md-error">设备报修</a>
       <a menu-link href="#/service/handling" name="故障处理" icon="md md-new-releases">故障处理</a>
     </li>
     <li menu-toggle path="/auth" name="用户授权" icon="md md-verified-user">

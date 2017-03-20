@@ -3,7 +3,7 @@
 <section class="forms-basic" ng-controller="ConsumptionController">
 	<div class="page-header">
 		<h1>
-			<i class="md md-warn"></i> 用电耗能
+			用电耗能
 		</h1>
 		<p class="lead">此处展示的是热泵运行消耗的电量展示，可以按日用电，月用电，年用电视图分析用电量。</p>
 	</div>
@@ -15,25 +15,25 @@
 
 			<div class="btn-group" role="group">
 				<button class="btn btn-link filter ng-binding ng-scope"
-					ng-click="tabFlag='hour'"
+					ng-click="changeTab('hour')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='hour']">
 					日统计
 					<div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope"
-					ng-click="tabFlag='day'"
+					ng-click="changeTab('day')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='day']">
 					月统计
 					<div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope"
-					ng-click="tabFlag='month'"
+					ng-click="changeTab('month')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='month']">
 					年统计
 					<div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope"
-					ng-click="tabFlag='year'"
+					ng-click="changeTab('year')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='year']">
 					总统计
 					<div class="ripple-wrapper"></div>
@@ -61,18 +61,30 @@
 				<button class="btn btn-link pull-right" onclick="reload()"
 					style="margin-top: -36px;">查询</button>
 			</div>
-		</div>
-		<div ng-show="tabFlag=='hour'" class="col-sm-12 well">
-			<div id="container_hour" style="width: 100%; height: 500px"></div>
-		</div>
-		<div ng-show="tabFlag=='day'" class="col-sm-12 well">
-			<div id="container_day" style="width: 100%; height: 500px"></div>
-		</div>
-		<div ng-show="tabFlag=='month'" class="col-sm-12 well">
-			<div id="container_month" style="width: 100%; height: 500px"></div>
-		</div>
-		<div ng-show="tabFlag=='year'" class="col-sm-12 well">
-			<div id="container_year" style="width: 100%; height: 500px"></div>
+			<div ng-show="tabFlag=='hour'">
+				<div class="well white" style="margin: 10px auto">
+					当日累计用电量：12.32kWh， 预计电费为：12.32 元。
+				</div>
+				<div id="container_hour" style="width: 100%; height: 320px"></div>
+			</div>
+			<div ng-show="tabFlag=='day'">
+				<div class="well white" style="margin: 10px auto">
+					当月累计用电量：382.32kWh， 预计电费为：382.32 元。
+				</div>
+				<div id="container_day" style="width: 100%; height: 320px"></div>
+			</div>
+			<div ng-show="tabFlag=='month'">
+				<div class="well white" style="margin: 10px auto">
+					当年累计用电量：4587.84kWh， 预计电费为：4587.84 元。
+				</div>
+				<div id="container_month" style="width: 100%; height: 320px"></div>
+			</div>
+			<div ng-show="tabFlag=='year'">
+				<div class="well white" style="margin: 10px auto">
+					总用电量：7150.84kWh， 预计电费为：7150.84 元。
+				</div>
+				<div id="container_year" style="width: 100%; height: 320px"></div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -144,16 +156,6 @@
 					x2 : 66,
 					y2 : 24
 				},
-			    toolbox: {
-			        feature: {
-			            saveAsImage: {
-			                show : true,
-			                title : '保存',
-			                type : 'png',
-			                lang : ['点击保存']
-						}
-			        }
-			    },
 			    xAxis: {
 			        type: 'category',
 			        boundaryGap: false,
@@ -204,16 +206,6 @@
 				tooltip : {
 					trigger : 'item'
 				},
-			    toolbox: {
-			        feature: {
-			            saveAsImage: {
-			                show : true,
-			                title : '保存',
-			                type : 'png',
-			                lang : ['点击保存']
-						}
-			        }
-			    },
 				dataZoom : [ {
 					type : 'inside'
 				} ],

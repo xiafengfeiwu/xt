@@ -295,6 +295,76 @@ public class WarnGroupItemExample {
             return (Criteria) this;
         }
 
+        public Criteria andItemCodeIsNull() {
+            addCriterion("item_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeIsNotNull() {
+            addCriterion("item_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeEqualTo(String value) {
+            addCriterion("item_code =", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeNotEqualTo(String value) {
+            addCriterion("item_code <>", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeGreaterThan(String value) {
+            addCriterion("item_code >", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("item_code >=", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeLessThan(String value) {
+            addCriterion("item_code <", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeLessThanOrEqualTo(String value) {
+            addCriterion("item_code <=", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeLike(String value) {
+            addCriterion("item_code like", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeNotLike(String value) {
+            addCriterion("item_code not like", value, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeIn(List<String> values) {
+            addCriterion("item_code in", values, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeNotIn(List<String> values) {
+            addCriterion("item_code not in", values, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeBetween(String value1, String value2) {
+            addCriterion("item_code between", value1, value2, "itemCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCodeNotBetween(String value1, String value2) {
+            addCriterion("item_code not between", value1, value2, "itemCode");
+            return (Criteria) this;
+        }
+
         public Criteria andItemThresholdIsNull() {
             addCriterion("item_threshold is null");
             return (Criteria) this;
@@ -575,123 +645,143 @@ public class WarnGroupItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeIsNull() {
-            addCriterion("sms_notice is null");
+        public Criteria andWarnDescriptIsNull() {
+            addCriterion("warn_descript is null");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeIsNotNull() {
-            addCriterion("sms_notice is not null");
+        public Criteria andWarnDescriptIsNotNull() {
+            addCriterion("warn_descript is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeEqualTo(Boolean value) {
-            addCriterion("sms_notice =", value, "smsNotice");
+        public Criteria andWarnDescriptEqualTo(String value) {
+            addCriterion("warn_descript =", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeNotEqualTo(Boolean value) {
-            addCriterion("sms_notice <>", value, "smsNotice");
+        public Criteria andWarnDescriptNotEqualTo(String value) {
+            addCriterion("warn_descript <>", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeGreaterThan(Boolean value) {
-            addCriterion("sms_notice >", value, "smsNotice");
+        public Criteria andWarnDescriptGreaterThan(String value) {
+            addCriterion("warn_descript >", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("sms_notice >=", value, "smsNotice");
+        public Criteria andWarnDescriptGreaterThanOrEqualTo(String value) {
+            addCriterion("warn_descript >=", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeLessThan(Boolean value) {
-            addCriterion("sms_notice <", value, "smsNotice");
+        public Criteria andWarnDescriptLessThan(String value) {
+            addCriterion("warn_descript <", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeLessThanOrEqualTo(Boolean value) {
-            addCriterion("sms_notice <=", value, "smsNotice");
+        public Criteria andWarnDescriptLessThanOrEqualTo(String value) {
+            addCriterion("warn_descript <=", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeIn(List<Boolean> values) {
-            addCriterion("sms_notice in", values, "smsNotice");
+        public Criteria andWarnDescriptLike(String value) {
+            addCriterion("warn_descript like", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeNotIn(List<Boolean> values) {
-            addCriterion("sms_notice not in", values, "smsNotice");
+        public Criteria andWarnDescriptNotLike(String value) {
+            addCriterion("warn_descript not like", value, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeBetween(Boolean value1, Boolean value2) {
-            addCriterion("sms_notice between", value1, value2, "smsNotice");
+        public Criteria andWarnDescriptIn(List<String> values) {
+            addCriterion("warn_descript in", values, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andSmsNoticeNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("sms_notice not between", value1, value2, "smsNotice");
+        public Criteria andWarnDescriptNotIn(List<String> values) {
+            addCriterion("warn_descript not in", values, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdIsNull() {
-            addCriterion("creator_id is null");
+        public Criteria andWarnDescriptBetween(String value1, String value2) {
+            addCriterion("warn_descript between", value1, value2, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdIsNotNull() {
-            addCriterion("creator_id is not null");
+        public Criteria andWarnDescriptNotBetween(String value1, String value2) {
+            addCriterion("warn_descript not between", value1, value2, "warnDescript");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdEqualTo(Long value) {
-            addCriterion("creator_id =", value, "creatorId");
+        public Criteria andWarnSchemeIsNull() {
+            addCriterion("warn_scheme is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotEqualTo(Long value) {
-            addCriterion("creator_id <>", value, "creatorId");
+        public Criteria andWarnSchemeIsNotNull() {
+            addCriterion("warn_scheme is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdGreaterThan(Long value) {
-            addCriterion("creator_id >", value, "creatorId");
+        public Criteria andWarnSchemeEqualTo(String value) {
+            addCriterion("warn_scheme =", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("creator_id >=", value, "creatorId");
+        public Criteria andWarnSchemeNotEqualTo(String value) {
+            addCriterion("warn_scheme <>", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdLessThan(Long value) {
-            addCriterion("creator_id <", value, "creatorId");
+        public Criteria andWarnSchemeGreaterThan(String value) {
+            addCriterion("warn_scheme >", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdLessThanOrEqualTo(Long value) {
-            addCriterion("creator_id <=", value, "creatorId");
+        public Criteria andWarnSchemeGreaterThanOrEqualTo(String value) {
+            addCriterion("warn_scheme >=", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdIn(List<Long> values) {
-            addCriterion("creator_id in", values, "creatorId");
+        public Criteria andWarnSchemeLessThan(String value) {
+            addCriterion("warn_scheme <", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotIn(List<Long> values) {
-            addCriterion("creator_id not in", values, "creatorId");
+        public Criteria andWarnSchemeLessThanOrEqualTo(String value) {
+            addCriterion("warn_scheme <=", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdBetween(Long value1, Long value2) {
-            addCriterion("creator_id between", value1, value2, "creatorId");
+        public Criteria andWarnSchemeLike(String value) {
+            addCriterion("warn_scheme like", value, "warnScheme");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotBetween(Long value1, Long value2) {
-            addCriterion("creator_id not between", value1, value2, "creatorId");
+        public Criteria andWarnSchemeNotLike(String value) {
+            addCriterion("warn_scheme not like", value, "warnScheme");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnSchemeIn(List<String> values) {
+            addCriterion("warn_scheme in", values, "warnScheme");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnSchemeNotIn(List<String> values) {
+            addCriterion("warn_scheme not in", values, "warnScheme");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnSchemeBetween(String value1, String value2) {
+            addCriterion("warn_scheme between", value1, value2, "warnScheme");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnSchemeNotBetween(String value1, String value2) {
+            addCriterion("warn_scheme not between", value1, value2, "warnScheme");
             return (Criteria) this;
         }
 

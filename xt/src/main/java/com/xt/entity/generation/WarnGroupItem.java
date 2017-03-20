@@ -9,6 +9,8 @@ public class WarnGroupItem {
 
     private String itemName;
 
+    private String itemCode;
+
     private String itemThreshold;
 
     private String itemOperators;
@@ -17,9 +19,9 @@ public class WarnGroupItem {
 
     private String warnLevel;
 
-    private Boolean smsNotice;
+    private String warnDescript;
 
-    private Long creatorId;
+    private String warnScheme;
 
     private Date createTime;
 
@@ -45,6 +47,14 @@ public class WarnGroupItem {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getItemCode() {
+        return itemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
     }
 
     public String getItemThreshold() {
@@ -79,20 +89,20 @@ public class WarnGroupItem {
         this.warnLevel = warnLevel;
     }
 
-    public Boolean getSmsNotice() {
-        return smsNotice;
+    public String getWarnDescript() {
+        return warnDescript;
     }
 
-    public void setSmsNotice(Boolean smsNotice) {
-        this.smsNotice = smsNotice;
+    public void setWarnDescript(String warnDescript) {
+        this.warnDescript = warnDescript;
     }
 
-    public Long getCreatorId() {
-        return creatorId;
+    public String getWarnScheme() {
+        return warnScheme;
     }
 
-    public void setCreatorId(Long creatorId) {
-        this.creatorId = creatorId;
+    public void setWarnScheme(String warnScheme) {
+        this.warnScheme = warnScheme;
     }
 
     public Date getCreateTime() {

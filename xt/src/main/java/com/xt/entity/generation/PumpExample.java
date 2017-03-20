@@ -1,6 +1,5 @@
 package com.xt.entity.generation;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -253,6 +252,66 @@ public class PumpExample {
             return (Criteria) this;
         }
 
+        public Criteria andOwnerIdIsNull() {
+            addCriterion("owner_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdIsNotNull() {
+            addCriterion("owner_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdEqualTo(Long value) {
+            addCriterion("owner_id =", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotEqualTo(Long value) {
+            addCriterion("owner_id <>", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdGreaterThan(Long value) {
+            addCriterion("owner_id >", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("owner_id >=", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdLessThan(Long value) {
+            addCriterion("owner_id <", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdLessThanOrEqualTo(Long value) {
+            addCriterion("owner_id <=", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdIn(List<Long> values) {
+            addCriterion("owner_id in", values, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotIn(List<Long> values) {
+            addCriterion("owner_id not in", values, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdBetween(Long value1, Long value2) {
+            addCriterion("owner_id between", value1, value2, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotBetween(Long value1, Long value2) {
+            addCriterion("owner_id not between", value1, value2, "ownerId");
+            return (Criteria) this;
+        }
+
         public Criteria andPumpNameIsNull() {
             addCriterion("pump_name is null");
             return (Criteria) this;
@@ -320,6 +379,76 @@ public class PumpExample {
 
         public Criteria andPumpNameNotBetween(String value1, String value2) {
             addCriterion("pump_name not between", value1, value2, "pumpName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeIsNull() {
+            addCriterion("pump_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeIsNotNull() {
+            addCriterion("pump_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeEqualTo(String value) {
+            addCriterion("pump_code =", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeNotEqualTo(String value) {
+            addCriterion("pump_code <>", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeGreaterThan(String value) {
+            addCriterion("pump_code >", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("pump_code >=", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeLessThan(String value) {
+            addCriterion("pump_code <", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeLessThanOrEqualTo(String value) {
+            addCriterion("pump_code <=", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeLike(String value) {
+            addCriterion("pump_code like", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeNotLike(String value) {
+            addCriterion("pump_code not like", value, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeIn(List<String> values) {
+            addCriterion("pump_code in", values, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeNotIn(List<String> values) {
+            addCriterion("pump_code not in", values, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeBetween(String value1, String value2) {
+            addCriterion("pump_code between", value1, value2, "pumpCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpCodeNotBetween(String value1, String value2) {
+            addCriterion("pump_code not between", value1, value2, "pumpCode");
             return (Criteria) this;
         }
 
@@ -450,126 +579,6 @@ public class PumpExample {
 
         public Criteria andPumpSnNotBetween(String value1, String value2) {
             addCriterion("pump_sn not between", value1, value2, "pumpSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaIsNull() {
-            addCriterion("heating_area is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaIsNotNull() {
-            addCriterion("heating_area is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaEqualTo(BigDecimal value) {
-            addCriterion("heating_area =", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaNotEqualTo(BigDecimal value) {
-            addCriterion("heating_area <>", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaGreaterThan(BigDecimal value) {
-            addCriterion("heating_area >", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("heating_area >=", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaLessThan(BigDecimal value) {
-            addCriterion("heating_area <", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("heating_area <=", value, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaIn(List<BigDecimal> values) {
-            addCriterion("heating_area in", values, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaNotIn(List<BigDecimal> values) {
-            addCriterion("heating_area not in", values, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("heating_area between", value1, value2, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingAreaNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("heating_area not between", value1, value2, "heatingArea");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempIsNull() {
-            addCriterion("heating_temp is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempIsNotNull() {
-            addCriterion("heating_temp is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempEqualTo(BigDecimal value) {
-            addCriterion("heating_temp =", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempNotEqualTo(BigDecimal value) {
-            addCriterion("heating_temp <>", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempGreaterThan(BigDecimal value) {
-            addCriterion("heating_temp >", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("heating_temp >=", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempLessThan(BigDecimal value) {
-            addCriterion("heating_temp <", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("heating_temp <=", value, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempIn(List<BigDecimal> values) {
-            addCriterion("heating_temp in", values, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempNotIn(List<BigDecimal> values) {
-            addCriterion("heating_temp not in", values, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("heating_temp between", value1, value2, "heatingTemp");
-            return (Criteria) this;
-        }
-
-        public Criteria andHeatingTempNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("heating_temp not between", value1, value2, "heatingTemp");
             return (Criteria) this;
         }
 
@@ -770,76 +779,6 @@ public class PumpExample {
 
         public Criteria andAreaLatitudeNotBetween(String value1, String value2) {
             addCriterion("area_latitude not between", value1, value2, "areaLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailIsNull() {
-            addCriterion("area_detail is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailIsNotNull() {
-            addCriterion("area_detail is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailEqualTo(String value) {
-            addCriterion("area_detail =", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailNotEqualTo(String value) {
-            addCriterion("area_detail <>", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailGreaterThan(String value) {
-            addCriterion("area_detail >", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailGreaterThanOrEqualTo(String value) {
-            addCriterion("area_detail >=", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailLessThan(String value) {
-            addCriterion("area_detail <", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailLessThanOrEqualTo(String value) {
-            addCriterion("area_detail <=", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailLike(String value) {
-            addCriterion("area_detail like", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailNotLike(String value) {
-            addCriterion("area_detail not like", value, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailIn(List<String> values) {
-            addCriterion("area_detail in", values, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailNotIn(List<String> values) {
-            addCriterion("area_detail not in", values, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailBetween(String value1, String value2) {
-            addCriterion("area_detail between", value1, value2, "areaDetail");
-            return (Criteria) this;
-        }
-
-        public Criteria andAreaDetailNotBetween(String value1, String value2) {
-            addCriterion("area_detail not between", value1, value2, "areaDetail");
             return (Criteria) this;
         }
 

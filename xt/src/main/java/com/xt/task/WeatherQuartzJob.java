@@ -1,7 +1,5 @@
 package com.xt.task;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -20,8 +18,7 @@ import com.xt.entity.generation.WeatherData;
 import com.xt.entity.generation.WeatherKey;
 import com.xt.service.CityWeatherService;
 import com.xt.util.HttpUtil;
-
-import net.sf.json.JSONObject;
+import com.xt.util.PublicUtil;
 
 // 0 0 0,6,13,17 * * ?
 @DisallowConcurrentExecution
@@ -54,8 +51,8 @@ public class WeatherQuartzJob implements Job {
 		String key1 = weatherKeys.get(1).getWeatherKey();
 		// 遍历城市编码
 		for (String code : cityCodes) {
-			WeatherData wd = cityWeatherService.findTodayCityWeatherByCode(code);
-			if (wd != null && wd.getLastUpdateTime().getTime() - new Date().getTime() < 30 * 60 * 1000) {
+			WeatherData wd = cityWeatherService.findCityWeatherByCode(code);
+			if (wd != null && new Date().getTime() - wd.getLastUpdateTime().getTime() < 30 * 60 * 1000) {
 				logger.info(code + " : 无更新天气");
 				continue;
 			}
@@ -64,7 +61,7 @@ public class WeatherQuartzJob implements Job {
 			try {
 				String result = HttpUtil.getRequest(w_url);
 				// 解析result
-				WeatherData weatherData = analysisWeatherDataJson(result);
+				WeatherData weatherData = PublicUtil.analysisWeatherDataJson(result, cityWeatherService);
 				// 插入更新天气信息
 				if (weatherData != null) {
 					cityWeatherService.upInsertWeatherData(weatherData);
@@ -77,7 +74,7 @@ public class WeatherQuartzJob implements Job {
 			try {
 				String result = HttpUtil.getRequest(a_url);
 				// 解析result
-				WeatherAlarm weatherAlarm = analysisAlarmDataJson(result);
+				WeatherAlarm weatherAlarm = PublicUtil.analysisAlarmDataJson(result);
 				logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>" + weatherAlarm);
 				// 插入更新预警信息
 				if (weatherAlarm != null) {
@@ -96,70 +93,4 @@ public class WeatherQuartzJob implements Job {
 		}
 	}
 
-	private WeatherData analysisWeatherDataJson(String json) {
-		try {
-			JSONObject object = JSONObject.fromObject(json);
-			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
-			String status = root.getString("status");
-			if (!"ok".equals(status)) {
-				logger.error("解析天气数据失败：" + json);
-				return null;
-			}
-			JSONObject basic = root.getJSONObject("basic");
-			WeatherData data = new WeatherData();
-			data.setWeatherCityCode(basic.getString("id"));
-			JSONObject update = basic.getJSONObject("update");
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			data.setCollectDate(df.parse(update.getString("loc")));
-			JSONObject now = root.getJSONObject("now");
-			JSONObject cond = now.getJSONObject("cond");
-			data.setCondCode(cond.getString("code"));
-			data.setCondCodeUrl(cityWeatherService.findWeatherIconByCode(data.getCondCode()).getIcon());
-			data.setCondTxt(cond.getString("txt"));
-			data.setFl(now.getString("fl"));
-			data.setHum(now.getString("hum"));
-			data.setPcpn(now.getString("pcpn"));
-			data.setPres(now.getString("pres"));
-			data.setTmp(now.getString("tmp"));
-			data.setVis(now.getString("vis"));
-			JSONObject wind = now.getJSONObject("wind");
-			data.setWindDeg(wind.getString("deg"));
-			data.setWindDir(wind.getString("dir"));
-			data.setWindSc(wind.getString("sc"));
-			data.setWindSpd(wind.getString("spd"));
-			data.setLastUpdateTime(new Date());
-			return data;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	private WeatherAlarm analysisAlarmDataJson(String json) {
-		try {
-			JSONObject object = JSONObject.fromObject(json);
-			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
-			String status = root.getString("status");
-			if (!"ok".equals(status)) {
-				logger.error("解析天气预警数据失败：" + json);
-				return null;
-			}
-			JSONObject basic = root.getJSONObject("basic");
-			WeatherAlarm data = new WeatherAlarm();
-			data.setWeatherCityCode(basic.getString("id"));
-			Object alarms = root.get("alarms");
-			if (alarms == null) {
-				return data;
-			}
-			JSONObject alarm = root.getJSONArray("alarms").getJSONObject(0);
-			data.setEarlyWarnLevel(alarm.getString("level"));
-			data.setEarlyWarnStat(alarm.getString("stat"));
-			data.setEarlyWarnTitle(alarm.getString("title"));
-			data.setEarlyWarnTxt(alarm.getString("txt"));
-			data.setEarlyWarnType(alarm.getString("type"));
-			data.setEarlyWarnTime(new Date());
-			return data;
-		} catch (Exception e) {
-			return null;
-		}
-	}
 }

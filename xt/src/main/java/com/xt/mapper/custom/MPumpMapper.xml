@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.custom.MPumpMapper">
+	<select id="selectAreaPumps" parameterType="Long" resultType="MAreaPump">
+		select
+		pm.pump_id as id, pm.pump_name as name
+		from w_pump pm
+		where
+		pm.project_id in (select p.project_id from w_project
+		p where
+		p.project_area_id=${projectAreaId}) order by pm.pump_name asc
+	</select>
+
+	<select id="selectPumpsByIds" parameterType="List" resultType="MAreaPump">
+		select
+		pm.pump_id as id, pm.pump_name as name
+		from w_pump pm
+		where
+		pm.pump_id in
+		<foreach collection="pumpIds" item="id" open="(" separator=","
+			close=")">
+			${id}
+		</foreach>
+	</select>
+
+	<select id="selectLastPumpcode" parameterType="String"
+		resultType="MLastCode">
+		select p.pump_code as code from w_pump p where
+		p.pump_code
+		like CONCAT(#{preCode},'%') order by p.create_time desc limit 0,1
+	</select>
+
+	<select id="selectUserAuthPump" parameterType="Long" resultType="MAreaPump">
+		select p.pump_id as id, p.pump_name as name from
+		w_pump p where
+		p.pump_id in (
+		select
+		ua.pump_id from w_user_auth ua where ua.user_id =
+		${userId}
+		and ua.pump_id is not null) order by
+		p.pump_code asc
+	</select>
+
+	<select id="selectPumpsByCodes" parameterType="List" resultType="MAreaPump">
+		select
+		pm.pump_id as id, pm.pump_name as name
+		from w_pump pm
+		where
+		<foreach collection="pumpCodes" item="code" separator="or">
+			pm.pump_code like CONCAT(#{code},'%')
+		</foreach>
+	</select>
+
+	<select id="selectAllPumpMonitors" resultType="MPumpMonitor">
+		select
+		p.pump_id,
+		p.pump_name, p.area_longitude, p.area_latitude,
+		pcd.back_water_temp,
+		pcd.out_water_temp,
+		pcd.environment_temp,
+		pcd.compressor_current,
+		pcd.water_tank_temp,
+		pcd.work_mode,
+		pcd.warn_code, pcd.back_air_temp,
+		pcd.out_air_temp,
+		pcd.set_up_temp,
+		pcd.indoor_temp,
+		pcd.collect_time
+		from
+		w_pump p
+		left join
+		w_pump_constantly_data pcd on
+		p.pump_id=pcd.pump_id
+	</select>
+
+	<select id="selectPumpWarnGroups" resultType="MPumpWarnGroup">
+		select
+		wg.group_id
+		as group_id,wg.group_name as group_name,wg.group_descript as
+		group_descript from w_pump_warn_group
+		pwg
+		left join w_warn_group wg on
+		pwg.warn_group_id=wg.group_id where
+		pwg.pump_id=${pumpId}
+	</select>
+
+	<select id="selectPumpNoUseWarnGroups" resultType="MPumpWarnGroup">
+		select
+		wg.group_id
+		as group_id,wg.group_name as group_name,wg.group_descript
+		as
+		group_descript from w_warn_group wg where (wg.owner_id=${ownerId} or
+		wg.system_group=1) and wg.group_id not in(
+		select pwg.warn_group_id
+		from
+		w_pump_warn_group pwg where
+		pwg.pump_id=${pumpId}
+		)
+	</select>
+
+</mapper>

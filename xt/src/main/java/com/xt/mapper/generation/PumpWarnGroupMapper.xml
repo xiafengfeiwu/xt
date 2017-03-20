@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpWarnGroup">
     <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <id column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
-    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    pump_id, warn_group_id, creator_id, create_time
+    pump_id, warn_group_id, create_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.PumpWarnGroupExample" resultMap="BaseResultMap">
     select
@@ -102,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.PumpWarnGroup">
-    insert into w_pump_warn_group (pump_id, warn_group_id, creator_id, 
-      create_time)
-    values (#{pumpId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{creatorId,jdbcType=BIGINT}, 
-      #{createTime,jdbcType=TIMESTAMP})
+    insert into w_pump_warn_group (pump_id, warn_group_id, create_time
+      )
+    values (#{pumpId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.PumpWarnGroup">
     insert into w_pump_warn_group
@@ -115,9 +114,6 @@
       </if>
       <if test="warnGroupId != null">
         warn_group_id,
-      </if>
-      <if test="creatorId != null">
-        creator_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -129,9 +125,6 @@
       </if>
       <if test="warnGroupId != null">
         #{warnGroupId,jdbcType=BIGINT},
-      </if>
-      <if test="creatorId != null">
-        #{creatorId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -153,9 +146,6 @@
       <if test="record.warnGroupId != null">
         warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
       </if>
-      <if test="record.creatorId != null">
-        creator_id = #{record.creatorId,jdbcType=BIGINT},
-      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -168,7 +158,6 @@
     update w_pump_warn_group
     set pump_id = #{record.pumpId,jdbcType=BIGINT},
       warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,9 +166,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.PumpWarnGroup">
     update w_pump_warn_group
     <set>
-      <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=BIGINT},
-      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -189,8 +175,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpWarnGroup">
     update w_pump_warn_group
-    set creator_id = #{creatorId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+    set create_time = #{createTime,jdbcType=TIMESTAMP}
     where pump_id = #{pumpId,jdbcType=BIGINT}
       and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
   </update>

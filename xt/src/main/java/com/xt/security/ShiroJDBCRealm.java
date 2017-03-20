@@ -74,11 +74,14 @@ public class ShiroJDBCRealm extends AuthorizingRealm {
 		if (role == null) {
 			throw new DisabledAccountException();
 		}
-		AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(loginName, user.getUserPassword(), user.getUserName());
+		AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(loginName, user.getUserPassword(),
+				user.getUserName());
 		Subject subject = SecurityUtils.getSubject();
 		Session session = subject.getSession();
 		session.setAttribute("userId", user.getUserId());
-		session.setAttribute("userRole", role.getRoleName());
+		session.setAttribute("userName", user.getUserName());
+		session.setAttribute("userPhone", user.getUserPhone());
+		session.setAttribute("userRole", role);
 		return authcInfo;
 	}
 }

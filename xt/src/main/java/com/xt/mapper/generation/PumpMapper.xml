@@ -4,15 +4,14 @@
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Pump">
     <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <result column="project_id" jdbcType="BIGINT" property="projectId" />
+    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
     <result column="pump_name" jdbcType="VARCHAR" property="pumpName" />
+    <result column="pump_code" jdbcType="VARCHAR" property="pumpCode" />
     <result column="product_id" jdbcType="BIGINT" property="productId" />
     <result column="pump_sn" jdbcType="VARCHAR" property="pumpSn" />
-    <result column="heating_area" jdbcType="DECIMAL" property="heatingArea" />
-    <result column="heating_temp" jdbcType="DECIMAL" property="heatingTemp" />
     <result column="install_date" jdbcType="DATE" property="installDate" />
     <result column="area_longitude" jdbcType="VARCHAR" property="areaLongitude" />
     <result column="area_latitude" jdbcType="VARCHAR" property="areaLatitude" />
-    <result column="area_detail" jdbcType="VARCHAR" property="areaDetail" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
@@ -75,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    pump_id, project_id, pump_name, product_id, pump_sn, heating_area, heating_temp, 
-    install_date, area_longitude, area_latitude, area_detail, create_time, modify_time
+    pump_id, project_id, owner_id, pump_name, pump_code, product_id, pump_sn, install_date, 
+    area_longitude, area_latitude, create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.PumpExample" resultMap="BaseResultMap">
     select
@@ -110,16 +109,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Pump">
-    insert into w_pump (pump_id, project_id, pump_name, 
-      product_id, pump_sn, heating_area, 
-      heating_temp, install_date, area_longitude, 
-      area_latitude, area_detail, create_time, 
-      modify_time)
-    values (#{pumpId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{pumpName,jdbcType=VARCHAR}, 
-      #{productId,jdbcType=BIGINT}, #{pumpSn,jdbcType=VARCHAR}, #{heatingArea,jdbcType=DECIMAL}, 
-      #{heatingTemp,jdbcType=DECIMAL}, #{installDate,jdbcType=DATE}, #{areaLongitude,jdbcType=VARCHAR}, 
-      #{areaLatitude,jdbcType=VARCHAR}, #{areaDetail,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyTime,jdbcType=TIMESTAMP})
+    insert into w_pump (pump_id, project_id, owner_id, 
+      pump_name, pump_code, product_id, 
+      pump_sn, install_date, area_longitude, 
+      area_latitude, create_time, modify_time
+      )
+    values (#{pumpId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, 
+      #{pumpName,jdbcType=VARCHAR}, #{pumpCode,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, 
+      #{pumpSn,jdbcType=VARCHAR}, #{installDate,jdbcType=DATE}, #{areaLongitude,jdbcType=VARCHAR}, 
+      #{areaLatitude,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Pump">
     insert into w_pump
@@ -130,20 +129,20 @@
       <if test="projectId != null">
         project_id,
       </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
       <if test="pumpName != null">
         pump_name,
+      </if>
+      <if test="pumpCode != null">
+        pump_code,
       </if>
       <if test="productId != null">
         product_id,
       </if>
       <if test="pumpSn != null">
         pump_sn,
-      </if>
-      <if test="heatingArea != null">
-        heating_area,
-      </if>
-      <if test="heatingTemp != null">
-        heating_temp,
       </if>
       <if test="installDate != null">
         install_date,
@@ -153,9 +152,6 @@
       </if>
       <if test="areaLatitude != null">
         area_latitude,
-      </if>
-      <if test="areaDetail != null">
-        area_detail,
       </if>
       <if test="createTime != null">
         create_time,
@@ -171,20 +167,20 @@
       <if test="projectId != null">
         #{projectId,jdbcType=BIGINT},
       </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=BIGINT},
+      </if>
       <if test="pumpName != null">
         #{pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpCode != null">
+        #{pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="productId != null">
         #{productId,jdbcType=BIGINT},
       </if>
       <if test="pumpSn != null">
         #{pumpSn,jdbcType=VARCHAR},
-      </if>
-      <if test="heatingArea != null">
-        #{heatingArea,jdbcType=DECIMAL},
-      </if>
-      <if test="heatingTemp != null">
-        #{heatingTemp,jdbcType=DECIMAL},
       </if>
       <if test="installDate != null">
         #{installDate,jdbcType=DATE},
@@ -194,9 +190,6 @@
       </if>
       <if test="areaLatitude != null">
         #{areaLatitude,jdbcType=VARCHAR},
-      </if>
-      <if test="areaDetail != null">
-        #{areaDetail,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -221,20 +214,20 @@
       <if test="record.projectId != null">
         project_id = #{record.projectId,jdbcType=BIGINT},
       </if>
+      <if test="record.ownerId != null">
+        owner_id = #{record.ownerId,jdbcType=BIGINT},
+      </if>
       <if test="record.pumpName != null">
         pump_name = #{record.pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpCode != null">
+        pump_code = #{record.pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="record.productId != null">
         product_id = #{record.productId,jdbcType=BIGINT},
       </if>
       <if test="record.pumpSn != null">
         pump_sn = #{record.pumpSn,jdbcType=VARCHAR},
-      </if>
-      <if test="record.heatingArea != null">
-        heating_area = #{record.heatingArea,jdbcType=DECIMAL},
-      </if>
-      <if test="record.heatingTemp != null">
-        heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
       </if>
       <if test="record.installDate != null">
         install_date = #{record.installDate,jdbcType=DATE},
@@ -244,9 +237,6 @@
       </if>
       <if test="record.areaLatitude != null">
         area_latitude = #{record.areaLatitude,jdbcType=VARCHAR},
-      </if>
-      <if test="record.areaDetail != null">
-        area_detail = #{record.areaDetail,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -263,15 +253,14 @@
     update w_pump
     set pump_id = #{record.pumpId,jdbcType=BIGINT},
       project_id = #{record.projectId,jdbcType=BIGINT},
+      owner_id = #{record.ownerId,jdbcType=BIGINT},
       pump_name = #{record.pumpName,jdbcType=VARCHAR},
+      pump_code = #{record.pumpCode,jdbcType=VARCHAR},
       product_id = #{record.productId,jdbcType=BIGINT},
       pump_sn = #{record.pumpSn,jdbcType=VARCHAR},
-      heating_area = #{record.heatingArea,jdbcType=DECIMAL},
-      heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
       install_date = #{record.installDate,jdbcType=DATE},
       area_longitude = #{record.areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{record.areaLatitude,jdbcType=VARCHAR},
-      area_detail = #{record.areaDetail,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -284,20 +273,20 @@
       <if test="projectId != null">
         project_id = #{projectId,jdbcType=BIGINT},
       </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=BIGINT},
+      </if>
       <if test="pumpName != null">
         pump_name = #{pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpCode != null">
+        pump_code = #{pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="productId != null">
         product_id = #{productId,jdbcType=BIGINT},
       </if>
       <if test="pumpSn != null">
         pump_sn = #{pumpSn,jdbcType=VARCHAR},
-      </if>
-      <if test="heatingArea != null">
-        heating_area = #{heatingArea,jdbcType=DECIMAL},
-      </if>
-      <if test="heatingTemp != null">
-        heating_temp = #{heatingTemp,jdbcType=DECIMAL},
       </if>
       <if test="installDate != null">
         install_date = #{installDate,jdbcType=DATE},
@@ -307,9 +296,6 @@
       </if>
       <if test="areaLatitude != null">
         area_latitude = #{areaLatitude,jdbcType=VARCHAR},
-      </if>
-      <if test="areaDetail != null">
-        area_detail = #{areaDetail,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -323,15 +309,14 @@
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Pump">
     update w_pump
     set project_id = #{projectId,jdbcType=BIGINT},
+      owner_id = #{ownerId,jdbcType=BIGINT},
       pump_name = #{pumpName,jdbcType=VARCHAR},
+      pump_code = #{pumpCode,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=BIGINT},
       pump_sn = #{pumpSn,jdbcType=VARCHAR},
-      heating_area = #{heatingArea,jdbcType=DECIMAL},
-      heating_temp = #{heatingTemp,jdbcType=DECIMAL},
       install_date = #{installDate,jdbcType=DATE},
       area_longitude = #{areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{areaLatitude,jdbcType=VARCHAR},
-      area_detail = #{areaDetail,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where pump_id = #{pumpId,jdbcType=BIGINT}

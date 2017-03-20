@@ -15,8 +15,6 @@ public class DeviceVender {
 
     private String venderRemark;
 
-    private Long creatorId;
-
     private Date createTime;
 
     private Date modifyTime;
@@ -67,14 +65,6 @@ public class DeviceVender {
 
     public void setVenderRemark(String venderRemark) {
         this.venderRemark = venderRemark;
-    }
-
-    public Long getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Long creatorId) {
-        this.creatorId = creatorId;
     }
 
     public Date getCreateTime() {

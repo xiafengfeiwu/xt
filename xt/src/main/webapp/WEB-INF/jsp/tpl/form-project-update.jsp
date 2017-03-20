@@ -33,6 +33,18 @@
               </ui-select-choices>
             </ui-select>
           </div>
+          <div class="form-group filled">
+            <label class="control-label">供暖面积 ㎡</label>
+            <input type="text" class="form-control" ng-model="project.heatingArea" required maxlength=8 pattern="^\d+(\.\d+)?$"/>
+          </div>
+          <div class="form-group filled">
+            <label class="control-label">供暖温度 ℃</label>
+            <input type="text" class="form-control" ng-model="project.heatingTemp" required maxlength=5 pattern="^\d+(\.\d+)?$"/>
+          </div>
+          <div class="form-group filled">
+            <label class="control-label">项目地址</label>
+            <input type="text" class="form-control" ng-model="project.projectAddress" required/>
+          </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">更改</button>
           </div>

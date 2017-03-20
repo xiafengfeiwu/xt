@@ -8,7 +8,6 @@
     <result column="vender_contacts_tel" jdbcType="VARCHAR" property="venderContactsTel" />
     <result column="vender_address" jdbcType="VARCHAR" property="venderAddress" />
     <result column="vender_remark" jdbcType="VARCHAR" property="venderRemark" />
-    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
@@ -72,7 +71,7 @@
   </sql>
   <sql id="Base_Column_List">
     vender_id, vender_name, vender_contacts, vender_contacts_tel, vender_address, vender_remark, 
-    creator_id, create_time, modify_time
+    create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.DeviceVenderExample" resultMap="BaseResultMap">
     select
@@ -108,12 +107,10 @@
   <insert id="insert" parameterType="com.xt.entity.generation.DeviceVender">
     insert into w_device_vender (vender_id, vender_name, vender_contacts, 
       vender_contacts_tel, vender_address, vender_remark, 
-      creator_id, create_time, modify_time
-      )
+      create_time, modify_time)
     values (#{venderId,jdbcType=BIGINT}, #{venderName,jdbcType=VARCHAR}, #{venderContacts,jdbcType=VARCHAR}, 
       #{venderContactsTel,jdbcType=VARCHAR}, #{venderAddress,jdbcType=VARCHAR}, #{venderRemark,jdbcType=VARCHAR}, 
-      #{creatorId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
-      )
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.DeviceVender">
     insert into w_device_vender
@@ -135,9 +132,6 @@
       </if>
       <if test="venderRemark != null">
         vender_remark,
-      </if>
-      <if test="creatorId != null">
-        creator_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -164,9 +158,6 @@
       </if>
       <if test="venderRemark != null">
         #{venderRemark,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorId != null">
-        #{creatorId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -203,9 +194,6 @@
       <if test="record.venderRemark != null">
         vender_remark = #{record.venderRemark,jdbcType=VARCHAR},
       </if>
-      <if test="record.creatorId != null">
-        creator_id = #{record.creatorId,jdbcType=BIGINT},
-      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -225,7 +213,6 @@
       vender_contacts_tel = #{record.venderContactsTel,jdbcType=VARCHAR},
       vender_address = #{record.venderAddress,jdbcType=VARCHAR},
       vender_remark = #{record.venderRemark,jdbcType=VARCHAR},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -250,9 +237,6 @@
       <if test="venderRemark != null">
         vender_remark = #{venderRemark,jdbcType=VARCHAR},
       </if>
-      <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=BIGINT},
-      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -269,7 +253,6 @@
       vender_contacts_tel = #{venderContactsTel,jdbcType=VARCHAR},
       vender_address = #{venderAddress,jdbcType=VARCHAR},
       vender_remark = #{venderRemark,jdbcType=VARCHAR},
-      creator_id = #{creatorId,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where vender_id = #{venderId,jdbcType=BIGINT}

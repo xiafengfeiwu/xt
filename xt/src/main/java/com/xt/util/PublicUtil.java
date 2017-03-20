@@ -2,8 +2,12 @@ package com.xt.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +20,14 @@ import org.apache.shiro.subject.Subject;
 import com.github.stuxuhai.jpinyin.PinyinException;
 import com.github.stuxuhai.jpinyin.PinyinFormat;
 import com.github.stuxuhai.jpinyin.PinyinHelper;
+import com.xt.entity.custom.MAreaPump;
+import com.xt.entity.generation.ProjectArea;
+import com.xt.entity.generation.Role;
+import com.xt.entity.generation.WeatherAlarm;
+import com.xt.entity.generation.WeatherData;
+import com.xt.service.CityWeatherService;
+
+import net.sf.json.JSONObject;
 
 public class PublicUtil {
 	final static _Sequence sequence = new _Sequence(0, 0);
@@ -43,13 +55,13 @@ public class PublicUtil {
 	}
 
 	// 获取Session用户角色名称
-	public static String sessionUserRole() {
+	public static Role sessionUserRole() {
 		Subject subject = SecurityUtils.getSubject();
 		Object userRole = subject.getSession().getAttribute("userRole");
 		if (userRole == null) {
 			return null;
 		}
-		return userRole.toString();
+		return (Role) userRole;
 	}
 
 	// 判断对象是否为空
@@ -151,6 +163,44 @@ public class PublicUtil {
 		}
 	}
 
+	public static String getCurrentYearMonth() {
+		return new SimpleDateFormat("yyyyMM").format(new Date());
+	}
+
+	public static String getNextCode(String lastCode) {
+		String no = lastCode.substring(13, 17);
+		Integer psNo = new Integer(no);
+		psNo++;
+		String n = null;
+		if (psNo < 10) {
+			n = "000" + psNo;
+		} else if (psNo < 100) {
+			n = "00" + psNo;
+		} else if (psNo < 1000) {
+			n = "0" + psNo;
+		} else {
+			n = "" + psNo;
+		}
+		return lastCode.substring(0, 13) + n;
+	}
+
+	public static String getNextPumpCode(String lastCode) {
+		String no = lastCode.substring(lastCode.length() - 4, lastCode.length());
+		Integer psNo = new Integer(no);
+		psNo++;
+		String n = null;
+		if (psNo < 10) {
+			n = "000" + psNo;
+		} else if (psNo < 100) {
+			n = "00" + psNo;
+		} else if (psNo < 1000) {
+			n = "0" + psNo;
+		} else {
+			n = "" + psNo;
+		}
+		return lastCode.substring(0, lastCode.length() - 4) + n;
+	}
+
 	public static boolean isNumber(String str) {
 		if (isEmpty(str)) {
 			return false;
@@ -160,13 +210,117 @@ public class PublicUtil {
 		return matcher.matches();
 	}
 
+	public static String delZero(String src) {
+		if (src.endsWith("0"))
+			return delZero(src.substring(0, src.length() - 1));
+		else
+			return src;
+	}
+
+	public static WeatherData analysisWeatherDataJson(String json, CityWeatherService cityWeatherService) {
+		try {
+			JSONObject object = JSONObject.fromObject(json);
+			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
+			String status = root.getString("status");
+			if (!"ok".equals(status)) {
+				return null;
+			}
+			JSONObject basic = root.getJSONObject("basic");
+			WeatherData data = new WeatherData();
+			data.setWeatherCityCode(basic.getString("id"));
+			JSONObject update = basic.getJSONObject("update");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			data.setCollectDate(df.parse(update.getString("loc")));
+			JSONObject now = root.getJSONObject("now");
+			JSONObject cond = now.getJSONObject("cond");
+			data.setCondCode(cond.getString("code"));
+			data.setCondCodeUrl(cityWeatherService.findWeatherIconByCode(data.getCondCode()).getIcon());
+			data.setCondTxt(cond.getString("txt"));
+			data.setFl(now.getString("fl"));
+			data.setHum(now.getString("hum"));
+			data.setPcpn(now.getString("pcpn"));
+			data.setPres(now.getString("pres"));
+			data.setTmp(now.getString("tmp"));
+			data.setVis(now.getString("vis"));
+			JSONObject wind = now.getJSONObject("wind");
+			data.setWindDeg(wind.getString("deg"));
+			data.setWindDir(wind.getString("dir"));
+			data.setWindSc(wind.getString("sc"));
+			data.setWindSpd(wind.getString("spd"));
+			data.setLastUpdateTime(new Date());
+			return data;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static WeatherAlarm analysisAlarmDataJson(String json) {
+		try {
+			JSONObject object = JSONObject.fromObject(json);
+			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
+			String status = root.getString("status");
+			if (!"ok".equals(status)) {
+				return null;
+			}
+			JSONObject basic = root.getJSONObject("basic");
+			WeatherAlarm data = new WeatherAlarm();
+			data.setWeatherCityCode(basic.getString("id"));
+			Object alarms = root.get("alarms");
+			if (alarms == null) {
+				return data;
+			}
+			JSONObject alarm = root.getJSONArray("alarms").getJSONObject(0);
+			data.setEarlyWarnLevel(alarm.getString("level"));
+			data.setEarlyWarnStat(alarm.getString("stat"));
+			data.setEarlyWarnTitle(alarm.getString("title"));
+			data.setEarlyWarnTxt(alarm.getString("txt"));
+			data.setEarlyWarnType(alarm.getString("type"));
+			data.setEarlyWarnTime(new Date());
+			return data;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static void transforAreaObj(List<Map<String, Object>> data, List<ProjectArea> projectAreas) {
+		if (projectAreas != null && !projectAreas.isEmpty()) {
+			Map<String, Object> map = null;
+			for (ProjectArea projectArea : projectAreas) {
+				map = new HashMap<>();
+				map.put("id", projectArea.getProjectAreaId());
+				map.put("name", projectArea.getAreaName());
+				map.put("isParent", true);
+				data.add(map);
+			}
+		}
+	}
+
+	public static void transforPumpObj(List<Map<String, Object>> data, List<MAreaPump> mAreaPumps, boolean isParent) {
+		if (mAreaPumps != null && !mAreaPumps.isEmpty()) {
+			Map<String, Object> map = null;
+			for (MAreaPump mAreaPump : mAreaPumps) {
+				map = new HashMap<>();
+				map.put("id", mAreaPump.getId());
+				map.put("name", mAreaPump.getName());
+				map.put("isParent", isParent);
+				data.add(map);
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-	//	 while (true) {
-			 System.out.println(initId());
+		// while (true) {
+		System.out.println(initId());
 		// }
-//		System.out.println(isNumber("太行山hang"));
-//		System.out.println(isNumber("11.23"));
-//		System.out.println(isNumber("-120.23"));
-//		System.out.println(isNumber("0"));
+		// System.out.println(isNumber("太行山hang"));
+		// System.out.println(isNumber("11.23"));
+		// System.out.println(isNumber("-120.23"));
+		// System.out.println(isNumber("0"));
+		// System.out.println(getNextCode("P1100002017039998"));
+		// System.out.println(getNextCode("P1100002017039993"));
+		// System.out.println(getNextCode("M1100002017039991"));
+		String areaCode = "1102002017030002";
+		// areaCode = areaCode.substring(1, 13);
+		System.out.println(getNextPumpCode(areaCode));
 	}
 }

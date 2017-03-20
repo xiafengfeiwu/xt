@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.dao.custom.MProjectMapper">
+	<select id="selectLastProjectcode" parameterType="String"
+		resultType="MLastCode">
+		select p.project_code as code from w_project p where
+		p.project_code like CONCAT(#{preCode},'%') order by p.create_time desc
+		limit 0,1
+	</select>
+
+	<select id="selectUserAuthProjectArea" parameterType="Long"
+		resultType="MAreaPump">
+		select pa.project_area_id as id, pa.area_name as name from
+		w_project_area pa where
+		pa.project_area_id in (
+		select
+		ua.project_area_id from w_user_auth ua where ua.user_id = ${userId}
+		and ua.project_area_id is not null) order by
+		pa.area_code asc
+	</select>
+
+	<select id="selectProjectPumpsByIds" parameterType="List"
+		resultType="MAreaPump">
+		select pa.project_area_id as id, pa.area_name as name from
+		w_project_area pa where
+		pa.project_area_id in
+		<foreach collection="projectAreaIds" item="id" open="(" separator=","
+			close=")">
+			${id}
+		</foreach>
+	</select>
+
+</mapper>

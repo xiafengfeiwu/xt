@@ -3,7 +3,7 @@
 <section class="cards" ng-controller="ConservationController">
 	<div class="page-header">
 		<h1>
-			<i class="md md-warn"></i> 节能减排
+			节能减排
 		</h1>
 		<p class="lead">展示根据耗电量进行换算计算出的各指标减排量和使用热泵相对其他采暖设备效能的对比分析。</p>
 	</div>

@@ -29,10 +29,18 @@ public class ProjectAreaServiceImpl implements ProjectAreaService {
 	}
 
 	@Override
-	public ProjectArea getByAreaId(Long projectAreaId){
+	public List<ProjectArea> getParentProjectArea() {
+		ProjectAreaExample example = new ProjectAreaExample();
+		example.createCriteria().andParentAreaCodeIsNull();
+		example.setOrderByClause("area_code asc");
+		return projectAreaMapper.selectByExample(example);
+	}
+
+	@Override
+	public ProjectArea getByAreaId(Long projectAreaId) {
 		return projectAreaMapper.selectByPrimaryKey(projectAreaId);
 	}
-	
+
 	@Override
 	public ProjectArea getByAreaCode(String areaCode) {
 		ProjectAreaExample example = new ProjectAreaExample();
@@ -48,6 +56,17 @@ public class ProjectAreaServiceImpl implements ProjectAreaService {
 	public List<ProjectArea> getByParentAreaCode(String parentAreaCode) {
 		ProjectAreaExample example = new ProjectAreaExample();
 		example.createCriteria().andParentAreaCodeEqualTo(parentAreaCode);
+		return projectAreaMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<ProjectArea> getByParentAreaId(Long parentAreaId) {
+		ProjectArea projectArea = getByAreaId(parentAreaId);
+		if (projectArea == null) {
+			return null;
+		}
+		ProjectAreaExample example = new ProjectAreaExample();
+		example.createCriteria().andParentAreaCodeEqualTo(projectArea.getAreaCode());
 		return projectAreaMapper.selectByExample(example);
 	}
 

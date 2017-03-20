@@ -5,7 +5,7 @@ public class KnowledgeType {
 
     private String knowledgeTypeName;
 
-    private Integer sortNo;
+    private Boolean systemItem;
 
     public Long getKnowledgeTypeId() {
         return knowledgeTypeId;
@@ -23,11 +23,11 @@ public class KnowledgeType {
         this.knowledgeTypeName = knowledgeTypeName;
     }
 
-    public Integer getSortNo() {
-        return sortNo;
+    public Boolean getSystemItem() {
+        return systemItem;
     }
 
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
+    public void setSystemItem(Boolean systemItem) {
+        this.systemItem = systemItem;
     }
 }

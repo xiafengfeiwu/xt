@@ -17,7 +17,7 @@
 	<context:component-scan base-package="com.xt.controller.pc" />
 	<context:component-scan base-package="com.xt.controller.wx" />
 	<mvc:default-servlet-handler />
-	<mvc:annotation-driven />
+	<mvc:annotation-driven ignore-default-model-on-redirect="true" />
 	<!-- 配置JSP视图模板 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -65,7 +65,7 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/loginInvalid.jspx</prop>
+				<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/login-invalid.jspx</prop>
 				<prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/unauthorized.jspx</prop>
 			</props>
 		</property>

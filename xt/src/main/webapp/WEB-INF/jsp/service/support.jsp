@@ -1,51 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div ng-controller="AreaController">
-	<div class="table-responsive well no-padding white no-margin">
-		<h3 class="table-title">技术支持</h3>
+<section class="forms-basic" data-ng-controller="SupportController">
+	<div class="page-header">
+		<h1>技术支持</h1>
+		<p class="lead">此处展示的是常见问题处理建议和相关资讯，管理员可以新增分类和新增资源。</p>
 	</div>
-	
-	
-	
-	<div class="container-fluid">
-		<div class="accordion" id="accordion2">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-						点击我扩展。 再次点击我折叠。 Part I。
-					</a>
-				</div>
-				<div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
-					<div class="accordion-inner">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-				</div>
-			</div>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-						点击我扩展。 再次点击我折叠。 Part II。
-					</a>
-				</div>
-				<div id="collapseTwo" class="accordion-body collapse">
-					<div class="accordion-inner">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-				</div>
-			</div>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-						点击我扩展。 再次点击我折叠。 Part  III。
-					</a>
-				</div>
-				<div id="collapseThree" class="accordion-body collapse">
-					<div class="accordion-inner">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-				</div>
+	<div class="m-b-40" style="width: 100%;">
+		<div style="float: left;width: 220px;height: 100%;padding-right: 6px;">
+			<div class="card">
+				<ul class="list-group">
+					<li class="list-group-item" style="font-size: 13px;">
+						<div class="list-actions">
+							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
+						</div>
+						<a href="javascript:;"><i class="md md-turned-in-not"></i> 平台文档</a>
+					</li>
+					<li class="list-group-item" style="font-size: 13px;">
+						<div class="list-actions">
+							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
+						</div>
+						<a href="javascript:;"><i class="md md-turned-in-not"></i> 技术支持</a>
+					</li>
+					<li class="list-group-item" style="font-size: 13px;">
+						<div class="list-actions">
+							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
+						</div>
+						<a href="javascript:;"><i class="md md-turned-in-not"></i> 新闻资讯</a>
+					</li>
+					<li class="list-group-item" style="font-size: 14px;text-align: center">
+						<a href="javascript:;"><i class="md md-add-box"></i>新增类别</a>
+					</li>
+				</ul>
 			</div>
 		</div>
+		<div style="height: 100%;margin-left:222px;background-color: #fff">
+			&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>&nbsp;
+			<br/>
+		</div>
 	</div>
-	
-</div>
+	<div class="footer-buttons">
+		<div class="btn btn-default btn-round m-r-10 btn-footer" data-scroll-to="top" data-ng-hide="!scroll || scroll<100" data-title="返回顶部" data-bs-tooltip>
+			<i class="md md-arrow-drop-up"></i>
+		</div>
+	</div>
+</section>

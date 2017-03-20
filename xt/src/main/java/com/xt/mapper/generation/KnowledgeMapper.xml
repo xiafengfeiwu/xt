@@ -5,12 +5,14 @@
     <id column="knowledge_id" jdbcType="BIGINT" property="knowledgeId" />
     <result column="knowledge_type_id" jdbcType="BIGINT" property="knowledgeTypeId" />
     <result column="knowledge_title" jdbcType="VARCHAR" property="knowledgeTitle" />
-    <result column="knowledge_content" jdbcType="VARCHAR" property="knowledgeContent" />
     <result column="useful_count" jdbcType="INTEGER" property="usefulCount" />
     <result column="useless_count" jdbcType="INTEGER" property="uselessCount" />
     <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xt.entity.generation.Knowledge">
+    <result column="knowledge_content" jdbcType="LONGVARCHAR" property="knowledgeContent" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,9 +73,29 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    knowledge_id, knowledge_type_id, knowledge_title, knowledge_content, useful_count, 
-    useless_count, creator_id, create_time, modify_time
+    knowledge_id, knowledge_type_id, knowledge_title, useful_count, useless_count, creator_id, 
+    create_time, modify_time
   </sql>
+  <sql id="Blob_Column_List">
+    knowledge_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.xt.entity.generation.KnowledgeExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from w_knowledge
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.xt.entity.generation.KnowledgeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -89,9 +111,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from w_knowledge
     where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
   </select>
@@ -107,12 +131,12 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Knowledge">
     insert into w_knowledge (knowledge_id, knowledge_type_id, knowledge_title, 
-      knowledge_content, useful_count, useless_count, 
-      creator_id, create_time, modify_time
+      useful_count, useless_count, creator_id, 
+      create_time, modify_time, knowledge_content
       )
     values (#{knowledgeId,jdbcType=BIGINT}, #{knowledgeTypeId,jdbcType=BIGINT}, #{knowledgeTitle,jdbcType=VARCHAR}, 
-      #{knowledgeContent,jdbcType=VARCHAR}, #{usefulCount,jdbcType=INTEGER}, #{uselessCount,jdbcType=INTEGER}, 
-      #{creatorId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      #{usefulCount,jdbcType=INTEGER}, #{uselessCount,jdbcType=INTEGER}, #{creatorId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{knowledgeContent,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Knowledge">
@@ -126,9 +150,6 @@
       </if>
       <if test="knowledgeTitle != null">
         knowledge_title,
-      </if>
-      <if test="knowledgeContent != null">
-        knowledge_content,
       </if>
       <if test="usefulCount != null">
         useful_count,
@@ -145,6 +166,9 @@
       <if test="modifyTime != null">
         modify_time,
       </if>
+      <if test="knowledgeContent != null">
+        knowledge_content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="knowledgeId != null">
@@ -155,9 +179,6 @@
       </if>
       <if test="knowledgeTitle != null">
         #{knowledgeTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="knowledgeContent != null">
-        #{knowledgeContent,jdbcType=VARCHAR},
       </if>
       <if test="usefulCount != null">
         #{usefulCount,jdbcType=INTEGER},
@@ -173,6 +194,9 @@
       </if>
       <if test="modifyTime != null">
         #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="knowledgeContent != null">
+        #{knowledgeContent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -194,9 +218,6 @@
       <if test="record.knowledgeTitle != null">
         knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.knowledgeContent != null">
-        knowledge_content = #{record.knowledgeContent,jdbcType=VARCHAR},
-      </if>
       <if test="record.usefulCount != null">
         useful_count = #{record.usefulCount,jdbcType=INTEGER},
       </if>
@@ -212,7 +233,25 @@
       <if test="record.modifyTime != null">
         modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.knowledgeContent != null">
+        knowledge_content = #{record.knowledgeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update w_knowledge
+    set knowledge_id = #{record.knowledgeId,jdbcType=BIGINT},
+      knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+      knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
+      useful_count = #{record.usefulCount,jdbcType=INTEGER},
+      useless_count = #{record.uselessCount,jdbcType=INTEGER},
+      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      knowledge_content = #{record.knowledgeContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -222,7 +261,6 @@
     set knowledge_id = #{record.knowledgeId,jdbcType=BIGINT},
       knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
       knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
-      knowledge_content = #{record.knowledgeContent,jdbcType=VARCHAR},
       useful_count = #{record.usefulCount,jdbcType=INTEGER},
       useless_count = #{record.uselessCount,jdbcType=INTEGER},
       creator_id = #{record.creatorId,jdbcType=BIGINT},
@@ -241,9 +279,6 @@
       <if test="knowledgeTitle != null">
         knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
       </if>
-      <if test="knowledgeContent != null">
-        knowledge_content = #{knowledgeContent,jdbcType=VARCHAR},
-      </if>
       <if test="usefulCount != null">
         useful_count = #{usefulCount,jdbcType=INTEGER},
       </if>
@@ -259,14 +294,28 @@
       <if test="modifyTime != null">
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="knowledgeContent != null">
+        knowledge_content = #{knowledgeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xt.entity.generation.Knowledge">
+    update w_knowledge
+    set knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT},
+      knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
+      useful_count = #{usefulCount,jdbcType=INTEGER},
+      useless_count = #{uselessCount,jdbcType=INTEGER},
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      knowledge_content = #{knowledgeContent,jdbcType=LONGVARCHAR}
     where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Knowledge">
     update w_knowledge
     set knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT},
       knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
-      knowledge_content = #{knowledgeContent,jdbcType=VARCHAR},
       useful_count = #{usefulCount,jdbcType=INTEGER},
       useless_count = #{uselessCount,jdbcType=INTEGER},
       creator_id = #{creatorId,jdbcType=BIGINT},

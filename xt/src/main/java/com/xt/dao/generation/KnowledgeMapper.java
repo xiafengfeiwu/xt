@@ -16,15 +16,21 @@ public interface KnowledgeMapper {
 
     int insertSelective(Knowledge record);
 
+    List<Knowledge> selectByExampleWithBLOBs(KnowledgeExample example);
+
     List<Knowledge> selectByExample(KnowledgeExample example);
 
     Knowledge selectByPrimaryKey(Long knowledgeId);
 
     int updateByExampleSelective(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
+
     int updateByExample(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
 
     int updateByPrimaryKeySelective(Knowledge record);
+
+    int updateByPrimaryKeyWithBLOBs(Knowledge record);
 
     int updateByPrimaryKey(Knowledge record);
 }

@@ -1,5 +1,6 @@
 package com.xt.entity.generation;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -632,6 +633,196 @@ public class ProjectExample {
 
         public Criteria andOwnerTypeNotBetween(String value1, String value2) {
             addCriterion("owner_type not between", value1, value2, "ownerType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaIsNull() {
+            addCriterion("heating_area is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaIsNotNull() {
+            addCriterion("heating_area is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaEqualTo(BigDecimal value) {
+            addCriterion("heating_area =", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaNotEqualTo(BigDecimal value) {
+            addCriterion("heating_area <>", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaGreaterThan(BigDecimal value) {
+            addCriterion("heating_area >", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("heating_area >=", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaLessThan(BigDecimal value) {
+            addCriterion("heating_area <", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("heating_area <=", value, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaIn(List<BigDecimal> values) {
+            addCriterion("heating_area in", values, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaNotIn(List<BigDecimal> values) {
+            addCriterion("heating_area not in", values, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("heating_area between", value1, value2, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingAreaNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("heating_area not between", value1, value2, "heatingArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempIsNull() {
+            addCriterion("heating_temp is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempIsNotNull() {
+            addCriterion("heating_temp is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempEqualTo(BigDecimal value) {
+            addCriterion("heating_temp =", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempNotEqualTo(BigDecimal value) {
+            addCriterion("heating_temp <>", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempGreaterThan(BigDecimal value) {
+            addCriterion("heating_temp >", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("heating_temp >=", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempLessThan(BigDecimal value) {
+            addCriterion("heating_temp <", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("heating_temp <=", value, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempIn(List<BigDecimal> values) {
+            addCriterion("heating_temp in", values, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempNotIn(List<BigDecimal> values) {
+            addCriterion("heating_temp not in", values, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("heating_temp between", value1, value2, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeatingTempNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("heating_temp not between", value1, value2, "heatingTemp");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressIsNull() {
+            addCriterion("project_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressIsNotNull() {
+            addCriterion("project_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressEqualTo(String value) {
+            addCriterion("project_address =", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressNotEqualTo(String value) {
+            addCriterion("project_address <>", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressGreaterThan(String value) {
+            addCriterion("project_address >", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("project_address >=", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressLessThan(String value) {
+            addCriterion("project_address <", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressLessThanOrEqualTo(String value) {
+            addCriterion("project_address <=", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressLike(String value) {
+            addCriterion("project_address like", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressNotLike(String value) {
+            addCriterion("project_address not like", value, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressIn(List<String> values) {
+            addCriterion("project_address in", values, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressNotIn(List<String> values) {
+            addCriterion("project_address not in", values, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressBetween(String value1, String value2) {
+            addCriterion("project_address between", value1, value2, "projectAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectAddressNotBetween(String value1, String value2) {
+            addCriterion("project_address not between", value1, value2, "projectAddress");
             return (Criteria) this;
         }
 

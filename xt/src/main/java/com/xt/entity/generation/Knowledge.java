@@ -9,8 +9,6 @@ public class Knowledge {
 
     private String knowledgeTitle;
 
-    private String knowledgeContent;
-
     private Integer usefulCount;
 
     private Integer uselessCount;
@@ -20,6 +18,8 @@ public class Knowledge {
     private Date createTime;
 
     private Date modifyTime;
+
+    private String knowledgeContent;
 
     public Long getKnowledgeId() {
         return knowledgeId;
@@ -43,14 +43,6 @@ public class Knowledge {
 
     public void setKnowledgeTitle(String knowledgeTitle) {
         this.knowledgeTitle = knowledgeTitle;
-    }
-
-    public String getKnowledgeContent() {
-        return knowledgeContent;
-    }
-
-    public void setKnowledgeContent(String knowledgeContent) {
-        this.knowledgeContent = knowledgeContent;
     }
 
     public Integer getUsefulCount() {
@@ -91,5 +83,13 @@ public class Knowledge {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+
+    public String getKnowledgeContent() {
+        return knowledgeContent;
+    }
+
+    public void setKnowledgeContent(String knowledgeContent) {
+        this.knowledgeContent = knowledgeContent;
     }
 }

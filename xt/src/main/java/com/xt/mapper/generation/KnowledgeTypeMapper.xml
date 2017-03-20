@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.KnowledgeType">
     <id column="knowledge_type_id" jdbcType="BIGINT" property="knowledgeTypeId" />
     <result column="knowledge_type_name" jdbcType="VARCHAR" property="knowledgeTypeName" />
-    <result column="sort_no" jdbcType="INTEGER" property="sortNo" />
+    <result column="system_item" jdbcType="BIT" property="systemItem" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    knowledge_type_id, knowledge_type_name, sort_no
+    knowledge_type_id, knowledge_type_name, system_item
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.KnowledgeTypeExample" resultMap="BaseResultMap">
     select
@@ -100,9 +100,9 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.KnowledgeType">
     insert into w_knowledge_type (knowledge_type_id, knowledge_type_name, 
-      sort_no)
+      system_item)
     values (#{knowledgeTypeId,jdbcType=BIGINT}, #{knowledgeTypeName,jdbcType=VARCHAR}, 
-      #{sortNo,jdbcType=INTEGER})
+      #{systemItem,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.KnowledgeType">
     insert into w_knowledge_type
@@ -113,8 +113,8 @@
       <if test="knowledgeTypeName != null">
         knowledge_type_name,
       </if>
-      <if test="sortNo != null">
-        sort_no,
+      <if test="systemItem != null">
+        system_item,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -124,8 +124,8 @@
       <if test="knowledgeTypeName != null">
         #{knowledgeTypeName,jdbcType=VARCHAR},
       </if>
-      <if test="sortNo != null">
-        #{sortNo,jdbcType=INTEGER},
+      <if test="systemItem != null">
+        #{systemItem,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -144,8 +144,8 @@
       <if test="record.knowledgeTypeName != null">
         knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
       </if>
-      <if test="record.sortNo != null">
-        sort_no = #{record.sortNo,jdbcType=INTEGER},
+      <if test="record.systemItem != null">
+        system_item = #{record.systemItem,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -156,7 +156,7 @@
     update w_knowledge_type
     set knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
       knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
-      sort_no = #{record.sortNo,jdbcType=INTEGER}
+      system_item = #{record.systemItem,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,8 +167,8 @@
       <if test="knowledgeTypeName != null">
         knowledge_type_name = #{knowledgeTypeName,jdbcType=VARCHAR},
       </if>
-      <if test="sortNo != null">
-        sort_no = #{sortNo,jdbcType=INTEGER},
+      <if test="systemItem != null">
+        system_item = #{systemItem,jdbcType=BIT},
       </if>
     </set>
     where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
@@ -176,7 +176,7 @@
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.KnowledgeType">
     update w_knowledge_type
     set knowledge_type_name = #{knowledgeTypeName,jdbcType=VARCHAR},
-      sort_no = #{sortNo,jdbcType=INTEGER}
+      system_item = #{systemItem,jdbcType=BIT}
     where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
   </update>
 </mapper>
