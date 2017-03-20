@@ -10,7 +10,7 @@ public interface JurisdictionMapper {
 
     int deleteByExample(JurisdictionExample example);
 
-    int deleteByPrimaryKey(String jurisdictionId);
+    int deleteByPrimaryKey(String jurisdictionCode);
 
     int insert(Jurisdiction record);
 
@@ -18,7 +18,7 @@ public interface JurisdictionMapper {
 
     List<Jurisdiction> selectByExample(JurisdictionExample example);
 
-    Jurisdiction selectByPrimaryKey(String jurisdictionId);
+    Jurisdiction selectByPrimaryKey(String jurisdictionCode);
 
     int updateByExampleSelective(@Param("record") Jurisdiction record, @Param("example") JurisdictionExample example);
 

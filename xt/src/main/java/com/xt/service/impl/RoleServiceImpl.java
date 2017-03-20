@@ -1,7 +1,8 @@
 package com.xt.service.impl;
 
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Service;
 import com.xt.dao.generation.JurisdictionMapper;
 import com.xt.dao.generation.RoleJurisdictionMapper;
 import com.xt.dao.generation.RoleMapper;
-import com.xt.entity.generation.Jurisdiction;
-import com.xt.entity.generation.JurisdictionExample;
 import com.xt.entity.generation.Role;
 import com.xt.entity.generation.RoleExample;
 import com.xt.entity.generation.RoleJurisdictionExample;
@@ -55,31 +54,27 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Jurisdiction> findRoleJurisdictions(String roleId) {
+	public Set<String> findRoleJurisdictions(String roleId) {
 		RoleJurisdictionExample example = new RoleJurisdictionExample();
 		example.createCriteria().andRoleIdEqualTo(roleId);
 		List<RoleJurisdictionKey> jurisdictions = roleJurisdictionMapper.selectByExample(example);
 		if (PublicUtil.isEmpty(jurisdictions)) {
 			return null;
 		}
-		List<String> juids = new LinkedList<>();
+		Set<String> juids = new HashSet<>();
 		for (RoleJurisdictionKey key : jurisdictions) {
-			juids.add(key.getJurisdictionId());
+			juids.add(key.getJurisdictionCode());
 		}
-		JurisdictionExample example2 = new JurisdictionExample();
-		example2.createCriteria().andJurisdictionIdIn(juids);
-		List<Jurisdiction> list = jurisdictionMapper.selectByExample(example2);
-		return list;
+		return juids;
 	}
 
 	@Override
-	public boolean checkRoleJurisdiction(String roleId, String jurisdictionId) {
+	public boolean checkRoleJurisdiction(String roleId, String jurisdictionCode) {
 		RoleJurisdictionExample example = new RoleJurisdictionExample();
-		example.createCriteria().andJurisdictionIdEqualTo(jurisdictionId).andRoleIdEqualTo(roleId);
+		example.createCriteria().andJurisdictionCodeEqualTo(jurisdictionCode).andRoleIdEqualTo(roleId);
 		List<RoleJurisdictionKey> roleJurisdictions = roleJurisdictionMapper.selectByExample(example);
 		return PublicUtil.isNotEmpty(roleJurisdictions);
 	}
-
 
 	@Override
 	public void addRoleJurisdiction(RoleJurisdictionKey jurisdictionKey) {

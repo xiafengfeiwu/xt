@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 public class RoleJurisdictionKey {
     private String roleId;
 
-    private String jurisdictionId;
+    private String jurisdictionCode;
 
     public String getRoleId() {
         return roleId;
@@ -13,11 +13,11 @@ public class RoleJurisdictionKey {
         this.roleId = roleId;
     }
 
-    public String getJurisdictionId() {
-        return jurisdictionId;
+    public String getJurisdictionCode() {
+        return jurisdictionCode;
     }
 
-    public void setJurisdictionId(String jurisdictionId) {
-        this.jurisdictionId = jurisdictionId;
+    public void setJurisdictionCode(String jurisdictionCode) {
+        this.jurisdictionCode = jurisdictionCode;
     }
 }

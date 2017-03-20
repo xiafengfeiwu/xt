@@ -34,7 +34,7 @@
 							<th width="120">名称</th>
 							<th class="text-center">型号</th>
 							<th class="text-center">匹数</th>
-							<th class="text-center">功率规格</th>
+							<th class="text-center">电源规格</th>
 							<th>厂家</th>
 							<th class="text-center">创建时间</th>
 							<th width="78" class="text-center">操作</th>

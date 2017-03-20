@@ -142,6 +142,9 @@
 				<blockquote ng-show="tabFlag=='monitor' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;text-align: left;border-left:0px solid rgba(255, 255, 255, 0)">
 					<div class="row">
 						<div class="col-xs-12">
+							<div class="pull-right">
+								<div class="btn btn-round-sm btn-link ng-scope" data-ng-click="showPumpWeatherDetail()" data-bs-tooltip data-title="天气信息"><img style="width:26px" alt="{{pumpd.weather.condTxt}}" data-ng-src="{{pumpd.weather.condCodeUrl}}"></div>
+							</div>
 							<h5><i class="md md-chevron-right"></i> 实时监控</h5>
 						</div>
 					</div>

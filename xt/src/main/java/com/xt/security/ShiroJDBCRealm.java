@@ -1,7 +1,6 @@
 package com.xt.security;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.shiro.SecurityUtils;
@@ -19,12 +18,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.xt.entity.generation.Jurisdiction;
 import com.xt.entity.generation.Role;
 import com.xt.entity.generation.User;
 import com.xt.service.RoleService;
 import com.xt.service.UserService;
-import com.xt.util.PublicUtil;
 
 public class ShiroJDBCRealm extends AuthorizingRealm {
 
@@ -48,14 +45,7 @@ public class ShiroJDBCRealm extends AuthorizingRealm {
 		Set<String> roles = new LinkedHashSet<>();
 		roles.add(role.getRoleName());
 		authorizationInfo.setRoles(roles);
-		Set<String> permissions = new LinkedHashSet<>();
-		List<Jurisdiction> jurisdictions = roleService.findRoleJurisdictions(role.getRoleId());
-		if (PublicUtil.isNotEmpty(jurisdictions)) {
-			for (Jurisdiction jurisdiction : jurisdictions) {
-				permissions.add(jurisdiction.getJurisdictionCode());
-			}
-		}
-		authorizationInfo.setStringPermissions(permissions);
+		authorizationInfo.setStringPermissions(roleService.findRoleJurisdictions(role.getRoleId()));
 		return authorizationInfo;
 	}
 

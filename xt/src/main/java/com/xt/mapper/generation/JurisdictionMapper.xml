@@ -2,9 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.JurisdictionMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Jurisdiction">
-    <id column="jurisdiction_id" jdbcType="VARCHAR" property="jurisdictionId" />
+    <id column="jurisdiction_code" jdbcType="VARCHAR" property="jurisdictionCode" />
     <result column="jurisdiction_name" jdbcType="VARCHAR" property="jurisdictionName" />
-    <result column="jurisdiction_code" jdbcType="VARCHAR" property="jurisdictionCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    jurisdiction_id, jurisdiction_name, jurisdiction_code
+    jurisdiction_code, jurisdiction_name
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.JurisdictionExample" resultMap="BaseResultMap">
     select
@@ -86,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from w_jurisdiction
-    where jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
+    where jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_jurisdiction
-    where jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
+    where jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.JurisdictionExample">
     delete from w_jurisdiction
@@ -99,33 +98,27 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Jurisdiction">
-    insert into w_jurisdiction (jurisdiction_id, jurisdiction_name, 
-      jurisdiction_code)
-    values (#{jurisdictionId,jdbcType=VARCHAR}, #{jurisdictionName,jdbcType=VARCHAR}, 
-      #{jurisdictionCode,jdbcType=VARCHAR})
+    insert into w_jurisdiction (jurisdiction_code, jurisdiction_name
+      )
+    values (#{jurisdictionCode,jdbcType=VARCHAR}, #{jurisdictionName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Jurisdiction">
     insert into w_jurisdiction
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="jurisdictionId != null">
-        jurisdiction_id,
+      <if test="jurisdictionCode != null">
+        jurisdiction_code,
       </if>
       <if test="jurisdictionName != null">
         jurisdiction_name,
       </if>
-      <if test="jurisdictionCode != null">
-        jurisdiction_code,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="jurisdictionId != null">
-        #{jurisdictionId,jdbcType=VARCHAR},
+      <if test="jurisdictionCode != null">
+        #{jurisdictionCode,jdbcType=VARCHAR},
       </if>
       <if test="jurisdictionName != null">
         #{jurisdictionName,jdbcType=VARCHAR},
-      </if>
-      <if test="jurisdictionCode != null">
-        #{jurisdictionCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -138,14 +131,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update w_jurisdiction
     <set>
-      <if test="record.jurisdictionId != null">
-        jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR},
+      <if test="record.jurisdictionCode != null">
+        jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR},
       </if>
       <if test="record.jurisdictionName != null">
         jurisdiction_name = #{record.jurisdictionName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.jurisdictionCode != null">
-        jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -154,9 +144,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_jurisdiction
-    set jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR},
-      jurisdiction_name = #{record.jurisdictionName,jdbcType=VARCHAR},
-      jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR}
+    set jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR},
+      jurisdiction_name = #{record.jurisdictionName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,16 +156,12 @@
       <if test="jurisdictionName != null">
         jurisdiction_name = #{jurisdictionName,jdbcType=VARCHAR},
       </if>
-      <if test="jurisdictionCode != null">
-        jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR},
-      </if>
     </set>
-    where jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
+    where jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Jurisdiction">
     update w_jurisdiction
-    set jurisdiction_name = #{jurisdictionName,jdbcType=VARCHAR},
-      jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
-    where jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
+    set jurisdiction_name = #{jurisdictionName,jdbcType=VARCHAR}
+    where jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
   </update>
 </mapper>

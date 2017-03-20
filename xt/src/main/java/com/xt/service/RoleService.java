@@ -1,8 +1,8 @@
 package com.xt.service;
 
 import java.util.List;
+import java.util.Set;
 
-import com.xt.entity.generation.Jurisdiction;
 import com.xt.entity.generation.Role;
 import com.xt.entity.generation.RoleJurisdictionKey;
 
@@ -24,10 +24,10 @@ public interface RoleService {
 	List<Role> findAll();
 
 	// 获取角色所有权限字
-	List<Jurisdiction> findRoleJurisdictions(String roleId);
+	Set<String> findRoleJurisdictions(String roleId);
 
 	// 检查角色权限字是否存在
-	boolean checkRoleJurisdiction(String roleId, String jurisdictionId);
+	boolean checkRoleJurisdiction(String roleId, String jurisdictionCode);
 
 	// 增加角色权限字关联
 	void addRoleJurisdiction(RoleJurisdictionKey jurisdictionKey);

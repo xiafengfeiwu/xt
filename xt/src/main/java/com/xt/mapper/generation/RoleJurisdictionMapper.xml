@@ -3,7 +3,7 @@
 <mapper namespace="com.xt.dao.generation.RoleJurisdictionMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.RoleJurisdictionKey">
     <id column="role_id" jdbcType="VARCHAR" property="roleId" />
-    <id column="jurisdiction_id" jdbcType="VARCHAR" property="jurisdictionId" />
+    <id column="jurisdiction_code" jdbcType="VARCHAR" property="jurisdictionCode" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    role_id, jurisdiction_id
+    role_id, jurisdiction_code
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.RoleJurisdictionExample" resultMap="BaseResultMap">
     select
@@ -84,7 +84,7 @@
   <delete id="deleteByPrimaryKey" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
     delete from w_role_jurisdiction
     where role_id = #{roleId,jdbcType=VARCHAR}
-      and jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
+      and jurisdiction_code = #{jurisdictionCode,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.RoleJurisdictionExample">
     delete from w_role_jurisdiction
@@ -93,8 +93,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
-    insert into w_role_jurisdiction (role_id, jurisdiction_id)
-    values (#{roleId,jdbcType=VARCHAR}, #{jurisdictionId,jdbcType=VARCHAR})
+    insert into w_role_jurisdiction (role_id, jurisdiction_code)
+    values (#{roleId,jdbcType=VARCHAR}, #{jurisdictionCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
     insert into w_role_jurisdiction
@@ -102,16 +102,16 @@
       <if test="roleId != null">
         role_id,
       </if>
-      <if test="jurisdictionId != null">
-        jurisdiction_id,
+      <if test="jurisdictionCode != null">
+        jurisdiction_code,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
         #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="jurisdictionId != null">
-        #{jurisdictionId,jdbcType=VARCHAR},
+      <if test="jurisdictionCode != null">
+        #{jurisdictionCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -127,8 +127,8 @@
       <if test="record.roleId != null">
         role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
-      <if test="record.jurisdictionId != null">
-        jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR},
+      <if test="record.jurisdictionCode != null">
+        jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -138,7 +138,7 @@
   <update id="updateByExample" parameterType="map">
     update w_role_jurisdiction
     set role_id = #{record.roleId,jdbcType=VARCHAR},
-      jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR}
+      jurisdiction_code = #{record.jurisdictionCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

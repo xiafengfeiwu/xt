@@ -48,6 +48,9 @@
 					</div>
 				</div>
 				<div class="col-xs-8">
+					<div class="btn btn-text " data-ng-click="createPump(project)">
+						<i class="md md-add"></i> 新增热泵
+					</div>
 					<div class="table-responsive well no-padding white no-margin">
 						<table class="table table-hover table-full m-b-60">
 							<thead>
@@ -83,11 +86,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="footer-buttons">
-		<div class="btn btn-primary btn-round " ng-click="createPump(project)" data-title="新增热泵" data-placement="left" bs-tooltip>
-			<i class="md md-add"></i>
 		</div>
 	</div>
 </div>

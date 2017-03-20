@@ -25,6 +25,7 @@ import com.xt.entity.generation.PumpWarnGroupKey;
 import com.xt.entity.generation.Role;
 import com.xt.entity.generation.WarnGroup;
 import com.xt.entity.generation.WarnGroupItem;
+import com.xt.entity.generation.WeatherAlarm;
 import com.xt.entity.generation.WeatherData;
 import com.xt.service.CityWeatherService;
 import com.xt.service.DeviceProductService;
@@ -101,7 +102,7 @@ public class TxMonitorController {
 			data.put("message", "无效的产品信息");
 			return data;
 		}
-		
+
 		DeviceVender deviceVender = deviceVenderService.findById(deviceProduct.getProductVenderId());
 		if (deviceVender == null) {
 			data.put("message", "无效的供应商信息");
@@ -110,6 +111,7 @@ public class TxMonitorController {
 
 		List<MPumpWarnGroup> warnGroups = pumpService.selectPumpWarnGroups(pumpId);
 		WeatherData weather = cityWeatherService.findCityWeatherByCode(projectArea.getWeatherCode());
+		WeatherAlarm weatherAlarm = cityWeatherService.findWeatherAlarmByCode(projectArea.getWeatherCode());
 
 		data.put("success", true);
 		data.put("pump", pump);
@@ -119,6 +121,7 @@ public class TxMonitorController {
 		data.put("deviceProduct", deviceProduct);
 		data.put("deviceVender", deviceVender);
 		data.put("weather", weather);
+		data.put("weatherAlarm", weatherAlarm);
 		return data;
 	}
 
@@ -247,7 +250,7 @@ public class TxMonitorController {
 		try {
 			pumpService.removePumpWarnGroup(groupKey);
 		} catch (Exception e) {
-			data.put("message", "操作失败，请稍后重试");
+			data.put("message", "操作失败，可能存在关联数据");
 			return data;
 		}
 		MPumpWarnGroup mPumpWarnGroup = new MPumpWarnGroup();
@@ -360,7 +363,7 @@ public class TxMonitorController {
 		try {
 			warnGroupService.delete(warnGroupId);
 		} catch (Exception e) {
-			data.put("message", "操作失败，请稍候重试");
+			data.put("message", "操作失败，可能存在关联数据");
 			return data;
 		}
 		data.put("success", true);
@@ -473,7 +476,7 @@ public class TxMonitorController {
 		try {
 			warnGroupService.deleteItem(warnGroupItemId);
 		} catch (Exception e) {
-			data.put("message", "操作失败，请稍候重试");
+			data.put("message", "操作失败，可能存在关联数据");
 			return data;
 		}
 		data.put("success", true);

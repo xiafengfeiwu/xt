@@ -17,9 +17,11 @@ import com.xt.entity.generation.Pump;
 import com.xt.entity.generation.PumpExample;
 import com.xt.entity.generation.PumpWarnGroup;
 import com.xt.entity.generation.PumpWarnGroupKey;
+import com.xt.entity.generation.User;
 import com.xt.entity.generation.UserAuth;
 import com.xt.service.PumpService;
 import com.xt.service.UserAuthService;
+import com.xt.service.UserService;
 import com.xt.util.PublicUtil;
 
 @Service
@@ -31,6 +33,8 @@ public class PumpServiceImpl implements PumpService {
 	MPumpMapper mAreaPumpMapper;
 	@Autowired
 	UserAuthService userAuthService;
+	@Autowired
+	UserService userService;
 	@Autowired
 	PumpWarnGroupMapper pumpWarnGroupMapper;
 
@@ -62,14 +66,18 @@ public class PumpServiceImpl implements PumpService {
 	@Override
 	public void create(Pump pump) {
 		pumpMapper.insert(pump);
-
-		UserAuth userAuth = new UserAuth();
-		userAuth.setRootId(PublicUtil.initId());
-		userAuth.setUserId(pump.getOwnerId());
-		userAuth.setPumpId(pump.getPumpId());
-		userAuth.setAuthCode(pump.getPumpCode());
-		userAuthService.authUser(userAuth);
-
+		User user = userService.findById(pump.getOwnerId());
+		if (user == null) {
+			throw new RuntimeException("无效的用户信息");
+		}
+		if (!PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(user.getRoleId())) {
+			UserAuth userAuth = new UserAuth();
+			userAuth.setRootId(PublicUtil.initId());
+			userAuth.setUserId(pump.getOwnerId());
+			userAuth.setPumpId(pump.getPumpId());
+			userAuth.setAuthCode(pump.getPumpCode());
+			userAuthService.authUser(userAuth);
+		}
 	}
 
 	@Override

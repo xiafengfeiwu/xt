@@ -133,6 +133,6 @@ public class SupportController {
 	public static void main(String[] args) {
 		System.out.println(PublicUtil.initId());
 		System.out.println(PublicUtil.initId());
-		System.out.println(PublicUtil.initId());
+		System.out.println(PublicUtil.sha1("123456"));
 	}
 }
