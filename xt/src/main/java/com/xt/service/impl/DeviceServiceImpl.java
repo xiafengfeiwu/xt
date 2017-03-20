@@ -23,7 +23,7 @@ public class DeviceServiceImpl implements DeviceService {
 	DeviceVenderMapper deviceVenderMapper;
 
 	@Override
-	public Device findById(Long deviceId) {
+	public Device findById(String deviceId) {
 		return deviceMapper.selectByPrimaryKey(deviceId);
 	}
 
@@ -88,7 +88,7 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public void delete(Long deviceId) {
+	public void delete(String deviceId) {
 		deviceMapper.deleteByPrimaryKey(deviceId);
 	}
 
@@ -98,7 +98,7 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public DeviceVender findVenderById(Long venderId) {
+	public DeviceVender findVenderById(String venderId) {
 		return deviceVenderMapper.selectByPrimaryKey(venderId);
 	}
 
@@ -120,7 +120,7 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public void deleteVender(Long venderId) {
+	public void deleteVender(String venderId) {
 		deviceVenderMapper.deleteByPrimaryKey(venderId);
 	}
 

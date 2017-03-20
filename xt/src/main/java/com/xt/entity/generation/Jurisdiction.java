@@ -1,17 +1,17 @@
 package com.xt.entity.generation;
 
 public class Jurisdiction {
-    private Long jurisdictionId;
+    private String jurisdictionId;
 
     private String jurisdictionName;
 
     private String jurisdictionCode;
 
-    public Long getJurisdictionId() {
+    public String getJurisdictionId() {
         return jurisdictionId;
     }
 
-    public void setJurisdictionId(Long jurisdictionId) {
+    public void setJurisdictionId(String jurisdictionId) {
         this.jurisdictionId = jurisdictionId;
     }
 

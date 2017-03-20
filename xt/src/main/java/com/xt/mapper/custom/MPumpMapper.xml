@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.custom.MPumpMapper">
-	<select id="selectAreaPumps" parameterType="Long" resultType="MAreaPump">
+	<select id="selectAreaPumps" parameterType="String" resultType="MAreaPump">
 		select
 		pm.pump_id as id, pm.pump_name as name
 		from w_pump pm
 		where
 		pm.project_id in (select p.project_id from w_project
 		p where
-		p.project_area_id=${projectAreaId}) order by pm.pump_name asc
+		p.project_area_id=#{projectAreaId}) order by pm.pump_name asc
 	</select>
 
 	<select id="selectPumpsByIds" parameterType="List" resultType="MAreaPump">
@@ -19,7 +19,7 @@
 		pm.pump_id in
 		<foreach collection="pumpIds" item="id" open="(" separator=","
 			close=")">
-			${id}
+			#{id}
 		</foreach>
 	</select>
 
@@ -30,13 +30,13 @@
 		like CONCAT(#{preCode},'%') order by p.create_time desc limit 0,1
 	</select>
 
-	<select id="selectUserAuthPump" parameterType="Long" resultType="MAreaPump">
+	<select id="selectUserAuthPump" parameterType="String" resultType="MAreaPump">
 		select p.pump_id as id, p.pump_name as name from
 		w_pump p where
 		p.pump_id in (
 		select
 		ua.pump_id from w_user_auth ua where ua.user_id =
-		${userId}
+		#{userId}
 		and ua.pump_id is not null) order by
 		p.pump_code asc
 	</select>
@@ -81,7 +81,7 @@
 		pwg
 		left join w_warn_group wg on
 		pwg.warn_group_id=wg.group_id where
-		pwg.pump_id=${pumpId}
+		pwg.pump_id=#{pumpId}
 	</select>
 
 	<select id="selectPumpNoUseWarnGroups" resultType="MPumpWarnGroup">
@@ -89,12 +89,12 @@
 		wg.group_id
 		as group_id,wg.group_name as group_name,wg.group_descript
 		as
-		group_descript from w_warn_group wg where (wg.owner_id=${ownerId} or
+		group_descript from w_warn_group wg where (wg.owner_id=#{ownerId} or
 		wg.system_group=1) and wg.group_id not in(
 		select pwg.warn_group_id
 		from
 		w_pump_warn_group pwg where
-		pwg.pump_id=${pumpId}
+		pwg.pump_id=#{pumpId}
 		)
 	</select>
 

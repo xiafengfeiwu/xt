@@ -13,12 +13,12 @@ public interface ResService {
 	void update(Res res);
 
 	// 删除资源
-	void delete(Long resId);
+	void delete(String resId);
 
 	// 通过GroupId获取所有资源
-	List<Res> findResByGroupId(Long groupId);
+	List<Res> findResByGroupId(String groupId);
 
 	// 通过GroupId获取默认路径
-	Res findDefaultByGroup(Long groupId);
+	Res findDefaultByGroup(String groupId);
 
 }

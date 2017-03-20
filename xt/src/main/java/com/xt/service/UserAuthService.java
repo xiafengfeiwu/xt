@@ -8,10 +8,10 @@ public interface UserAuthService {
 
 	boolean authUser(UserAuth userAuth);
 
-	UserAuth findByUserIdWithNodeId(Long userId, Long nodeId);
+	UserAuth findByUserIdWithNodeId(String userId, String nodeId);
 
-	void unAuthUser(Long rootId);
+	void unAuthUser(String rootId);
 
-	List<UserAuth> findUserAll(Long userId);
+	List<UserAuth> findUserAll(String userId);
 
 }

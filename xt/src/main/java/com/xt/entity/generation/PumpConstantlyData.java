@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PumpConstantlyData {
-    private Long pumpId;
+    private String pumpId;
 
     private BigDecimal backWaterTemp;
 
@@ -30,11 +30,11 @@ public class PumpConstantlyData {
 
     private Date collectTime;
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 

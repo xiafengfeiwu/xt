@@ -35,7 +35,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 	}
 
 	@Override
-	public UserAuth findByUserIdWithNodeId(Long userId, Long nodeId) {
+	public UserAuth findByUserIdWithNodeId(String userId, String nodeId) {
 		UserAuthExample example = new UserAuthExample();
 		example.createCriteria().andUserIdEqualTo(userId).andProjectAreaIdEqualTo(nodeId);
 		List<UserAuth> uas = userAuthMapper.selectByExample(example);
@@ -52,12 +52,12 @@ public class UserAuthServiceImpl implements UserAuthService {
 	}
 
 	@Override
-	public void unAuthUser(Long rootId) {
+	public void unAuthUser(String rootId) {
 		userAuthMapper.deleteByPrimaryKey(rootId);
 	}
 
 	@Override
-	public List<UserAuth> findUserAll(Long userId) {
+	public List<UserAuth> findUserAll(String userId) {
 		UserAuthExample example = new UserAuthExample();
 		example.createCriteria().andUserIdEqualTo(userId);
 		example.setOrderByClause("auth_code asc");

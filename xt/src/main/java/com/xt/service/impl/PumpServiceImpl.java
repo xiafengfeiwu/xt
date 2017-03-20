@@ -35,7 +35,7 @@ public class PumpServiceImpl implements PumpService {
 	PumpWarnGroupMapper pumpWarnGroupMapper;
 
 	@Override
-	public Pump getById(Long pumpId) {
+	public Pump getById(String pumpId) {
 		return pumpMapper.selectByPrimaryKey(pumpId);
 	}
 
@@ -78,7 +78,7 @@ public class PumpServiceImpl implements PumpService {
 	}
 
 	@Override
-	public void delete(Long pumpId) {
+	public void delete(String pumpId) {
 		pumpMapper.deleteByPrimaryKey(pumpId);
 	}
 
@@ -90,7 +90,7 @@ public class PumpServiceImpl implements PumpService {
 	}
 
 	@Override
-	public List<Pump> getOwnerAll(Long ownerId) {
+	public List<Pump> getOwnerAll(String ownerId) {
 		PumpExample example = new PumpExample();
 		example.createCriteria().andOwnerIdEqualTo(ownerId);
 		example.setOrderByClause("project_id asc, create_time asc");
@@ -98,7 +98,7 @@ public class PumpServiceImpl implements PumpService {
 	}
 
 	@Override
-	public List<Pump> getProjectAll(Long projectId) {
+	public List<Pump> getProjectAll(String projectId) {
 		PumpExample example = new PumpExample();
 		example.createCriteria().andProjectIdEqualTo(projectId);
 		example.setOrderByClause("project_id asc, create_time asc");
@@ -106,17 +106,17 @@ public class PumpServiceImpl implements PumpService {
 	}
 
 	@Override
-	public List<MAreaPump> getProjectAreaAll(Long projectAreaId) {
+	public List<MAreaPump> getProjectAreaAll(String projectAreaId) {
 		return mAreaPumpMapper.selectAreaPumps(projectAreaId);
 	}
 
 	@Override
-	public List<MAreaPump> selectUserAuthPump(Long userId) {
+	public List<MAreaPump> selectUserAuthPump(String userId) {
 		return mAreaPumpMapper.selectUserAuthPump(userId);
 	}
 
 	@Override
-	public List<MAreaPump> selectPumpsByIds(List<Long> pumpIds) {
+	public List<MAreaPump> selectPumpsByIds(List<String> pumpIds) {
 		return mAreaPumpMapper.selectPumpsByIds(pumpIds);
 	}
 
@@ -137,7 +137,7 @@ public class PumpServiceImpl implements PumpService {
 	}
 
 	@Override
-	public List<MPumpWarnGroup> selectPumpWarnGroups(Long pumpId) {
+	public List<MPumpWarnGroup> selectPumpWarnGroups(String pumpId) {
 		return mAreaPumpMapper.selectPumpWarnGroups(pumpId);
 	}
 

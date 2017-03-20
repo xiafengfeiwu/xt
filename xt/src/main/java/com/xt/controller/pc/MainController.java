@@ -127,13 +127,13 @@ public class MainController {
 			if (role == null) {
 				return data;
 			}
-			if (role.getRoleId().equals(6510323052052560L)) {
+			if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(role.getRoleId())) {
 				// 是系统管理员
 				List<ProjectArea> projectAreas = projectAreaService.getParentProjectArea();
 				PublicUtil.transforAreaObj(data, projectAreas);
 			} else {
 				// 非管理员
-				Long userId = PublicUtil.sessionUid();
+				String userId = PublicUtil.sessionUid();
 				List<MAreaPump> mAreas = projectService.selectUserAuthProjectArea(userId);
 				PublicUtil.transforPumpObj(data, mAreas, true);
 				List<MAreaPump> mPumps = pumpService.selectUserAuthPump(userId);
@@ -143,7 +143,6 @@ public class MainController {
 		} else {
 			List<ProjectArea> projectAreas = projectAreaService.getByParentAreaId(param.getId());
 			PublicUtil.transforAreaObj(data, projectAreas);
-
 			List<MAreaPump> mAreaPumps = pumpService.getProjectAreaAll(param.getId());
 			PublicUtil.transforPumpObj(data, mAreaPumps, false);
 		}
@@ -164,7 +163,7 @@ public class MainController {
 		if (role == null) {
 			return data;
 		}
-		Long roleId = role.getRoleId();
+		String roleId = role.getRoleId();
 
 		List<MAreaPump> aps = null;
 		List<UserAuth> uas = userAuthService.findUserAll(PublicUtil.sessionUid());
@@ -177,7 +176,7 @@ public class MainController {
 		}
 		boolean in;
 		for (MPumpMonitor pm : pms) {
-			if (roleId.equals(6510323052052560L)) {
+			if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(roleId)) {
 				data.add(transformAll(pm));
 				continue;
 			}
@@ -242,5 +241,5 @@ public class MainController {
 		}
 		((Object[]) map.get("value"))[2] = color;
 		return map;
-	}	
+	}
 }

@@ -1,23 +1,23 @@
 package com.xt.entity.custom;
 
 public class MUserAuth {
-	private Long userId;
-	private Long nodeId;
+	private String userId;
+	private String nodeId;
 	private boolean areaNode;
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public Long getNodeId() {
+	public String getNodeId() {
 		return nodeId;
 	}
 
-	public void setNodeId(Long nodeId) {
+	public void setNodeId(String nodeId) {
 		this.nodeId = nodeId;
 	}
 

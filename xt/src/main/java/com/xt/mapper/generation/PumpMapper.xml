@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PumpMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Pump">
-    <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
-    <result column="project_id" jdbcType="BIGINT" property="projectId" />
-    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <id column="pump_id" jdbcType="VARCHAR" property="pumpId" />
+    <result column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
     <result column="pump_name" jdbcType="VARCHAR" property="pumpName" />
     <result column="pump_code" jdbcType="VARCHAR" property="pumpCode" />
-    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="pump_sn" jdbcType="VARCHAR" property="pumpSn" />
     <result column="install_date" jdbcType="DATE" property="installDate" />
     <result column="area_longitude" jdbcType="VARCHAR" property="areaLongitude" />
@@ -92,15 +92,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_pump
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_pump
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpExample">
     delete from w_pump
@@ -114,8 +114,8 @@
       pump_sn, install_date, area_longitude, 
       area_latitude, create_time, modify_time
       )
-    values (#{pumpId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, 
-      #{pumpName,jdbcType=VARCHAR}, #{pumpCode,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, 
+    values (#{pumpId,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, 
+      #{pumpName,jdbcType=VARCHAR}, #{pumpCode,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, 
       #{pumpSn,jdbcType=VARCHAR}, #{installDate,jdbcType=DATE}, #{areaLongitude,jdbcType=VARCHAR}, 
       #{areaLatitude,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
       )
@@ -162,13 +162,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="projectId != null">
-        #{projectId,jdbcType=BIGINT},
+        #{projectId,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        #{ownerId,jdbcType=BIGINT},
+        #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="pumpName != null">
         #{pumpName,jdbcType=VARCHAR},
@@ -177,7 +177,7 @@
         #{pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="productId != null">
-        #{productId,jdbcType=BIGINT},
+        #{productId,jdbcType=VARCHAR},
       </if>
       <if test="pumpSn != null">
         #{pumpSn,jdbcType=VARCHAR},
@@ -209,13 +209,13 @@
     update w_pump
     <set>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.projectId != null">
-        project_id = #{record.projectId,jdbcType=BIGINT},
+        project_id = #{record.projectId,jdbcType=VARCHAR},
       </if>
       <if test="record.ownerId != null">
-        owner_id = #{record.ownerId,jdbcType=BIGINT},
+        owner_id = #{record.ownerId,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpName != null">
         pump_name = #{record.pumpName,jdbcType=VARCHAR},
@@ -224,7 +224,7 @@
         pump_code = #{record.pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+        product_id = #{record.productId,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpSn != null">
         pump_sn = #{record.pumpSn,jdbcType=VARCHAR},
@@ -251,12 +251,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_pump
-    set pump_id = #{record.pumpId,jdbcType=BIGINT},
-      project_id = #{record.projectId,jdbcType=BIGINT},
-      owner_id = #{record.ownerId,jdbcType=BIGINT},
+    set pump_id = #{record.pumpId,jdbcType=VARCHAR},
+      project_id = #{record.projectId,jdbcType=VARCHAR},
+      owner_id = #{record.ownerId,jdbcType=VARCHAR},
       pump_name = #{record.pumpName,jdbcType=VARCHAR},
       pump_code = #{record.pumpCode,jdbcType=VARCHAR},
-      product_id = #{record.productId,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=VARCHAR},
       pump_sn = #{record.pumpSn,jdbcType=VARCHAR},
       install_date = #{record.installDate,jdbcType=DATE},
       area_longitude = #{record.areaLongitude,jdbcType=VARCHAR},
@@ -271,10 +271,10 @@
     update w_pump
     <set>
       <if test="projectId != null">
-        project_id = #{projectId,jdbcType=BIGINT},
+        project_id = #{projectId,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        owner_id = #{ownerId,jdbcType=BIGINT},
+        owner_id = #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="pumpName != null">
         pump_name = #{pumpName,jdbcType=VARCHAR},
@@ -283,7 +283,7 @@
         pump_code = #{pumpCode,jdbcType=VARCHAR},
       </if>
       <if test="productId != null">
-        product_id = #{productId,jdbcType=BIGINT},
+        product_id = #{productId,jdbcType=VARCHAR},
       </if>
       <if test="pumpSn != null">
         pump_sn = #{pumpSn,jdbcType=VARCHAR},
@@ -304,21 +304,21 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Pump">
     update w_pump
-    set project_id = #{projectId,jdbcType=BIGINT},
-      owner_id = #{ownerId,jdbcType=BIGINT},
+    set project_id = #{projectId,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
       pump_name = #{pumpName,jdbcType=VARCHAR},
       pump_code = #{pumpCode,jdbcType=VARCHAR},
-      product_id = #{productId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=VARCHAR},
       pump_sn = #{pumpSn,jdbcType=VARCHAR},
       install_date = #{installDate,jdbcType=DATE},
       area_longitude = #{areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{areaLatitude,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </update>
 </mapper>

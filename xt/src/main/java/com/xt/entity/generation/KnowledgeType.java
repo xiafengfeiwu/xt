@@ -1,17 +1,17 @@
 package com.xt.entity.generation;
 
 public class KnowledgeType {
-    private Long knowledgeTypeId;
+    private String knowledgeTypeId;
 
     private String knowledgeTypeName;
 
     private Boolean systemItem;
 
-    public Long getKnowledgeTypeId() {
+    public String getKnowledgeTypeId() {
         return knowledgeTypeId;
     }
 
-    public void setKnowledgeTypeId(Long knowledgeTypeId) {
+    public void setKnowledgeTypeId(String knowledgeTypeId) {
         this.knowledgeTypeId = knowledgeTypeId;
     }
 

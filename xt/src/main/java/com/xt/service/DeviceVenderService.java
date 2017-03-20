@@ -12,8 +12,8 @@ public interface DeviceVenderService {
 
 	void update(DeviceVender deviceVender);
 
-	void delete(Long venderId);
+	void delete(String venderId);
 
-	DeviceVender findById(Long venderId);
+	DeviceVender findById(String venderId);
 
 }

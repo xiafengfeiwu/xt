@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PumpWarnMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpWarn">
-    <id column="warn_id" jdbcType="BIGINT" property="warnId" />
+    <id column="warn_id" jdbcType="VARCHAR" property="warnId" />
     <result column="warn_no" jdbcType="VARCHAR" property="warnNo" />
-    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
     <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
     <result column="warn_level" jdbcType="CHAR" property="warnLevel" />
     <result column="warn_descript" jdbcType="VARCHAR" property="warnDescript" />
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_pump_warn
-    where warn_id = #{warnId,jdbcType=BIGINT}
+    where warn_id = #{warnId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_pump_warn
-    where warn_id = #{warnId,jdbcType=BIGINT}
+    where warn_id = #{warnId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpWarnExample">
     delete from w_pump_warn
@@ -106,7 +106,7 @@
     insert into w_pump_warn (warn_id, warn_no, pump_id, 
       warn_code, warn_level, warn_descript, 
       warn_happen_time)
-    values (#{warnId,jdbcType=BIGINT}, #{warnNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=BIGINT}, 
+    values (#{warnId,jdbcType=VARCHAR}, #{warnNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, 
       #{warnCode,jdbcType=VARCHAR}, #{warnLevel,jdbcType=CHAR}, #{warnDescript,jdbcType=VARCHAR}, 
       #{warnHappenTime,jdbcType=TIMESTAMP})
   </insert>
@@ -137,13 +137,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="warnId != null">
-        #{warnId,jdbcType=BIGINT},
+        #{warnId,jdbcType=VARCHAR},
       </if>
       <if test="warnNo != null">
         #{warnNo,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="warnCode != null">
         #{warnCode,jdbcType=VARCHAR},
@@ -169,13 +169,13 @@
     update w_pump_warn
     <set>
       <if test="record.warnId != null">
-        warn_id = #{record.warnId,jdbcType=BIGINT},
+        warn_id = #{record.warnId,jdbcType=VARCHAR},
       </if>
       <if test="record.warnNo != null">
         warn_no = #{record.warnNo,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.warnCode != null">
         warn_code = #{record.warnCode,jdbcType=VARCHAR},
@@ -196,9 +196,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_pump_warn
-    set warn_id = #{record.warnId,jdbcType=BIGINT},
+    set warn_id = #{record.warnId,jdbcType=VARCHAR},
       warn_no = #{record.warnNo,jdbcType=VARCHAR},
-      pump_id = #{record.pumpId,jdbcType=BIGINT},
+      pump_id = #{record.pumpId,jdbcType=VARCHAR},
       warn_code = #{record.warnCode,jdbcType=VARCHAR},
       warn_level = #{record.warnLevel,jdbcType=CHAR},
       warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
         warn_no = #{warnNo,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        pump_id = #{pumpId,jdbcType=BIGINT},
+        pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="warnCode != null">
         warn_code = #{warnCode,jdbcType=VARCHAR},
@@ -229,16 +229,16 @@
         warn_happen_time = #{warnHappenTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where warn_id = #{warnId,jdbcType=BIGINT}
+    where warn_id = #{warnId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpWarn">
     update w_pump_warn
     set warn_no = #{warnNo,jdbcType=VARCHAR},
-      pump_id = #{pumpId,jdbcType=BIGINT},
+      pump_id = #{pumpId,jdbcType=VARCHAR},
       warn_code = #{warnCode,jdbcType=VARCHAR},
       warn_level = #{warnLevel,jdbcType=CHAR},
       warn_descript = #{warnDescript,jdbcType=VARCHAR},
       warn_happen_time = #{warnHappenTime,jdbcType=TIMESTAMP}
-    where warn_id = #{warnId,jdbcType=BIGINT}
+    where warn_id = #{warnId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.StoppageHandleEvaluateMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.StoppageHandleEvaluate">
-    <id column="evaluate_id" jdbcType="BIGINT" property="evaluateId" />
-    <result column="stoppage_handle_id" jdbcType="BIGINT" property="stoppageHandleId" />
-    <result column="evaluate_user_id" jdbcType="BIGINT" property="evaluateUserId" />
+    <id column="evaluate_id" jdbcType="VARCHAR" property="evaluateId" />
+    <result column="stoppage_handle_id" jdbcType="VARCHAR" property="stoppageHandleId" />
+    <result column="evaluate_user_id" jdbcType="VARCHAR" property="evaluateUserId" />
     <result column="evaluate_time" jdbcType="TIMESTAMP" property="evaluateTime" />
     <result column="evaluate_level" jdbcType="CHAR" property="evaluateLevel" />
     <result column="evaluate_descript" jdbcType="VARCHAR" property="evaluateDescript" />
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_stoppage_handle_evaluate
-    where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_stoppage_handle_evaluate
-    where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.StoppageHandleEvaluateExample">
     delete from w_stoppage_handle_evaluate
@@ -106,7 +106,7 @@
     insert into w_stoppage_handle_evaluate (evaluate_id, stoppage_handle_id, evaluate_user_id, 
       evaluate_time, evaluate_level, evaluate_descript
       )
-    values (#{evaluateId,jdbcType=BIGINT}, #{stoppageHandleId,jdbcType=BIGINT}, #{evaluateUserId,jdbcType=BIGINT}, 
+    values (#{evaluateId,jdbcType=VARCHAR}, #{stoppageHandleId,jdbcType=VARCHAR}, #{evaluateUserId,jdbcType=VARCHAR}, 
       #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateLevel,jdbcType=CHAR}, #{evaluateDescript,jdbcType=VARCHAR}
       )
   </insert>
@@ -134,13 +134,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="evaluateId != null">
-        #{evaluateId,jdbcType=BIGINT},
+        #{evaluateId,jdbcType=VARCHAR},
       </if>
       <if test="stoppageHandleId != null">
-        #{stoppageHandleId,jdbcType=BIGINT},
+        #{stoppageHandleId,jdbcType=VARCHAR},
       </if>
       <if test="evaluateUserId != null">
-        #{evaluateUserId,jdbcType=BIGINT},
+        #{evaluateUserId,jdbcType=VARCHAR},
       </if>
       <if test="evaluateTime != null">
         #{evaluateTime,jdbcType=TIMESTAMP},
@@ -163,13 +163,13 @@
     update w_stoppage_handle_evaluate
     <set>
       <if test="record.evaluateId != null">
-        evaluate_id = #{record.evaluateId,jdbcType=BIGINT},
+        evaluate_id = #{record.evaluateId,jdbcType=VARCHAR},
       </if>
       <if test="record.stoppageHandleId != null">
-        stoppage_handle_id = #{record.stoppageHandleId,jdbcType=BIGINT},
+        stoppage_handle_id = #{record.stoppageHandleId,jdbcType=VARCHAR},
       </if>
       <if test="record.evaluateUserId != null">
-        evaluate_user_id = #{record.evaluateUserId,jdbcType=BIGINT},
+        evaluate_user_id = #{record.evaluateUserId,jdbcType=VARCHAR},
       </if>
       <if test="record.evaluateTime != null">
         evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
@@ -187,9 +187,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_stoppage_handle_evaluate
-    set evaluate_id = #{record.evaluateId,jdbcType=BIGINT},
-      stoppage_handle_id = #{record.stoppageHandleId,jdbcType=BIGINT},
-      evaluate_user_id = #{record.evaluateUserId,jdbcType=BIGINT},
+    set evaluate_id = #{record.evaluateId,jdbcType=VARCHAR},
+      stoppage_handle_id = #{record.stoppageHandleId,jdbcType=VARCHAR},
+      evaluate_user_id = #{record.evaluateUserId,jdbcType=VARCHAR},
       evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
       evaluate_level = #{record.evaluateLevel,jdbcType=CHAR},
       evaluate_descript = #{record.evaluateDescript,jdbcType=VARCHAR}
@@ -201,10 +201,10 @@
     update w_stoppage_handle_evaluate
     <set>
       <if test="stoppageHandleId != null">
-        stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT},
+        stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR},
       </if>
       <if test="evaluateUserId != null">
-        evaluate_user_id = #{evaluateUserId,jdbcType=BIGINT},
+        evaluate_user_id = #{evaluateUserId,jdbcType=VARCHAR},
       </if>
       <if test="evaluateTime != null">
         evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
@@ -216,15 +216,15 @@
         evaluate_descript = #{evaluateDescript,jdbcType=VARCHAR},
       </if>
     </set>
-    where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.StoppageHandleEvaluate">
     update w_stoppage_handle_evaluate
-    set stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT},
-      evaluate_user_id = #{evaluateUserId,jdbcType=BIGINT},
+    set stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR},
+      evaluate_user_id = #{evaluateUserId,jdbcType=VARCHAR},
       evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
       evaluate_level = #{evaluateLevel,jdbcType=CHAR},
       evaluate_descript = #{evaluateDescript,jdbcType=VARCHAR}
-    where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
   </update>
 </mapper>

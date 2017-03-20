@@ -1,13 +1,11 @@
 package com.xt.entity.custom;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class MProjectArea implements Serializable {
+public class MProjectArea {
 
-	private static final long serialVersionUID = 1L;
-	private Long projectAreaId;
+	private String projectAreaId;
 
 	private String areaName;
 
@@ -23,11 +21,11 @@ public class MProjectArea implements Serializable {
 
 	private List<MProjectArea> children;
 
-	public Long getProjectAreaId() {
+	public String getProjectAreaId() {
 		return projectAreaId;
 	}
 
-	public void setProjectAreaId(Long projectAreaId) {
+	public void setProjectAreaId(String projectAreaId) {
 		this.projectAreaId = projectAreaId;
 	}
 

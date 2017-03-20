@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ProjectAreaMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.ProjectArea">
-    <id column="project_area_id" jdbcType="BIGINT" property="projectAreaId" />
+    <id column="project_area_id" jdbcType="VARCHAR" property="projectAreaId" />
     <result column="area_name" jdbcType="VARCHAR" property="areaName" />
     <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
     <result column="parent_area_code" jdbcType="VARCHAR" property="parentAreaCode" />
@@ -87,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_project_area
-    where project_area_id = #{projectAreaId,jdbcType=BIGINT}
+    where project_area_id = #{projectAreaId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_project_area
-    where project_area_id = #{projectAreaId,jdbcType=BIGINT}
+    where project_area_id = #{projectAreaId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ProjectAreaExample">
     delete from w_project_area
@@ -107,7 +107,7 @@
     insert into w_project_area (project_area_id, area_name, area_code, 
       parent_area_code, weather_code, create_time, 
       modify_time)
-    values (#{projectAreaId,jdbcType=BIGINT}, #{areaName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, 
+    values (#{projectAreaId,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, 
       #{parentAreaCode,jdbcType=VARCHAR}, #{weatherCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
@@ -138,7 +138,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="projectAreaId != null">
-        #{projectAreaId,jdbcType=BIGINT},
+        #{projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="areaName != null">
         #{areaName,jdbcType=VARCHAR},
@@ -170,7 +170,7 @@
     update w_project_area
     <set>
       <if test="record.projectAreaId != null">
-        project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
+        project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="record.areaName != null">
         area_name = #{record.areaName,jdbcType=VARCHAR},
@@ -197,7 +197,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_project_area
-    set project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
+    set project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
       area_name = #{record.areaName,jdbcType=VARCHAR},
       area_code = #{record.areaCode,jdbcType=VARCHAR},
       parent_area_code = #{record.parentAreaCode,jdbcType=VARCHAR},
@@ -230,7 +230,7 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where project_area_id = #{projectAreaId,jdbcType=BIGINT}
+    where project_area_id = #{projectAreaId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.ProjectArea">
     update w_project_area
@@ -240,6 +240,6 @@
       weather_code = #{weatherCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where project_area_id = #{projectAreaId,jdbcType=BIGINT}
+    where project_area_id = #{projectAreaId,jdbcType=VARCHAR}
   </update>
 </mapper>

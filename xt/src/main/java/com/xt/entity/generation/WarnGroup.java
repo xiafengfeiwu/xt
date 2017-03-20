@@ -3,11 +3,11 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class WarnGroup {
-    private Long groupId;
+    private String groupId;
 
     private String groupName;
 
-    private Long ownerId;
+    private String ownerId;
 
     private Boolean systemGroup;
 
@@ -15,11 +15,11 @@ public class WarnGroup {
 
     private Date createTime;
 
-    public Long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Long groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
@@ -31,11 +31,11 @@ public class WarnGroup {
         this.groupName = groupName;
     }
 
-    public Long getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 

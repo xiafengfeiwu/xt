@@ -3,41 +3,41 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class StoppageHandle {
-    private Long stoppageHandleId;
+    private String stoppageHandleId;
 
-    private Long stoppageId;
+    private String stoppageId;
 
-    private Long handleUserId;
+    private String handleUserId;
 
     private Date handleTime;
 
-    private Long handleDuration;
+    private String handleDuration;
 
     private String handleStatus;
 
     private String handleDescript;
 
-    public Long getStoppageHandleId() {
+    public String getStoppageHandleId() {
         return stoppageHandleId;
     }
 
-    public void setStoppageHandleId(Long stoppageHandleId) {
+    public void setStoppageHandleId(String stoppageHandleId) {
         this.stoppageHandleId = stoppageHandleId;
     }
 
-    public Long getStoppageId() {
+    public String getStoppageId() {
         return stoppageId;
     }
 
-    public void setStoppageId(Long stoppageId) {
+    public void setStoppageId(String stoppageId) {
         this.stoppageId = stoppageId;
     }
 
-    public Long getHandleUserId() {
+    public String getHandleUserId() {
         return handleUserId;
     }
 
-    public void setHandleUserId(Long handleUserId) {
+    public void setHandleUserId(String handleUserId) {
         this.handleUserId = handleUserId;
     }
 
@@ -49,11 +49,11 @@ public class StoppageHandle {
         this.handleTime = handleTime;
     }
 
-    public Long getHandleDuration() {
+    public String getHandleDuration() {
         return handleDuration;
     }
 
-    public void setHandleDuration(Long handleDuration) {
+    public void setHandleDuration(String handleDuration) {
         this.handleDuration = handleDuration;
     }
 

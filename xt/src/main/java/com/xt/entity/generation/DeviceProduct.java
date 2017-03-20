@@ -3,13 +3,13 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class DeviceProduct {
-    private Long productId;
+    private String productId;
 
     private String productName;
 
     private String productType;
 
-    private Long productVenderId;
+    private String productVenderId;
 
     private String productSpec;
 
@@ -23,11 +23,11 @@ public class DeviceProduct {
 
     private String productDescript;
 
-    public Long getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
@@ -47,11 +47,11 @@ public class DeviceProduct {
         this.productType = productType;
     }
 
-    public Long getProductVenderId() {
+    public String getProductVenderId() {
         return productVenderId;
     }
 
-    public void setProductVenderId(Long productVenderId) {
+    public void setProductVenderId(String productVenderId) {
         this.productVenderId = productVenderId;
     }
 

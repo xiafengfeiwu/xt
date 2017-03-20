@@ -115,52 +115,62 @@ public class WarnGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdEqualTo(Long value) {
+        public Criteria andGroupIdEqualTo(String value) {
             addCriterion("group_id =", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotEqualTo(Long value) {
+        public Criteria andGroupIdNotEqualTo(String value) {
             addCriterion("group_id <>", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdGreaterThan(Long value) {
+        public Criteria andGroupIdGreaterThan(String value) {
             addCriterion("group_id >", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andGroupIdGreaterThanOrEqualTo(String value) {
             addCriterion("group_id >=", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdLessThan(Long value) {
+        public Criteria andGroupIdLessThan(String value) {
             addCriterion("group_id <", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdLessThanOrEqualTo(Long value) {
+        public Criteria andGroupIdLessThanOrEqualTo(String value) {
             addCriterion("group_id <=", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdIn(List<Long> values) {
+        public Criteria andGroupIdLike(String value) {
+            addCriterion("group_id like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotLike(String value) {
+            addCriterion("group_id not like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdIn(List<String> values) {
             addCriterion("group_id in", values, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotIn(List<Long> values) {
+        public Criteria andGroupIdNotIn(List<String> values) {
             addCriterion("group_id not in", values, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdBetween(Long value1, Long value2) {
+        public Criteria andGroupIdBetween(String value1, String value2) {
             addCriterion("group_id between", value1, value2, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotBetween(Long value1, Long value2) {
+        public Criteria andGroupIdNotBetween(String value1, String value2) {
             addCriterion("group_id not between", value1, value2, "groupId");
             return (Criteria) this;
         }
@@ -245,52 +255,62 @@ public class WarnGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdEqualTo(Long value) {
+        public Criteria andOwnerIdEqualTo(String value) {
             addCriterion("owner_id =", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdNotEqualTo(Long value) {
+        public Criteria andOwnerIdNotEqualTo(String value) {
             addCriterion("owner_id <>", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdGreaterThan(Long value) {
+        public Criteria andOwnerIdGreaterThan(String value) {
             addCriterion("owner_id >", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andOwnerIdGreaterThanOrEqualTo(String value) {
             addCriterion("owner_id >=", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdLessThan(Long value) {
+        public Criteria andOwnerIdLessThan(String value) {
             addCriterion("owner_id <", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdLessThanOrEqualTo(Long value) {
+        public Criteria andOwnerIdLessThanOrEqualTo(String value) {
             addCriterion("owner_id <=", value, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdIn(List<Long> values) {
+        public Criteria andOwnerIdLike(String value) {
+            addCriterion("owner_id like", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdNotLike(String value) {
+            addCriterion("owner_id not like", value, "ownerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerIdIn(List<String> values) {
             addCriterion("owner_id in", values, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdNotIn(List<Long> values) {
+        public Criteria andOwnerIdNotIn(List<String> values) {
             addCriterion("owner_id not in", values, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdBetween(Long value1, Long value2) {
+        public Criteria andOwnerIdBetween(String value1, String value2) {
             addCriterion("owner_id between", value1, value2, "ownerId");
             return (Criteria) this;
         }
 
-        public Criteria andOwnerIdNotBetween(Long value1, Long value2) {
+        public Criteria andOwnerIdNotBetween(String value1, String value2) {
             addCriterion("owner_id not between", value1, value2, "ownerId");
             return (Criteria) this;
         }

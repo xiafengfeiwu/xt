@@ -3,17 +3,17 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class SystemLog {
-    private Long logId;
+    private String logId;
 
     private String message;
 
     private Date createTime;
 
-    public Long getLogId() {
+    public String getLogId() {
         return logId;
     }
 
-    public void setLogId(Long logId) {
+    public void setLogId(String logId) {
         this.logId = logId;
     }
 

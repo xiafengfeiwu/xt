@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class DeviceVender {
-    private Long venderId;
+    private String venderId;
 
     private String venderName;
 
@@ -19,11 +19,11 @@ public class DeviceVender {
 
     private Date modifyTime;
 
-    public Long getVenderId() {
+    public String getVenderId() {
         return venderId;
     }
 
-    public void setVenderId(Long venderId) {
+    public void setVenderId(String venderId) {
         this.venderId = venderId;
     }
 

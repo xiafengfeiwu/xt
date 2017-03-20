@@ -10,7 +10,7 @@ public interface WarnGroupMapper {
 
     int deleteByExample(WarnGroupExample example);
 
-    int deleteByPrimaryKey(Long groupId);
+    int deleteByPrimaryKey(String groupId);
 
     int insert(WarnGroup record);
 
@@ -18,7 +18,7 @@ public interface WarnGroupMapper {
 
     List<WarnGroup> selectByExample(WarnGroupExample example);
 
-    WarnGroup selectByPrimaryKey(Long groupId);
+    WarnGroup selectByPrimaryKey(String groupId);
 
     int updateByExampleSelective(@Param("record") WarnGroup record, @Param("example") WarnGroupExample example);
 

@@ -115,52 +115,62 @@ public class ResExample {
             return (Criteria) this;
         }
 
-        public Criteria andResIdEqualTo(Long value) {
+        public Criteria andResIdEqualTo(String value) {
             addCriterion("res_id =", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdNotEqualTo(Long value) {
+        public Criteria andResIdNotEqualTo(String value) {
             addCriterion("res_id <>", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdGreaterThan(Long value) {
+        public Criteria andResIdGreaterThan(String value) {
             addCriterion("res_id >", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andResIdGreaterThanOrEqualTo(String value) {
             addCriterion("res_id >=", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdLessThan(Long value) {
+        public Criteria andResIdLessThan(String value) {
             addCriterion("res_id <", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdLessThanOrEqualTo(Long value) {
+        public Criteria andResIdLessThanOrEqualTo(String value) {
             addCriterion("res_id <=", value, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdIn(List<Long> values) {
+        public Criteria andResIdLike(String value) {
+            addCriterion("res_id like", value, "resId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResIdNotLike(String value) {
+            addCriterion("res_id not like", value, "resId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResIdIn(List<String> values) {
             addCriterion("res_id in", values, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdNotIn(List<Long> values) {
+        public Criteria andResIdNotIn(List<String> values) {
             addCriterion("res_id not in", values, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdBetween(Long value1, Long value2) {
+        public Criteria andResIdBetween(String value1, String value2) {
             addCriterion("res_id between", value1, value2, "resId");
             return (Criteria) this;
         }
 
-        public Criteria andResIdNotBetween(Long value1, Long value2) {
+        public Criteria andResIdNotBetween(String value1, String value2) {
             addCriterion("res_id not between", value1, value2, "resId");
             return (Criteria) this;
         }
@@ -175,52 +185,62 @@ public class ResExample {
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdEqualTo(Long value) {
+        public Criteria andGroupIdEqualTo(String value) {
             addCriterion("group_id =", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotEqualTo(Long value) {
+        public Criteria andGroupIdNotEqualTo(String value) {
             addCriterion("group_id <>", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdGreaterThan(Long value) {
+        public Criteria andGroupIdGreaterThan(String value) {
             addCriterion("group_id >", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andGroupIdGreaterThanOrEqualTo(String value) {
             addCriterion("group_id >=", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdLessThan(Long value) {
+        public Criteria andGroupIdLessThan(String value) {
             addCriterion("group_id <", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdLessThanOrEqualTo(Long value) {
+        public Criteria andGroupIdLessThanOrEqualTo(String value) {
             addCriterion("group_id <=", value, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdIn(List<Long> values) {
+        public Criteria andGroupIdLike(String value) {
+            addCriterion("group_id like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotLike(String value) {
+            addCriterion("group_id not like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdIn(List<String> values) {
             addCriterion("group_id in", values, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotIn(List<Long> values) {
+        public Criteria andGroupIdNotIn(List<String> values) {
             addCriterion("group_id not in", values, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdBetween(Long value1, Long value2) {
+        public Criteria andGroupIdBetween(String value1, String value2) {
             addCriterion("group_id between", value1, value2, "groupId");
             return (Criteria) this;
         }
 
-        public Criteria andGroupIdNotBetween(Long value1, Long value2) {
+        public Criteria andGroupIdNotBetween(String value1, String value2) {
             addCriterion("group_id not between", value1, value2, "groupId");
             return (Criteria) this;
         }
@@ -445,52 +465,62 @@ public class ResExample {
             return (Criteria) this;
         }
 
-        public Criteria andResSizeEqualTo(Long value) {
+        public Criteria andResSizeEqualTo(String value) {
             addCriterion("res_size =", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeNotEqualTo(Long value) {
+        public Criteria andResSizeNotEqualTo(String value) {
             addCriterion("res_size <>", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeGreaterThan(Long value) {
+        public Criteria andResSizeGreaterThan(String value) {
             addCriterion("res_size >", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeGreaterThanOrEqualTo(Long value) {
+        public Criteria andResSizeGreaterThanOrEqualTo(String value) {
             addCriterion("res_size >=", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeLessThan(Long value) {
+        public Criteria andResSizeLessThan(String value) {
             addCriterion("res_size <", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeLessThanOrEqualTo(Long value) {
+        public Criteria andResSizeLessThanOrEqualTo(String value) {
             addCriterion("res_size <=", value, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeIn(List<Long> values) {
+        public Criteria andResSizeLike(String value) {
+            addCriterion("res_size like", value, "resSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andResSizeNotLike(String value) {
+            addCriterion("res_size not like", value, "resSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andResSizeIn(List<String> values) {
             addCriterion("res_size in", values, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeNotIn(List<Long> values) {
+        public Criteria andResSizeNotIn(List<String> values) {
             addCriterion("res_size not in", values, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeBetween(Long value1, Long value2) {
+        public Criteria andResSizeBetween(String value1, String value2) {
             addCriterion("res_size between", value1, value2, "resSize");
             return (Criteria) this;
         }
 
-        public Criteria andResSizeNotBetween(Long value1, Long value2) {
+        public Criteria andResSizeNotBetween(String value1, String value2) {
             addCriterion("res_size not between", value1, value2, "resSize");
             return (Criteria) this;
         }

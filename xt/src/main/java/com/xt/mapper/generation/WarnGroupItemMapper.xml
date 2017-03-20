@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.WarnGroupItemMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.WarnGroupItem">
-    <id column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="warn_group_id" jdbcType="VARCHAR" property="warnGroupId" />
     <result column="item_name" jdbcType="VARCHAR" property="itemName" />
     <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
     <result column="item_threshold" jdbcType="VARCHAR" property="itemThreshold" />
@@ -91,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_warn_group_item
-    where item_id = #{itemId,jdbcType=BIGINT}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_warn_group_item
-    where item_id = #{itemId,jdbcType=BIGINT}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.WarnGroupItemExample">
     delete from w_warn_group_item
@@ -112,7 +112,7 @@
       item_code, item_threshold, item_operators, 
       warn_code, warn_level, warn_descript, 
       warn_scheme, create_time)
-    values (#{itemId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, 
+    values (#{itemId,jdbcType=VARCHAR}, #{warnGroupId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
       #{itemCode,jdbcType=VARCHAR}, #{itemThreshold,jdbcType=VARCHAR}, #{itemOperators,jdbcType=CHAR}, 
       #{warnCode,jdbcType=VARCHAR}, #{warnLevel,jdbcType=CHAR}, #{warnDescript,jdbcType=VARCHAR}, 
       #{warnScheme,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
@@ -156,10 +156,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="itemId != null">
-        #{itemId,jdbcType=BIGINT},
+        #{itemId,jdbcType=VARCHAR},
       </if>
       <if test="warnGroupId != null">
-        #{warnGroupId,jdbcType=BIGINT},
+        #{warnGroupId,jdbcType=VARCHAR},
       </if>
       <if test="itemName != null">
         #{itemName,jdbcType=VARCHAR},
@@ -200,10 +200,10 @@
     update w_warn_group_item
     <set>
       <if test="record.itemId != null">
-        item_id = #{record.itemId,jdbcType=BIGINT},
+        item_id = #{record.itemId,jdbcType=VARCHAR},
       </if>
       <if test="record.warnGroupId != null">
-        warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+        warn_group_id = #{record.warnGroupId,jdbcType=VARCHAR},
       </if>
       <if test="record.itemName != null">
         item_name = #{record.itemName,jdbcType=VARCHAR},
@@ -239,8 +239,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_warn_group_item
-    set item_id = #{record.itemId,jdbcType=BIGINT},
-      warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+    set item_id = #{record.itemId,jdbcType=VARCHAR},
+      warn_group_id = #{record.warnGroupId,jdbcType=VARCHAR},
       item_name = #{record.itemName,jdbcType=VARCHAR},
       item_code = #{record.itemCode,jdbcType=VARCHAR},
       item_threshold = #{record.itemThreshold,jdbcType=VARCHAR},
@@ -258,7 +258,7 @@
     update w_warn_group_item
     <set>
       <if test="warnGroupId != null">
-        warn_group_id = #{warnGroupId,jdbcType=BIGINT},
+        warn_group_id = #{warnGroupId,jdbcType=VARCHAR},
       </if>
       <if test="itemName != null">
         item_name = #{itemName,jdbcType=VARCHAR},
@@ -288,11 +288,11 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where item_id = #{itemId,jdbcType=BIGINT}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.WarnGroupItem">
     update w_warn_group_item
-    set warn_group_id = #{warnGroupId,jdbcType=BIGINT},
+    set warn_group_id = #{warnGroupId,jdbcType=VARCHAR},
       item_name = #{itemName,jdbcType=VARCHAR},
       item_code = #{itemCode,jdbcType=VARCHAR},
       item_threshold = #{itemThreshold,jdbcType=VARCHAR},
@@ -302,6 +302,6 @@
       warn_descript = #{warnDescript,jdbcType=VARCHAR},
       warn_scheme = #{warnScheme,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where item_id = #{itemId,jdbcType=BIGINT}
+    where item_id = #{itemId,jdbcType=VARCHAR}
   </update>
 </mapper>

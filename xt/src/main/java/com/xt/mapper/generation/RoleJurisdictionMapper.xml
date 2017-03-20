@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.RoleJurisdictionMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.RoleJurisdictionKey">
-    <id column="role_id" jdbcType="BIGINT" property="roleId" />
-    <id column="jurisdiction_id" jdbcType="BIGINT" property="jurisdictionId" />
+    <id column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <id column="jurisdiction_id" jdbcType="VARCHAR" property="jurisdictionId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -83,8 +83,8 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
     delete from w_role_jurisdiction
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and jurisdiction_id = #{jurisdictionId,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=VARCHAR}
+      and jurisdiction_id = #{jurisdictionId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.RoleJurisdictionExample">
     delete from w_role_jurisdiction
@@ -94,7 +94,7 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
     insert into w_role_jurisdiction (role_id, jurisdiction_id)
-    values (#{roleId,jdbcType=BIGINT}, #{jurisdictionId,jdbcType=BIGINT})
+    values (#{roleId,jdbcType=VARCHAR}, #{jurisdictionId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.RoleJurisdictionKey">
     insert into w_role_jurisdiction
@@ -108,10 +108,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+        #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="jurisdictionId != null">
-        #{jurisdictionId,jdbcType=BIGINT},
+        #{jurisdictionId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -125,10 +125,10 @@
     update w_role_jurisdiction
     <set>
       <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+        role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
       <if test="record.jurisdictionId != null">
-        jurisdiction_id = #{record.jurisdictionId,jdbcType=BIGINT},
+        jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -137,8 +137,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_role_jurisdiction
-    set role_id = #{record.roleId,jdbcType=BIGINT},
-      jurisdiction_id = #{record.jurisdictionId,jdbcType=BIGINT}
+    set role_id = #{record.roleId,jdbcType=VARCHAR},
+      jurisdiction_id = #{record.jurisdictionId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

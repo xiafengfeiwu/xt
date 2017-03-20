@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.VerificationCodeMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.VerificationCode">
-    <id column="sms_id" jdbcType="BIGINT" property="smsId" />
+    <id column="sms_id" jdbcType="VARCHAR" property="smsId" />
     <result column="phone_no" jdbcType="VARCHAR" property="phoneNo" />
     <result column="verification_code" jdbcType="VARCHAR" property="verificationCode" />
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_verification_code
-    where sms_id = #{smsId,jdbcType=BIGINT}
+    where sms_id = #{smsId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_verification_code
-    where sms_id = #{smsId,jdbcType=BIGINT}
+    where sms_id = #{smsId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.VerificationCodeExample">
     delete from w_verification_code
@@ -105,7 +105,7 @@
     insert into w_verification_code (sms_id, phone_no, verification_code, 
       send_time, verification_status, modify_time
       )
-    values (#{smsId,jdbcType=BIGINT}, #{phoneNo,jdbcType=VARCHAR}, #{verificationCode,jdbcType=VARCHAR}, 
+    values (#{smsId,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR}, #{verificationCode,jdbcType=VARCHAR}, 
       #{sendTime,jdbcType=TIMESTAMP}, #{verificationStatus,jdbcType=BIT}, #{modifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -133,7 +133,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="smsId != null">
-        #{smsId,jdbcType=BIGINT},
+        #{smsId,jdbcType=VARCHAR},
       </if>
       <if test="phoneNo != null">
         #{phoneNo,jdbcType=VARCHAR},
@@ -162,7 +162,7 @@
     update w_verification_code
     <set>
       <if test="record.smsId != null">
-        sms_id = #{record.smsId,jdbcType=BIGINT},
+        sms_id = #{record.smsId,jdbcType=VARCHAR},
       </if>
       <if test="record.phoneNo != null">
         phone_no = #{record.phoneNo,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_verification_code
-    set sms_id = #{record.smsId,jdbcType=BIGINT},
+    set sms_id = #{record.smsId,jdbcType=VARCHAR},
       phone_no = #{record.phoneNo,jdbcType=VARCHAR},
       verification_code = #{record.verificationCode,jdbcType=VARCHAR},
       send_time = #{record.sendTime,jdbcType=TIMESTAMP},
@@ -215,7 +215,7 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where sms_id = #{smsId,jdbcType=BIGINT}
+    where sms_id = #{smsId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.VerificationCode">
     update w_verification_code
@@ -224,6 +224,6 @@
       send_time = #{sendTime,jdbcType=TIMESTAMP},
       verification_status = #{verificationStatus,jdbcType=BIT},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where sms_id = #{smsId,jdbcType=BIGINT}
+    where sms_id = #{smsId,jdbcType=VARCHAR}
   </update>
 </mapper>

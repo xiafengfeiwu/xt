@@ -3,17 +3,17 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Pump {
-    private Long pumpId;
+    private String pumpId;
 
-    private Long projectId;
+    private String projectId;
 
-    private Long ownerId;
+    private String ownerId;
 
     private String pumpName;
 
     private String pumpCode;
 
-    private Long productId;
+    private String productId;
 
     private String pumpSn;
 
@@ -27,27 +27,27 @@ public class Pump {
 
     private Date modifyTime;
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 
-    public Long getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
-    public Long getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
@@ -67,11 +67,11 @@ public class Pump {
         this.pumpCode = pumpCode;
     }
 
-    public Long getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.WeatherKeyMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.WeatherKey">
-    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="weather_key" jdbcType="VARCHAR" property="weatherKey" />
     <result column="weather_email" jdbcType="VARCHAR" property="weatherEmail" />
     <result column="weather_email_password" jdbcType="VARCHAR" property="weatherEmailPassword" />
@@ -83,15 +83,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_weather_key
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_weather_key
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.WeatherKeyExample">
     delete from w_weather_key
@@ -102,7 +102,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.WeatherKey">
     insert into w_weather_key (id, weather_key, weather_email, 
       weather_email_password)
-    values (#{id,jdbcType=BIGINT}, #{weatherKey,jdbcType=VARCHAR}, #{weatherEmail,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{weatherKey,jdbcType=VARCHAR}, #{weatherEmail,jdbcType=VARCHAR}, 
       #{weatherEmailPassword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.WeatherKey">
@@ -123,7 +123,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="weatherKey != null">
         #{weatherKey,jdbcType=VARCHAR},
@@ -146,7 +146,7 @@
     update w_weather_key
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.weatherKey != null">
         weather_key = #{record.weatherKey,jdbcType=VARCHAR},
@@ -164,7 +164,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_weather_key
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       weather_key = #{record.weatherKey,jdbcType=VARCHAR},
       weather_email = #{record.weatherEmail,jdbcType=VARCHAR},
       weather_email_password = #{record.weatherEmailPassword,jdbcType=VARCHAR}
@@ -185,13 +185,13 @@
         weather_email_password = #{weatherEmailPassword,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.WeatherKey">
     update w_weather_key
     set weather_key = #{weatherKey,jdbcType=VARCHAR},
       weather_email = #{weatherEmail,jdbcType=VARCHAR},
       weather_email_password = #{weatherEmailPassword,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

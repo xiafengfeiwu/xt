@@ -3,11 +3,11 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class StoppageHandleEvaluate {
-    private Long evaluateId;
+    private String evaluateId;
 
-    private Long stoppageHandleId;
+    private String stoppageHandleId;
 
-    private Long evaluateUserId;
+    private String evaluateUserId;
 
     private Date evaluateTime;
 
@@ -15,27 +15,27 @@ public class StoppageHandleEvaluate {
 
     private String evaluateDescript;
 
-    public Long getEvaluateId() {
+    public String getEvaluateId() {
         return evaluateId;
     }
 
-    public void setEvaluateId(Long evaluateId) {
+    public void setEvaluateId(String evaluateId) {
         this.evaluateId = evaluateId;
     }
 
-    public Long getStoppageHandleId() {
+    public String getStoppageHandleId() {
         return stoppageHandleId;
     }
 
-    public void setStoppageHandleId(Long stoppageHandleId) {
+    public void setStoppageHandleId(String stoppageHandleId) {
         this.stoppageHandleId = stoppageHandleId;
     }
 
-    public Long getEvaluateUserId() {
+    public String getEvaluateUserId() {
         return evaluateUserId;
     }
 
-    public void setEvaluateUserId(Long evaluateUserId) {
+    public void setEvaluateUserId(String evaluateUserId) {
         this.evaluateUserId = evaluateUserId;
     }
 

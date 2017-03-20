@@ -3,31 +3,31 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Complaint {
-    private Long complaintId;
+    private String complaintId;
 
-    private Long complaintTypeId;
+    private String complaintTypeId;
 
     private String complaintContent;
 
-    private Long userId;
+    private String userId;
 
     private String contactWay;
 
     private Date createTime;
 
-    public Long getComplaintId() {
+    public String getComplaintId() {
         return complaintId;
     }
 
-    public void setComplaintId(Long complaintId) {
+    public void setComplaintId(String complaintId) {
         this.complaintId = complaintId;
     }
 
-    public Long getComplaintTypeId() {
+    public String getComplaintTypeId() {
         return complaintTypeId;
     }
 
-    public void setComplaintTypeId(Long complaintTypeId) {
+    public void setComplaintTypeId(String complaintTypeId) {
         this.complaintTypeId = complaintTypeId;
     }
 
@@ -39,11 +39,11 @@ public class Complaint {
         this.complaintContent = complaintContent;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

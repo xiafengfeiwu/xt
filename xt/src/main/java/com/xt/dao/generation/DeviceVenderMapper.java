@@ -10,7 +10,7 @@ public interface DeviceVenderMapper {
 
     int deleteByExample(DeviceVenderExample example);
 
-    int deleteByPrimaryKey(Long venderId);
+    int deleteByPrimaryKey(String venderId);
 
     int insert(DeviceVender record);
 
@@ -18,7 +18,7 @@ public interface DeviceVenderMapper {
 
     List<DeviceVender> selectByExample(DeviceVenderExample example);
 
-    DeviceVender selectByPrimaryKey(Long venderId);
+    DeviceVender selectByPrimaryKey(String venderId);
 
     int updateByExampleSelective(@Param("record") DeviceVender record, @Param("example") DeviceVenderExample example);
 

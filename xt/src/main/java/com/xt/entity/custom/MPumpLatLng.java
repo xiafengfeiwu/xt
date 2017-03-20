@@ -1,15 +1,15 @@
 package com.xt.entity.custom;
 
 public class MPumpLatLng {
-	private Long pumpId;
+	private String pumpId;
 	private String lat;
 	private String lng;
 
-	public Long getPumpId() {
+	public String getPumpId() {
 		return pumpId;
 	}
 
-	public void setPumpId(Long pumpId) {
+	public void setPumpId(String pumpId) {
 		this.pumpId = pumpId;
 	}
 

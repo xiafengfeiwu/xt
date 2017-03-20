@@ -1,15 +1,15 @@
 package com.xt.entity.custom;
 
 public class MPumpWarnGroup {
-	private Long groupId;
+	private String groupId;
 	private String groupName;
 	private String groupDescript;
 
-	public Long getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(Long groupId) {
+	public void setGroupId(String groupId) {
 		this.groupId = groupId;
 	}
 

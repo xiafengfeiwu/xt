@@ -3,17 +3,17 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Device {
-    private Long deviceId;
+    private String deviceId;
 
-    private Long pumpId;
+    private String pumpId;
 
     private String deviceName;
 
     private String deviceSn;
 
-    private Long deviceProductId;
+    private String deviceProductId;
 
-    private Long creatorId;
+    private String creatorId;
 
     private Date createTime;
 
@@ -21,19 +21,19 @@ public class Device {
 
     private Date lastCollectTime;
 
-    public Long getDeviceId() {
+    public String getDeviceId() {
         return deviceId;
     }
 
-    public void setDeviceId(Long deviceId) {
+    public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 
@@ -53,19 +53,19 @@ public class Device {
         this.deviceSn = deviceSn;
     }
 
-    public Long getDeviceProductId() {
+    public String getDeviceProductId() {
         return deviceProductId;
     }
 
-    public void setDeviceProductId(Long deviceProductId) {
+    public void setDeviceProductId(String deviceProductId) {
         this.deviceProductId = deviceProductId;
     }
 
-    public Long getCreatorId() {
+    public String getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(Long creatorId) {
+    public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
     }
 

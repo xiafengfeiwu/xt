@@ -10,7 +10,7 @@ public interface ManagerAreaMapper {
 
     int deleteByExample(ManagerAreaExample example);
 
-    int deleteByPrimaryKey(Long userId);
+    int deleteByPrimaryKey(String userId);
 
     int insert(ManagerArea record);
 
@@ -18,7 +18,7 @@ public interface ManagerAreaMapper {
 
     List<ManagerArea> selectByExample(ManagerAreaExample example);
 
-    ManagerArea selectByPrimaryKey(Long userId);
+    ManagerArea selectByPrimaryKey(String userId);
 
     int updateByExampleSelective(@Param("record") ManagerArea record, @Param("example") ManagerAreaExample example);
 

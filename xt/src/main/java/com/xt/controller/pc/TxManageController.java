@@ -190,7 +190,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-project")
-	public Map<String, Object> deleteProject(Long projectId) {
+	public Map<String, Object> deleteProject(String projectId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (projectId == null) {
@@ -214,7 +214,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("project-manage")
-	public Map<String, Object> projectManage(Long projectId) {
+	public Map<String, Object> projectManage(String projectId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		Project project = projectService.getProjectById(projectId);
@@ -269,7 +269,7 @@ public class TxManageController {
 			return data;
 		}
 
-		Long projectAreaId = project.getProjectAreaId();
+		String projectAreaId = project.getProjectAreaId();
 		ProjectArea projectArea = projectAreaService.getByAreaId(projectAreaId);
 		if(projectArea == null) {
 			data.put("message", "无效的项目区域ID");
@@ -406,7 +406,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-pump")
-	public Map<String, Object> deletePump(Long pumpId) {
+	public Map<String, Object> deletePump(String pumpId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (pumpId == null) {
@@ -440,7 +440,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("project-area-info")
-	public Map<String, Object> projectAreaInfo(Long projectAreaId) {
+	public Map<String, Object> projectAreaInfo(String projectAreaId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("data", projectAreaService.getByAreaId(projectAreaId));
 		return data;
@@ -551,15 +551,12 @@ public class TxManageController {
 			data.put("message", "存在关联项目，不可删除");
 			return data;
 		}
-
 		try {
 			projectAreaService.delete(projectArea.getProjectAreaId());
 		} catch (Exception e) {
-			e.printStackTrace();
 			data.put("message", "操作失败，请稍候重试");
 			return data;
 		}
-
 		data.put("success", true);
 		data.put("message", "删除成功");
 		return data;
@@ -719,7 +716,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-device-vender")
-	public Map<String, Object> deleteDeviceVender(Long venderId) {
+	public Map<String, Object> deleteDeviceVender(String venderId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (venderId == null) {
@@ -874,7 +871,7 @@ public class TxManageController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-device-product")
-	public Map<String, Object> deleteDeviceProduct(Long productId) {
+	public Map<String, Object> deleteDeviceProduct(String productId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (productId == null) {

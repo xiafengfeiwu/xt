@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.RoleMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Role">
-    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <id column="role_id" jdbcType="VARCHAR" property="roleId" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -81,15 +81,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_role
-    where role_id = #{roleId,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_role
-    where role_id = #{roleId,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.RoleExample">
     delete from w_role
@@ -99,7 +99,7 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Role">
     insert into w_role (role_id, role_name)
-    values (#{roleId,jdbcType=BIGINT}, #{roleName,jdbcType=VARCHAR})
+    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Role">
     insert into w_role
@@ -113,7 +113,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+        #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="roleName != null">
         #{roleName,jdbcType=VARCHAR},
@@ -130,7 +130,7 @@
     update w_role
     <set>
       <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+        role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
       <if test="record.roleName != null">
         role_name = #{record.roleName,jdbcType=VARCHAR},
@@ -142,7 +142,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_role
-    set role_id = #{record.roleId,jdbcType=BIGINT},
+    set role_id = #{record.roleId,jdbcType=VARCHAR},
       role_name = #{record.roleName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,11 +155,11 @@
         role_name = #{roleName,jdbcType=VARCHAR},
       </if>
     </set>
-    where role_id = #{roleId,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Role">
     update w_role
     set role_name = #{roleName,jdbcType=VARCHAR}
-    where role_id = #{roleId,jdbcType=BIGINT}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
 </mapper>

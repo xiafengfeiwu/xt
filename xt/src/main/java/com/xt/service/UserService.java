@@ -12,7 +12,7 @@ public interface UserService {
 	User findByPhoneNo(String phoneNo);
 
 	// 通过用户ID获取用户
-	User findById(Long userId);
+	User findById(String userId);
 
 	// 通过微信OpenId获取用户
 	User findUserByWxOpenId(String openId);
@@ -30,5 +30,5 @@ public interface UserService {
 	void update(User user);
 
 	// 删除用户
-	void delete(Long userId);
+	void delete(String userId);
 }

@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PumpEle {
-    private Long dataId;
+    private String dataId;
 
-    private Long pumpId;
+    private String pumpId;
 
     private Date collectTime;
 
@@ -14,19 +14,19 @@ public class PumpEle {
 
     private Date createTime;
 
-    public Long getDataId() {
+    public String getDataId() {
         return dataId;
     }
 
-    public void setDataId(Long dataId) {
+    public void setDataId(String dataId) {
         this.dataId = dataId;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 

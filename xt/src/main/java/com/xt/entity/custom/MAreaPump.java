@@ -1,14 +1,14 @@
 package com.xt.entity.custom;
 
 public class MAreaPump {
-	private Long id;
+	private String id;
 	private String name;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

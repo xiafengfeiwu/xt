@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Packet {
-    private Long packetId;
+    private String packetId;
 
     private String packetType;
 
@@ -11,11 +11,11 @@ public class Packet {
 
     private Date collectTime;
 
-    public Long getPacketId() {
+    public String getPacketId() {
         return packetId;
     }
 
-    public void setPacketId(Long packetId) {
+    public void setPacketId(String packetId) {
         this.packetId = packetId;
     }
 

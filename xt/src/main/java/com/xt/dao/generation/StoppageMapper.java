@@ -10,7 +10,7 @@ public interface StoppageMapper {
 
     int deleteByExample(StoppageExample example);
 
-    int deleteByPrimaryKey(Long stoppageId);
+    int deleteByPrimaryKey(String stoppageId);
 
     int insert(Stoppage record);
 
@@ -18,7 +18,7 @@ public interface StoppageMapper {
 
     List<Stoppage> selectByExample(StoppageExample example);
 
-    Stoppage selectByPrimaryKey(Long stoppageId);
+    Stoppage selectByPrimaryKey(String stoppageId);
 
     int updateByExampleSelective(@Param("record") Stoppage record, @Param("example") StoppageExample example);
 

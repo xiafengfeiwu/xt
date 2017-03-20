@@ -3,9 +3,9 @@ package com.xt.entity.generation;
 import java.math.BigDecimal;
 
 public class PumpEleStatistics {
-    private Long dataId;
+    private String dataId;
 
-    private Long pumpId;
+    private String pumpId;
 
     private Short intervalHour;
 
@@ -13,19 +13,19 @@ public class PumpEleStatistics {
 
     private BigDecimal eleTotal;
 
-    public Long getDataId() {
+    public String getDataId() {
         return dataId;
     }
 
-    public void setDataId(Long dataId) {
+    public void setDataId(String dataId) {
         this.dataId = dataId;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 

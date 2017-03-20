@@ -10,7 +10,7 @@ public interface SystemLogMapper {
 
     int deleteByExample(SystemLogExample example);
 
-    int deleteByPrimaryKey(Long logId);
+    int deleteByPrimaryKey(String logId);
 
     int insert(SystemLog record);
 
@@ -18,7 +18,7 @@ public interface SystemLogMapper {
 
     List<SystemLog> selectByExample(SystemLogExample example);
 
-    SystemLog selectByPrimaryKey(Long logId);
+    SystemLog selectByPrimaryKey(String logId);
 
     int updateByExampleSelective(@Param("record") SystemLog record, @Param("example") SystemLogExample example);
 

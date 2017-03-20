@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PumpEleMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpEle">
-    <id column="data_id" jdbcType="BIGINT" property="dataId" />
-    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <id column="data_id" jdbcType="VARCHAR" property="dataId" />
+    <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
     <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
     <result column="electricity" jdbcType="DECIMAL" property="electricity" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_pump_ele
-    where data_id = #{dataId,jdbcType=BIGINT}
+    where data_id = #{dataId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_pump_ele
-    where data_id = #{dataId,jdbcType=BIGINT}
+    where data_id = #{dataId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpEleExample">
     delete from w_pump_ele
@@ -103,7 +103,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.PumpEle">
     insert into w_pump_ele (data_id, pump_id, collect_time, 
       electricity, create_time)
-    values (#{dataId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT}, #{collectTime,jdbcType=TIMESTAMP}, 
+    values (#{dataId,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, #{collectTime,jdbcType=TIMESTAMP}, 
       #{electricity,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.PumpEle">
@@ -127,10 +127,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="dataId != null">
-        #{dataId,jdbcType=BIGINT},
+        #{dataId,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="collectTime != null">
         #{collectTime,jdbcType=TIMESTAMP},
@@ -153,10 +153,10 @@
     update w_pump_ele
     <set>
       <if test="record.dataId != null">
-        data_id = #{record.dataId,jdbcType=BIGINT},
+        data_id = #{record.dataId,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.collectTime != null">
         collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
@@ -174,8 +174,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_pump_ele
-    set data_id = #{record.dataId,jdbcType=BIGINT},
-      pump_id = #{record.pumpId,jdbcType=BIGINT},
+    set data_id = #{record.dataId,jdbcType=VARCHAR},
+      pump_id = #{record.pumpId,jdbcType=VARCHAR},
       collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
       electricity = #{record.electricity,jdbcType=DECIMAL},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -187,7 +187,7 @@
     update w_pump_ele
     <set>
       <if test="pumpId != null">
-        pump_id = #{pumpId,jdbcType=BIGINT},
+        pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="collectTime != null">
         collect_time = #{collectTime,jdbcType=TIMESTAMP},
@@ -199,14 +199,14 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where data_id = #{dataId,jdbcType=BIGINT}
+    where data_id = #{dataId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpEle">
     update w_pump_ele
-    set pump_id = #{pumpId,jdbcType=BIGINT},
+    set pump_id = #{pumpId,jdbcType=VARCHAR},
       collect_time = #{collectTime,jdbcType=TIMESTAMP},
       electricity = #{electricity,jdbcType=DECIMAL},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where data_id = #{dataId,jdbcType=BIGINT}
+    where data_id = #{dataId,jdbcType=VARCHAR}
   </update>
 </mapper>

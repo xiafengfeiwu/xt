@@ -115,52 +115,62 @@ public class PacketExample {
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdEqualTo(Long value) {
+        public Criteria andPacketIdEqualTo(String value) {
             addCriterion("packet_id =", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdNotEqualTo(Long value) {
+        public Criteria andPacketIdNotEqualTo(String value) {
             addCriterion("packet_id <>", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdGreaterThan(Long value) {
+        public Criteria andPacketIdGreaterThan(String value) {
             addCriterion("packet_id >", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andPacketIdGreaterThanOrEqualTo(String value) {
             addCriterion("packet_id >=", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdLessThan(Long value) {
+        public Criteria andPacketIdLessThan(String value) {
             addCriterion("packet_id <", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdLessThanOrEqualTo(Long value) {
+        public Criteria andPacketIdLessThanOrEqualTo(String value) {
             addCriterion("packet_id <=", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdIn(List<Long> values) {
+        public Criteria andPacketIdLike(String value) {
+            addCriterion("packet_id like", value, "packetId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketIdNotLike(String value) {
+            addCriterion("packet_id not like", value, "packetId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketIdIn(List<String> values) {
             addCriterion("packet_id in", values, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdNotIn(List<Long> values) {
+        public Criteria andPacketIdNotIn(List<String> values) {
             addCriterion("packet_id not in", values, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdBetween(Long value1, Long value2) {
+        public Criteria andPacketIdBetween(String value1, String value2) {
             addCriterion("packet_id between", value1, value2, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andPacketIdNotBetween(Long value1, Long value2) {
+        public Criteria andPacketIdNotBetween(String value1, String value2) {
             addCriterion("packet_id not between", value1, value2, "packetId");
             return (Criteria) this;
         }

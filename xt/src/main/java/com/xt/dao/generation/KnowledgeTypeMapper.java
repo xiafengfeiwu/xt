@@ -10,7 +10,7 @@ public interface KnowledgeTypeMapper {
 
     int deleteByExample(KnowledgeTypeExample example);
 
-    int deleteByPrimaryKey(Long knowledgeTypeId);
+    int deleteByPrimaryKey(String knowledgeTypeId);
 
     int insert(KnowledgeType record);
 
@@ -18,7 +18,7 @@ public interface KnowledgeTypeMapper {
 
     List<KnowledgeType> selectByExample(KnowledgeTypeExample example);
 
-    KnowledgeType selectByPrimaryKey(Long knowledgeTypeId);
+    KnowledgeType selectByPrimaryKey(String knowledgeTypeId);
 
     int updateByExampleSelective(@Param("record") KnowledgeType record, @Param("example") KnowledgeTypeExample example);
 

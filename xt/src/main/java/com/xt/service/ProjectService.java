@@ -10,10 +10,10 @@ public interface ProjectService {
 	List<Project> getProjectData();
 
 	// 通过ID获取项目
-	Project getProjectById(Long projectId);
+	Project getProjectById(String projectId);
 
 	// 通过区域获取项目数据
-	List<Project> getProjectByAreaCode(Long areaId);
+	List<Project> getProjectByAreaCode(String areaId);
 
 	// 通过项目编号前缀获取项目最后编号
 	String getLastProjectCode(String preCode);
@@ -25,9 +25,9 @@ public interface ProjectService {
 	void update(Project project);
 
 	// 删除项目
-	void delete(Long projectId);
+	void delete(String projectId);
 
-	List<MAreaPump> selectUserAuthProjectArea(Long userId);
+	List<MAreaPump> selectUserAuthProjectArea(String userId);
 
-	List<MAreaPump> selectProjectPumpsByIds(List<Long> projectAreaIds);
+	List<MAreaPump> selectProjectPumpsByIds(List<String> projectAreaIds);
 }

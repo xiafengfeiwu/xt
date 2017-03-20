@@ -3,19 +3,19 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Stoppage {
-    private Long stoppageId;
+    private String stoppageId;
 
     private String stoppageNo;
 
-    private Long pumpId;
+    private String pumpId;
 
-    private Long warnId;
+    private String warnId;
 
     private String descript;
 
-    private Long attachId;
+    private String attachId;
 
-    private Long originatorId;
+    private String originatorId;
 
     private Date occurTime;
 
@@ -23,11 +23,11 @@ public class Stoppage {
 
     private Date handleModifyTime;
 
-    public Long getStoppageId() {
+    public String getStoppageId() {
         return stoppageId;
     }
 
-    public void setStoppageId(Long stoppageId) {
+    public void setStoppageId(String stoppageId) {
         this.stoppageId = stoppageId;
     }
 
@@ -39,19 +39,19 @@ public class Stoppage {
         this.stoppageNo = stoppageNo;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 
-    public Long getWarnId() {
+    public String getWarnId() {
         return warnId;
     }
 
-    public void setWarnId(Long warnId) {
+    public void setWarnId(String warnId) {
         this.warnId = warnId;
     }
 
@@ -63,19 +63,19 @@ public class Stoppage {
         this.descript = descript;
     }
 
-    public Long getAttachId() {
+    public String getAttachId() {
         return attachId;
     }
 
-    public void setAttachId(Long attachId) {
+    public void setAttachId(String attachId) {
         this.attachId = attachId;
     }
 
-    public Long getOriginatorId() {
+    public String getOriginatorId() {
         return originatorId;
     }
 
-    public void setOriginatorId(Long originatorId) {
+    public void setOriginatorId(String originatorId) {
         this.originatorId = originatorId;
     }
 

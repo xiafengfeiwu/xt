@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.UserMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.User">
-    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_login_name" jdbcType="VARCHAR" property="userLoginName" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_name_py" jdbcType="VARCHAR" property="userNamePy" />
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
-    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
     <result column="user_portrait_path" jdbcType="VARCHAR" property="userPortraitPath" />
     <result column="user_wx_open_id" jdbcType="VARCHAR" property="userWxOpenId" />
     <result column="user_disable_status" jdbcType="BIT" property="userDisableStatus" />
@@ -92,15 +92,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_user
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_user
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.UserExample">
     delete from w_user
@@ -114,9 +114,9 @@
       role_id, user_portrait_path, user_wx_open_id, 
       user_disable_status, user_regist_time, user_modify_time
       )
-    values (#{userId,jdbcType=BIGINT}, #{userLoginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=VARCHAR}, #{userLoginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
       #{userNamePy,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
-      #{roleId,jdbcType=BIGINT}, #{userPortraitPath,jdbcType=VARCHAR}, #{userWxOpenId,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=VARCHAR}, #{userPortraitPath,jdbcType=VARCHAR}, #{userWxOpenId,jdbcType=VARCHAR}, 
       #{userDisableStatus,jdbcType=BIT}, #{userRegistTime,jdbcType=TIMESTAMP}, #{userModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -162,7 +162,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="userLoginName != null">
         #{userLoginName,jdbcType=VARCHAR},
@@ -180,7 +180,7 @@
         #{userPassword,jdbcType=VARCHAR},
       </if>
       <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+        #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="userPortraitPath != null">
         #{userPortraitPath,jdbcType=VARCHAR},
@@ -209,7 +209,7 @@
     update w_user
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.userLoginName != null">
         user_login_name = #{record.userLoginName,jdbcType=VARCHAR},
@@ -227,7 +227,7 @@
         user_password = #{record.userPassword,jdbcType=VARCHAR},
       </if>
       <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+        role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
       <if test="record.userPortraitPath != null">
         user_portrait_path = #{record.userPortraitPath,jdbcType=VARCHAR},
@@ -251,13 +251,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_user
-    set user_id = #{record.userId,jdbcType=BIGINT},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
       user_login_name = #{record.userLoginName,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       user_name_py = #{record.userNamePy,jdbcType=VARCHAR},
       user_phone = #{record.userPhone,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
-      role_id = #{record.roleId,jdbcType=BIGINT},
+      role_id = #{record.roleId,jdbcType=VARCHAR},
       user_portrait_path = #{record.userPortraitPath,jdbcType=VARCHAR},
       user_wx_open_id = #{record.userWxOpenId,jdbcType=VARCHAR},
       user_disable_status = #{record.userDisableStatus,jdbcType=BIT},
@@ -286,7 +286,7 @@
         user_password = #{userPassword,jdbcType=VARCHAR},
       </if>
       <if test="roleId != null">
-        role_id = #{roleId,jdbcType=BIGINT},
+        role_id = #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="userPortraitPath != null">
         user_portrait_path = #{userPortraitPath,jdbcType=VARCHAR},
@@ -304,7 +304,7 @@
         user_modify_time = #{userModifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.User">
     update w_user
@@ -313,12 +313,12 @@
       user_name_py = #{userNamePy,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=BIGINT},
+      role_id = #{roleId,jdbcType=VARCHAR},
       user_portrait_path = #{userPortraitPath,jdbcType=VARCHAR},
       user_wx_open_id = #{userWxOpenId,jdbcType=VARCHAR},
       user_disable_status = #{userDisableStatus,jdbcType=BIT},
       user_regist_time = #{userRegistTime,jdbcType=TIMESTAMP},
       user_modify_time = #{userModifyTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

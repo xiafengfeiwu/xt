@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.WarnGroupMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.WarnGroup">
-    <id column="group_id" jdbcType="BIGINT" property="groupId" />
+    <id column="group_id" jdbcType="VARCHAR" property="groupId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
-    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
     <result column="system_group" jdbcType="BIT" property="systemGroup" />
     <result column="group_descript" jdbcType="VARCHAR" property="groupDescript" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_warn_group
-    where group_id = #{groupId,jdbcType=BIGINT}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_warn_group
-    where group_id = #{groupId,jdbcType=BIGINT}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.WarnGroupExample">
     delete from w_warn_group
@@ -105,7 +105,7 @@
     insert into w_warn_group (group_id, group_name, owner_id, 
       system_group, group_descript, create_time
       )
-    values (#{groupId,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR}, #{ownerId,jdbcType=BIGINT}, 
+    values (#{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, 
       #{systemGroup,jdbcType=BIT}, #{groupDescript,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -133,13 +133,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="groupId != null">
-        #{groupId,jdbcType=BIGINT},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="groupName != null">
         #{groupName,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        #{ownerId,jdbcType=BIGINT},
+        #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="systemGroup != null">
         #{systemGroup,jdbcType=BIT},
@@ -162,13 +162,13 @@
     update w_warn_group
     <set>
       <if test="record.groupId != null">
-        group_id = #{record.groupId,jdbcType=BIGINT},
+        group_id = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.groupName != null">
         group_name = #{record.groupName,jdbcType=VARCHAR},
       </if>
       <if test="record.ownerId != null">
-        owner_id = #{record.ownerId,jdbcType=BIGINT},
+        owner_id = #{record.ownerId,jdbcType=VARCHAR},
       </if>
       <if test="record.systemGroup != null">
         system_group = #{record.systemGroup,jdbcType=BIT},
@@ -186,9 +186,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_warn_group
-    set group_id = #{record.groupId,jdbcType=BIGINT},
+    set group_id = #{record.groupId,jdbcType=VARCHAR},
       group_name = #{record.groupName,jdbcType=VARCHAR},
-      owner_id = #{record.ownerId,jdbcType=BIGINT},
+      owner_id = #{record.ownerId,jdbcType=VARCHAR},
       system_group = #{record.systemGroup,jdbcType=BIT},
       group_descript = #{record.groupDescript,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -203,7 +203,7 @@
         group_name = #{groupName,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        owner_id = #{ownerId,jdbcType=BIGINT},
+        owner_id = #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="systemGroup != null">
         system_group = #{systemGroup,jdbcType=BIT},
@@ -215,15 +215,15 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where group_id = #{groupId,jdbcType=BIGINT}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.WarnGroup">
     update w_warn_group
     set group_name = #{groupName,jdbcType=VARCHAR},
-      owner_id = #{ownerId,jdbcType=BIGINT},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
       system_group = #{systemGroup,jdbcType=BIT},
       group_descript = #{groupDescript,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where group_id = #{groupId,jdbcType=BIGINT}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -115,52 +115,62 @@ public class PumpWarnExample {
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdEqualTo(Long value) {
+        public Criteria andWarnIdEqualTo(String value) {
             addCriterion("warn_id =", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotEqualTo(Long value) {
+        public Criteria andWarnIdNotEqualTo(String value) {
             addCriterion("warn_id <>", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdGreaterThan(Long value) {
+        public Criteria andWarnIdGreaterThan(String value) {
             addCriterion("warn_id >", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andWarnIdGreaterThanOrEqualTo(String value) {
             addCriterion("warn_id >=", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdLessThan(Long value) {
+        public Criteria andWarnIdLessThan(String value) {
             addCriterion("warn_id <", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdLessThanOrEqualTo(Long value) {
+        public Criteria andWarnIdLessThanOrEqualTo(String value) {
             addCriterion("warn_id <=", value, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdIn(List<Long> values) {
+        public Criteria andWarnIdLike(String value) {
+            addCriterion("warn_id like", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdNotLike(String value) {
+            addCriterion("warn_id not like", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdIn(List<String> values) {
             addCriterion("warn_id in", values, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotIn(List<Long> values) {
+        public Criteria andWarnIdNotIn(List<String> values) {
             addCriterion("warn_id not in", values, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdBetween(Long value1, Long value2) {
+        public Criteria andWarnIdBetween(String value1, String value2) {
             addCriterion("warn_id between", value1, value2, "warnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotBetween(Long value1, Long value2) {
+        public Criteria andWarnIdNotBetween(String value1, String value2) {
             addCriterion("warn_id not between", value1, value2, "warnId");
             return (Criteria) this;
         }
@@ -245,52 +255,62 @@ public class PumpWarnExample {
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdEqualTo(Long value) {
+        public Criteria andPumpIdEqualTo(String value) {
             addCriterion("pump_id =", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotEqualTo(Long value) {
+        public Criteria andPumpIdNotEqualTo(String value) {
             addCriterion("pump_id <>", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdGreaterThan(Long value) {
+        public Criteria andPumpIdGreaterThan(String value) {
             addCriterion("pump_id >", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andPumpIdGreaterThanOrEqualTo(String value) {
             addCriterion("pump_id >=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdLessThan(Long value) {
+        public Criteria andPumpIdLessThan(String value) {
             addCriterion("pump_id <", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdLessThanOrEqualTo(Long value) {
+        public Criteria andPumpIdLessThanOrEqualTo(String value) {
             addCriterion("pump_id <=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdIn(List<Long> values) {
+        public Criteria andPumpIdLike(String value) {
+            addCriterion("pump_id like", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdNotLike(String value) {
+            addCriterion("pump_id not like", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdIn(List<String> values) {
             addCriterion("pump_id in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotIn(List<Long> values) {
+        public Criteria andPumpIdNotIn(List<String> values) {
             addCriterion("pump_id not in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdBetween(Long value1, Long value2) {
+        public Criteria andPumpIdBetween(String value1, String value2) {
             addCriterion("pump_id between", value1, value2, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotBetween(Long value1, Long value2) {
+        public Criteria andPumpIdNotBetween(String value1, String value2) {
             addCriterion("pump_id not between", value1, value2, "pumpId");
             return (Criteria) this;
         }

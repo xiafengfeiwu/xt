@@ -9,7 +9,7 @@ import com.xt.entity.generation.RoleJurisdictionKey;
 public interface RoleService {
 
 	// 通过ID获取角色
-	Role getById(Long roleId);
+	Role getById(String roleId);
 
 	// 创建角色
 	void create(Role role);
@@ -18,16 +18,16 @@ public interface RoleService {
 	void update(Role role);
 
 	// 删除角色
-	void delete(Long roleId);
+	void delete(String roleId);
 
 	// 获取所有角色
 	List<Role> findAll();
 
 	// 获取角色所有权限字
-	List<Jurisdiction> findRoleJurisdictions(Long roleId);
+	List<Jurisdiction> findRoleJurisdictions(String roleId);
 
 	// 检查角色权限字是否存在
-	boolean checkRoleJurisdiction(Long roleId, Long jurisdictionId);
+	boolean checkRoleJurisdiction(String roleId, String jurisdictionId);
 
 	// 增加角色权限字关联
 	void addRoleJurisdiction(RoleJurisdictionKey jurisdictionKey);

@@ -115,52 +115,62 @@ public class StoppageHandleExample {
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdEqualTo(Long value) {
+        public Criteria andStoppageHandleIdEqualTo(String value) {
             addCriterion("stoppage_handle_id =", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdNotEqualTo(Long value) {
+        public Criteria andStoppageHandleIdNotEqualTo(String value) {
             addCriterion("stoppage_handle_id <>", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdGreaterThan(Long value) {
+        public Criteria andStoppageHandleIdGreaterThan(String value) {
             addCriterion("stoppage_handle_id >", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andStoppageHandleIdGreaterThanOrEqualTo(String value) {
             addCriterion("stoppage_handle_id >=", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdLessThan(Long value) {
+        public Criteria andStoppageHandleIdLessThan(String value) {
             addCriterion("stoppage_handle_id <", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdLessThanOrEqualTo(Long value) {
+        public Criteria andStoppageHandleIdLessThanOrEqualTo(String value) {
             addCriterion("stoppage_handle_id <=", value, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdIn(List<Long> values) {
+        public Criteria andStoppageHandleIdLike(String value) {
+            addCriterion("stoppage_handle_id like", value, "stoppageHandleId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoppageHandleIdNotLike(String value) {
+            addCriterion("stoppage_handle_id not like", value, "stoppageHandleId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoppageHandleIdIn(List<String> values) {
             addCriterion("stoppage_handle_id in", values, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdNotIn(List<Long> values) {
+        public Criteria andStoppageHandleIdNotIn(List<String> values) {
             addCriterion("stoppage_handle_id not in", values, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdBetween(Long value1, Long value2) {
+        public Criteria andStoppageHandleIdBetween(String value1, String value2) {
             addCriterion("stoppage_handle_id between", value1, value2, "stoppageHandleId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageHandleIdNotBetween(Long value1, Long value2) {
+        public Criteria andStoppageHandleIdNotBetween(String value1, String value2) {
             addCriterion("stoppage_handle_id not between", value1, value2, "stoppageHandleId");
             return (Criteria) this;
         }
@@ -175,52 +185,62 @@ public class StoppageHandleExample {
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdEqualTo(Long value) {
+        public Criteria andStoppageIdEqualTo(String value) {
             addCriterion("stoppage_id =", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdNotEqualTo(Long value) {
+        public Criteria andStoppageIdNotEqualTo(String value) {
             addCriterion("stoppage_id <>", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdGreaterThan(Long value) {
+        public Criteria andStoppageIdGreaterThan(String value) {
             addCriterion("stoppage_id >", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andStoppageIdGreaterThanOrEqualTo(String value) {
             addCriterion("stoppage_id >=", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdLessThan(Long value) {
+        public Criteria andStoppageIdLessThan(String value) {
             addCriterion("stoppage_id <", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdLessThanOrEqualTo(Long value) {
+        public Criteria andStoppageIdLessThanOrEqualTo(String value) {
             addCriterion("stoppage_id <=", value, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdIn(List<Long> values) {
+        public Criteria andStoppageIdLike(String value) {
+            addCriterion("stoppage_id like", value, "stoppageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoppageIdNotLike(String value) {
+            addCriterion("stoppage_id not like", value, "stoppageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoppageIdIn(List<String> values) {
             addCriterion("stoppage_id in", values, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdNotIn(List<Long> values) {
+        public Criteria andStoppageIdNotIn(List<String> values) {
             addCriterion("stoppage_id not in", values, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdBetween(Long value1, Long value2) {
+        public Criteria andStoppageIdBetween(String value1, String value2) {
             addCriterion("stoppage_id between", value1, value2, "stoppageId");
             return (Criteria) this;
         }
 
-        public Criteria andStoppageIdNotBetween(Long value1, Long value2) {
+        public Criteria andStoppageIdNotBetween(String value1, String value2) {
             addCriterion("stoppage_id not between", value1, value2, "stoppageId");
             return (Criteria) this;
         }
@@ -235,52 +255,62 @@ public class StoppageHandleExample {
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdEqualTo(Long value) {
+        public Criteria andHandleUserIdEqualTo(String value) {
             addCriterion("handle_user_id =", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdNotEqualTo(Long value) {
+        public Criteria andHandleUserIdNotEqualTo(String value) {
             addCriterion("handle_user_id <>", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdGreaterThan(Long value) {
+        public Criteria andHandleUserIdGreaterThan(String value) {
             addCriterion("handle_user_id >", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andHandleUserIdGreaterThanOrEqualTo(String value) {
             addCriterion("handle_user_id >=", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdLessThan(Long value) {
+        public Criteria andHandleUserIdLessThan(String value) {
             addCriterion("handle_user_id <", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdLessThanOrEqualTo(Long value) {
+        public Criteria andHandleUserIdLessThanOrEqualTo(String value) {
             addCriterion("handle_user_id <=", value, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdIn(List<Long> values) {
+        public Criteria andHandleUserIdLike(String value) {
+            addCriterion("handle_user_id like", value, "handleUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andHandleUserIdNotLike(String value) {
+            addCriterion("handle_user_id not like", value, "handleUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andHandleUserIdIn(List<String> values) {
             addCriterion("handle_user_id in", values, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdNotIn(List<Long> values) {
+        public Criteria andHandleUserIdNotIn(List<String> values) {
             addCriterion("handle_user_id not in", values, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdBetween(Long value1, Long value2) {
+        public Criteria andHandleUserIdBetween(String value1, String value2) {
             addCriterion("handle_user_id between", value1, value2, "handleUserId");
             return (Criteria) this;
         }
 
-        public Criteria andHandleUserIdNotBetween(Long value1, Long value2) {
+        public Criteria andHandleUserIdNotBetween(String value1, String value2) {
             addCriterion("handle_user_id not between", value1, value2, "handleUserId");
             return (Criteria) this;
         }
@@ -355,52 +385,62 @@ public class StoppageHandleExample {
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationEqualTo(Long value) {
+        public Criteria andHandleDurationEqualTo(String value) {
             addCriterion("handle_duration =", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationNotEqualTo(Long value) {
+        public Criteria andHandleDurationNotEqualTo(String value) {
             addCriterion("handle_duration <>", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationGreaterThan(Long value) {
+        public Criteria andHandleDurationGreaterThan(String value) {
             addCriterion("handle_duration >", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationGreaterThanOrEqualTo(Long value) {
+        public Criteria andHandleDurationGreaterThanOrEqualTo(String value) {
             addCriterion("handle_duration >=", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationLessThan(Long value) {
+        public Criteria andHandleDurationLessThan(String value) {
             addCriterion("handle_duration <", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationLessThanOrEqualTo(Long value) {
+        public Criteria andHandleDurationLessThanOrEqualTo(String value) {
             addCriterion("handle_duration <=", value, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationIn(List<Long> values) {
+        public Criteria andHandleDurationLike(String value) {
+            addCriterion("handle_duration like", value, "handleDuration");
+            return (Criteria) this;
+        }
+
+        public Criteria andHandleDurationNotLike(String value) {
+            addCriterion("handle_duration not like", value, "handleDuration");
+            return (Criteria) this;
+        }
+
+        public Criteria andHandleDurationIn(List<String> values) {
             addCriterion("handle_duration in", values, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationNotIn(List<Long> values) {
+        public Criteria andHandleDurationNotIn(List<String> values) {
             addCriterion("handle_duration not in", values, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationBetween(Long value1, Long value2) {
+        public Criteria andHandleDurationBetween(String value1, String value2) {
             addCriterion("handle_duration between", value1, value2, "handleDuration");
             return (Criteria) this;
         }
 
-        public Criteria andHandleDurationNotBetween(Long value1, Long value2) {
+        public Criteria andHandleDurationNotBetween(String value1, String value2) {
             addCriterion("handle_duration not between", value1, value2, "handleDuration");
             return (Criteria) this;
         }

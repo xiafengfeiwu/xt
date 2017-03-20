@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.KnowledgeMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Knowledge">
-    <id column="knowledge_id" jdbcType="BIGINT" property="knowledgeId" />
-    <result column="knowledge_type_id" jdbcType="BIGINT" property="knowledgeTypeId" />
+    <id column="knowledge_id" jdbcType="VARCHAR" property="knowledgeId" />
+    <result column="knowledge_type_id" jdbcType="VARCHAR" property="knowledgeTypeId" />
     <result column="knowledge_title" jdbcType="VARCHAR" property="knowledgeTitle" />
     <result column="useful_count" jdbcType="INTEGER" property="usefulCount" />
     <result column="useless_count" jdbcType="INTEGER" property="uselessCount" />
-    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
@@ -111,17 +111,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from w_knowledge
-    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+    where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_knowledge
-    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+    where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.KnowledgeExample">
     delete from w_knowledge
@@ -134,8 +134,8 @@
       useful_count, useless_count, creator_id, 
       create_time, modify_time, knowledge_content
       )
-    values (#{knowledgeId,jdbcType=BIGINT}, #{knowledgeTypeId,jdbcType=BIGINT}, #{knowledgeTitle,jdbcType=VARCHAR}, 
-      #{usefulCount,jdbcType=INTEGER}, #{uselessCount,jdbcType=INTEGER}, #{creatorId,jdbcType=BIGINT}, 
+    values (#{knowledgeId,jdbcType=VARCHAR}, #{knowledgeTypeId,jdbcType=VARCHAR}, #{knowledgeTitle,jdbcType=VARCHAR}, 
+      #{usefulCount,jdbcType=INTEGER}, #{uselessCount,jdbcType=INTEGER}, #{creatorId,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{knowledgeContent,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -172,10 +172,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="knowledgeId != null">
-        #{knowledgeId,jdbcType=BIGINT},
+        #{knowledgeId,jdbcType=VARCHAR},
       </if>
       <if test="knowledgeTypeId != null">
-        #{knowledgeTypeId,jdbcType=BIGINT},
+        #{knowledgeTypeId,jdbcType=VARCHAR},
       </if>
       <if test="knowledgeTitle != null">
         #{knowledgeTitle,jdbcType=VARCHAR},
@@ -187,7 +187,7 @@
         #{uselessCount,jdbcType=INTEGER},
       </if>
       <if test="creatorId != null">
-        #{creatorId,jdbcType=BIGINT},
+        #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -210,10 +210,10 @@
     update w_knowledge
     <set>
       <if test="record.knowledgeId != null">
-        knowledge_id = #{record.knowledgeId,jdbcType=BIGINT},
+        knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR},
       </if>
       <if test="record.knowledgeTypeId != null">
-        knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+        knowledge_type_id = #{record.knowledgeTypeId,jdbcType=VARCHAR},
       </if>
       <if test="record.knowledgeTitle != null">
         knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
@@ -225,7 +225,7 @@
         useless_count = #{record.uselessCount,jdbcType=INTEGER},
       </if>
       <if test="record.creatorId != null">
-        creator_id = #{record.creatorId,jdbcType=BIGINT},
+        creator_id = #{record.creatorId,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -243,12 +243,12 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update w_knowledge
-    set knowledge_id = #{record.knowledgeId,jdbcType=BIGINT},
-      knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+    set knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR},
+      knowledge_type_id = #{record.knowledgeTypeId,jdbcType=VARCHAR},
       knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
       useful_count = #{record.usefulCount,jdbcType=INTEGER},
       useless_count = #{record.uselessCount,jdbcType=INTEGER},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      creator_id = #{record.creatorId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
       knowledge_content = #{record.knowledgeContent,jdbcType=LONGVARCHAR}
@@ -258,12 +258,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_knowledge
-    set knowledge_id = #{record.knowledgeId,jdbcType=BIGINT},
-      knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+    set knowledge_id = #{record.knowledgeId,jdbcType=VARCHAR},
+      knowledge_type_id = #{record.knowledgeTypeId,jdbcType=VARCHAR},
       knowledge_title = #{record.knowledgeTitle,jdbcType=VARCHAR},
       useful_count = #{record.usefulCount,jdbcType=INTEGER},
       useless_count = #{record.uselessCount,jdbcType=INTEGER},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      creator_id = #{record.creatorId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -274,7 +274,7 @@
     update w_knowledge
     <set>
       <if test="knowledgeTypeId != null">
-        knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT},
+        knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR},
       </if>
       <if test="knowledgeTitle != null">
         knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
@@ -286,7 +286,7 @@
         useless_count = #{uselessCount,jdbcType=INTEGER},
       </if>
       <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=BIGINT},
+        creator_id = #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -298,29 +298,29 @@
         knowledge_content = #{knowledgeContent,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+    where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xt.entity.generation.Knowledge">
     update w_knowledge
-    set knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT},
+    set knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR},
       knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
       useful_count = #{usefulCount,jdbcType=INTEGER},
       useless_count = #{uselessCount,jdbcType=INTEGER},
-      creator_id = #{creatorId,jdbcType=BIGINT},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       knowledge_content = #{knowledgeContent,jdbcType=LONGVARCHAR}
-    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+    where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Knowledge">
     update w_knowledge
-    set knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT},
+    set knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR},
       knowledge_title = #{knowledgeTitle,jdbcType=VARCHAR},
       useful_count = #{usefulCount,jdbcType=INTEGER},
       useless_count = #{uselessCount,jdbcType=INTEGER},
-      creator_id = #{creatorId,jdbcType=BIGINT},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where knowledge_id = #{knowledgeId,jdbcType=BIGINT}
+    where knowledge_id = #{knowledgeId,jdbcType=VARCHAR}
   </update>
 </mapper>

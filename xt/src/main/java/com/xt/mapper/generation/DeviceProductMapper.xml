@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.DeviceProductMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.DeviceProduct">
-    <id column="product_id" jdbcType="BIGINT" property="productId" />
+    <id column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_type" jdbcType="CHAR" property="productType" />
-    <result column="product_vender_id" jdbcType="BIGINT" property="productVenderId" />
+    <result column="product_vender_id" jdbcType="VARCHAR" property="productVenderId" />
     <result column="product_spec" jdbcType="VARCHAR" property="productSpec" />
     <result column="product_pi" jdbcType="VARCHAR" property="productPi" />
     <result column="product_power_spec" jdbcType="VARCHAR" property="productPowerSpec" />
@@ -112,17 +112,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from w_device_product
-    where product_id = #{productId,jdbcType=BIGINT}
+    where product_id = #{productId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_device_product
-    where product_id = #{productId,jdbcType=BIGINT}
+    where product_id = #{productId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.DeviceProductExample">
     delete from w_device_product
@@ -135,8 +135,8 @@
       product_vender_id, product_spec, product_pi, 
       product_power_spec, create_time, modify_time, 
       product_descript)
-    values (#{productId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{productType,jdbcType=CHAR}, 
-      #{productVenderId,jdbcType=BIGINT}, #{productSpec,jdbcType=VARCHAR}, #{productPi,jdbcType=VARCHAR}, 
+    values (#{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productType,jdbcType=CHAR}, 
+      #{productVenderId,jdbcType=VARCHAR}, #{productSpec,jdbcType=VARCHAR}, #{productPi,jdbcType=VARCHAR}, 
       #{productPowerSpec,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
       #{productDescript,jdbcType=LONGVARCHAR})
   </insert>
@@ -176,7 +176,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
-        #{productId,jdbcType=BIGINT},
+        #{productId,jdbcType=VARCHAR},
       </if>
       <if test="productName != null">
         #{productName,jdbcType=VARCHAR},
@@ -185,7 +185,7 @@
         #{productType,jdbcType=CHAR},
       </if>
       <if test="productVenderId != null">
-        #{productVenderId,jdbcType=BIGINT},
+        #{productVenderId,jdbcType=VARCHAR},
       </if>
       <if test="productSpec != null">
         #{productSpec,jdbcType=VARCHAR},
@@ -217,7 +217,7 @@
     update w_device_product
     <set>
       <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+        product_id = #{record.productId,jdbcType=VARCHAR},
       </if>
       <if test="record.productName != null">
         product_name = #{record.productName,jdbcType=VARCHAR},
@@ -226,7 +226,7 @@
         product_type = #{record.productType,jdbcType=CHAR},
       </if>
       <if test="record.productVenderId != null">
-        product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+        product_vender_id = #{record.productVenderId,jdbcType=VARCHAR},
       </if>
       <if test="record.productSpec != null">
         product_spec = #{record.productSpec,jdbcType=VARCHAR},
@@ -253,10 +253,10 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update w_device_product
-    set product_id = #{record.productId,jdbcType=BIGINT},
+    set product_id = #{record.productId,jdbcType=VARCHAR},
       product_name = #{record.productName,jdbcType=VARCHAR},
       product_type = #{record.productType,jdbcType=CHAR},
-      product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+      product_vender_id = #{record.productVenderId,jdbcType=VARCHAR},
       product_spec = #{record.productSpec,jdbcType=VARCHAR},
       product_pi = #{record.productPi,jdbcType=VARCHAR},
       product_power_spec = #{record.productPowerSpec,jdbcType=VARCHAR},
@@ -269,10 +269,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_device_product
-    set product_id = #{record.productId,jdbcType=BIGINT},
+    set product_id = #{record.productId,jdbcType=VARCHAR},
       product_name = #{record.productName,jdbcType=VARCHAR},
       product_type = #{record.productType,jdbcType=CHAR},
-      product_vender_id = #{record.productVenderId,jdbcType=BIGINT},
+      product_vender_id = #{record.productVenderId,jdbcType=VARCHAR},
       product_spec = #{record.productSpec,jdbcType=VARCHAR},
       product_pi = #{record.productPi,jdbcType=VARCHAR},
       product_power_spec = #{record.productPowerSpec,jdbcType=VARCHAR},
@@ -292,7 +292,7 @@
         product_type = #{productType,jdbcType=CHAR},
       </if>
       <if test="productVenderId != null">
-        product_vender_id = #{productVenderId,jdbcType=BIGINT},
+        product_vender_id = #{productVenderId,jdbcType=VARCHAR},
       </if>
       <if test="productSpec != null">
         product_spec = #{productSpec,jdbcType=VARCHAR},
@@ -313,31 +313,31 @@
         product_descript = #{productDescript,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where product_id = #{productId,jdbcType=BIGINT}
+    where product_id = #{productId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xt.entity.generation.DeviceProduct">
     update w_device_product
     set product_name = #{productName,jdbcType=VARCHAR},
       product_type = #{productType,jdbcType=CHAR},
-      product_vender_id = #{productVenderId,jdbcType=BIGINT},
+      product_vender_id = #{productVenderId,jdbcType=VARCHAR},
       product_spec = #{productSpec,jdbcType=VARCHAR},
       product_pi = #{productPi,jdbcType=VARCHAR},
       product_power_spec = #{productPowerSpec,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       product_descript = #{productDescript,jdbcType=LONGVARCHAR}
-    where product_id = #{productId,jdbcType=BIGINT}
+    where product_id = #{productId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.DeviceProduct">
     update w_device_product
     set product_name = #{productName,jdbcType=VARCHAR},
       product_type = #{productType,jdbcType=CHAR},
-      product_vender_id = #{productVenderId,jdbcType=BIGINT},
+      product_vender_id = #{productVenderId,jdbcType=VARCHAR},
       product_spec = #{productSpec,jdbcType=VARCHAR},
       product_pi = #{productPi,jdbcType=VARCHAR},
       product_power_spec = #{productPowerSpec,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where product_id = #{productId,jdbcType=BIGINT}
+    where product_id = #{productId,jdbcType=VARCHAR}
   </update>
 </mapper>

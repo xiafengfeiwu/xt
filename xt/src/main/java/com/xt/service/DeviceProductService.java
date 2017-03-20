@@ -13,8 +13,8 @@ public interface DeviceProductService {
 
 	void update(DeviceProduct deviceProduct);
 
-	void delete(Long productId);
+	void delete(String productId);
 
-	DeviceProduct findById(Long productId);
+	DeviceProduct findById(String productId);
 
 }

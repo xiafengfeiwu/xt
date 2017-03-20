@@ -114,52 +114,62 @@ public class ComplaintTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdEqualTo(Long value) {
+        public Criteria andComplaintTypeIdEqualTo(String value) {
             addCriterion("complaint_type_id =", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdNotEqualTo(Long value) {
+        public Criteria andComplaintTypeIdNotEqualTo(String value) {
             addCriterion("complaint_type_id <>", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdGreaterThan(Long value) {
+        public Criteria andComplaintTypeIdGreaterThan(String value) {
             addCriterion("complaint_type_id >", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andComplaintTypeIdGreaterThanOrEqualTo(String value) {
             addCriterion("complaint_type_id >=", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdLessThan(Long value) {
+        public Criteria andComplaintTypeIdLessThan(String value) {
             addCriterion("complaint_type_id <", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdLessThanOrEqualTo(Long value) {
+        public Criteria andComplaintTypeIdLessThanOrEqualTo(String value) {
             addCriterion("complaint_type_id <=", value, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdIn(List<Long> values) {
+        public Criteria andComplaintTypeIdLike(String value) {
+            addCriterion("complaint_type_id like", value, "complaintTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andComplaintTypeIdNotLike(String value) {
+            addCriterion("complaint_type_id not like", value, "complaintTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andComplaintTypeIdIn(List<String> values) {
             addCriterion("complaint_type_id in", values, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdNotIn(List<Long> values) {
+        public Criteria andComplaintTypeIdNotIn(List<String> values) {
             addCriterion("complaint_type_id not in", values, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdBetween(Long value1, Long value2) {
+        public Criteria andComplaintTypeIdBetween(String value1, String value2) {
             addCriterion("complaint_type_id between", value1, value2, "complaintTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andComplaintTypeIdNotBetween(Long value1, Long value2) {
+        public Criteria andComplaintTypeIdNotBetween(String value1, String value2) {
             addCriterion("complaint_type_id not between", value1, value2, "complaintTypeId");
             return (Criteria) this;
         }

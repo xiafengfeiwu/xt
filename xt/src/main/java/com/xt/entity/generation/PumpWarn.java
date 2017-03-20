@@ -3,11 +3,11 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class PumpWarn {
-    private Long warnId;
+    private String warnId;
 
     private String warnNo;
 
-    private Long pumpId;
+    private String pumpId;
 
     private String warnCode;
 
@@ -17,11 +17,11 @@ public class PumpWarn {
 
     private Date warnHappenTime;
 
-    public Long getWarnId() {
+    public String getWarnId() {
         return warnId;
     }
 
-    public void setWarnId(Long warnId) {
+    public void setWarnId(String warnId) {
         this.warnId = warnId;
     }
 
@@ -33,11 +33,11 @@ public class PumpWarn {
         this.warnNo = warnNo;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 

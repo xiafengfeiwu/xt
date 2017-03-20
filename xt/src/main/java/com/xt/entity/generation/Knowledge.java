@@ -3,9 +3,9 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Knowledge {
-    private Long knowledgeId;
+    private String knowledgeId;
 
-    private Long knowledgeTypeId;
+    private String knowledgeTypeId;
 
     private String knowledgeTitle;
 
@@ -13,7 +13,7 @@ public class Knowledge {
 
     private Integer uselessCount;
 
-    private Long creatorId;
+    private String creatorId;
 
     private Date createTime;
 
@@ -21,19 +21,19 @@ public class Knowledge {
 
     private String knowledgeContent;
 
-    public Long getKnowledgeId() {
+    public String getKnowledgeId() {
         return knowledgeId;
     }
 
-    public void setKnowledgeId(Long knowledgeId) {
+    public void setKnowledgeId(String knowledgeId) {
         this.knowledgeId = knowledgeId;
     }
 
-    public Long getKnowledgeTypeId() {
+    public String getKnowledgeTypeId() {
         return knowledgeTypeId;
     }
 
-    public void setKnowledgeTypeId(Long knowledgeTypeId) {
+    public void setKnowledgeTypeId(String knowledgeTypeId) {
         this.knowledgeTypeId = knowledgeTypeId;
     }
 
@@ -61,11 +61,11 @@ public class Knowledge {
         this.uselessCount = uselessCount;
     }
 
-    public Long getCreatorId() {
+    public String getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(Long creatorId) {
+    public void setCreatorId(String creatorId) {
         this.creatorId = creatorId;
     }
 

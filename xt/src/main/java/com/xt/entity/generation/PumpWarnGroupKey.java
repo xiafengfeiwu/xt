@@ -1,23 +1,23 @@
 package com.xt.entity.generation;
 
 public class PumpWarnGroupKey {
-    private Long pumpId;
+    private String pumpId;
 
-    private Long warnGroupId;
+    private String warnGroupId;
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 
-    public Long getWarnGroupId() {
+    public String getWarnGroupId() {
         return warnGroupId;
     }
 
-    public void setWarnGroupId(Long warnGroupId) {
+    public void setWarnGroupId(String warnGroupId) {
         this.warnGroupId = warnGroupId;
     }
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ProjectMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Project">
-    <id column="project_id" jdbcType="BIGINT" property="projectId" />
+    <id column="project_id" jdbcType="VARCHAR" property="projectId" />
     <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
-    <result column="project_area_id" jdbcType="BIGINT" property="projectAreaId" />
-    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <result column="project_area_id" jdbcType="VARCHAR" property="projectAreaId" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
     <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
     <result column="owner_phone_no" jdbcType="VARCHAR" property="ownerPhoneNo" />
     <result column="owner_type" jdbcType="CHAR" property="ownerType" />
@@ -93,15 +93,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_project
-    where project_id = #{projectId,jdbcType=BIGINT}
+    where project_id = #{projectId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_project
-    where project_id = #{projectId,jdbcType=BIGINT}
+    where project_id = #{projectId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ProjectExample">
     delete from w_project
@@ -115,8 +115,8 @@
       owner_phone_no, owner_type, heating_area, 
       heating_temp, project_address, create_time, 
       modify_time)
-    values (#{projectId,jdbcType=BIGINT}, #{projectCode,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
-      #{projectAreaId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, #{ownerName,jdbcType=VARCHAR}, 
+    values (#{projectId,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
+      #{projectAreaId,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, 
       #{ownerPhoneNo,jdbcType=VARCHAR}, #{ownerType,jdbcType=CHAR}, #{heatingArea,jdbcType=DECIMAL}, 
       #{heatingTemp,jdbcType=DECIMAL}, #{projectAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyTime,jdbcType=TIMESTAMP})
@@ -166,7 +166,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="projectId != null">
-        #{projectId,jdbcType=BIGINT},
+        #{projectId,jdbcType=VARCHAR},
       </if>
       <if test="projectCode != null">
         #{projectCode,jdbcType=VARCHAR},
@@ -175,10 +175,10 @@
         #{projectName,jdbcType=VARCHAR},
       </if>
       <if test="projectAreaId != null">
-        #{projectAreaId,jdbcType=BIGINT},
+        #{projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        #{ownerId,jdbcType=BIGINT},
+        #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="ownerName != null">
         #{ownerName,jdbcType=VARCHAR},
@@ -216,7 +216,7 @@
     update w_project
     <set>
       <if test="record.projectId != null">
-        project_id = #{record.projectId,jdbcType=BIGINT},
+        project_id = #{record.projectId,jdbcType=VARCHAR},
       </if>
       <if test="record.projectCode != null">
         project_code = #{record.projectCode,jdbcType=VARCHAR},
@@ -225,10 +225,10 @@
         project_name = #{record.projectName,jdbcType=VARCHAR},
       </if>
       <if test="record.projectAreaId != null">
-        project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
+        project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="record.ownerId != null">
-        owner_id = #{record.ownerId,jdbcType=BIGINT},
+        owner_id = #{record.ownerId,jdbcType=VARCHAR},
       </if>
       <if test="record.ownerName != null">
         owner_name = #{record.ownerName,jdbcType=VARCHAR},
@@ -261,11 +261,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_project
-    set project_id = #{record.projectId,jdbcType=BIGINT},
+    set project_id = #{record.projectId,jdbcType=VARCHAR},
       project_code = #{record.projectCode,jdbcType=VARCHAR},
       project_name = #{record.projectName,jdbcType=VARCHAR},
-      project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
-      owner_id = #{record.ownerId,jdbcType=BIGINT},
+      project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
+      owner_id = #{record.ownerId,jdbcType=VARCHAR},
       owner_name = #{record.ownerName,jdbcType=VARCHAR},
       owner_phone_no = #{record.ownerPhoneNo,jdbcType=VARCHAR},
       owner_type = #{record.ownerType,jdbcType=CHAR},
@@ -288,10 +288,10 @@
         project_name = #{projectName,jdbcType=VARCHAR},
       </if>
       <if test="projectAreaId != null">
-        project_area_id = #{projectAreaId,jdbcType=BIGINT},
+        project_area_id = #{projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="ownerId != null">
-        owner_id = #{ownerId,jdbcType=BIGINT},
+        owner_id = #{ownerId,jdbcType=VARCHAR},
       </if>
       <if test="ownerName != null">
         owner_name = #{ownerName,jdbcType=VARCHAR},
@@ -318,14 +318,14 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where project_id = #{projectId,jdbcType=BIGINT}
+    where project_id = #{projectId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Project">
     update w_project
     set project_code = #{projectCode,jdbcType=VARCHAR},
       project_name = #{projectName,jdbcType=VARCHAR},
-      project_area_id = #{projectAreaId,jdbcType=BIGINT},
-      owner_id = #{ownerId,jdbcType=BIGINT},
+      project_area_id = #{projectAreaId,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
       owner_name = #{ownerName,jdbcType=VARCHAR},
       owner_phone_no = #{ownerPhoneNo,jdbcType=VARCHAR},
       owner_type = #{ownerType,jdbcType=CHAR},
@@ -334,6 +334,6 @@
       project_address = #{projectAddress,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where project_id = #{projectId,jdbcType=BIGINT}
+    where project_id = #{projectId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -115,52 +115,62 @@ public class VerificationCodeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdEqualTo(Long value) {
+        public Criteria andSmsIdEqualTo(String value) {
             addCriterion("sms_id =", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdNotEqualTo(Long value) {
+        public Criteria andSmsIdNotEqualTo(String value) {
             addCriterion("sms_id <>", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdGreaterThan(Long value) {
+        public Criteria andSmsIdGreaterThan(String value) {
             addCriterion("sms_id >", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andSmsIdGreaterThanOrEqualTo(String value) {
             addCriterion("sms_id >=", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdLessThan(Long value) {
+        public Criteria andSmsIdLessThan(String value) {
             addCriterion("sms_id <", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdLessThanOrEqualTo(Long value) {
+        public Criteria andSmsIdLessThanOrEqualTo(String value) {
             addCriterion("sms_id <=", value, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdIn(List<Long> values) {
+        public Criteria andSmsIdLike(String value) {
+            addCriterion("sms_id like", value, "smsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsIdNotLike(String value) {
+            addCriterion("sms_id not like", value, "smsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSmsIdIn(List<String> values) {
             addCriterion("sms_id in", values, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdNotIn(List<Long> values) {
+        public Criteria andSmsIdNotIn(List<String> values) {
             addCriterion("sms_id not in", values, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdBetween(Long value1, Long value2) {
+        public Criteria andSmsIdBetween(String value1, String value2) {
             addCriterion("sms_id between", value1, value2, "smsId");
             return (Criteria) this;
         }
 
-        public Criteria andSmsIdNotBetween(Long value1, Long value2) {
+        public Criteria andSmsIdNotBetween(String value1, String value2) {
             addCriterion("sms_id not between", value1, value2, "smsId");
             return (Criteria) this;
         }

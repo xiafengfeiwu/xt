@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.KnowledgeTypeMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.KnowledgeType">
-    <id column="knowledge_type_id" jdbcType="BIGINT" property="knowledgeTypeId" />
+    <id column="knowledge_type_id" jdbcType="VARCHAR" property="knowledgeTypeId" />
     <result column="knowledge_type_name" jdbcType="VARCHAR" property="knowledgeTypeName" />
     <result column="system_item" jdbcType="BIT" property="systemItem" />
   </resultMap>
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_knowledge_type
-    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_knowledge_type
-    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.KnowledgeTypeExample">
     delete from w_knowledge_type
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.KnowledgeType">
     insert into w_knowledge_type (knowledge_type_id, knowledge_type_name, 
       system_item)
-    values (#{knowledgeTypeId,jdbcType=BIGINT}, #{knowledgeTypeName,jdbcType=VARCHAR}, 
+    values (#{knowledgeTypeId,jdbcType=VARCHAR}, #{knowledgeTypeName,jdbcType=VARCHAR}, 
       #{systemItem,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.KnowledgeType">
@@ -119,7 +119,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="knowledgeTypeId != null">
-        #{knowledgeTypeId,jdbcType=BIGINT},
+        #{knowledgeTypeId,jdbcType=VARCHAR},
       </if>
       <if test="knowledgeTypeName != null">
         #{knowledgeTypeName,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
     update w_knowledge_type
     <set>
       <if test="record.knowledgeTypeId != null">
-        knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+        knowledge_type_id = #{record.knowledgeTypeId,jdbcType=VARCHAR},
       </if>
       <if test="record.knowledgeTypeName != null">
         knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
@@ -154,7 +154,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_knowledge_type
-    set knowledge_type_id = #{record.knowledgeTypeId,jdbcType=BIGINT},
+    set knowledge_type_id = #{record.knowledgeTypeId,jdbcType=VARCHAR},
       knowledge_type_name = #{record.knowledgeTypeName,jdbcType=VARCHAR},
       system_item = #{record.systemItem,jdbcType=BIT}
     <if test="_parameter != null">
@@ -171,12 +171,12 @@
         system_item = #{systemItem,jdbcType=BIT},
       </if>
     </set>
-    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.KnowledgeType">
     update w_knowledge_type
     set knowledge_type_name = #{knowledgeTypeName,jdbcType=VARCHAR},
       system_item = #{systemItem,jdbcType=BIT}
-    where knowledge_type_id = #{knowledgeTypeId,jdbcType=BIGINT}
+    where knowledge_type_id = #{knowledgeTypeId,jdbcType=VARCHAR}
   </update>
 </mapper>

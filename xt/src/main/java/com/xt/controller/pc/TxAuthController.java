@@ -208,18 +208,18 @@ public class TxAuthController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("user-auth-data")
-	public Map<String, Object> userAuthData(Long userId) {
+	public Map<String, Object> userAuthData(String userId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		User u = userService.findById(userId);
-		if (u.getRoleId().equals(6510323052052560L)) {
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(u.getRoleId())) {
 			return data;
 		}
 		List<MAreaPump> mAps = new ArrayList<>();
 		List<UserAuth> userAuths = userAuthService.findUserAll(userId);
 		if (userAuths != null && !userAuths.isEmpty()) {
-			List<Long> pumpIds = new ArrayList<>();
-			List<Long> projectAreaIds = new ArrayList<>();
+			List<String> pumpIds = new ArrayList<>();
+			List<String> projectAreaIds = new ArrayList<>();
 			for (UserAuth ua : userAuths) {
 				if (ua.getPumpId() != null) {
 					pumpIds.add(ua.getPumpId());
@@ -326,7 +326,7 @@ public class TxAuthController {
 	// @ResponseBody
 	// @RequestMapping("delete-users")
 	// public Map<String, Object> deleteUsers(@RequestBody(required = true)
-	// Long[] userIds) {
+	// String[] userIds) {
 	// Map<String, Object> data = new HashMap<>();
 	// data.put("success", false);
 	// if (userIds == null || userIds.length < 1) {
@@ -335,7 +335,7 @@ public class TxAuthController {
 	// }
 	// int successCount = 0;
 	// int failCount = 0;
-	// for (Long userId : userIds) {
+	// for (String userId : userIds) {
 	// try {
 	// userService.delete(userId);
 	// successCount++;

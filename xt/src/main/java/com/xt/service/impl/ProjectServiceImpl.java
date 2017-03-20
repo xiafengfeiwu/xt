@@ -30,12 +30,12 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project getProjectById(Long projectId) {
+	public Project getProjectById(String projectId) {
 		return projectMapper.selectByPrimaryKey(projectId);
 	}
 
 	@Override
-	public List<Project> getProjectByAreaCode(Long areaId) {
+	public List<Project> getProjectByAreaCode(String areaId) {
 		ProjectExample example = new ProjectExample();
 		example.createCriteria().andProjectAreaIdEqualTo(areaId);
 		example.setOrderByClause("owner_id asc, create_time asc");
@@ -62,17 +62,17 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void delete(Long projectId) {
+	public void delete(String projectId) {
 		projectMapper.deleteByPrimaryKey(projectId);
 	}
 
 	@Override
-	public List<MAreaPump> selectUserAuthProjectArea(Long userId) {
+	public List<MAreaPump> selectUserAuthProjectArea(String userId) {
 		return mProjectMapper.selectUserAuthProjectArea(userId);
 	}
 
 	@Override
-	public List<MAreaPump> selectProjectPumpsByIds(List<Long> projectAreaIds) {
+	public List<MAreaPump> selectProjectPumpsByIds(List<String> projectAreaIds) {
 		return mProjectMapper.selectProjectPumpsByIds(projectAreaIds);
 	}
 }

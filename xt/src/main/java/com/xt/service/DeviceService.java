@@ -8,7 +8,7 @@ import com.xt.entity.generation.DeviceVender;
 public interface DeviceService {
 
 	// 通过ID获取设备信息
-	Device findById(Long deviceId);
+	Device findById(String deviceId);
 
 	// 通过SN获取设备信息
 	Device findBySn(String sn);
@@ -29,10 +29,10 @@ public interface DeviceService {
 	List<Device> getTop5BySearchWord(String searchWord);
 
 	// 删除设备
-	void delete(Long deviceId);
+	void delete(String deviceId);
 
 	// 通过供应商ID获取供应商
-	DeviceVender findVenderById(Long venderId);
+	DeviceVender findVenderById(String venderId);
 
 	// 通过供应商CODE获取供应商
 	DeviceVender findVenderByCode(String venderCode);
@@ -44,7 +44,7 @@ public interface DeviceService {
 	List<DeviceVender> findAllVenders();
 
 	// 删除设备供应商
-	void deleteVender(Long venderId);
+	void deleteVender(String venderId);
 
 	// 更新设备供应商
 	void updateVender(DeviceVender vender);

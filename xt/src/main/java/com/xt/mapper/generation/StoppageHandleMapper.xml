@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.StoppageHandleMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.StoppageHandle">
-    <id column="stoppage_handle_id" jdbcType="BIGINT" property="stoppageHandleId" />
-    <result column="stoppage_id" jdbcType="BIGINT" property="stoppageId" />
-    <result column="handle_user_id" jdbcType="BIGINT" property="handleUserId" />
+    <id column="stoppage_handle_id" jdbcType="VARCHAR" property="stoppageHandleId" />
+    <result column="stoppage_id" jdbcType="VARCHAR" property="stoppageId" />
+    <result column="handle_user_id" jdbcType="VARCHAR" property="handleUserId" />
     <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime" />
-    <result column="handle_duration" jdbcType="BIGINT" property="handleDuration" />
+    <result column="handle_duration" jdbcType="VARCHAR" property="handleDuration" />
     <result column="handle_status" jdbcType="VARCHAR" property="handleStatus" />
     <result column="handle_descript" jdbcType="VARCHAR" property="handleDescript" />
   </resultMap>
@@ -87,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_stoppage_handle
-    where stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT}
+    where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_stoppage_handle
-    where stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT}
+    where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.StoppageHandleExample">
     delete from w_stoppage_handle
@@ -107,8 +107,8 @@
     insert into w_stoppage_handle (stoppage_handle_id, stoppage_id, handle_user_id, 
       handle_time, handle_duration, handle_status, 
       handle_descript)
-    values (#{stoppageHandleId,jdbcType=BIGINT}, #{stoppageId,jdbcType=BIGINT}, #{handleUserId,jdbcType=BIGINT}, 
-      #{handleTime,jdbcType=TIMESTAMP}, #{handleDuration,jdbcType=BIGINT}, #{handleStatus,jdbcType=VARCHAR}, 
+    values (#{stoppageHandleId,jdbcType=VARCHAR}, #{stoppageId,jdbcType=VARCHAR}, #{handleUserId,jdbcType=VARCHAR}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{handleDuration,jdbcType=VARCHAR}, #{handleStatus,jdbcType=VARCHAR}, 
       #{handleDescript,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.StoppageHandle">
@@ -138,19 +138,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stoppageHandleId != null">
-        #{stoppageHandleId,jdbcType=BIGINT},
+        #{stoppageHandleId,jdbcType=VARCHAR},
       </if>
       <if test="stoppageId != null">
-        #{stoppageId,jdbcType=BIGINT},
+        #{stoppageId,jdbcType=VARCHAR},
       </if>
       <if test="handleUserId != null">
-        #{handleUserId,jdbcType=BIGINT},
+        #{handleUserId,jdbcType=VARCHAR},
       </if>
       <if test="handleTime != null">
         #{handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleDuration != null">
-        #{handleDuration,jdbcType=BIGINT},
+        #{handleDuration,jdbcType=VARCHAR},
       </if>
       <if test="handleStatus != null">
         #{handleStatus,jdbcType=VARCHAR},
@@ -170,19 +170,19 @@
     update w_stoppage_handle
     <set>
       <if test="record.stoppageHandleId != null">
-        stoppage_handle_id = #{record.stoppageHandleId,jdbcType=BIGINT},
+        stoppage_handle_id = #{record.stoppageHandleId,jdbcType=VARCHAR},
       </if>
       <if test="record.stoppageId != null">
-        stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+        stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       </if>
       <if test="record.handleUserId != null">
-        handle_user_id = #{record.handleUserId,jdbcType=BIGINT},
+        handle_user_id = #{record.handleUserId,jdbcType=VARCHAR},
       </if>
       <if test="record.handleTime != null">
         handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.handleDuration != null">
-        handle_duration = #{record.handleDuration,jdbcType=BIGINT},
+        handle_duration = #{record.handleDuration,jdbcType=VARCHAR},
       </if>
       <if test="record.handleStatus != null">
         handle_status = #{record.handleStatus,jdbcType=VARCHAR},
@@ -197,11 +197,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_stoppage_handle
-    set stoppage_handle_id = #{record.stoppageHandleId,jdbcType=BIGINT},
-      stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
-      handle_user_id = #{record.handleUserId,jdbcType=BIGINT},
+    set stoppage_handle_id = #{record.stoppageHandleId,jdbcType=VARCHAR},
+      stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
+      handle_user_id = #{record.handleUserId,jdbcType=VARCHAR},
       handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
-      handle_duration = #{record.handleDuration,jdbcType=BIGINT},
+      handle_duration = #{record.handleDuration,jdbcType=VARCHAR},
       handle_status = #{record.handleStatus,jdbcType=VARCHAR},
       handle_descript = #{record.handleDescript,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -212,16 +212,16 @@
     update w_stoppage_handle
     <set>
       <if test="stoppageId != null">
-        stoppage_id = #{stoppageId,jdbcType=BIGINT},
+        stoppage_id = #{stoppageId,jdbcType=VARCHAR},
       </if>
       <if test="handleUserId != null">
-        handle_user_id = #{handleUserId,jdbcType=BIGINT},
+        handle_user_id = #{handleUserId,jdbcType=VARCHAR},
       </if>
       <if test="handleTime != null">
         handle_time = #{handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleDuration != null">
-        handle_duration = #{handleDuration,jdbcType=BIGINT},
+        handle_duration = #{handleDuration,jdbcType=VARCHAR},
       </if>
       <if test="handleStatus != null">
         handle_status = #{handleStatus,jdbcType=VARCHAR},
@@ -230,16 +230,16 @@
         handle_descript = #{handleDescript,jdbcType=VARCHAR},
       </if>
     </set>
-    where stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT}
+    where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.StoppageHandle">
     update w_stoppage_handle
-    set stoppage_id = #{stoppageId,jdbcType=BIGINT},
-      handle_user_id = #{handleUserId,jdbcType=BIGINT},
+    set stoppage_id = #{stoppageId,jdbcType=VARCHAR},
+      handle_user_id = #{handleUserId,jdbcType=VARCHAR},
       handle_time = #{handleTime,jdbcType=TIMESTAMP},
-      handle_duration = #{handleDuration,jdbcType=BIGINT},
+      handle_duration = #{handleDuration,jdbcType=VARCHAR},
       handle_status = #{handleStatus,jdbcType=VARCHAR},
       handle_descript = #{handleDescript,jdbcType=VARCHAR}
-    where stoppage_handle_id = #{stoppageHandleId,jdbcType=BIGINT}
+    where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </update>
 </mapper>

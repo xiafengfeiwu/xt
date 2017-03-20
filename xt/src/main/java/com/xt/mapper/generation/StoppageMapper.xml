@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.StoppageMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Stoppage">
-    <id column="stoppage_id" jdbcType="BIGINT" property="stoppageId" />
+    <id column="stoppage_id" jdbcType="VARCHAR" property="stoppageId" />
     <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
-    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
-    <result column="warn_id" jdbcType="BIGINT" property="warnId" />
+    <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
+    <result column="warn_id" jdbcType="VARCHAR" property="warnId" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
-    <result column="attach_id" jdbcType="BIGINT" property="attachId" />
-    <result column="originator_id" jdbcType="BIGINT" property="originatorId" />
+    <result column="attach_id" jdbcType="VARCHAR" property="attachId" />
+    <result column="originator_id" jdbcType="VARCHAR" property="originatorId" />
     <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
     <result column="handle_status" jdbcType="CHAR" property="handleStatus" />
     <result column="handle_modify_time" jdbcType="TIMESTAMP" property="handleModifyTime" />
@@ -90,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_stoppage
-    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+    where stoppage_id = #{stoppageId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_stoppage
-    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+    where stoppage_id = #{stoppageId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.StoppageExample">
     delete from w_stoppage
@@ -111,9 +111,9 @@
       warn_id, descript, attach_id, 
       originator_id, occur_time, handle_status, 
       handle_modify_time)
-    values (#{stoppageId,jdbcType=BIGINT}, #{stoppageNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=BIGINT}, 
-      #{warnId,jdbcType=BIGINT}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=BIGINT}, 
-      #{originatorId,jdbcType=BIGINT}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
+    values (#{stoppageId,jdbcType=VARCHAR}, #{stoppageNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, 
+      #{warnId,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=VARCHAR}, 
+      #{originatorId,jdbcType=VARCHAR}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
       #{handleModifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Stoppage">
@@ -152,25 +152,25 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stoppageId != null">
-        #{stoppageId,jdbcType=BIGINT},
+        #{stoppageId,jdbcType=VARCHAR},
       </if>
       <if test="stoppageNo != null">
         #{stoppageNo,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="warnId != null">
-        #{warnId,jdbcType=BIGINT},
+        #{warnId,jdbcType=VARCHAR},
       </if>
       <if test="descript != null">
         #{descript,jdbcType=VARCHAR},
       </if>
       <if test="attachId != null">
-        #{attachId,jdbcType=BIGINT},
+        #{attachId,jdbcType=VARCHAR},
       </if>
       <if test="originatorId != null">
-        #{originatorId,jdbcType=BIGINT},
+        #{originatorId,jdbcType=VARCHAR},
       </if>
       <if test="occurTime != null">
         #{occurTime,jdbcType=TIMESTAMP},
@@ -193,25 +193,25 @@
     update w_stoppage
     <set>
       <if test="record.stoppageId != null">
-        stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+        stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       </if>
       <if test="record.stoppageNo != null">
         stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.warnId != null">
-        warn_id = #{record.warnId,jdbcType=BIGINT},
+        warn_id = #{record.warnId,jdbcType=VARCHAR},
       </if>
       <if test="record.descript != null">
         descript = #{record.descript,jdbcType=VARCHAR},
       </if>
       <if test="record.attachId != null">
-        attach_id = #{record.attachId,jdbcType=BIGINT},
+        attach_id = #{record.attachId,jdbcType=VARCHAR},
       </if>
       <if test="record.originatorId != null">
-        originator_id = #{record.originatorId,jdbcType=BIGINT},
+        originator_id = #{record.originatorId,jdbcType=VARCHAR},
       </if>
       <if test="record.occurTime != null">
         occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
@@ -229,13 +229,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_stoppage
-    set stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+    set stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
-      pump_id = #{record.pumpId,jdbcType=BIGINT},
-      warn_id = #{record.warnId,jdbcType=BIGINT},
+      pump_id = #{record.pumpId,jdbcType=VARCHAR},
+      warn_id = #{record.warnId,jdbcType=VARCHAR},
       descript = #{record.descript,jdbcType=VARCHAR},
-      attach_id = #{record.attachId,jdbcType=BIGINT},
-      originator_id = #{record.originatorId,jdbcType=BIGINT},
+      attach_id = #{record.attachId,jdbcType=VARCHAR},
+      originator_id = #{record.originatorId,jdbcType=VARCHAR},
       occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
       handle_status = #{record.handleStatus,jdbcType=CHAR},
       handle_modify_time = #{record.handleModifyTime,jdbcType=TIMESTAMP}
@@ -250,19 +250,19 @@
         stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        pump_id = #{pumpId,jdbcType=BIGINT},
+        pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="warnId != null">
-        warn_id = #{warnId,jdbcType=BIGINT},
+        warn_id = #{warnId,jdbcType=VARCHAR},
       </if>
       <if test="descript != null">
         descript = #{descript,jdbcType=VARCHAR},
       </if>
       <if test="attachId != null">
-        attach_id = #{attachId,jdbcType=BIGINT},
+        attach_id = #{attachId,jdbcType=VARCHAR},
       </if>
       <if test="originatorId != null">
-        originator_id = #{originatorId,jdbcType=BIGINT},
+        originator_id = #{originatorId,jdbcType=VARCHAR},
       </if>
       <if test="occurTime != null">
         occur_time = #{occurTime,jdbcType=TIMESTAMP},
@@ -274,19 +274,19 @@
         handle_modify_time = #{handleModifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+    where stoppage_id = #{stoppageId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Stoppage">
     update w_stoppage
     set stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
-      pump_id = #{pumpId,jdbcType=BIGINT},
-      warn_id = #{warnId,jdbcType=BIGINT},
+      pump_id = #{pumpId,jdbcType=VARCHAR},
+      warn_id = #{warnId,jdbcType=VARCHAR},
       descript = #{descript,jdbcType=VARCHAR},
-      attach_id = #{attachId,jdbcType=BIGINT},
-      originator_id = #{originatorId,jdbcType=BIGINT},
+      attach_id = #{attachId,jdbcType=VARCHAR},
+      originator_id = #{originatorId,jdbcType=VARCHAR},
       occur_time = #{occurTime,jdbcType=TIMESTAMP},
       handle_status = #{handleStatus,jdbcType=CHAR},
       handle_modify_time = #{handleModifyTime,jdbcType=TIMESTAMP}
-    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+    where stoppage_id = #{stoppageId,jdbcType=VARCHAR}
   </update>
 </mapper>

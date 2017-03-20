@@ -14,7 +14,7 @@ public interface ProjectAreaService {
 	List<ProjectArea> getParentProjectArea();
 
 	// 通过区域ID获取区域信息
-	ProjectArea getByAreaId(Long projectAreaId);
+	ProjectArea getByAreaId(String projectAreaId);
 
 	// 通过区域编码获取区域信息
 	ProjectArea getByAreaCode(String areaCode);
@@ -23,7 +23,7 @@ public interface ProjectAreaService {
 	List<ProjectArea> getByParentAreaCode(String parentAreaCode);
 
 	// 通过父级区域ID获取区域信息
-	List<ProjectArea> getByParentAreaId(Long parentAreaId);
+	List<ProjectArea> getByParentAreaId(String parentAreaId);
 
 	// 通过父级编码获取子级
 	List<Area> getChildArea(String parentCode);
@@ -35,5 +35,5 @@ public interface ProjectAreaService {
 	void update(ProjectArea projectArea);
 
 	// 删除项目区域
-	void delete(Long projectAreaId);
+	void delete(String projectAreaId);
 }

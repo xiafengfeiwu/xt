@@ -3,9 +3,9 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Res {
-    private Long resId;
+    private String resId;
 
-    private Long groupId;
+    private String groupId;
 
     private String resName;
 
@@ -13,23 +13,23 @@ public class Res {
 
     private String resPath;
 
-    private Long resSize;
+    private String resSize;
 
     private Date resCreateTime;
 
-    public Long getResId() {
+    public String getResId() {
         return resId;
     }
 
-    public void setResId(Long resId) {
+    public void setResId(String resId) {
         this.resId = resId;
     }
 
-    public Long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Long groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
@@ -57,11 +57,11 @@ public class Res {
         this.resPath = resPath;
     }
 
-    public Long getResSize() {
+    public String getResSize() {
         return resSize;
     }
 
-    public void setResSize(Long resSize) {
+    public void setResSize(String resSize) {
         this.resSize = resSize;
     }
 

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.UserAuthMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.UserAuth">
-    <id column="root_id" jdbcType="BIGINT" property="rootId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <id column="root_id" jdbcType="VARCHAR" property="rootId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="auth_code" jdbcType="VARCHAR" property="authCode" />
-    <result column="project_area_id" jdbcType="BIGINT" property="projectAreaId" />
-    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <result column="project_area_id" jdbcType="VARCHAR" property="projectAreaId" />
+    <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_user_auth
-    where root_id = #{rootId,jdbcType=BIGINT}
+    where root_id = #{rootId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_user_auth
-    where root_id = #{rootId,jdbcType=BIGINT}
+    where root_id = #{rootId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.UserAuthExample">
     delete from w_user_auth
@@ -103,8 +103,8 @@
   <insert id="insert" parameterType="com.xt.entity.generation.UserAuth">
     insert into w_user_auth (root_id, user_id, auth_code, 
       project_area_id, pump_id)
-    values (#{rootId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{authCode,jdbcType=VARCHAR}, 
-      #{projectAreaId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT})
+    values (#{rootId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{authCode,jdbcType=VARCHAR}, 
+      #{projectAreaId,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.UserAuth">
     insert into w_user_auth
@@ -127,19 +127,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="rootId != null">
-        #{rootId,jdbcType=BIGINT},
+        #{rootId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="authCode != null">
         #{authCode,jdbcType=VARCHAR},
       </if>
       <if test="projectAreaId != null">
-        #{projectAreaId,jdbcType=BIGINT},
+        #{projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -153,19 +153,19 @@
     update w_user_auth
     <set>
       <if test="record.rootId != null">
-        root_id = #{record.rootId,jdbcType=BIGINT},
+        root_id = #{record.rootId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.authCode != null">
         auth_code = #{record.authCode,jdbcType=VARCHAR},
       </if>
       <if test="record.projectAreaId != null">
-        project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
+        project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -174,11 +174,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_user_auth
-    set root_id = #{record.rootId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
+    set root_id = #{record.rootId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
       auth_code = #{record.authCode,jdbcType=VARCHAR},
-      project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
-      pump_id = #{record.pumpId,jdbcType=BIGINT}
+      project_area_id = #{record.projectAreaId,jdbcType=VARCHAR},
+      pump_id = #{record.pumpId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -187,26 +187,26 @@
     update w_user_auth
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="authCode != null">
         auth_code = #{authCode,jdbcType=VARCHAR},
       </if>
       <if test="projectAreaId != null">
-        project_area_id = #{projectAreaId,jdbcType=BIGINT},
+        project_area_id = #{projectAreaId,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        pump_id = #{pumpId,jdbcType=BIGINT},
+        pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
     </set>
-    where root_id = #{rootId,jdbcType=BIGINT}
+    where root_id = #{rootId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.UserAuth">
     update w_user_auth
-    set user_id = #{userId,jdbcType=BIGINT},
+    set user_id = #{userId,jdbcType=VARCHAR},
       auth_code = #{authCode,jdbcType=VARCHAR},
-      project_area_id = #{projectAreaId,jdbcType=BIGINT},
-      pump_id = #{pumpId,jdbcType=BIGINT}
-    where root_id = #{rootId,jdbcType=BIGINT}
+      project_area_id = #{projectAreaId,jdbcType=VARCHAR},
+      pump_id = #{pumpId,jdbcType=VARCHAR}
+    where root_id = #{rootId,jdbcType=VARCHAR}
   </update>
 </mapper>

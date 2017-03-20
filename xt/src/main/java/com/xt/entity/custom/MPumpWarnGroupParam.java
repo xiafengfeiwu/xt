@@ -1,22 +1,22 @@
 package com.xt.entity.custom;
 
 public class MPumpWarnGroupParam {
-	private Long pumpId;
-	private Long groupId;
+	private String pumpId;
+	private String groupId;
 
-	public Long getPumpId() {
+	public String getPumpId() {
 		return pumpId;
 	}
 
-	public void setPumpId(Long pumpId) {
+	public void setPumpId(String pumpId) {
 		this.pumpId = pumpId;
 	}
 
-	public Long getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(Long groupId) {
+	public void setGroupId(String groupId) {
 		this.groupId = groupId;
 	}
 

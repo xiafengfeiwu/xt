@@ -114,52 +114,62 @@ public class JurisdictionExample {
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdEqualTo(Long value) {
+        public Criteria andJurisdictionIdEqualTo(String value) {
             addCriterion("jurisdiction_id =", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdNotEqualTo(Long value) {
+        public Criteria andJurisdictionIdNotEqualTo(String value) {
             addCriterion("jurisdiction_id <>", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdGreaterThan(Long value) {
+        public Criteria andJurisdictionIdGreaterThan(String value) {
             addCriterion("jurisdiction_id >", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andJurisdictionIdGreaterThanOrEqualTo(String value) {
             addCriterion("jurisdiction_id >=", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdLessThan(Long value) {
+        public Criteria andJurisdictionIdLessThan(String value) {
             addCriterion("jurisdiction_id <", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdLessThanOrEqualTo(Long value) {
+        public Criteria andJurisdictionIdLessThanOrEqualTo(String value) {
             addCriterion("jurisdiction_id <=", value, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdIn(List<Long> values) {
+        public Criteria andJurisdictionIdLike(String value) {
+            addCriterion("jurisdiction_id like", value, "jurisdictionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andJurisdictionIdNotLike(String value) {
+            addCriterion("jurisdiction_id not like", value, "jurisdictionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andJurisdictionIdIn(List<String> values) {
             addCriterion("jurisdiction_id in", values, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdNotIn(List<Long> values) {
+        public Criteria andJurisdictionIdNotIn(List<String> values) {
             addCriterion("jurisdiction_id not in", values, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdBetween(Long value1, Long value2) {
+        public Criteria andJurisdictionIdBetween(String value1, String value2) {
             addCriterion("jurisdiction_id between", value1, value2, "jurisdictionId");
             return (Criteria) this;
         }
 
-        public Criteria andJurisdictionIdNotBetween(Long value1, Long value2) {
+        public Criteria andJurisdictionIdNotBetween(String value1, String value2) {
             addCriterion("jurisdiction_id not between", value1, value2, "jurisdictionId");
             return (Criteria) this;
         }

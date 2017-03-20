@@ -10,7 +10,7 @@ public interface ResMapper {
 
     int deleteByExample(ResExample example);
 
-    int deleteByPrimaryKey(Long resId);
+    int deleteByPrimaryKey(String resId);
 
     int insert(Res record);
 
@@ -18,7 +18,7 @@ public interface ResMapper {
 
     List<Res> selectByExample(ResExample example);
 
-    Res selectByPrimaryKey(Long resId);
+    Res selectByPrimaryKey(String resId);
 
     int updateByExampleSelective(@Param("record") Res record, @Param("example") ResExample example);
 

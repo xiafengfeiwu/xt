@@ -3,13 +3,13 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class Visit {
-    private Long visitId;
+    private String visitId;
 
-    private Long visitorId;
+    private String visitorId;
 
-    private Long userId;
+    private String userId;
 
-    private Long groupId;
+    private String groupId;
 
     private String visitContent;
 
@@ -17,35 +17,35 @@ public class Visit {
 
     private Date createTime;
 
-    public Long getVisitId() {
+    public String getVisitId() {
         return visitId;
     }
 
-    public void setVisitId(Long visitId) {
+    public void setVisitId(String visitId) {
         this.visitId = visitId;
     }
 
-    public Long getVisitorId() {
+    public String getVisitorId() {
         return visitorId;
     }
 
-    public void setVisitorId(Long visitorId) {
+    public void setVisitorId(String visitorId) {
         this.visitorId = visitorId;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public Long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Long groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 

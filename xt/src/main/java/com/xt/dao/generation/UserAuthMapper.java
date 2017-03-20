@@ -10,7 +10,7 @@ public interface UserAuthMapper {
 
     int deleteByExample(UserAuthExample example);
 
-    int deleteByPrimaryKey(Long rootId);
+    int deleteByPrimaryKey(String rootId);
 
     int insert(UserAuth record);
 
@@ -18,7 +18,7 @@ public interface UserAuthMapper {
 
     List<UserAuth> selectByExample(UserAuthExample example);
 
-    UserAuth selectByPrimaryKey(Long rootId);
+    UserAuth selectByPrimaryKey(String rootId);
 
     int updateByExampleSelective(@Param("record") UserAuth record, @Param("example") UserAuthExample example);
 

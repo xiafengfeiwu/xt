@@ -75,7 +75,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("pump-info")
-	public Map<String, Object> pumpInfo(Long pumpId) {
+	public Map<String, Object> pumpInfo(String pumpId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		Pump pump = pumpService.getById(pumpId);
@@ -141,7 +141,7 @@ public class TxMonitorController {
 			return data;
 		}
 		List<WarnGroup> warnGroups = null;
-		if (role.getRoleId().equals(6510323052052560L)) {
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(role.getRoleId())) {
 			// 是系统管理员
 			warnGroups = warnGroupService.getAll();
 		} else {
@@ -155,7 +155,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("pump-warn-group-data")
-	public Map<String, Object> pumpWarnGroupData(Long pumpId) {
+	public Map<String, Object> pumpWarnGroupData(String pumpId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (pumpId == null) {
@@ -284,7 +284,7 @@ public class TxMonitorController {
 			data.put("message", "无效的角色");
 			return data;
 		}
-		if (role.getRoleId().equals(6510323052052560L)) {
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(role.getRoleId())) {
 			warnGroup.setSystemGroup(Boolean.TRUE);
 			warnGroup.setOwnerId(null);
 		} else {
@@ -345,7 +345,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-warn-group")
-	public Map<String, Object> deleteWarnGroup(Long warnGroupId) {
+	public Map<String, Object> deleteWarnGroup(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (warnGroupId == null) {
@@ -371,7 +371,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("warn-group-items")
-	public Map<String, Object> warnGroupItems(Long warnGroupId) {
+	public Map<String, Object> warnGroupItems(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (warnGroupId == null) {
@@ -458,7 +458,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("delete-warn-group-item")
-	public Map<String, Object> deleteWarnGroupItem(Long warnGroupItemId) {
+	public Map<String, Object> deleteWarnGroupItem(String warnGroupItemId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (warnGroupItemId == null) {
@@ -559,7 +559,7 @@ public class TxMonitorController {
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("pump-warn-group-detail")
-	public Map<String, Object> pumpWarnGroupDetail(Long warnGroupId) {
+	public Map<String, Object> pumpWarnGroupDetail(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
 		if (warnGroupId == null) {

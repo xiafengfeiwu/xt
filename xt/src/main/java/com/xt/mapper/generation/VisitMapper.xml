@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.VisitMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Visit">
-    <id column="visit_id" jdbcType="BIGINT" property="visitId" />
-    <result column="visitor_id" jdbcType="BIGINT" property="visitorId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <id column="visit_id" jdbcType="VARCHAR" property="visitId" />
+    <result column="visitor_id" jdbcType="VARCHAR" property="visitorId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
     <result column="visit_content" jdbcType="VARCHAR" property="visitContent" />
     <result column="visit_time" jdbcType="DATE" property="visitTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_visit
-    where visit_id = #{visitId,jdbcType=BIGINT}
+    where visit_id = #{visitId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_visit
-    where visit_id = #{visitId,jdbcType=BIGINT}
+    where visit_id = #{visitId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.VisitExample">
     delete from w_visit
@@ -106,8 +106,8 @@
     insert into w_visit (visit_id, visitor_id, user_id, 
       group_id, visit_content, visit_time, 
       create_time)
-    values (#{visitId,jdbcType=BIGINT}, #{visitorId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{groupId,jdbcType=BIGINT}, #{visitContent,jdbcType=VARCHAR}, #{visitTime,jdbcType=DATE}, 
+    values (#{visitId,jdbcType=VARCHAR}, #{visitorId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=VARCHAR}, #{visitContent,jdbcType=VARCHAR}, #{visitTime,jdbcType=DATE}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Visit">
@@ -137,16 +137,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="visitId != null">
-        #{visitId,jdbcType=BIGINT},
+        #{visitId,jdbcType=VARCHAR},
       </if>
       <if test="visitorId != null">
-        #{visitorId,jdbcType=BIGINT},
+        #{visitorId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
-        #{groupId,jdbcType=BIGINT},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="visitContent != null">
         #{visitContent,jdbcType=VARCHAR},
@@ -169,16 +169,16 @@
     update w_visit
     <set>
       <if test="record.visitId != null">
-        visit_id = #{record.visitId,jdbcType=BIGINT},
+        visit_id = #{record.visitId,jdbcType=VARCHAR},
       </if>
       <if test="record.visitorId != null">
-        visitor_id = #{record.visitorId,jdbcType=BIGINT},
+        visitor_id = #{record.visitorId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.groupId != null">
-        group_id = #{record.groupId,jdbcType=BIGINT},
+        group_id = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.visitContent != null">
         visit_content = #{record.visitContent,jdbcType=VARCHAR},
@@ -196,10 +196,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_visit
-    set visit_id = #{record.visitId,jdbcType=BIGINT},
-      visitor_id = #{record.visitorId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      group_id = #{record.groupId,jdbcType=BIGINT},
+    set visit_id = #{record.visitId,jdbcType=VARCHAR},
+      visitor_id = #{record.visitorId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      group_id = #{record.groupId,jdbcType=VARCHAR},
       visit_content = #{record.visitContent,jdbcType=VARCHAR},
       visit_time = #{record.visitTime,jdbcType=DATE},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -211,13 +211,13 @@
     update w_visit
     <set>
       <if test="visitorId != null">
-        visitor_id = #{visitorId,jdbcType=BIGINT},
+        visitor_id = #{visitorId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
-        group_id = #{groupId,jdbcType=BIGINT},
+        group_id = #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="visitContent != null">
         visit_content = #{visitContent,jdbcType=VARCHAR},
@@ -229,16 +229,16 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where visit_id = #{visitId,jdbcType=BIGINT}
+    where visit_id = #{visitId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Visit">
     update w_visit
-    set visitor_id = #{visitorId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      group_id = #{groupId,jdbcType=BIGINT},
+    set visitor_id = #{visitorId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
       visit_content = #{visitContent,jdbcType=VARCHAR},
       visit_time = #{visitTime,jdbcType=DATE},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where visit_id = #{visitId,jdbcType=BIGINT}
+    where visit_id = #{visitId,jdbcType=VARCHAR}
   </update>
 </mapper>

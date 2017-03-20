@@ -7,77 +7,57 @@ package com.xt.util;
  */
 public class _Sequence {
 
-	private final long twepoch = 1288834974657L;
-	private final long workerIdBits = 0L;
-	private final long datacenterIdBits = 5L;
-	private final long maxWorkerId = -1L ^ (-1L << workerIdBits);
-	private final long maxDatacenterId = -1L ^ (-1L << datacenterIdBits);
-	private final long sequenceBits = 10L;
-	private final long workerIdShift = sequenceBits;
-	private final long datacenterIdShift = sequenceBits + workerIdBits;
-	private final long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
-	private final long sequenceMask = -1L ^ (-1L << sequenceBits);
-
-	private long workerId;
-	private long datacenterId;
+	private final long workerId;
+	private final static long twepoch = 1288834974657L;
 	private long sequence = 0L;
+	private final static long workerIdBits = 4L;
+	public final static long maxWorkerId = -1L ^ -1L << workerIdBits;
+	private final static long sequenceBits = 10L;
+	private final static long workerIdShift = sequenceBits;
+	private final static long timestampLeftShift = sequenceBits + workerIdBits;
+	public final static long sequenceMask = -1L ^ -1L << sequenceBits;
 	private long lastTimestamp = -1L;
 
-	/**
-	 * @param workerId
-	 *            工作机器ID
-	 * @param datacenterId
-	 *            序列号
-	 */
-	public _Sequence(long workerId, long datacenterId) {
-		if (workerId > maxWorkerId || workerId < 0) {
-			throw new IllegalArgumentException(
-					String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
-		}
-		if (datacenterId > maxDatacenterId || datacenterId < 0) {
-			throw new IllegalArgumentException(
-					String.format("datacenter Id can't be greater than %d or less than 0", maxDatacenterId));
+	public _Sequence(final long workerId) {
+		super();
+		if (workerId > _Sequence.maxWorkerId || workerId < 0) {
+			throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", _Sequence.maxWorkerId));
 		}
 		this.workerId = workerId;
-		this.datacenterId = datacenterId;
 	}
 
-	/**
-	 * 获取下一个ID
-	 * 
-	 * @return
-	 */
 	public synchronized long nextId() {
-		long timestamp = timeGen();
-		if (timestamp < lastTimestamp) {
-			throw new RuntimeException(String.format(
-					"Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
-		}
-		if (lastTimestamp == timestamp) {
-			sequence = (sequence + 1) & sequenceMask;
-			if (sequence == 0) {
-				timestamp = tilNextMillis(lastTimestamp);
+		long timestamp = this.timeGen();
+		if (this.lastTimestamp == timestamp) {
+			this.sequence = (this.sequence + 1) & _Sequence.sequenceMask;
+			if (this.sequence == 0) {
+				timestamp = this.tilNextMillis(this.lastTimestamp);
 			}
 		} else {
-			sequence = 0L;
+			this.sequence = 0;
+		}
+		if (timestamp < this.lastTimestamp) {
+			try {
+				throw new Exception(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", this.lastTimestamp - timestamp));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
-		lastTimestamp = timestamp;
-
-		return ((timestamp - twepoch) << timestampLeftShift) | (datacenterId << datacenterIdShift)
-				| (workerId << workerIdShift) | sequence;
+		this.lastTimestamp = timestamp;
+		long nextId = ((timestamp - twepoch << timestampLeftShift)) | (this.workerId << _Sequence.workerIdShift) | (this.sequence);
+		return nextId;
 	}
 
-	protected long tilNextMillis(long lastTimestamp) {
-		long timestamp = timeGen();
+	private long tilNextMillis(final long lastTimestamp) {
+		long timestamp = this.timeGen();
 		while (timestamp <= lastTimestamp) {
-			timestamp = timeGen();
+			timestamp = this.timeGen();
 		}
 		return timestamp;
 	}
 
-	protected long timeGen() {
-		return _SystemClock.now();
+	private long timeGen() {
+		return System.currentTimeMillis();
 	}
-
 }

@@ -12,7 +12,7 @@ import com.xt.entity.generation.PumpWarnGroupKey;
 public interface PumpService {
 
 	// 通过ID获取热泵信息
-	Pump getById(Long pumpId);
+	Pump getById(String pumpId);
 
 	// 通过Sn获取热泵信息
 	Pump getBySn(String pumpSn);
@@ -26,29 +26,29 @@ public interface PumpService {
 	void update(Pump pump);
 
 	// 删除热泵
-	void delete(Long pumpId);
+	void delete(String pumpId);
 
 	// 获取所有热泵信息
 	List<Pump> getAll();
 
 	// 获取农户(所有人)所有热泵信息
-	List<Pump> getOwnerAll(Long ownerId);
+	List<Pump> getOwnerAll(String ownerId);
 
 	// 获取项目下所有热泵信息
-	List<Pump> getProjectAll(Long projectId);
+	List<Pump> getProjectAll(String projectId);
 
 	// 获取项目区域下所有热泵信息
-	List<MAreaPump> getProjectAreaAll(Long projectAreaId);
+	List<MAreaPump> getProjectAreaAll(String projectAreaId);
 
-	List<MAreaPump> selectUserAuthPump(Long userId);
+	List<MAreaPump> selectUserAuthPump(String userId);
 
-	List<MAreaPump> selectPumpsByIds(List<Long> pumpIds);
+	List<MAreaPump> selectPumpsByIds(List<String> pumpIds);
 
 	List<MAreaPump> selectPumpsByCodes(List<String> pumpCodes);
 
 	List<MPumpMonitor> selectAllPumpMonitors();
 
-	List<MPumpWarnGroup> selectPumpWarnGroups(Long pumpId);
+	List<MPumpWarnGroup> selectPumpWarnGroups(String pumpId);
 
 	void addPumpWarnGroup(PumpWarnGroup warnGroup);
 

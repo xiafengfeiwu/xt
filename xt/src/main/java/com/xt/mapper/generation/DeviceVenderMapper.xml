@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.DeviceVenderMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.DeviceVender">
-    <id column="vender_id" jdbcType="BIGINT" property="venderId" />
+    <id column="vender_id" jdbcType="VARCHAR" property="venderId" />
     <result column="vender_name" jdbcType="VARCHAR" property="venderName" />
     <result column="vender_contacts" jdbcType="VARCHAR" property="venderContacts" />
     <result column="vender_contacts_tel" jdbcType="VARCHAR" property="venderContactsTel" />
@@ -88,15 +88,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_device_vender
-    where vender_id = #{venderId,jdbcType=BIGINT}
+    where vender_id = #{venderId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_device_vender
-    where vender_id = #{venderId,jdbcType=BIGINT}
+    where vender_id = #{venderId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.DeviceVenderExample">
     delete from w_device_vender
@@ -108,7 +108,7 @@
     insert into w_device_vender (vender_id, vender_name, vender_contacts, 
       vender_contacts_tel, vender_address, vender_remark, 
       create_time, modify_time)
-    values (#{venderId,jdbcType=BIGINT}, #{venderName,jdbcType=VARCHAR}, #{venderContacts,jdbcType=VARCHAR}, 
+    values (#{venderId,jdbcType=VARCHAR}, #{venderName,jdbcType=VARCHAR}, #{venderContacts,jdbcType=VARCHAR}, 
       #{venderContactsTel,jdbcType=VARCHAR}, #{venderAddress,jdbcType=VARCHAR}, #{venderRemark,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
@@ -142,7 +142,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="venderId != null">
-        #{venderId,jdbcType=BIGINT},
+        #{venderId,jdbcType=VARCHAR},
       </if>
       <if test="venderName != null">
         #{venderName,jdbcType=VARCHAR},
@@ -177,7 +177,7 @@
     update w_device_vender
     <set>
       <if test="record.venderId != null">
-        vender_id = #{record.venderId,jdbcType=BIGINT},
+        vender_id = #{record.venderId,jdbcType=VARCHAR},
       </if>
       <if test="record.venderName != null">
         vender_name = #{record.venderName,jdbcType=VARCHAR},
@@ -207,7 +207,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_device_vender
-    set vender_id = #{record.venderId,jdbcType=BIGINT},
+    set vender_id = #{record.venderId,jdbcType=VARCHAR},
       vender_name = #{record.venderName,jdbcType=VARCHAR},
       vender_contacts = #{record.venderContacts,jdbcType=VARCHAR},
       vender_contacts_tel = #{record.venderContactsTel,jdbcType=VARCHAR},
@@ -244,7 +244,7 @@
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where vender_id = #{venderId,jdbcType=BIGINT}
+    where vender_id = #{venderId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.DeviceVender">
     update w_device_vender
@@ -255,6 +255,6 @@
       vender_remark = #{venderRemark,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where vender_id = #{venderId,jdbcType=BIGINT}
+    where vender_id = #{venderId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -37,12 +37,12 @@ public class WarnGroupServiceImpl implements WarnGroupService {
 	}
 
 	@Override
-	public void delete(Long warnGroupId) {
+	public void delete(String warnGroupId) {
 		warnGroupMapper.deleteByPrimaryKey(warnGroupId);
 	}
 
 	@Override
-	public WarnGroup getById(Long warnGroupId) {
+	public WarnGroup getById(String warnGroupId) {
 		return warnGroupMapper.selectByPrimaryKey(warnGroupId);
 	}
 
@@ -61,7 +61,7 @@ public class WarnGroupServiceImpl implements WarnGroupService {
 	}
 
 	@Override
-	public List<WarnGroup> getOwnerAll(Long ownerId) {
+	public List<WarnGroup> getOwnerAll(String ownerId) {
 		List<WarnGroup> warnGroups = new ArrayList<>();
 		warnGroups.addAll(getSystemAll());
 		WarnGroupExample example = new WarnGroupExample();
@@ -72,7 +72,7 @@ public class WarnGroupServiceImpl implements WarnGroupService {
 	}
 
 	@Override
-	public List<MPumpWarnGroup> getPumpNoSelects(Long ownerId, Long pumpId) {
+	public List<MPumpWarnGroup> getPumpNoSelects(String ownerId, String pumpId) {
 		return mPumpMapper.selectPumpNoUseWarnGroups(ownerId, pumpId);
 	}
 
@@ -87,18 +87,18 @@ public class WarnGroupServiceImpl implements WarnGroupService {
 	}
 
 	@Override
-	public void deleteItem(Long itemId) {
+	public void deleteItem(String itemId) {
 		warnGroupItemMapper.deleteByPrimaryKey(itemId);
 	}
 
 	// 通过ID获取告警组项
 	@Override
-	public WarnGroupItem getItemById(Long warnGroupItemId) {
+	public WarnGroupItem getItemById(String warnGroupItemId) {
 		return warnGroupItemMapper.selectByPrimaryKey(warnGroupItemId);
 	}
 
 	@Override
-	public List<WarnGroupItem> getWarnGroupItems(Long warnGroupId) {
+	public List<WarnGroupItem> getWarnGroupItems(String warnGroupId) {
 		WarnGroupItemExample example = new WarnGroupItemExample();
 		example.createCriteria().andWarnGroupIdEqualTo(warnGroupId);
 		example.setOrderByClause("create_time asc");

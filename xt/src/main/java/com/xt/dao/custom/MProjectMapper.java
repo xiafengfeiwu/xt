@@ -13,8 +13,8 @@ public interface MProjectMapper {
 	MLastCode selectLastProjectcode(@Param("preCode") String preCode);
 
 	// 获取用户授权的区域根节点
-	List<MAreaPump> selectUserAuthProjectArea(@Param("userId") Long userId);
+	List<MAreaPump> selectUserAuthProjectArea(@Param("userId") String userId);
 
 	// 通过项目区域ID列表批量获取项目区域信息
-	List<MAreaPump> selectProjectPumpsByIds(@Param("projectAreaIds") List<Long> projectAreaIds);
+	List<MAreaPump> selectProjectPumpsByIds(@Param("projectAreaIds") List<String> projectAreaIds);
 }

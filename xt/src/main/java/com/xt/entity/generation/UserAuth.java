@@ -1,29 +1,29 @@
 package com.xt.entity.generation;
 
 public class UserAuth {
-    private Long rootId;
+    private String rootId;
 
-    private Long userId;
+    private String userId;
 
     private String authCode;
 
-    private Long projectAreaId;
+    private String projectAreaId;
 
-    private Long pumpId;
+    private String pumpId;
 
-    public Long getRootId() {
+    public String getRootId() {
         return rootId;
     }
 
-    public void setRootId(Long rootId) {
+    public void setRootId(String rootId) {
         this.rootId = rootId;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -35,19 +35,19 @@ public class UserAuth {
         this.authCode = authCode;
     }
 
-    public Long getProjectAreaId() {
+    public String getProjectAreaId() {
         return projectAreaId;
     }
 
-    public void setProjectAreaId(Long projectAreaId) {
+    public void setProjectAreaId(String projectAreaId) {
         this.projectAreaId = projectAreaId;
     }
 
-    public Long getPumpId() {
+    public String getPumpId() {
         return pumpId;
     }
 
-    public void setPumpId(Long pumpId) {
+    public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
     }
 }

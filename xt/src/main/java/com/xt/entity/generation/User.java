@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class User {
-    private Long userId;
+    private String userId;
 
     private String userLoginName;
 
@@ -15,7 +15,7 @@ public class User {
 
     private String userPassword;
 
-    private Long roleId;
+    private String roleId;
 
     private String userPortraitPath;
 
@@ -27,11 +27,11 @@ public class User {
 
     private Date userModifyTime;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -75,11 +75,11 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public Long getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

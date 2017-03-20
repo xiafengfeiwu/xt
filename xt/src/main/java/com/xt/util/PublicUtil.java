@@ -30,11 +30,13 @@ import com.xt.service.CityWeatherService;
 import net.sf.json.JSONObject;
 
 public class PublicUtil {
-	final static _Sequence sequence = new _Sequence(0, 0);
+	final static _Sequence sequence = new _Sequence(1);
+	// 管理员角色ID
+	public final static String ROLE_SYSTEM_MANAGE_ID = "3295920218899451";
 
 	// 初始化ID
-	public static long initId() {
-		return sequence.nextId();
+	public static String initId() {
+		return sequence.nextId() + "";
 	}
 
 	// 初始化MAP
@@ -45,13 +47,13 @@ public class PublicUtil {
 	}
 
 	// 获取Session用户ID
-	public static Long sessionUid() {
+	public static String sessionUid() {
 		Subject subject = SecurityUtils.getSubject();
 		Object userId = subject.getSession().getAttribute("userId");
 		if (userId == null) {
 			return null;
 		}
-		return new Long(userId.toString());
+		return userId.toString();
 	}
 
 	// 获取Session用户角色名称
@@ -309,18 +311,22 @@ public class PublicUtil {
 	}
 
 	public static void main(String[] args) {
-		// while (true) {
+		// // while (true) {
+		// System.out.println(initId());
+		// // }
+		// // System.out.println(isNumber("太行山hang"));
+		// // System.out.println(isNumber("11.23"));
+		// // System.out.println(isNumber("-120.23"));
+		// // System.out.println(isNumber("0"));
+		// // System.out.println(getNextCode("P1100002017039998"));
+		// // System.out.println(getNextCode("P1100002017039993"));
+		// // System.out.println(getNextCode("M1100002017039991"));
+		// String areaCode = "1102002017030002";
+		// // areaCode = areaCode.substring(1, 13);
+		// System.out.println(getNextPumpCode(areaCode));
 		System.out.println(initId());
-		// }
-		// System.out.println(isNumber("太行山hang"));
-		// System.out.println(isNumber("11.23"));
-		// System.out.println(isNumber("-120.23"));
-		// System.out.println(isNumber("0"));
-		// System.out.println(getNextCode("P1100002017039998"));
-		// System.out.println(getNextCode("P1100002017039993"));
-		// System.out.println(getNextCode("M1100002017039991"));
-		String areaCode = "1102002017030002";
-		// areaCode = areaCode.substring(1, 13);
-		System.out.println(getNextPumpCode(areaCode));
+		System.out.println(initId());
+		System.out.println(initId());
+		System.out.println(initId());
 	}
 }

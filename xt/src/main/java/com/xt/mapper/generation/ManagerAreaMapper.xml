@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ManagerAreaMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.ManagerArea">
-    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="manage_area_code" jdbcType="VARCHAR" property="manageAreaCode" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_manager_area
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_manager_area
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ManagerAreaExample">
     delete from w_manager_area
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.ManagerArea">
     insert into w_manager_area (user_id, manage_area_code, create_time
       )
-    values (#{userId,jdbcType=BIGINT}, #{manageAreaCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+    values (#{userId,jdbcType=VARCHAR}, #{manageAreaCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.ManagerArea">
@@ -119,7 +119,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="manageAreaCode != null">
         #{manageAreaCode,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
     update w_manager_area
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.manageAreaCode != null">
         manage_area_code = #{record.manageAreaCode,jdbcType=VARCHAR},
@@ -154,7 +154,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_manager_area
-    set user_id = #{record.userId,jdbcType=BIGINT},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
       manage_area_code = #{record.manageAreaCode,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -171,12 +171,12 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.ManagerArea">
     update w_manager_area
     set manage_area_code = #{manageAreaCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=BIGINT}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

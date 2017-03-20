@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ResMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Res">
-    <id column="res_id" jdbcType="BIGINT" property="resId" />
-    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <id column="res_id" jdbcType="VARCHAR" property="resId" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
     <result column="res_name" jdbcType="VARCHAR" property="resName" />
     <result column="res_type" jdbcType="VARCHAR" property="resType" />
     <result column="res_path" jdbcType="VARCHAR" property="resPath" />
-    <result column="res_size" jdbcType="BIGINT" property="resSize" />
+    <result column="res_size" jdbcType="VARCHAR" property="resSize" />
     <result column="res_create_time" jdbcType="TIMESTAMP" property="resCreateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_res
-    where res_id = #{resId,jdbcType=BIGINT}
+    where res_id = #{resId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_res
-    where res_id = #{resId,jdbcType=BIGINT}
+    where res_id = #{resId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ResExample">
     delete from w_res
@@ -106,8 +106,8 @@
     insert into w_res (res_id, group_id, res_name, 
       res_type, res_path, res_size, 
       res_create_time)
-    values (#{resId,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{resName,jdbcType=VARCHAR}, 
-      #{resType,jdbcType=VARCHAR}, #{resPath,jdbcType=VARCHAR}, #{resSize,jdbcType=BIGINT}, 
+    values (#{resId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, 
+      #{resType,jdbcType=VARCHAR}, #{resPath,jdbcType=VARCHAR}, #{resSize,jdbcType=VARCHAR}, 
       #{resCreateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Res">
@@ -137,10 +137,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="resId != null">
-        #{resId,jdbcType=BIGINT},
+        #{resId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
-        #{groupId,jdbcType=BIGINT},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="resName != null">
         #{resName,jdbcType=VARCHAR},
@@ -152,7 +152,7 @@
         #{resPath,jdbcType=VARCHAR},
       </if>
       <if test="resSize != null">
-        #{resSize,jdbcType=BIGINT},
+        #{resSize,jdbcType=VARCHAR},
       </if>
       <if test="resCreateTime != null">
         #{resCreateTime,jdbcType=TIMESTAMP},
@@ -169,10 +169,10 @@
     update w_res
     <set>
       <if test="record.resId != null">
-        res_id = #{record.resId,jdbcType=BIGINT},
+        res_id = #{record.resId,jdbcType=VARCHAR},
       </if>
       <if test="record.groupId != null">
-        group_id = #{record.groupId,jdbcType=BIGINT},
+        group_id = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.resName != null">
         res_name = #{record.resName,jdbcType=VARCHAR},
@@ -184,7 +184,7 @@
         res_path = #{record.resPath,jdbcType=VARCHAR},
       </if>
       <if test="record.resSize != null">
-        res_size = #{record.resSize,jdbcType=BIGINT},
+        res_size = #{record.resSize,jdbcType=VARCHAR},
       </if>
       <if test="record.resCreateTime != null">
         res_create_time = #{record.resCreateTime,jdbcType=TIMESTAMP},
@@ -196,12 +196,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_res
-    set res_id = #{record.resId,jdbcType=BIGINT},
-      group_id = #{record.groupId,jdbcType=BIGINT},
+    set res_id = #{record.resId,jdbcType=VARCHAR},
+      group_id = #{record.groupId,jdbcType=VARCHAR},
       res_name = #{record.resName,jdbcType=VARCHAR},
       res_type = #{record.resType,jdbcType=VARCHAR},
       res_path = #{record.resPath,jdbcType=VARCHAR},
-      res_size = #{record.resSize,jdbcType=BIGINT},
+      res_size = #{record.resSize,jdbcType=VARCHAR},
       res_create_time = #{record.resCreateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -211,7 +211,7 @@
     update w_res
     <set>
       <if test="groupId != null">
-        group_id = #{groupId,jdbcType=BIGINT},
+        group_id = #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="resName != null">
         res_name = #{resName,jdbcType=VARCHAR},
@@ -223,22 +223,22 @@
         res_path = #{resPath,jdbcType=VARCHAR},
       </if>
       <if test="resSize != null">
-        res_size = #{resSize,jdbcType=BIGINT},
+        res_size = #{resSize,jdbcType=VARCHAR},
       </if>
       <if test="resCreateTime != null">
         res_create_time = #{resCreateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where res_id = #{resId,jdbcType=BIGINT}
+    where res_id = #{resId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Res">
     update w_res
-    set group_id = #{groupId,jdbcType=BIGINT},
+    set group_id = #{groupId,jdbcType=VARCHAR},
       res_name = #{resName,jdbcType=VARCHAR},
       res_type = #{resType,jdbcType=VARCHAR},
       res_path = #{resPath,jdbcType=VARCHAR},
-      res_size = #{resSize,jdbcType=BIGINT},
+      res_size = #{resSize,jdbcType=VARCHAR},
       res_create_time = #{resCreateTime,jdbcType=TIMESTAMP}
-    where res_id = #{resId,jdbcType=BIGINT}
+    where res_id = #{resId,jdbcType=VARCHAR}
   </update>
 </mapper>

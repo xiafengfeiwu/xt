@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Project {
-    private Long projectId;
+    private String projectId;
 
     private String projectCode;
 
     private String projectName;
 
-    private Long projectAreaId;
+    private String projectAreaId;
 
-    private Long ownerId;
+    private String ownerId;
 
     private String ownerName;
 
@@ -30,11 +30,11 @@ public class Project {
 
     private Date modifyTime;
 
-    public Long getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
@@ -54,19 +54,19 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public Long getProjectAreaId() {
+    public String getProjectAreaId() {
         return projectAreaId;
     }
 
-    public void setProjectAreaId(Long projectAreaId) {
+    public void setProjectAreaId(String projectAreaId) {
         this.projectAreaId = projectAreaId;
     }
 
-    public Long getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 

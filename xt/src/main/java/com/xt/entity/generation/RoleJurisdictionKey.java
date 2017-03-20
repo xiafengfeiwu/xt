@@ -1,23 +1,23 @@
 package com.xt.entity.generation;
 
 public class RoleJurisdictionKey {
-    private Long roleId;
+    private String roleId;
 
-    private Long jurisdictionId;
+    private String jurisdictionId;
 
-    public Long getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
-    public Long getJurisdictionId() {
+    public String getJurisdictionId() {
         return jurisdictionId;
     }
 
-    public void setJurisdictionId(Long jurisdictionId) {
+    public void setJurisdictionId(String jurisdictionId) {
         this.jurisdictionId = jurisdictionId;
     }
 }

@@ -37,7 +37,7 @@ public class ProjectAreaServiceImpl implements ProjectAreaService {
 	}
 
 	@Override
-	public ProjectArea getByAreaId(Long projectAreaId) {
+	public ProjectArea getByAreaId(String projectAreaId) {
 		return projectAreaMapper.selectByPrimaryKey(projectAreaId);
 	}
 
@@ -60,7 +60,7 @@ public class ProjectAreaServiceImpl implements ProjectAreaService {
 	}
 
 	@Override
-	public List<ProjectArea> getByParentAreaId(Long parentAreaId) {
+	public List<ProjectArea> getByParentAreaId(String parentAreaId) {
 		ProjectArea projectArea = getByAreaId(parentAreaId);
 		if (projectArea == null) {
 			return null;
@@ -88,7 +88,7 @@ public class ProjectAreaServiceImpl implements ProjectAreaService {
 	}
 
 	@Override
-	public void delete(Long projectAreaId) {
+	public void delete(String projectAreaId) {
 		// ProjectArea projectArea =
 		// projectAreaMapper.selectByPrimaryKey(projectAreaId);
 		// if (projectArea != null) {

@@ -3,17 +3,17 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class ManagerArea {
-    private Long userId;
+    private String userId;
 
     private String manageAreaCode;
 
     private Date createTime;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

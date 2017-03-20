@@ -10,7 +10,7 @@ public interface PumpWarnMapper {
 
     int deleteByExample(PumpWarnExample example);
 
-    int deleteByPrimaryKey(Long warnId);
+    int deleteByPrimaryKey(String warnId);
 
     int insert(PumpWarn record);
 
@@ -18,7 +18,7 @@ public interface PumpWarnMapper {
 
     List<PumpWarn> selectByExample(PumpWarnExample example);
 
-    PumpWarn selectByPrimaryKey(Long warnId);
+    PumpWarn selectByPrimaryKey(String warnId);
 
     int updateByExampleSelective(@Param("record") PumpWarn record, @Param("example") PumpWarnExample example);
 

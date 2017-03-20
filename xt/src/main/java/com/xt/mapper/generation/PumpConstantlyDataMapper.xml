@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PumpConstantlyDataMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpConstantlyData">
-    <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <id column="pump_id" jdbcType="VARCHAR" property="pumpId" />
     <result column="back_water_temp" jdbcType="DECIMAL" property="backWaterTemp" />
     <result column="out_water_temp" jdbcType="DECIMAL" property="outWaterTemp" />
     <result column="environment_temp" jdbcType="DECIMAL" property="environmentTemp" />
@@ -93,15 +93,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_pump_constantly_data
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_pump_constantly_data
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpConstantlyDataExample">
     delete from w_pump_constantly_data
@@ -115,7 +115,7 @@
       work_mode, warn_code, back_air_temp, 
       out_air_temp, set_up_temp, indoor_temp, 
       collect_time)
-    values (#{pumpId,jdbcType=BIGINT}, #{backWaterTemp,jdbcType=DECIMAL}, #{outWaterTemp,jdbcType=DECIMAL}, 
+    values (#{pumpId,jdbcType=VARCHAR}, #{backWaterTemp,jdbcType=DECIMAL}, #{outWaterTemp,jdbcType=DECIMAL}, 
       #{environmentTemp,jdbcType=DECIMAL}, #{compressorCurrent,jdbcType=DECIMAL}, #{waterTankTemp,jdbcType=DECIMAL}, 
       #{workMode,jdbcType=VARCHAR}, #{warnCode,jdbcType=VARCHAR}, #{backAirTemp,jdbcType=DECIMAL}, 
       #{outAirTemp,jdbcType=DECIMAL}, #{setUpTemp,jdbcType=DECIMAL}, #{indoorTemp,jdbcType=DECIMAL}, 
@@ -166,7 +166,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="backWaterTemp != null">
         #{backWaterTemp,jdbcType=DECIMAL},
@@ -216,7 +216,7 @@
     update w_pump_constantly_data
     <set>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.backWaterTemp != null">
         back_water_temp = #{record.backWaterTemp,jdbcType=DECIMAL},
@@ -261,7 +261,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_pump_constantly_data
-    set pump_id = #{record.pumpId,jdbcType=BIGINT},
+    set pump_id = #{record.pumpId,jdbcType=VARCHAR},
       back_water_temp = #{record.backWaterTemp,jdbcType=DECIMAL},
       out_water_temp = #{record.outWaterTemp,jdbcType=DECIMAL},
       environment_temp = #{record.environmentTemp,jdbcType=DECIMAL},
@@ -318,7 +318,7 @@
         collect_time = #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpConstantlyData">
     update w_pump_constantly_data
@@ -334,6 +334,6 @@
       set_up_temp = #{setUpTemp,jdbcType=DECIMAL},
       indoor_temp = #{indoorTemp,jdbcType=DECIMAL},
       collect_time = #{collectTime,jdbcType=TIMESTAMP}
-    where pump_id = #{pumpId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
   </update>
 </mapper>

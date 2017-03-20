@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.SystemLogMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.SystemLog">
-    <id column="log_id" jdbcType="BIGINT" property="logId" />
+    <id column="log_id" jdbcType="VARCHAR" property="logId" />
     <result column="message" jdbcType="VARCHAR" property="message" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_system_log
-    where log_id = #{logId,jdbcType=BIGINT}
+    where log_id = #{logId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_system_log
-    where log_id = #{logId,jdbcType=BIGINT}
+    where log_id = #{logId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.SystemLogExample">
     delete from w_system_log
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.SystemLog">
     insert into w_system_log (log_id, message, create_time
       )
-    values (#{logId,jdbcType=BIGINT}, #{message,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+    values (#{logId,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.SystemLog">
@@ -119,7 +119,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="logId != null">
-        #{logId,jdbcType=BIGINT},
+        #{logId,jdbcType=VARCHAR},
       </if>
       <if test="message != null">
         #{message,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
     update w_system_log
     <set>
       <if test="record.logId != null">
-        log_id = #{record.logId,jdbcType=BIGINT},
+        log_id = #{record.logId,jdbcType=VARCHAR},
       </if>
       <if test="record.message != null">
         message = #{record.message,jdbcType=VARCHAR},
@@ -154,7 +154,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_system_log
-    set log_id = #{record.logId,jdbcType=BIGINT},
+    set log_id = #{record.logId,jdbcType=VARCHAR},
       message = #{record.message,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -171,12 +171,12 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where log_id = #{logId,jdbcType=BIGINT}
+    where log_id = #{logId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.SystemLog">
     update w_system_log
     set message = #{message,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where log_id = #{logId,jdbcType=BIGINT}
+    where log_id = #{logId,jdbcType=VARCHAR}
   </update>
 </mapper>

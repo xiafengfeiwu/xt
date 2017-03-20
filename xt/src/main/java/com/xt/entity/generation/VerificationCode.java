@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class VerificationCode {
-    private Long smsId;
+    private String smsId;
 
     private String phoneNo;
 
@@ -15,11 +15,11 @@ public class VerificationCode {
 
     private Date modifyTime;
 
-    public Long getSmsId() {
+    public String getSmsId() {
         return smsId;
     }
 
-    public void setSmsId(Long smsId) {
+    public void setSmsId(String smsId) {
         this.smsId = smsId;
     }
 

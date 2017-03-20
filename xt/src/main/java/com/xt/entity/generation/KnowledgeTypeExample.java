@@ -114,52 +114,62 @@ public class KnowledgeTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdEqualTo(Long value) {
+        public Criteria andKnowledgeTypeIdEqualTo(String value) {
             addCriterion("knowledge_type_id =", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdNotEqualTo(Long value) {
+        public Criteria andKnowledgeTypeIdNotEqualTo(String value) {
             addCriterion("knowledge_type_id <>", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdGreaterThan(Long value) {
+        public Criteria andKnowledgeTypeIdGreaterThan(String value) {
             addCriterion("knowledge_type_id >", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andKnowledgeTypeIdGreaterThanOrEqualTo(String value) {
             addCriterion("knowledge_type_id >=", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdLessThan(Long value) {
+        public Criteria andKnowledgeTypeIdLessThan(String value) {
             addCriterion("knowledge_type_id <", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdLessThanOrEqualTo(Long value) {
+        public Criteria andKnowledgeTypeIdLessThanOrEqualTo(String value) {
             addCriterion("knowledge_type_id <=", value, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdIn(List<Long> values) {
+        public Criteria andKnowledgeTypeIdLike(String value) {
+            addCriterion("knowledge_type_id like", value, "knowledgeTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andKnowledgeTypeIdNotLike(String value) {
+            addCriterion("knowledge_type_id not like", value, "knowledgeTypeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andKnowledgeTypeIdIn(List<String> values) {
             addCriterion("knowledge_type_id in", values, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdNotIn(List<Long> values) {
+        public Criteria andKnowledgeTypeIdNotIn(List<String> values) {
             addCriterion("knowledge_type_id not in", values, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdBetween(Long value1, Long value2) {
+        public Criteria andKnowledgeTypeIdBetween(String value1, String value2) {
             addCriterion("knowledge_type_id between", value1, value2, "knowledgeTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andKnowledgeTypeIdNotBetween(Long value1, Long value2) {
+        public Criteria andKnowledgeTypeIdNotBetween(String value1, String value2) {
             addCriterion("knowledge_type_id not between", value1, value2, "knowledgeTypeId");
             return (Criteria) this;
         }

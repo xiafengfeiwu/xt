@@ -10,7 +10,7 @@ public interface PumpEleMapper {
 
     int deleteByExample(PumpEleExample example);
 
-    int deleteByPrimaryKey(Long dataId);
+    int deleteByPrimaryKey(String dataId);
 
     int insert(PumpEle record);
 
@@ -18,7 +18,7 @@ public interface PumpEleMapper {
 
     List<PumpEle> selectByExample(PumpEleExample example);
 
-    PumpEle selectByPrimaryKey(Long dataId);
+    PumpEle selectByPrimaryKey(String dataId);
 
     int updateByExampleSelective(@Param("record") PumpEle record, @Param("example") PumpEleExample example);
 

@@ -3,7 +3,7 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class ProjectArea {
-    private Long projectAreaId;
+    private String projectAreaId;
 
     private String areaName;
 
@@ -17,11 +17,11 @@ public class ProjectArea {
 
     private Date modifyTime;
 
-    public Long getProjectAreaId() {
+    public String getProjectAreaId() {
         return projectAreaId;
     }
 
-    public void setProjectAreaId(Long projectAreaId) {
+    public void setProjectAreaId(String projectAreaId) {
         this.projectAreaId = projectAreaId;
     }
 

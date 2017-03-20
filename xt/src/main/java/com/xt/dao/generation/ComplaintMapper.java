@@ -10,7 +10,7 @@ public interface ComplaintMapper {
 
     int deleteByExample(ComplaintExample example);
 
-    int deleteByPrimaryKey(Long complaintId);
+    int deleteByPrimaryKey(String complaintId);
 
     int insert(Complaint record);
 
@@ -18,7 +18,7 @@ public interface ComplaintMapper {
 
     List<Complaint> selectByExample(ComplaintExample example);
 
-    Complaint selectByPrimaryKey(Long complaintId);
+    Complaint selectByPrimaryKey(String complaintId);
 
     int updateByExampleSelective(@Param("record") Complaint record, @Param("example") ComplaintExample example);
 

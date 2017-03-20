@@ -1,15 +1,15 @@
 package com.xt.entity.generation;
 
 public class ComplaintType {
-    private Long complaintTypeId;
+    private String complaintTypeId;
 
     private String complaintTypeName;
 
-    public Long getComplaintTypeId() {
+    public String getComplaintTypeId() {
         return complaintTypeId;
     }
 
-    public void setComplaintTypeId(Long complaintTypeId) {
+    public void setComplaintTypeId(String complaintTypeId) {
         this.complaintTypeId = complaintTypeId;
     }
 

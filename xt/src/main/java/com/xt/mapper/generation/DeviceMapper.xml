@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.DeviceMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Device">
-    <id column="device_id" jdbcType="BIGINT" property="deviceId" />
-    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <id column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
     <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
     <result column="device_sn" jdbcType="VARCHAR" property="deviceSn" />
-    <result column="device_product_id" jdbcType="BIGINT" property="deviceProductId" />
-    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="device_product_id" jdbcType="VARCHAR" property="deviceProductId" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
     <result column="last_collect_time" jdbcType="TIMESTAMP" property="lastCollectTime" />
@@ -89,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_device
-    where device_id = #{deviceId,jdbcType=BIGINT}
+    where device_id = #{deviceId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_device
-    where device_id = #{deviceId,jdbcType=BIGINT}
+    where device_id = #{deviceId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.DeviceExample">
     delete from w_device
@@ -110,8 +110,8 @@
       device_sn, device_product_id, creator_id, 
       create_time, modify_time, last_collect_time
       )
-    values (#{deviceId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT}, #{deviceName,jdbcType=VARCHAR}, 
-      #{deviceSn,jdbcType=VARCHAR}, #{deviceProductId,jdbcType=BIGINT}, #{creatorId,jdbcType=BIGINT}, 
+    values (#{deviceId,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, 
+      #{deviceSn,jdbcType=VARCHAR}, #{deviceProductId,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{lastCollectTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -148,10 +148,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="deviceId != null">
-        #{deviceId,jdbcType=BIGINT},
+        #{deviceId,jdbcType=VARCHAR},
       </if>
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="deviceName != null">
         #{deviceName,jdbcType=VARCHAR},
@@ -160,10 +160,10 @@
         #{deviceSn,jdbcType=VARCHAR},
       </if>
       <if test="deviceProductId != null">
-        #{deviceProductId,jdbcType=BIGINT},
+        #{deviceProductId,jdbcType=VARCHAR},
       </if>
       <if test="creatorId != null">
-        #{creatorId,jdbcType=BIGINT},
+        #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -186,10 +186,10 @@
     update w_device
     <set>
       <if test="record.deviceId != null">
-        device_id = #{record.deviceId,jdbcType=BIGINT},
+        device_id = #{record.deviceId,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.deviceName != null">
         device_name = #{record.deviceName,jdbcType=VARCHAR},
@@ -198,10 +198,10 @@
         device_sn = #{record.deviceSn,jdbcType=VARCHAR},
       </if>
       <if test="record.deviceProductId != null">
-        device_product_id = #{record.deviceProductId,jdbcType=BIGINT},
+        device_product_id = #{record.deviceProductId,jdbcType=VARCHAR},
       </if>
       <if test="record.creatorId != null">
-        creator_id = #{record.creatorId,jdbcType=BIGINT},
+        creator_id = #{record.creatorId,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -219,12 +219,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_device
-    set device_id = #{record.deviceId,jdbcType=BIGINT},
-      pump_id = #{record.pumpId,jdbcType=BIGINT},
+    set device_id = #{record.deviceId,jdbcType=VARCHAR},
+      pump_id = #{record.pumpId,jdbcType=VARCHAR},
       device_name = #{record.deviceName,jdbcType=VARCHAR},
       device_sn = #{record.deviceSn,jdbcType=VARCHAR},
-      device_product_id = #{record.deviceProductId,jdbcType=BIGINT},
-      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      device_product_id = #{record.deviceProductId,jdbcType=VARCHAR},
+      creator_id = #{record.creatorId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
       last_collect_time = #{record.lastCollectTime,jdbcType=TIMESTAMP}
@@ -236,7 +236,7 @@
     update w_device
     <set>
       <if test="pumpId != null">
-        pump_id = #{pumpId,jdbcType=BIGINT},
+        pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="deviceName != null">
         device_name = #{deviceName,jdbcType=VARCHAR},
@@ -245,10 +245,10 @@
         device_sn = #{deviceSn,jdbcType=VARCHAR},
       </if>
       <if test="deviceProductId != null">
-        device_product_id = #{deviceProductId,jdbcType=BIGINT},
+        device_product_id = #{deviceProductId,jdbcType=VARCHAR},
       </if>
       <if test="creatorId != null">
-        creator_id = #{creatorId,jdbcType=BIGINT},
+        creator_id = #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -260,18 +260,18 @@
         last_collect_time = #{lastCollectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where device_id = #{deviceId,jdbcType=BIGINT}
+    where device_id = #{deviceId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Device">
     update w_device
-    set pump_id = #{pumpId,jdbcType=BIGINT},
+    set pump_id = #{pumpId,jdbcType=VARCHAR},
       device_name = #{deviceName,jdbcType=VARCHAR},
       device_sn = #{deviceSn,jdbcType=VARCHAR},
-      device_product_id = #{deviceProductId,jdbcType=BIGINT},
-      creator_id = #{creatorId,jdbcType=BIGINT},
+      device_product_id = #{deviceProductId,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       last_collect_time = #{lastCollectTime,jdbcType=TIMESTAMP}
-    where device_id = #{deviceId,jdbcType=BIGINT}
+    where device_id = #{deviceId,jdbcType=VARCHAR}
   </update>
 </mapper>

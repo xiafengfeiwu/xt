@@ -115,52 +115,62 @@ public class DeviceExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdEqualTo(Long value) {
+        public Criteria andDeviceIdEqualTo(String value) {
             addCriterion("device_id =", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotEqualTo(Long value) {
+        public Criteria andDeviceIdNotEqualTo(String value) {
             addCriterion("device_id <>", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdGreaterThan(Long value) {
+        public Criteria andDeviceIdGreaterThan(String value) {
             addCriterion("device_id >", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andDeviceIdGreaterThanOrEqualTo(String value) {
             addCriterion("device_id >=", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdLessThan(Long value) {
+        public Criteria andDeviceIdLessThan(String value) {
             addCriterion("device_id <", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdLessThanOrEqualTo(Long value) {
+        public Criteria andDeviceIdLessThanOrEqualTo(String value) {
             addCriterion("device_id <=", value, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdIn(List<Long> values) {
+        public Criteria andDeviceIdLike(String value) {
+            addCriterion("device_id like", value, "deviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceIdNotLike(String value) {
+            addCriterion("device_id not like", value, "deviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceIdIn(List<String> values) {
             addCriterion("device_id in", values, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotIn(List<Long> values) {
+        public Criteria andDeviceIdNotIn(List<String> values) {
             addCriterion("device_id not in", values, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdBetween(Long value1, Long value2) {
+        public Criteria andDeviceIdBetween(String value1, String value2) {
             addCriterion("device_id between", value1, value2, "deviceId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotBetween(Long value1, Long value2) {
+        public Criteria andDeviceIdNotBetween(String value1, String value2) {
             addCriterion("device_id not between", value1, value2, "deviceId");
             return (Criteria) this;
         }
@@ -175,52 +185,62 @@ public class DeviceExample {
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdEqualTo(Long value) {
+        public Criteria andPumpIdEqualTo(String value) {
             addCriterion("pump_id =", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotEqualTo(Long value) {
+        public Criteria andPumpIdNotEqualTo(String value) {
             addCriterion("pump_id <>", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdGreaterThan(Long value) {
+        public Criteria andPumpIdGreaterThan(String value) {
             addCriterion("pump_id >", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andPumpIdGreaterThanOrEqualTo(String value) {
             addCriterion("pump_id >=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdLessThan(Long value) {
+        public Criteria andPumpIdLessThan(String value) {
             addCriterion("pump_id <", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdLessThanOrEqualTo(Long value) {
+        public Criteria andPumpIdLessThanOrEqualTo(String value) {
             addCriterion("pump_id <=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdIn(List<Long> values) {
+        public Criteria andPumpIdLike(String value) {
+            addCriterion("pump_id like", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdNotLike(String value) {
+            addCriterion("pump_id not like", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdIn(List<String> values) {
             addCriterion("pump_id in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotIn(List<Long> values) {
+        public Criteria andPumpIdNotIn(List<String> values) {
             addCriterion("pump_id not in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdBetween(Long value1, Long value2) {
+        public Criteria andPumpIdBetween(String value1, String value2) {
             addCriterion("pump_id between", value1, value2, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpIdNotBetween(Long value1, Long value2) {
+        public Criteria andPumpIdNotBetween(String value1, String value2) {
             addCriterion("pump_id not between", value1, value2, "pumpId");
             return (Criteria) this;
         }
@@ -375,52 +395,62 @@ public class DeviceExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdEqualTo(Long value) {
+        public Criteria andDeviceProductIdEqualTo(String value) {
             addCriterion("device_product_id =", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdNotEqualTo(Long value) {
+        public Criteria andDeviceProductIdNotEqualTo(String value) {
             addCriterion("device_product_id <>", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdGreaterThan(Long value) {
+        public Criteria andDeviceProductIdGreaterThan(String value) {
             addCriterion("device_product_id >", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andDeviceProductIdGreaterThanOrEqualTo(String value) {
             addCriterion("device_product_id >=", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdLessThan(Long value) {
+        public Criteria andDeviceProductIdLessThan(String value) {
             addCriterion("device_product_id <", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdLessThanOrEqualTo(Long value) {
+        public Criteria andDeviceProductIdLessThanOrEqualTo(String value) {
             addCriterion("device_product_id <=", value, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdIn(List<Long> values) {
+        public Criteria andDeviceProductIdLike(String value) {
+            addCriterion("device_product_id like", value, "deviceProductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceProductIdNotLike(String value) {
+            addCriterion("device_product_id not like", value, "deviceProductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeviceProductIdIn(List<String> values) {
             addCriterion("device_product_id in", values, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdNotIn(List<Long> values) {
+        public Criteria andDeviceProductIdNotIn(List<String> values) {
             addCriterion("device_product_id not in", values, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdBetween(Long value1, Long value2) {
+        public Criteria andDeviceProductIdBetween(String value1, String value2) {
             addCriterion("device_product_id between", value1, value2, "deviceProductId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceProductIdNotBetween(Long value1, Long value2) {
+        public Criteria andDeviceProductIdNotBetween(String value1, String value2) {
             addCriterion("device_product_id not between", value1, value2, "deviceProductId");
             return (Criteria) this;
         }
@@ -435,52 +465,62 @@ public class DeviceExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdEqualTo(Long value) {
+        public Criteria andCreatorIdEqualTo(String value) {
             addCriterion("creator_id =", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotEqualTo(Long value) {
+        public Criteria andCreatorIdNotEqualTo(String value) {
             addCriterion("creator_id <>", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdGreaterThan(Long value) {
+        public Criteria andCreatorIdGreaterThan(String value) {
             addCriterion("creator_id >", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andCreatorIdGreaterThanOrEqualTo(String value) {
             addCriterion("creator_id >=", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdLessThan(Long value) {
+        public Criteria andCreatorIdLessThan(String value) {
             addCriterion("creator_id <", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdLessThanOrEqualTo(Long value) {
+        public Criteria andCreatorIdLessThanOrEqualTo(String value) {
             addCriterion("creator_id <=", value, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdIn(List<Long> values) {
+        public Criteria andCreatorIdLike(String value) {
+            addCriterion("creator_id like", value, "creatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorIdNotLike(String value) {
+            addCriterion("creator_id not like", value, "creatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorIdIn(List<String> values) {
             addCriterion("creator_id in", values, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotIn(List<Long> values) {
+        public Criteria andCreatorIdNotIn(List<String> values) {
             addCriterion("creator_id not in", values, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdBetween(Long value1, Long value2) {
+        public Criteria andCreatorIdBetween(String value1, String value2) {
             addCriterion("creator_id between", value1, value2, "creatorId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIdNotBetween(Long value1, Long value2) {
+        public Criteria andCreatorIdNotBetween(String value1, String value2) {
             addCriterion("creator_id not between", value1, value2, "creatorId");
             return (Criteria) this;
         }

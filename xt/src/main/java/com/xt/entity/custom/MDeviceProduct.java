@@ -3,13 +3,13 @@ package com.xt.entity.custom;
 import java.util.Date;
 
 public class MDeviceProduct {
-	private Long productId;
+	private String productId;
 
 	private String productName;
 
 	private String productType;
 
-	private Long productVenderId;
+	private String productVenderId;
 
 	private String productVenderName;
 
@@ -25,11 +25,11 @@ public class MDeviceProduct {
 
 	private String productDescript;
 
-	public Long getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -49,11 +49,11 @@ public class MDeviceProduct {
 		this.productType = productType;
 	}
 
-	public Long getProductVenderId() {
+	public String getProductVenderId() {
 		return productVenderId;
 	}
 
-	public void setProductVenderId(Long productVenderId) {
+	public void setProductVenderId(String productVenderId) {
 		this.productVenderId = productVenderId;
 	}
 

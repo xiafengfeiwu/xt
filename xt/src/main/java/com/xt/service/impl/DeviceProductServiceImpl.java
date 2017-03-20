@@ -35,12 +35,12 @@ public class DeviceProductServiceImpl implements DeviceProductService {
 	}
 
 	@Override
-	public void delete(Long productId) {
+	public void delete(String productId) {
 		deviceProductMapper.deleteByPrimaryKey(productId);
 	}
 
 	@Override
-	public DeviceProduct findById(Long productId) {
+	public DeviceProduct findById(String productId) {
 		return deviceProductMapper.selectByPrimaryKey(productId);
 	}
 

@@ -29,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
 	JurisdictionMapper jurisdictionMapper;
 
 	@Override
-	public Role getById(Long roleId) {
+	public Role getById(String roleId) {
 		return roleMapper.selectByPrimaryKey(roleId);
 	}
 
@@ -44,7 +44,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public void delete(Long roleId) {
+	public void delete(String roleId) {
 		roleMapper.deleteByPrimaryKey(roleId);
 	}
 
@@ -55,14 +55,14 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Jurisdiction> findRoleJurisdictions(Long roleId) {
+	public List<Jurisdiction> findRoleJurisdictions(String roleId) {
 		RoleJurisdictionExample example = new RoleJurisdictionExample();
 		example.createCriteria().andRoleIdEqualTo(roleId);
 		List<RoleJurisdictionKey> jurisdictions = roleJurisdictionMapper.selectByExample(example);
 		if (PublicUtil.isEmpty(jurisdictions)) {
 			return null;
 		}
-		List<Long> juids = new LinkedList<>();
+		List<String> juids = new LinkedList<>();
 		for (RoleJurisdictionKey key : jurisdictions) {
 			juids.add(key.getJurisdictionId());
 		}
@@ -73,7 +73,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public boolean checkRoleJurisdiction(Long roleId, Long jurisdictionId) {
+	public boolean checkRoleJurisdiction(String roleId, String jurisdictionId) {
 		RoleJurisdictionExample example = new RoleJurisdictionExample();
 		example.createCriteria().andJurisdictionIdEqualTo(jurisdictionId).andRoleIdEqualTo(roleId);
 		List<RoleJurisdictionKey> roleJurisdictions = roleJurisdictionMapper.selectByExample(example);

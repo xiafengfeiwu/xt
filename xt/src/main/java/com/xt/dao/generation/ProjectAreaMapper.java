@@ -10,7 +10,7 @@ public interface ProjectAreaMapper {
 
     int deleteByExample(ProjectAreaExample example);
 
-    int deleteByPrimaryKey(Long projectAreaId);
+    int deleteByPrimaryKey(String projectAreaId);
 
     int insert(ProjectArea record);
 
@@ -18,7 +18,7 @@ public interface ProjectAreaMapper {
 
     List<ProjectArea> selectByExample(ProjectAreaExample example);
 
-    ProjectArea selectByPrimaryKey(Long projectAreaId);
+    ProjectArea selectByPrimaryKey(String projectAreaId);
 
     int updateByExampleSelective(@Param("record") ProjectArea record, @Param("example") ProjectAreaExample example);
 

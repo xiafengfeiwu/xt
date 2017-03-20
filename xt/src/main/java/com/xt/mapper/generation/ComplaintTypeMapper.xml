@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ComplaintTypeMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.ComplaintType">
-    <id column="complaint_type_id" jdbcType="BIGINT" property="complaintTypeId" />
+    <id column="complaint_type_id" jdbcType="VARCHAR" property="complaintTypeId" />
     <result column="complaint_type_name" jdbcType="VARCHAR" property="complaintTypeName" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -81,15 +81,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_complaint_type
-    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+    where complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_complaint_type
-    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+    where complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ComplaintTypeExample">
     delete from w_complaint_type
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.ComplaintType">
     insert into w_complaint_type (complaint_type_id, complaint_type_name
       )
-    values (#{complaintTypeId,jdbcType=BIGINT}, #{complaintTypeName,jdbcType=VARCHAR}
+    values (#{complaintTypeId,jdbcType=VARCHAR}, #{complaintTypeName,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.ComplaintType">
@@ -115,7 +115,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="complaintTypeId != null">
-        #{complaintTypeId,jdbcType=BIGINT},
+        #{complaintTypeId,jdbcType=VARCHAR},
       </if>
       <if test="complaintTypeName != null">
         #{complaintTypeName,jdbcType=VARCHAR},
@@ -132,7 +132,7 @@
     update w_complaint_type
     <set>
       <if test="record.complaintTypeId != null">
-        complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+        complaint_type_id = #{record.complaintTypeId,jdbcType=VARCHAR},
       </if>
       <if test="record.complaintTypeName != null">
         complaint_type_name = #{record.complaintTypeName,jdbcType=VARCHAR},
@@ -144,7 +144,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_complaint_type
-    set complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+    set complaint_type_id = #{record.complaintTypeId,jdbcType=VARCHAR},
       complaint_type_name = #{record.complaintTypeName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -157,11 +157,11 @@
         complaint_type_name = #{complaintTypeName,jdbcType=VARCHAR},
       </if>
     </set>
-    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+    where complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.ComplaintType">
     update w_complaint_type
     set complaint_type_name = #{complaintTypeName,jdbcType=VARCHAR}
-    where complaint_type_id = #{complaintTypeId,jdbcType=BIGINT}
+    where complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR}
   </update>
 </mapper>

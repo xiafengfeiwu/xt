@@ -10,7 +10,7 @@ public interface KnowledgeMapper {
 
     int deleteByExample(KnowledgeExample example);
 
-    int deleteByPrimaryKey(Long knowledgeId);
+    int deleteByPrimaryKey(String knowledgeId);
 
     int insert(Knowledge record);
 
@@ -20,7 +20,7 @@ public interface KnowledgeMapper {
 
     List<Knowledge> selectByExample(KnowledgeExample example);
 
-    Knowledge selectByPrimaryKey(Long knowledgeId);
+    Knowledge selectByPrimaryKey(String knowledgeId);
 
     int updateByExampleSelective(@Param("record") Knowledge record, @Param("example") KnowledgeExample example);
 

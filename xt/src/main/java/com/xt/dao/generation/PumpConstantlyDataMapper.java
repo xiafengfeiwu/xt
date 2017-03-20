@@ -10,7 +10,7 @@ public interface PumpConstantlyDataMapper {
 
     int deleteByExample(PumpConstantlyDataExample example);
 
-    int deleteByPrimaryKey(Long pumpId);
+    int deleteByPrimaryKey(String pumpId);
 
     int insert(PumpConstantlyData record);
 
@@ -18,7 +18,7 @@ public interface PumpConstantlyDataMapper {
 
     List<PumpConstantlyData> selectByExample(PumpConstantlyDataExample example);
 
-    PumpConstantlyData selectByPrimaryKey(Long pumpId);
+    PumpConstantlyData selectByPrimaryKey(String pumpId);
 
     int updateByExampleSelective(@Param("record") PumpConstantlyData record, @Param("example") PumpConstantlyDataExample example);
 

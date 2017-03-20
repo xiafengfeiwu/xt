@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.ComplaintMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Complaint">
-    <id column="complaint_id" jdbcType="BIGINT" property="complaintId" />
-    <result column="complaint_type_id" jdbcType="BIGINT" property="complaintTypeId" />
+    <id column="complaint_id" jdbcType="VARCHAR" property="complaintId" />
+    <result column="complaint_type_id" jdbcType="VARCHAR" property="complaintTypeId" />
     <result column="complaint_content" jdbcType="VARCHAR" property="complaintContent" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="contact_way" jdbcType="VARCHAR" property="contactWay" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_complaint
-    where complaint_id = #{complaintId,jdbcType=BIGINT}
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from w_complaint
-    where complaint_id = #{complaintId,jdbcType=BIGINT}
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.ComplaintExample">
     delete from w_complaint
@@ -105,8 +105,8 @@
     insert into w_complaint (complaint_id, complaint_type_id, complaint_content, 
       user_id, contact_way, create_time
       )
-    values (#{complaintId,jdbcType=BIGINT}, #{complaintTypeId,jdbcType=BIGINT}, #{complaintContent,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=BIGINT}, #{contactWay,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+    values (#{complaintId,jdbcType=VARCHAR}, #{complaintTypeId,jdbcType=VARCHAR}, #{complaintContent,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{contactWay,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Complaint">
@@ -133,16 +133,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="complaintId != null">
-        #{complaintId,jdbcType=BIGINT},
+        #{complaintId,jdbcType=VARCHAR},
       </if>
       <if test="complaintTypeId != null">
-        #{complaintTypeId,jdbcType=BIGINT},
+        #{complaintTypeId,jdbcType=VARCHAR},
       </if>
       <if test="complaintContent != null">
         #{complaintContent,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="contactWay != null">
         #{contactWay,jdbcType=VARCHAR},
@@ -162,16 +162,16 @@
     update w_complaint
     <set>
       <if test="record.complaintId != null">
-        complaint_id = #{record.complaintId,jdbcType=BIGINT},
+        complaint_id = #{record.complaintId,jdbcType=VARCHAR},
       </if>
       <if test="record.complaintTypeId != null">
-        complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+        complaint_type_id = #{record.complaintTypeId,jdbcType=VARCHAR},
       </if>
       <if test="record.complaintContent != null">
         complaint_content = #{record.complaintContent,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.contactWay != null">
         contact_way = #{record.contactWay,jdbcType=VARCHAR},
@@ -186,10 +186,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_complaint
-    set complaint_id = #{record.complaintId,jdbcType=BIGINT},
-      complaint_type_id = #{record.complaintTypeId,jdbcType=BIGINT},
+    set complaint_id = #{record.complaintId,jdbcType=VARCHAR},
+      complaint_type_id = #{record.complaintTypeId,jdbcType=VARCHAR},
       complaint_content = #{record.complaintContent,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=VARCHAR},
       contact_way = #{record.contactWay,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -200,13 +200,13 @@
     update w_complaint
     <set>
       <if test="complaintTypeId != null">
-        complaint_type_id = #{complaintTypeId,jdbcType=BIGINT},
+        complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR},
       </if>
       <if test="complaintContent != null">
         complaint_content = #{complaintContent,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="contactWay != null">
         contact_way = #{contactWay,jdbcType=VARCHAR},
@@ -215,15 +215,15 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where complaint_id = #{complaintId,jdbcType=BIGINT}
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Complaint">
     update w_complaint
-    set complaint_type_id = #{complaintTypeId,jdbcType=BIGINT},
+    set complaint_type_id = #{complaintTypeId,jdbcType=VARCHAR},
       complaint_content = #{complaintContent,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=VARCHAR},
       contact_way = #{contactWay,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where complaint_id = #{complaintId,jdbcType=BIGINT}
+    where complaint_id = #{complaintId,jdbcType=VARCHAR}
   </update>
 </mapper>

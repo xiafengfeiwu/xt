@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PumpWarnGroupMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpWarnGroup">
-    <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
-    <id column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
+    <id column="pump_id" jdbcType="VARCHAR" property="pumpId" />
+    <id column="warn_group_id" jdbcType="VARCHAR" property="warnGroupId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -86,13 +86,13 @@
     select 
     <include refid="Base_Column_List" />
     from w_pump_warn_group
-    where pump_id = #{pumpId,jdbcType=BIGINT}
-      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
+      and warn_group_id = #{warnGroupId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.xt.entity.generation.PumpWarnGroupKey">
     delete from w_pump_warn_group
-    where pump_id = #{pumpId,jdbcType=BIGINT}
-      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
+      and warn_group_id = #{warnGroupId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PumpWarnGroupExample">
     delete from w_pump_warn_group
@@ -103,7 +103,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.PumpWarnGroup">
     insert into w_pump_warn_group (pump_id, warn_group_id, create_time
       )
-    values (#{pumpId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}
+    values (#{pumpId,jdbcType=VARCHAR}, #{warnGroupId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.PumpWarnGroup">
@@ -121,10 +121,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="pumpId != null">
-        #{pumpId,jdbcType=BIGINT},
+        #{pumpId,jdbcType=VARCHAR},
       </if>
       <if test="warnGroupId != null">
-        #{warnGroupId,jdbcType=BIGINT},
+        #{warnGroupId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -141,10 +141,10 @@
     update w_pump_warn_group
     <set>
       <if test="record.pumpId != null">
-        pump_id = #{record.pumpId,jdbcType=BIGINT},
+        pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
       <if test="record.warnGroupId != null">
-        warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+        warn_group_id = #{record.warnGroupId,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -156,8 +156,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_pump_warn_group
-    set pump_id = #{record.pumpId,jdbcType=BIGINT},
-      warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+    set pump_id = #{record.pumpId,jdbcType=VARCHAR},
+      warn_group_id = #{record.warnGroupId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -170,13 +170,13 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where pump_id = #{pumpId,jdbcType=BIGINT}
-      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
+      and warn_group_id = #{warnGroupId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpWarnGroup">
     update w_pump_warn_group
     set create_time = #{createTime,jdbcType=TIMESTAMP}
-    where pump_id = #{pumpId,jdbcType=BIGINT}
-      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=VARCHAR}
+      and warn_group_id = #{warnGroupId,jdbcType=VARCHAR}
   </update>
 </mapper>

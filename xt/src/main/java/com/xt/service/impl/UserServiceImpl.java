@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.xt.dao.generation.UserMapper;
 import com.xt.entity.generation.User;
+import com.xt.entity.generation.UserAuth;
 import com.xt.entity.generation.UserExample;
+import com.xt.service.UserAuthService;
 import com.xt.service.UserService;
 import com.xt.util.PublicUtil;
 
@@ -16,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserMapper userMapper;
+	@Autowired
+	UserAuthService userAuthService;
 
 	@Override
 	public User findByLoginName(String loginName) {
@@ -40,7 +44,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(Long userId) {
+	public User findById(String userId) {
 		return userMapper.selectByPrimaryKey(userId);
 	}
 
@@ -84,10 +88,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void update(User user) {
 		userMapper.updateByPrimaryKey(user);
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(user.getRoleId())) {
+			// 是管理员，删除分配的区域和热泵关联
+			List<UserAuth> auths = userAuthService.findUserAll(user.getUserId());
+			if (auths != null && !auths.isEmpty()) {
+				for (UserAuth ua : auths) {
+					userAuthService.unAuthUser(ua.getRootId());
+				}
+			}
+		}
 	}
 
 	@Override
-	public void delete(Long userId) {
+	public void delete(String userId) {
 		userMapper.deleteByPrimaryKey(userId);
 	}
 

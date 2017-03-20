@@ -115,52 +115,62 @@ public class WarnGroupItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andItemIdEqualTo(Long value) {
+        public Criteria andItemIdEqualTo(String value) {
             addCriterion("item_id =", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotEqualTo(Long value) {
+        public Criteria andItemIdNotEqualTo(String value) {
             addCriterion("item_id <>", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThan(Long value) {
+        public Criteria andItemIdGreaterThan(String value) {
             addCriterion("item_id >", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
             addCriterion("item_id >=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThan(Long value) {
+        public Criteria andItemIdLessThan(String value) {
             addCriterion("item_id <", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThanOrEqualTo(Long value) {
+        public Criteria andItemIdLessThanOrEqualTo(String value) {
             addCriterion("item_id <=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdIn(List<Long> values) {
+        public Criteria andItemIdLike(String value) {
+            addCriterion("item_id like", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdNotLike(String value) {
+            addCriterion("item_id not like", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdIn(List<String> values) {
             addCriterion("item_id in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotIn(List<Long> values) {
+        public Criteria andItemIdNotIn(List<String> values) {
             addCriterion("item_id not in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdBetween(Long value1, Long value2) {
+        public Criteria andItemIdBetween(String value1, String value2) {
             addCriterion("item_id between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotBetween(Long value1, Long value2) {
+        public Criteria andItemIdNotBetween(String value1, String value2) {
             addCriterion("item_id not between", value1, value2, "itemId");
             return (Criteria) this;
         }
@@ -175,52 +185,62 @@ public class WarnGroupItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdEqualTo(Long value) {
+        public Criteria andWarnGroupIdEqualTo(String value) {
             addCriterion("warn_group_id =", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdNotEqualTo(Long value) {
+        public Criteria andWarnGroupIdNotEqualTo(String value) {
             addCriterion("warn_group_id <>", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdGreaterThan(Long value) {
+        public Criteria andWarnGroupIdGreaterThan(String value) {
             addCriterion("warn_group_id >", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andWarnGroupIdGreaterThanOrEqualTo(String value) {
             addCriterion("warn_group_id >=", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdLessThan(Long value) {
+        public Criteria andWarnGroupIdLessThan(String value) {
             addCriterion("warn_group_id <", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdLessThanOrEqualTo(Long value) {
+        public Criteria andWarnGroupIdLessThanOrEqualTo(String value) {
             addCriterion("warn_group_id <=", value, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdIn(List<Long> values) {
+        public Criteria andWarnGroupIdLike(String value) {
+            addCriterion("warn_group_id like", value, "warnGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnGroupIdNotLike(String value) {
+            addCriterion("warn_group_id not like", value, "warnGroupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnGroupIdIn(List<String> values) {
             addCriterion("warn_group_id in", values, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdNotIn(List<Long> values) {
+        public Criteria andWarnGroupIdNotIn(List<String> values) {
             addCriterion("warn_group_id not in", values, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdBetween(Long value1, Long value2) {
+        public Criteria andWarnGroupIdBetween(String value1, String value2) {
             addCriterion("warn_group_id between", value1, value2, "warnGroupId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnGroupIdNotBetween(Long value1, Long value2) {
+        public Criteria andWarnGroupIdNotBetween(String value1, String value2) {
             addCriterion("warn_group_id not between", value1, value2, "warnGroupId");
             return (Criteria) this;
         }

@@ -1,15 +1,15 @@
 package com.xt.entity.generation;
 
 public class Role {
-    private Long roleId;
+    private String roleId;
 
     private String roleName;
 
-    public Long getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

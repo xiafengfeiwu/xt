@@ -10,7 +10,7 @@ public interface WeatherKeyMapper {
 
     int deleteByExample(WeatherKeyExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(WeatherKey record);
 
@@ -18,7 +18,7 @@ public interface WeatherKeyMapper {
 
     List<WeatherKey> selectByExample(WeatherKeyExample example);
 
-    WeatherKey selectByPrimaryKey(Long id);
+    WeatherKey selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") WeatherKey record, @Param("example") WeatherKeyExample example);
 

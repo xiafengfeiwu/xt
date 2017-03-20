@@ -3,9 +3,9 @@ package com.xt.entity.generation;
 import java.util.Date;
 
 public class WarnGroupItem {
-    private Long itemId;
+    private String itemId;
 
-    private Long warnGroupId;
+    private String warnGroupId;
 
     private String itemName;
 
@@ -25,19 +25,19 @@ public class WarnGroupItem {
 
     private Date createTime;
 
-    public Long getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
-    public void setItemId(Long itemId) {
+    public void setItemId(String itemId) {
         this.itemId = itemId;
     }
 
-    public Long getWarnGroupId() {
+    public String getWarnGroupId() {
         return warnGroupId;
     }
 
-    public void setWarnGroupId(Long warnGroupId) {
+    public void setWarnGroupId(String warnGroupId) {
         this.warnGroupId = warnGroupId;
     }
 

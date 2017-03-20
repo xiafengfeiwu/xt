@@ -34,12 +34,12 @@ public class DeviceVenderServiceImpl implements DeviceVenderService {
 	}
 
 	@Override
-	public void delete(Long venderId) {
+	public void delete(String venderId) {
 		deviceVenderMapper.deleteByPrimaryKey(venderId);
 	}
 
 	@Override
-	public DeviceVender findById(Long venderId) {
+	public DeviceVender findById(String venderId) {
 		return deviceVenderMapper.selectByPrimaryKey(venderId);
 	}
 

@@ -10,7 +10,7 @@ public interface StoppageHandleEvaluateMapper {
 
     int deleteByExample(StoppageHandleEvaluateExample example);
 
-    int deleteByPrimaryKey(Long evaluateId);
+    int deleteByPrimaryKey(String evaluateId);
 
     int insert(StoppageHandleEvaluate record);
 
@@ -18,7 +18,7 @@ public interface StoppageHandleEvaluateMapper {
 
     List<StoppageHandleEvaluate> selectByExample(StoppageHandleEvaluateExample example);
 
-    StoppageHandleEvaluate selectByPrimaryKey(Long evaluateId);
+    StoppageHandleEvaluate selectByPrimaryKey(String evaluateId);
 
     int updateByExampleSelective(@Param("record") StoppageHandleEvaluate record, @Param("example") StoppageHandleEvaluateExample example);
 
