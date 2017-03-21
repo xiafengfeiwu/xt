@@ -9,26 +9,16 @@
 		<div style="float: left;width: 220px;height: 100%;padding-right: 6px;">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item" style="font-size: 13px;">
-						<div class="list-actions">
-							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
+					
+					<li data-ng-repeat="(key, type) in types" class="list-group-item" style="font-size: 13px;">
+						<div class="list-actions" data-ng-if="!type.systemItem">
+							<a href="javascript:;" data-ng-click="showChangeTypeForm(type)" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
 						</div>
-						<a href="javascript:;"><i class="md md-turned-in-not"></i> 平台文档</a>
+						<a href="javascript:;" data-ng-click="showTypeArticles(type.knowledgeTypeId)"><i class="md md-turned-in-not"></i> {{type.knowledgeTypeName}}</a>
 					</li>
-					<li class="list-group-item" style="font-size: 13px;">
-						<div class="list-actions">
-							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
-						</div>
-						<a href="javascript:;"><i class="md md-turned-in-not"></i> 技术支持</a>
-					</li>
-					<li class="list-group-item" style="font-size: 13px;">
-						<div class="list-actions">
-							<a href="javascript:;" class="btn btn-link" style="font-size: 14px;line-height: 31px;"><i class="md md-edit"></i></a>
-						</div>
-						<a href="javascript:;"><i class="md md-turned-in-not"></i> 新闻资讯</a>
-					</li>
+					
 					<li class="list-group-item" style="font-size: 14px;text-align: center">
-						<a href="javascript:;"><i class="md md-add-box"></i>新增类别</a>
+						<a href="javascript:;" data-ng-click="showCreateTypeForm()"><i class="md md-add-box"></i>新增类别</a>
 					</li>
 				</ul>
 			</div>

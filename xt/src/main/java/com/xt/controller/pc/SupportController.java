@@ -51,7 +51,7 @@ public class SupportController {
 		try {
 			knowledgeServer.addType(knowledgeType);
 		} catch (Exception e) {
-			data.put("message", "操作失败，请稍候重试");
+			data.put("message", "操作失败，可能存在相同类别的名称，请核对后重试");
 			return data;
 		}
 		data.put("success", true);
@@ -87,7 +87,7 @@ public class SupportController {
 		try {
 			knowledgeServer.updateType(upKnowledgeType);
 		} catch (Exception e) {
-			data.put("message", "操作失败，请稍候重试");
+			data.put("message", "操作失败，可能存在相同类别的名称，请核对后重试");
 			return data;
 		}
 		data.put("success", true);
@@ -125,14 +125,8 @@ public class SupportController {
 			return data;
 		}
 		data.put("success", true);
+		data.put("knowledgeType", knowledgeType);
 		data.put("message", "操作成功");
 		return data;
-	}
-
-	
-	public static void main(String[] args) {
-		System.out.println(PublicUtil.initId());
-		System.out.println(PublicUtil.initId());
-		System.out.println(PublicUtil.sha1("123456"));
 	}
 }

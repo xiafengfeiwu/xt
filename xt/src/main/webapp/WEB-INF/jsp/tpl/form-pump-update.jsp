@@ -3,11 +3,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <button type="button" class="close" data-ng-click="$hide()">&times;</button>
         <h4 class="modal-title">修改热泵</h4>
       </div>
       <div class="modal-body">
-		<form class="form-floating" novalidate="novalidate"">
+		<form class="form-floating" novalidate="novalidate">
 	          <div class="row">
 	          	<div class="col-xs-6">
 		          <div class="form-group filled">

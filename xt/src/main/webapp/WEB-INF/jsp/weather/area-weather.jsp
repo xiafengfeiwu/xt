@@ -41,7 +41,7 @@
 				<p>最新天气：{{weatherData.condTxt}} <img style="height: 19px;margin-top: -3px;" alt="{{weatherData.condCode}}" src="{{weatherData.condCodeUrl}}"></p>
 			</div>
 			<div class="col-xs-6">
-				<p>风力风向：{{weatherData.windSc}}级, {{weatherData.windDir}}</p>
+				<p>风力风向：{{weatherData.windSc}}<span data-ng-if="weatherData.windSc!='微风'">级</span>, {{weatherData.windDir}}</p>
 			</div>
 			<div class="col-xs-6">
 				<p>采集温度：{{weatherData.tmp}} ℃</p>
@@ -56,7 +56,7 @@
 				<p>降水量：{{weatherData.pcpn}} mm</p>
 			</div>
 			<div class="col-xs-6">
-				<p>大气气压：{{weatherData.pres/10}} kPa</p>
+				<p>大气气压：{{weatherData.pres}} hPa</p>
 			</div>
 			<div class="col-xs-6">
 				<p>能见度：{{weatherData.vis}} km</p>

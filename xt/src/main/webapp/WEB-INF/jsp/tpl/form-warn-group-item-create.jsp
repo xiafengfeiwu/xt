@@ -6,8 +6,8 @@
         <button type="button" class="close" ng-click="$hide()">&times;</button>
         <h4 class="modal-title">新增告警项</h4>
       </div>
-      <div class="modal-body" style="height: 428px;overflow: auto;">
-		<form class="form-floating" novalidate="novalidate"">
+      <div class="modal-body" style="height: 418px;overflow: auto;">
+		<form class="form-floating" novalidate="novalidate">
 	          <div class="row">
 	          	<div class="col-xs-6">
 		          <div class="form-group filled">
