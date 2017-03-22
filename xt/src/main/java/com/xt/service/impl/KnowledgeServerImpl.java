@@ -52,7 +52,7 @@ public class KnowledgeServerImpl implements KnowledgeServer {
 	public List<Knowledge> getListByTypeId(String typeId, int page) {
 		KnowledgeExample example = new KnowledgeExample();
 		example.createCriteria().andKnowledgeTypeIdEqualTo(typeId);
-		example.setOrderByClause("knowledge_id asc limit " + (page - 1) * 10 + " 10");
+		example.setOrderByClause("knowledge_id desc"); //  limit " + (page - 1) * 10 + ", 10
 		return knowledgeMapper.selectByExample(example);
 	}
 
@@ -63,7 +63,7 @@ public class KnowledgeServerImpl implements KnowledgeServer {
 
 	@Override
 	public void update(Knowledge knowledge) {
-		knowledgeMapper.updateByPrimaryKey(knowledge);
+		knowledgeMapper.updateByPrimaryKeyWithBLOBs(knowledge);
 	}
 
 	@Override

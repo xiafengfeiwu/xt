@@ -49,5 +49,6 @@
   <script src="assets/pulgins/echarts/bmap.js"></script>
   <script src="assets/pulgins/jcanvas/jcanvas.min.js"></script>
   <script src="assets/pulgins/ztree/jquery.ztree.core.min.js"></script>
+  <script type="text/javascript" src="assets/pulgins/nicedit/nicEdit.js"></script>
 </body>
 </html>

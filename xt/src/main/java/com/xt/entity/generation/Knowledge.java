@@ -9,10 +9,6 @@ public class Knowledge {
 
     private String knowledgeTitle;
 
-    private Integer usefulCount;
-
-    private Integer uselessCount;
-
     private String creatorId;
 
     private Date createTime;
@@ -43,22 +39,6 @@ public class Knowledge {
 
     public void setKnowledgeTitle(String knowledgeTitle) {
         this.knowledgeTitle = knowledgeTitle;
-    }
-
-    public Integer getUsefulCount() {
-        return usefulCount;
-    }
-
-    public void setUsefulCount(Integer usefulCount) {
-        this.usefulCount = usefulCount;
-    }
-
-    public Integer getUselessCount() {
-        return uselessCount;
-    }
-
-    public void setUselessCount(Integer uselessCount) {
-        this.uselessCount = uselessCount;
     }
 
     public String getCreatorId() {
