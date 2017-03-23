@@ -13,7 +13,7 @@ public class Res {
 
     private String resPath;
 
-    private String resSize;
+    private Long resSize;
 
     private Date resCreateTime;
 
@@ -57,11 +57,11 @@ public class Res {
         this.resPath = resPath;
     }
 
-    public String getResSize() {
+    public Long getResSize() {
         return resSize;
     }
 
-    public void setResSize(String resSize) {
+    public void setResSize(Long resSize) {
         this.resSize = resSize;
     }
 

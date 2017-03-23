@@ -22,11 +22,6 @@ public class ResServiceImpl implements ResService {
 	}
 
 	@Override
-	public void update(Res res) {
-		resMapper.updateByPrimaryKey(res);
-	}
-
-	@Override
 	public void delete(String resId) {
 		resMapper.deleteByPrimaryKey(resId);
 	}
@@ -37,15 +32,6 @@ public class ResServiceImpl implements ResService {
 		example.createCriteria().andGroupIdEqualTo(groupId);
 		example.setOrderByClause("res_create_time desc");
 		return resMapper.selectByExample(example);
-	}
-
-	@Override
-	public Res findDefaultByGroup(String groupId) {
-		List<Res> reses = findResByGroupId(groupId);
-		if (reses != null && reses.size() > 0) {
-			return reses.get(0);
-		}
-		return null;
 	}
 
 }

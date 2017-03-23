@@ -53,6 +53,9 @@
 				<blockquote ng-show="tabFlag=='base' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
 					<div class="row">
 						<div class="col-xs-12">
+							<div class="pull-right">
+								<div class="btn btn-round-sm btn-link ng-scope" data-ng-click="showPumpPictures(pumpd.base.pumpId)" data-bs-tooltip data-title="热泵图片"><i class="md md-crop-original"></i></div>
+							</div>
 							<h5><i class="md md-chevron-right"></i> 基本信息</h5>
 						</div>
 					</div>
@@ -117,6 +120,7 @@
 							<div class="item-label">供暖面积：</div>{{pumpd.project.heatingArea}} ㎡
 						</div>
 					</div>
+					
 					<div class="row">
 						<div class="col-xs-12">
 							<h5><i class="md md-chevron-right"></i> 地址信息</h5>
@@ -152,6 +156,17 @@
 						<div class="col-sm-12 text-center">
 							<img id="radiatorIcon" src="assets/img/pump-work-simple-v2.png" style="display: none" />
 							<canvas id="myCanvas" width="649" height="398" style="margin: auto;"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<h5><i class="md md-chevron-right"></i> 采集设备
+								<div class="pull-right" style="margin-top: -8px;">
+         							<button type="button" class="btn btn-round-sm btn-link ng-scope" data-placement="left" data-bs-tooltip data-title="新增采集设备">
+         								<i class="md md-add"></i>
+         							</button>
+         						</div>
+         					</h5>
 						</div>
 					</div>
 					<div class="row">

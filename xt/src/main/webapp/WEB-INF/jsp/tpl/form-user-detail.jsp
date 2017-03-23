@@ -33,7 +33,8 @@
 				<label style="width: 80px;text-align: right;">更新时间：</label>{{user.userModifyTime  | date: 'yyyy-MM-dd HH:mm:ss' }}
           </div>
           <div class="form-group">
-            <button type="button" ng-click="remove(user)" class="btn btn-primary">删除该用户</button>
+            <button type="button" data-ng-click="resetPwd(user)" class="btn btn-primary">重置密码</button>
+             <button type="button" data-ng-click="remove(user)" class="btn btn-primary">删除该用户</button>
           </div>
         </fieldset>
       </form>

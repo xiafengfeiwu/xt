@@ -105,7 +105,12 @@ public class TxAuthController {
 		user.setUserWxOpenId(null);
 		user.setUserRegistTime(new Date());
 		user.setUserModifyTime(new Date());
-		userService.regist(user);
+		try {
+			userService.regist(user);
+		} catch (Exception e) {
+			data.put("message", "操作失败，请稍后重试");
+			return data;
+		}
 		data.put("success", true);
 		data.put("user", user);
 		return data;
@@ -156,7 +161,12 @@ public class TxAuthController {
 		_user.setUserPhone(user.getUserPhone());
 		_user.setRoleId(user.getRoleId());
 		_user.setUserModifyTime(new Date());
-		userService.update(_user);
+		try {
+			userService.update(_user);
+		} catch (Exception e) {
+			data.put("message", "修改失败，请稍后重试");
+			return data;
+		}
 		data.put("success", true);
 		data.put("user", _user);
 		return data;
@@ -180,7 +190,39 @@ public class TxAuthController {
 		if (_user.getUserDisableStatus().equals(user.getUserDisableStatus())) {
 			_user.setUserDisableStatus(!_user.getUserDisableStatus());
 			_user.setUserModifyTime(new Date());
-			userService.update(_user);
+			try {
+				userService.update(_user);
+			} catch (Exception e) {
+				data.put("message", "修改失败，请稍后重试");
+				return data;
+			}
+		}
+		data.put("success", true);
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("reset-pwd")
+	public Map<String, Object> resetPwd(@RequestBody(required = true) User user) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (user == null || user.getUserId() == null) {
+			data.put("message", "请传入用户ID");
+			return data;
+		}
+		User u = userService.findById(user.getUserId());
+		if (u == null) {
+			data.put("message", "无效的用户ID");
+			return data;
+		}
+		u.setUserPassword(PublicUtil.sha1("123456"));
+		u.setUserModifyTime(new Date());
+		try {
+			userService.update(u);
+		} catch (Exception e) {
+			data.put("message", "修改失败，请稍后重试");
+			return data;
 		}
 		data.put("success", true);
 		return data;

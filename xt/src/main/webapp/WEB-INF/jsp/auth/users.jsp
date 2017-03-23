@@ -23,7 +23,6 @@
 		<div class="col-sm-12">
 
 			<div class="table-responsive well no-padding white no-margin">
-
 				<table class="table table-hover table-full m-b-60" id="table-user-2172158" >
 					<thead>
 						<tr fsm-sticky-header scroll-body="'#table-user-2172158'" scroll-stop="64">
@@ -38,7 +37,7 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="(key, user) in data" ng-dblclick="detail(user)" ng-if="keyword=='' || (user.userLoginName.indexOf(keyword)>=0 || user.userName.indexOf(keyword)>=0 || user.userNamePy.indexOf(keyword)>=0 || user.userPhone.indexOf(keyword)>=0)">
-							<td><img ng-src="{{user.userPortraitPath}}" class="light-green darken-1 icon-color"/></td>
+							<td><img data-ng-click="showUploadHeadImg(user)" data-ng-src="{{user.userPortraitPath}}" class="light-green darken-1 icon-color"/></td>
 							<td>{{ user.userName }}</td>
 							<td>{{ user.userLoginName }}</td>
 							<td>{{ user.userPhone }}</td>

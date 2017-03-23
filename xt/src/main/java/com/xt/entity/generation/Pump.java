@@ -23,6 +23,10 @@ public class Pump {
 
     private String areaLatitude;
 
+    private String groupId;
+
+    private String pumpPicture;
+
     private Date createTime;
 
     private Date modifyTime;
@@ -105,6 +109,22 @@ public class Pump {
 
     public void setAreaLatitude(String areaLatitude) {
         this.areaLatitude = areaLatitude;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getPumpPicture() {
+        return pumpPicture;
+    }
+
+    public void setPumpPicture(String pumpPicture) {
+        this.pumpPicture = pumpPicture;
     }
 
     public Date getCreateTime() {

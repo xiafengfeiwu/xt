@@ -22,6 +22,7 @@ import com.xt.entity.generation.ProjectArea;
 import com.xt.entity.generation.Pump;
 import com.xt.entity.generation.PumpWarnGroup;
 import com.xt.entity.generation.PumpWarnGroupKey;
+import com.xt.entity.generation.Res;
 import com.xt.entity.generation.Role;
 import com.xt.entity.generation.WarnGroup;
 import com.xt.entity.generation.WarnGroupItem;
@@ -33,6 +34,7 @@ import com.xt.service.DeviceVenderService;
 import com.xt.service.ProjectAreaService;
 import com.xt.service.ProjectService;
 import com.xt.service.PumpService;
+import com.xt.service.ResService;
 import com.xt.service.WarnGroupService;
 import com.xt.util.PublicUtil;
 
@@ -58,6 +60,8 @@ public class TxMonitorController {
 	DeviceProductService deviceProductService;
 	@Autowired
 	DeviceVenderService deviceVenderService;
+	@Autowired
+	ResService resService;
 
 	@RequiresAuthentication
 	@RequestMapping("pump")
@@ -79,6 +83,10 @@ public class TxMonitorController {
 	public Map<String, Object> pumpInfo(String pumpId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
+		if (PublicUtil.isEmpty(pumpId)) {
+			data.put("message", "请传入热泵ID");
+			return data;
+		}
 		Pump pump = pumpService.getById(pumpId);
 		if (pump == null) {
 			data.put("message", "无效的热泵ID");
@@ -122,6 +130,28 @@ public class TxMonitorController {
 		data.put("deviceVender", deviceVender);
 		data.put("weather", weather);
 		data.put("weatherAlarm", weatherAlarm);
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("pump-pictures")
+	public Map<String, Object> pumpPictures(String pumpId) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (PublicUtil.isEmpty(pumpId)) {
+			data.put("message", "请传入热泵ID");
+			return data;
+		}
+		Pump pump = pumpService.getById(pumpId);
+		if (pump == null) {
+			data.put("message", "无效的热泵ID");
+			return data;
+		}
+		List<Res> res = resService.findResByGroupId(pump.getGroupId());
+		data.put("success", true);
+		data.put("data", res);
+		data.put("groupId", pump.getGroupId());
 		return data;
 	}
 

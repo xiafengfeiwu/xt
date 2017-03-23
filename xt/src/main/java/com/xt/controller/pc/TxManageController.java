@@ -271,15 +271,17 @@ public class TxManageController {
 
 		String projectAreaId = project.getProjectAreaId();
 		ProjectArea projectArea = projectAreaService.getByAreaId(projectAreaId);
-		if(projectArea == null) {
+		if (projectArea == null) {
 			data.put("message", "无效的项目区域ID");
 			return data;
 		}
 		String tempCode = projectArea.getAreaCode() + PublicUtil.getCurrentYearMonth();
 		pump.setPumpCode(pumpService.getLastPumpCode(tempCode));
-		
+
 		pump.setPumpId(PublicUtil.initId());
 		pump.setOwnerId(project.getOwnerId());
+		pump.setGroupId(PublicUtil.initId());
+		pump.setPumpPicture("assets/img/default.png");
 		pump.setCreateTime(new Date());
 		pump.setModifyTime(new Date());
 		pump.setAreaLatitude("");
@@ -346,6 +348,13 @@ public class TxManageController {
 		upump.setProductId(pump.getProductId());
 		upump.setModifyTime(new Date());
 
+		if (PublicUtil.isEmpty(upump.getGroupId())) {
+			upump.setGroupId(PublicUtil.initId());
+		}
+		if (PublicUtil.isEmpty(upump.getPumpPicture())) {
+			upump.setPumpPicture("assets/img/default.png");
+		}
+
 		try {
 			pumpService.update(upump);
 		} catch (Exception e) {
@@ -357,7 +366,7 @@ public class TxManageController {
 		data.put("success", true);
 		return data;
 	}
-	
+
 	@ResponseBody
 	@RequiresAuthentication
 	@RequestMapping("update-pump-lat-lng")

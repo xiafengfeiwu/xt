@@ -12,6 +12,8 @@
     <result column="install_date" jdbcType="DATE" property="installDate" />
     <result column="area_longitude" jdbcType="VARCHAR" property="areaLongitude" />
     <result column="area_latitude" jdbcType="VARCHAR" property="areaLatitude" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="pump_picture" jdbcType="VARCHAR" property="pumpPicture" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
@@ -75,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List">
     pump_id, project_id, owner_id, pump_name, pump_code, product_id, pump_sn, install_date, 
-    area_longitude, area_latitude, create_time, modify_time
+    area_longitude, area_latitude, group_id, pump_picture, create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.PumpExample" resultMap="BaseResultMap">
     select
@@ -112,13 +114,13 @@
     insert into w_pump (pump_id, project_id, owner_id, 
       pump_name, pump_code, product_id, 
       pump_sn, install_date, area_longitude, 
-      area_latitude, create_time, modify_time
-      )
+      area_latitude, group_id, pump_picture, 
+      create_time, modify_time)
     values (#{pumpId,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, 
       #{pumpName,jdbcType=VARCHAR}, #{pumpCode,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, 
       #{pumpSn,jdbcType=VARCHAR}, #{installDate,jdbcType=DATE}, #{areaLongitude,jdbcType=VARCHAR}, 
-      #{areaLatitude,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
-      )
+      #{areaLatitude,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{pumpPicture,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Pump">
     insert into w_pump
@@ -152,6 +154,12 @@
       </if>
       <if test="areaLatitude != null">
         area_latitude,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="pumpPicture != null">
+        pump_picture,
       </if>
       <if test="createTime != null">
         create_time,
@@ -190,6 +198,12 @@
       </if>
       <if test="areaLatitude != null">
         #{areaLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpPicture != null">
+        #{pumpPicture,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -238,6 +252,12 @@
       <if test="record.areaLatitude != null">
         area_latitude = #{record.areaLatitude,jdbcType=VARCHAR},
       </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpPicture != null">
+        pump_picture = #{record.pumpPicture,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -261,6 +281,8 @@
       install_date = #{record.installDate,jdbcType=DATE},
       area_longitude = #{record.areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{record.areaLatitude,jdbcType=VARCHAR},
+      group_id = #{record.groupId,jdbcType=VARCHAR},
+      pump_picture = #{record.pumpPicture,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -297,6 +319,12 @@
       <if test="areaLatitude != null">
         area_latitude = #{areaLatitude,jdbcType=VARCHAR},
       </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpPicture != null">
+        pump_picture = #{pumpPicture,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -317,6 +345,8 @@
       install_date = #{installDate,jdbcType=DATE},
       area_longitude = #{areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{areaLatitude,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      pump_picture = #{pumpPicture,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where pump_id = #{pumpId,jdbcType=VARCHAR}

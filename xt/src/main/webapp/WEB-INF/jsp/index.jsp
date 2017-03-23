@@ -43,12 +43,17 @@
   <script src="assets/js/controller.min.js"></script>
   <script src="assets/pulgins/angular-tree/angular-tree-control.js"></script>
   <script src="//cdn.bootcss.com/layer/3.0/layer.min.js"></script>
-  <!--//api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM" -->
+  <script src="//cdn.bootcss.com/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
+  <script src="//cdn.bootcss.com/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+  <!--
+  <script src="//cdn.bootcss.com/masonry/3.3.2/masonry.pkgd.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+  //api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM" -->
   <script src="//api.map.baidu.com/getscript?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM&services=&t=20170314113503"></script>
   <script src="assets/pulgins/echarts/echarts.min.js"></script>
   <script src="assets/pulgins/echarts/bmap.js"></script>
   <script src="assets/pulgins/jcanvas/jcanvas.min.js"></script>
   <script src="assets/pulgins/ztree/jquery.ztree.core.min.js"></script>
-  <script type="text/javascript" src="assets/pulgins/nicedit/nicEdit.js"></script>
+  <script src="assets/pulgins/nicedit/nicEdit.js"></script>
 </body>
 </html>

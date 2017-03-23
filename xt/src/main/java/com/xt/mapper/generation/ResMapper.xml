@@ -7,7 +7,7 @@
     <result column="res_name" jdbcType="VARCHAR" property="resName" />
     <result column="res_type" jdbcType="VARCHAR" property="resType" />
     <result column="res_path" jdbcType="VARCHAR" property="resPath" />
-    <result column="res_size" jdbcType="VARCHAR" property="resSize" />
+    <result column="res_size" jdbcType="BIGINT" property="resSize" />
     <result column="res_create_time" jdbcType="TIMESTAMP" property="resCreateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -107,7 +107,7 @@
       res_type, res_path, res_size, 
       res_create_time)
     values (#{resId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, 
-      #{resType,jdbcType=VARCHAR}, #{resPath,jdbcType=VARCHAR}, #{resSize,jdbcType=VARCHAR}, 
+      #{resType,jdbcType=VARCHAR}, #{resPath,jdbcType=VARCHAR}, #{resSize,jdbcType=BIGINT}, 
       #{resCreateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Res">
@@ -152,7 +152,7 @@
         #{resPath,jdbcType=VARCHAR},
       </if>
       <if test="resSize != null">
-        #{resSize,jdbcType=VARCHAR},
+        #{resSize,jdbcType=BIGINT},
       </if>
       <if test="resCreateTime != null">
         #{resCreateTime,jdbcType=TIMESTAMP},
@@ -184,7 +184,7 @@
         res_path = #{record.resPath,jdbcType=VARCHAR},
       </if>
       <if test="record.resSize != null">
-        res_size = #{record.resSize,jdbcType=VARCHAR},
+        res_size = #{record.resSize,jdbcType=BIGINT},
       </if>
       <if test="record.resCreateTime != null">
         res_create_time = #{record.resCreateTime,jdbcType=TIMESTAMP},
@@ -201,7 +201,7 @@
       res_name = #{record.resName,jdbcType=VARCHAR},
       res_type = #{record.resType,jdbcType=VARCHAR},
       res_path = #{record.resPath,jdbcType=VARCHAR},
-      res_size = #{record.resSize,jdbcType=VARCHAR},
+      res_size = #{record.resSize,jdbcType=BIGINT},
       res_create_time = #{record.resCreateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -223,7 +223,7 @@
         res_path = #{resPath,jdbcType=VARCHAR},
       </if>
       <if test="resSize != null">
-        res_size = #{resSize,jdbcType=VARCHAR},
+        res_size = #{resSize,jdbcType=BIGINT},
       </if>
       <if test="resCreateTime != null">
         res_create_time = #{resCreateTime,jdbcType=TIMESTAMP},
@@ -237,7 +237,7 @@
       res_name = #{resName,jdbcType=VARCHAR},
       res_type = #{resType,jdbcType=VARCHAR},
       res_path = #{resPath,jdbcType=VARCHAR},
-      res_size = #{resSize,jdbcType=VARCHAR},
+      res_size = #{resSize,jdbcType=BIGINT},
       res_create_time = #{resCreateTime,jdbcType=TIMESTAMP}
     where res_id = #{resId,jdbcType=VARCHAR}
   </update>

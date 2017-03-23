@@ -822,6 +822,146 @@ public class PumpExample {
             return (Criteria) this;
         }
 
+        public Criteria andGroupIdIsNull() {
+            addCriterion("group_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdIsNotNull() {
+            addCriterion("group_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdEqualTo(String value) {
+            addCriterion("group_id =", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotEqualTo(String value) {
+            addCriterion("group_id <>", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdGreaterThan(String value) {
+            addCriterion("group_id >", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdGreaterThanOrEqualTo(String value) {
+            addCriterion("group_id >=", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdLessThan(String value) {
+            addCriterion("group_id <", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdLessThanOrEqualTo(String value) {
+            addCriterion("group_id <=", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdLike(String value) {
+            addCriterion("group_id like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotLike(String value) {
+            addCriterion("group_id not like", value, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdIn(List<String> values) {
+            addCriterion("group_id in", values, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotIn(List<String> values) {
+            addCriterion("group_id not in", values, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdBetween(String value1, String value2) {
+            addCriterion("group_id between", value1, value2, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupIdNotBetween(String value1, String value2) {
+            addCriterion("group_id not between", value1, value2, "groupId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureIsNull() {
+            addCriterion("pump_picture is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureIsNotNull() {
+            addCriterion("pump_picture is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureEqualTo(String value) {
+            addCriterion("pump_picture =", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureNotEqualTo(String value) {
+            addCriterion("pump_picture <>", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureGreaterThan(String value) {
+            addCriterion("pump_picture >", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureGreaterThanOrEqualTo(String value) {
+            addCriterion("pump_picture >=", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureLessThan(String value) {
+            addCriterion("pump_picture <", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureLessThanOrEqualTo(String value) {
+            addCriterion("pump_picture <=", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureLike(String value) {
+            addCriterion("pump_picture like", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureNotLike(String value) {
+            addCriterion("pump_picture not like", value, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureIn(List<String> values) {
+            addCriterion("pump_picture in", values, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureNotIn(List<String> values) {
+            addCriterion("pump_picture not in", values, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureBetween(String value1, String value2) {
+            addCriterion("pump_picture between", value1, value2, "pumpPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpPictureNotBetween(String value1, String value2) {
+            addCriterion("pump_picture not between", value1, value2, "pumpPicture");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;
