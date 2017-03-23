@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tinify.Options;
+import com.tinify.Source;
+import com.tinify.Tinify;
 import com.xt.entity.generation.Res;
 import com.xt.entity.generation.User;
 import com.xt.service.ResService;
@@ -53,6 +56,11 @@ public class TxFileController {
 			return map;
 		}
 
+		if (file.getSize() > 2 * 1024 * 1024) {
+			map.put("message", "文件大小超过2Mb限制");
+			return map;
+		}
+
 		String Fseparator = File.separator;
 		String realPath = request.getSession().getServletContext().getRealPath(Fseparator + "uploads");
 
@@ -78,7 +86,7 @@ public class TxFileController {
 		Res res = new Res();
 		res.setResId(PublicUtil.initId());
 		res.setGroupId(groupId);
-		if(originalFilename.length()>100) {
+		if (originalFilename.length() > 100) {
 			res.setResName(newFileName);
 		} else {
 			res.setResName(originalFilename);
@@ -93,7 +101,7 @@ public class TxFileController {
 			map.put("message", "保存失败，请稍后重试");
 			return map;
 		}
-
+		TxFileController.compression(savePath + "/" + newFileName);
 		map.put("success", true);
 		map.put("message", "上传成功");
 		map.put("res", res);
@@ -121,7 +129,7 @@ public class TxFileController {
 			return map;
 		}
 
-		if (file.getSize() > 500 * 1024) {
+		if (file.getSize() > 2 * 1024 * 1024) {
 			map.put("message", "文件大小超过500Kb限制");
 			return map;
 		}
@@ -162,9 +170,30 @@ public class TxFileController {
 			return map;
 		}
 
+		TxFileController.compression(savePath + "/" + newFileName);
+
 		map.put("success", true);
 		map.put("message", "上传成功");
 		map.put("filePath", filePath);
 		return map;
+	}
+
+	private static void compression(String path) {
+		Tinify.setKey("SjdrSTZvZ1Hfw58Wu90aV_Qdr_o4n7go");
+		Source source = null;
+		try {
+			source = Tinify.fromFile(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+		Options options = new Options().with("method", "cover").with("width", 320).with("height", 320);
+		Source resized = source.resize(options);
+		try {
+			resized.toFile(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
 	}
 }
