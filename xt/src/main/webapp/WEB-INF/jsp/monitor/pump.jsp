@@ -54,7 +54,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="pull-right">
-								<div class="btn btn-round-sm btn-link ng-scope" data-ng-click="showPumpPictures(pumpd.base.pumpId)" data-bs-tooltip data-title="热泵图片"><i class="md md-crop-original"></i></div>
+								<div class="btn btn-round-sm btn-link ng-scope" data-ng-click="showPumpPictures(pumpd.base.pumpId)" data-bs-tooltip data-title="热泵图片"><i data-ng-if="'assets/img/default.png'==pumpd.base.pumpPicture" class="md md-crop-original"></i><img style="height: 20px" data-ng-if="'assets/img/default.png'!=pumpd.base.pumpPicture" data-ng-src="{{pumpd.base.pumpPicture}}"></div>
 							</div>
 							<h5><i class="md md-chevron-right"></i> 基本信息</h5>
 						</div>

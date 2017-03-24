@@ -13,7 +13,7 @@
           <div class="progress-bar progress-bar-success" style="width: {{progressPercentage}}%;"></div>
         </div>
         
-        <div data-ng-if="progressPercentage==100" style="margin-top: 25px;text-align: center;">压缩中...</div>
+        <div data-ng-if="progressPercentage==100" style="margin-top: 25px;text-align: center;">{{cMessage}}</div>
       
       </div>
       <div class="modal-footer">

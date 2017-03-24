@@ -27,6 +27,11 @@ public class ResServiceImpl implements ResService {
 	}
 
 	@Override
+	public Res getById(String resId) {
+		return resMapper.selectByPrimaryKey(resId);
+	}
+
+	@Override
 	public List<Res> findResByGroupId(String groupId) {
 		ResExample example = new ResExample();
 		example.createCriteria().andGroupIdEqualTo(groupId);

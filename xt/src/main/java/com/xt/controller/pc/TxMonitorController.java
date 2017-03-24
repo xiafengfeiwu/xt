@@ -151,7 +151,6 @@ public class TxMonitorController {
 		List<Res> res = resService.findResByGroupId(pump.getGroupId());
 		data.put("success", true);
 		data.put("data", res);
-		data.put("groupId", pump.getGroupId());
 		return data;
 	}
 
