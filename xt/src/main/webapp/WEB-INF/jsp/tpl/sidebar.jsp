@@ -34,7 +34,7 @@
       <a menu-link href="#/manage/project" name="项目管理" icon="md md-style">项目管理</a>
       <a menu-link href="#/manage/device-product" name="产品管理" icon="md md-memory">产品管理</a>
     </li>
-    <li menu-toggle path="/service" name="售后服务" icon="md md-mood">
+    <li menu-toggle path="/service" name="运维服务" icon="md md-mood">
       <a menu-link href="#/service/support" name="技术支持" icon="md md-help">技术支持</a>
       <a menu-link href="#/service/repair" name="故障报修" icon="md md-error">故障报修</a>
       <a menu-link href="#/service/handling" name="告警处理" icon="md md-new-releases">告警处理</a>

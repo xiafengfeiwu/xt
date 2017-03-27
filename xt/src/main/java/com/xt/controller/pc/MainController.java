@@ -242,4 +242,13 @@ public class MainController {
 		((Object[]) map.get("value"))[2] = color;
 		return map;
 	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("get-group-id")
+	public Map<String, Object> getGroupId() {
+		Map<String, Object> data = new HashMap<>();
+		data.put("groupId", PublicUtil.initId());
+		return data;
+	}
 }

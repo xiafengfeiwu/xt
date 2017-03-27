@@ -11,7 +11,7 @@ public class StoppageHandle {
 
     private Date handleTime;
 
-    private String handleDuration;
+    private Long handleDuration;
 
     private String handleStatus;
 
@@ -49,11 +49,11 @@ public class StoppageHandle {
         this.handleTime = handleTime;
     }
 
-    public String getHandleDuration() {
+    public Long getHandleDuration() {
         return handleDuration;
     }
 
-    public void setHandleDuration(String handleDuration) {
+    public void setHandleDuration(Long handleDuration) {
         this.handleDuration = handleDuration;
     }
 

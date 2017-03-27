@@ -315,73 +315,73 @@ public class StoppageExample {
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdIsNull() {
-            addCriterion("warn_id is null");
+        public Criteria andPumpWarnIdIsNull() {
+            addCriterion("pump_warn_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdIsNotNull() {
-            addCriterion("warn_id is not null");
+        public Criteria andPumpWarnIdIsNotNull() {
+            addCriterion("pump_warn_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdEqualTo(String value) {
-            addCriterion("warn_id =", value, "warnId");
+        public Criteria andPumpWarnIdEqualTo(String value) {
+            addCriterion("pump_warn_id =", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotEqualTo(String value) {
-            addCriterion("warn_id <>", value, "warnId");
+        public Criteria andPumpWarnIdNotEqualTo(String value) {
+            addCriterion("pump_warn_id <>", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdGreaterThan(String value) {
-            addCriterion("warn_id >", value, "warnId");
+        public Criteria andPumpWarnIdGreaterThan(String value) {
+            addCriterion("pump_warn_id >", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdGreaterThanOrEqualTo(String value) {
-            addCriterion("warn_id >=", value, "warnId");
+        public Criteria andPumpWarnIdGreaterThanOrEqualTo(String value) {
+            addCriterion("pump_warn_id >=", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdLessThan(String value) {
-            addCriterion("warn_id <", value, "warnId");
+        public Criteria andPumpWarnIdLessThan(String value) {
+            addCriterion("pump_warn_id <", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdLessThanOrEqualTo(String value) {
-            addCriterion("warn_id <=", value, "warnId");
+        public Criteria andPumpWarnIdLessThanOrEqualTo(String value) {
+            addCriterion("pump_warn_id <=", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdLike(String value) {
-            addCriterion("warn_id like", value, "warnId");
+        public Criteria andPumpWarnIdLike(String value) {
+            addCriterion("pump_warn_id like", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotLike(String value) {
-            addCriterion("warn_id not like", value, "warnId");
+        public Criteria andPumpWarnIdNotLike(String value) {
+            addCriterion("pump_warn_id not like", value, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdIn(List<String> values) {
-            addCriterion("warn_id in", values, "warnId");
+        public Criteria andPumpWarnIdIn(List<String> values) {
+            addCriterion("pump_warn_id in", values, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotIn(List<String> values) {
-            addCriterion("warn_id not in", values, "warnId");
+        public Criteria andPumpWarnIdNotIn(List<String> values) {
+            addCriterion("pump_warn_id not in", values, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdBetween(String value1, String value2) {
-            addCriterion("warn_id between", value1, value2, "warnId");
+        public Criteria andPumpWarnIdBetween(String value1, String value2) {
+            addCriterion("pump_warn_id between", value1, value2, "pumpWarnId");
             return (Criteria) this;
         }
 
-        public Criteria andWarnIdNotBetween(String value1, String value2) {
-            addCriterion("warn_id not between", value1, value2, "warnId");
+        public Criteria andPumpWarnIdNotBetween(String value1, String value2) {
+            addCriterion("pump_warn_id not between", value1, value2, "pumpWarnId");
             return (Criteria) this;
         }
 

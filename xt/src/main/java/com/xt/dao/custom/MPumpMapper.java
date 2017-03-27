@@ -7,11 +7,15 @@ import org.apache.ibatis.annotations.Param;
 import com.xt.entity.custom.MAreaPump;
 import com.xt.entity.custom.MLastCode;
 import com.xt.entity.custom.MPumpMonitor;
+import com.xt.entity.custom.MPumpStoppage;
 import com.xt.entity.custom.MPumpWarnGroup;
 
 public interface MPumpMapper {
-	// 获取项目下的所有热泵信息
+	// 获取项目下的直接热泵信息
 	List<MAreaPump> selectAreaPumps(@Param("projectAreaId") String projectAreaId);
+
+	// 获取项目下的所有热泵信息
+	List<MAreaPump> selectAreaDepthPumps(@Param("projectAreaId") String projectAreaId);
 
 	// 通过热泵ID列表批量获取热泵信息
 	List<MAreaPump> selectPumpsByIds(@Param("pumpIds") List<String> pumpIds);
@@ -33,4 +37,8 @@ public interface MPumpMapper {
 
 	// 获取热泵非使用的告警组
 	List<MPumpWarnGroup> selectPumpNoUseWarnGroups(@Param("ownerId") String ownerId, @Param("pumpId") String pumpId);
+
+	List<MPumpStoppage> selectStoppagesByPumpIds(@Param("pumpIds") List<String> pumpIds);
+
+	List<MPumpStoppage> selectAllStoppages();
 }

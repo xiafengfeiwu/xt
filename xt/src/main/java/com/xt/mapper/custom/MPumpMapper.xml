@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.custom.MPumpMapper">
+
 	<select id="selectAreaPumps" parameterType="String" resultType="MAreaPump">
 		select
 		pm.pump_id as id, pm.pump_name as name
@@ -11,9 +12,19 @@
 		p.project_area_id=#{projectAreaId}) order by pm.pump_name asc
 	</select>
 
-	<select id="selectPumpsByIds" parameterType="List" resultType="MAreaPump">
+	<select id="selectAreaDepthPumps" parameterType="String"
+		resultType="MAreaPump">
 		select
 		pm.pump_id as id, pm.pump_name as name
+		from w_pump pm
+		where
+		pm.project_id in (select p.project_id from w_project
+		p where
+		p.project_area_id=#{projectAreaId}) order by pm.pump_name asc
+	</select>
+
+	<select id="selectPumpsByIds" parameterType="List" resultType="MAreaPump">
+		select pm.pump_id as id, pm.pump_name as name
 		from w_pump pm
 		where
 		pm.pump_id in
@@ -30,15 +41,19 @@
 		like CONCAT(#{preCode},'%') order by p.create_time desc limit 0,1
 	</select>
 
-	<select id="selectUserAuthPump" parameterType="String" resultType="MAreaPump">
+	<select id="selectUserAuthPump" parameterType="String"
+		resultType="MAreaPump">
 		select p.pump_id as id, p.pump_name as name from
-		w_pump p where
+		w_pump p
+		where
 		p.pump_id in (
 		select
-		ua.pump_id from w_user_auth ua where ua.user_id =
+		ua.pump_id from w_user_auth ua where
+		ua.user_id =
 		#{userId}
 		and ua.pump_id is not null) order by
-		p.pump_code asc
+		p.pump_code
+		asc
 	</select>
 
 	<select id="selectPumpsByCodes" parameterType="List" resultType="MAreaPump">
@@ -96,6 +111,33 @@
 		w_pump_warn_group pwg where
 		pwg.pump_id=#{pumpId}
 		)
+	</select>
+
+	<select id="selectStoppagesByPumpIds" parameterType="List"
+		resultType="MPumpStoppage">
+		select s.stoppage_id, s.stoppage_no, p.pump_id,
+		p.pump_name,
+		s.descript, s.occur_time, s.handle_status,
+		s.handle_modify_time from
+		w_stoppage s left join w_pump p on
+		s.pump_id=p.pump_id where s.pump_id
+		in
+		<foreach collection="pumpIds" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+		order by s.occur_time desc, p.pump_id asc
+	</select>
+
+	<select id="selectAllStoppages" resultType="MPumpStoppage">
+		select s.stoppage_id,
+		s.stoppage_no, p.pump_id,
+		p.pump_name,
+		s.descript, s.occur_time,
+		s.handle_status,
+		s.handle_modify_time from
+		w_stoppage s left join w_pump
+		p on
+		s.pump_id=p.pump_id order by s.occur_time desc, p.pump_id asc
 	</select>
 
 </mapper>

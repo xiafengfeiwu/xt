@@ -31,8 +31,14 @@ import net.sf.json.JSONObject;
 
 public class PublicUtil {
 	final static _Sequence sequence = new _Sequence(1);
-	// 管理员角色ID
+	// 系统管理员角色ID
 	public final static String ROLE_SYSTEM_MANAGE_ID = "3295920218899451";
+	// 区域管理员角色ID
+	public final static String ROLE_AREA_MANAGE_ID = "3295920218899452";
+	// 运维角色ID
+	public final static String ROLE_OPERATOR_ID = "3295920218899453";
+	// 普通用户角色ID
+	public final static String ROLE_USER_ID = "3295920218899454";
 
 	// 初始化ID
 	public static String initId() {

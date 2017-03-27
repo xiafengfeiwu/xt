@@ -6,7 +6,7 @@
     <result column="stoppage_id" jdbcType="VARCHAR" property="stoppageId" />
     <result column="handle_user_id" jdbcType="VARCHAR" property="handleUserId" />
     <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime" />
-    <result column="handle_duration" jdbcType="VARCHAR" property="handleDuration" />
+    <result column="handle_duration" jdbcType="BIGINT" property="handleDuration" />
     <result column="handle_status" jdbcType="VARCHAR" property="handleStatus" />
     <result column="handle_descript" jdbcType="VARCHAR" property="handleDescript" />
   </resultMap>
@@ -108,7 +108,7 @@
       handle_time, handle_duration, handle_status, 
       handle_descript)
     values (#{stoppageHandleId,jdbcType=VARCHAR}, #{stoppageId,jdbcType=VARCHAR}, #{handleUserId,jdbcType=VARCHAR}, 
-      #{handleTime,jdbcType=TIMESTAMP}, #{handleDuration,jdbcType=VARCHAR}, #{handleStatus,jdbcType=VARCHAR}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{handleDuration,jdbcType=BIGINT}, #{handleStatus,jdbcType=VARCHAR}, 
       #{handleDescript,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.StoppageHandle">
@@ -150,7 +150,7 @@
         #{handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleDuration != null">
-        #{handleDuration,jdbcType=VARCHAR},
+        #{handleDuration,jdbcType=BIGINT},
       </if>
       <if test="handleStatus != null">
         #{handleStatus,jdbcType=VARCHAR},
@@ -182,7 +182,7 @@
         handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.handleDuration != null">
-        handle_duration = #{record.handleDuration,jdbcType=VARCHAR},
+        handle_duration = #{record.handleDuration,jdbcType=BIGINT},
       </if>
       <if test="record.handleStatus != null">
         handle_status = #{record.handleStatus,jdbcType=VARCHAR},
@@ -201,7 +201,7 @@
       stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       handle_user_id = #{record.handleUserId,jdbcType=VARCHAR},
       handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
-      handle_duration = #{record.handleDuration,jdbcType=VARCHAR},
+      handle_duration = #{record.handleDuration,jdbcType=BIGINT},
       handle_status = #{record.handleStatus,jdbcType=VARCHAR},
       handle_descript = #{record.handleDescript,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -221,7 +221,7 @@
         handle_time = #{handleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleDuration != null">
-        handle_duration = #{handleDuration,jdbcType=VARCHAR},
+        handle_duration = #{handleDuration,jdbcType=BIGINT},
       </if>
       <if test="handleStatus != null">
         handle_status = #{handleStatus,jdbcType=VARCHAR},
@@ -237,7 +237,7 @@
     set stoppage_id = #{stoppageId,jdbcType=VARCHAR},
       handle_user_id = #{handleUserId,jdbcType=VARCHAR},
       handle_time = #{handleTime,jdbcType=TIMESTAMP},
-      handle_duration = #{handleDuration,jdbcType=VARCHAR},
+      handle_duration = #{handleDuration,jdbcType=BIGINT},
       handle_status = #{handleStatus,jdbcType=VARCHAR},
       handle_descript = #{handleDescript,jdbcType=VARCHAR}
     where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}

@@ -9,7 +9,7 @@ public class Stoppage {
 
     private String pumpId;
 
-    private String warnId;
+    private String pumpWarnId;
 
     private String descript;
 
@@ -47,12 +47,12 @@ public class Stoppage {
         this.pumpId = pumpId;
     }
 
-    public String getWarnId() {
-        return warnId;
+    public String getPumpWarnId() {
+        return pumpWarnId;
     }
 
-    public void setWarnId(String warnId) {
-        this.warnId = warnId;
+    public void setPumpWarnId(String pumpWarnId) {
+        this.pumpWarnId = pumpWarnId;
     }
 
     public String getDescript() {

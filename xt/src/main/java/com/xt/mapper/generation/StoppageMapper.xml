@@ -5,7 +5,7 @@
     <id column="stoppage_id" jdbcType="VARCHAR" property="stoppageId" />
     <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
     <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
-    <result column="warn_id" jdbcType="VARCHAR" property="warnId" />
+    <result column="pump_warn_id" jdbcType="VARCHAR" property="pumpWarnId" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
     <result column="attach_id" jdbcType="VARCHAR" property="attachId" />
     <result column="originator_id" jdbcType="VARCHAR" property="originatorId" />
@@ -72,8 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stoppage_id, stoppage_no, pump_id, warn_id, descript, attach_id, originator_id, occur_time, 
-    handle_status, handle_modify_time
+    stoppage_id, stoppage_no, pump_id, pump_warn_id, descript, attach_id, originator_id, 
+    occur_time, handle_status, handle_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.StoppageExample" resultMap="BaseResultMap">
     select
@@ -108,11 +108,11 @@
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Stoppage">
     insert into w_stoppage (stoppage_id, stoppage_no, pump_id, 
-      warn_id, descript, attach_id, 
+      pump_warn_id, descript, attach_id, 
       originator_id, occur_time, handle_status, 
       handle_modify_time)
     values (#{stoppageId,jdbcType=VARCHAR}, #{stoppageNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, 
-      #{warnId,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=VARCHAR}, 
+      #{pumpWarnId,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=VARCHAR}, 
       #{originatorId,jdbcType=VARCHAR}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
       #{handleModifyTime,jdbcType=TIMESTAMP})
   </insert>
@@ -128,8 +128,8 @@
       <if test="pumpId != null">
         pump_id,
       </if>
-      <if test="warnId != null">
-        warn_id,
+      <if test="pumpWarnId != null">
+        pump_warn_id,
       </if>
       <if test="descript != null">
         descript,
@@ -160,8 +160,8 @@
       <if test="pumpId != null">
         #{pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="warnId != null">
-        #{warnId,jdbcType=VARCHAR},
+      <if test="pumpWarnId != null">
+        #{pumpWarnId,jdbcType=VARCHAR},
       </if>
       <if test="descript != null">
         #{descript,jdbcType=VARCHAR},
@@ -201,8 +201,8 @@
       <if test="record.pumpId != null">
         pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="record.warnId != null">
-        warn_id = #{record.warnId,jdbcType=VARCHAR},
+      <if test="record.pumpWarnId != null">
+        pump_warn_id = #{record.pumpWarnId,jdbcType=VARCHAR},
       </if>
       <if test="record.descript != null">
         descript = #{record.descript,jdbcType=VARCHAR},
@@ -232,7 +232,7 @@
     set stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       pump_id = #{record.pumpId,jdbcType=VARCHAR},
-      warn_id = #{record.warnId,jdbcType=VARCHAR},
+      pump_warn_id = #{record.pumpWarnId,jdbcType=VARCHAR},
       descript = #{record.descript,jdbcType=VARCHAR},
       attach_id = #{record.attachId,jdbcType=VARCHAR},
       originator_id = #{record.originatorId,jdbcType=VARCHAR},
@@ -252,8 +252,8 @@
       <if test="pumpId != null">
         pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="warnId != null">
-        warn_id = #{warnId,jdbcType=VARCHAR},
+      <if test="pumpWarnId != null">
+        pump_warn_id = #{pumpWarnId,jdbcType=VARCHAR},
       </if>
       <if test="descript != null">
         descript = #{descript,jdbcType=VARCHAR},
@@ -280,7 +280,7 @@
     update w_stoppage
     set stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       pump_id = #{pumpId,jdbcType=VARCHAR},
-      warn_id = #{warnId,jdbcType=VARCHAR},
+      pump_warn_id = #{pumpWarnId,jdbcType=VARCHAR},
       descript = #{descript,jdbcType=VARCHAR},
       attach_id = #{attachId,jdbcType=VARCHAR},
       originator_id = #{originatorId,jdbcType=VARCHAR},
