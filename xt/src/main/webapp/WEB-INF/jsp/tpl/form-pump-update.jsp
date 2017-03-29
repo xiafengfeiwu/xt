@@ -36,7 +36,7 @@
 	          	<div class="col-xs-6">
 		          <div class="form-group filled">
 		            <label class="control-label">设备产品</label>
-		            <ui-select ng-model="products.selected" class="f13" theme="select2" search-enabled="true" required>
+		            <ui-select ng-model="products.selected" class="f13" theme="select2" search-enabled="false" required>
 		              <ui-select-match placeholder="选择一个设备产品"><span ng-bind="$select.selected.productName"></span></ui-select-match>
 		              <ui-select-choices repeat="product in products | filter: $select.search">
 		                <div ng-bind-html="product.productName | highlight: $select.search"></div>

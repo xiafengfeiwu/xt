@@ -8,22 +8,27 @@
 	</div>
 	<div class="aside-dialog">
 		<div class="aside-body bs-sidebar">
-			<form name="form" class="form-floating" novalidate="novalidate"
-				data-ng-submit="save()">
+			<form name="form" class="form-floating" novalidate="novalidate" data-ng-submit="save()">
 				<fieldset>
 					<legend>新增故障申请 </legend>
-					<div class="form-group filled">
-						<button class="btn btn-sm" data-ng-click="selectRepairPump()">选择一个热泵</button>
-					</div>
 					
-					<div class="form-group filled">
-						<label class="control-label">当前热泵</label>
-						<input type="text" class="form-control" value="{{currentPumpText}}" disabled="disabled" />
-					</div>
+					<button type="button" class="btn btn-sm" data-ng-click="selectRepairPump()">选择一个热泵</button>
+					<input data-ng-show="currentPumpId" type="text" style="font-size: 12px;line-height: 29px;text-align: center;color: red" value="{{currentPumpText}}" disabled="disabled"/>
+					
+		          	<div class="form-group filled">
+		            	<label class="control-label">发生日期</label>
+		            	<input type="text" class="form-control ng-valid" data-ng-model="stoppage.occurTime1" data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="false" data-bs-datepicker required>
+		          	</div>
+		          	
+		          	<div class="form-group filled">
+		            	<label class="control-label">大致时间</label>
+		            	<input type="text" class="form-control ng-valid" data-ng-model="stoppage.occurTime2" data-date-format="HH:mm" data-autoclose="false" data-bs-timepicker required>
+		          	</div>
+		          	
 
 					<div class="form-group filled">
 						<label class="control-label">故障描述</label>
-						<textarea data-ng-model="descript" class="form-control" required></textarea>
+						<textarea data-ng-model="stoppage.descript" class="form-control" required></textarea>
 					</div>
 		
 					<div class="form-group filled">
@@ -39,7 +44,7 @@
 					        <div class="list-group" data-ng-repeat="(key, file) in files">
 					          <a href="javascript:;" class="list-group-item">
 					          	<h4 class="list-group-item-heading">{{ file.resName }} ({{formatNum(file.resSize)}})
-					          		<span data-ng-click="removeFile(file)" class="pull-right">&times;</span>
+					          		<span data-ng-click="removeFile(file)" class="pull-right" data-bs-tooltip data-title="删除">&times;</span>
 					          	</h4>
 					          </a>
 					        </div>

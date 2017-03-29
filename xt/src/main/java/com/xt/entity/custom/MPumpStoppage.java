@@ -7,9 +7,11 @@ public class MPumpStoppage {
 	private String stoppageNo;
 	private String pumpId;
 	private String pumpName;
+	private String pumpWarnId;
 	private String descript;
-	private Date occurTime;
+	private String occurTime;
 	private String handleStatus;
+	private Date createTime;
 	private Date handleModifyTime;
 
 	public String getStoppageId() {
@@ -44,6 +46,14 @@ public class MPumpStoppage {
 		this.pumpName = pumpName;
 	}
 
+	public String getPumpWarnId() {
+		return pumpWarnId;
+	}
+
+	public void setPumpWarnId(String pumpWarnId) {
+		this.pumpWarnId = pumpWarnId;
+	}
+
 	public String getDescript() {
 		return descript;
 	}
@@ -52,11 +62,11 @@ public class MPumpStoppage {
 		this.descript = descript;
 	}
 
-	public Date getOccurTime() {
+	public String getOccurTime() {
 		return occurTime;
 	}
 
-	public void setOccurTime(Date occurTime) {
+	public void setOccurTime(String occurTime) {
 		this.occurTime = occurTime;
 	}
 
@@ -66,6 +76,14 @@ public class MPumpStoppage {
 
 	public void setHandleStatus(String handleStatus) {
 		this.handleStatus = handleStatus;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	public Date getHandleModifyTime() {

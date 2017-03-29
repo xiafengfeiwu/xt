@@ -19,14 +19,8 @@ public interface DeviceService {
 	// 更新设备
 	void update(Device device);
 
-	// 通过查询条件关键字获取设备数量
-	Long getDeviceCount(String searchWord);
-
-	// 分页获取设备数据
-	List<Device> getDeviceData(String searchWord, String field, String order, int page, int length);
-
-	// 分页获取设备数据
-	List<Device> getTop5BySearchWord(String searchWord);
+	// 获取热泵采集设备数据
+	List<Device> getDevicesByPumpId(String pumpId);
 
 	// 删除设备
 	void delete(String deviceId);

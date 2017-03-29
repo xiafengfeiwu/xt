@@ -9,6 +9,9 @@
     <result column="handle_duration" jdbcType="BIGINT" property="handleDuration" />
     <result column="handle_status" jdbcType="VARCHAR" property="handleStatus" />
     <result column="handle_descript" jdbcType="VARCHAR" property="handleDescript" />
+    <result column="evaluate_time" jdbcType="TIMESTAMP" property="evaluateTime" />
+    <result column="evaluate_level" jdbcType="CHAR" property="evaluateLevel" />
+    <result column="evaluate_descript" jdbcType="VARCHAR" property="evaluateDescript" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     stoppage_handle_id, stoppage_id, handle_user_id, handle_time, handle_duration, handle_status, 
-    handle_descript
+    handle_descript, evaluate_time, evaluate_level, evaluate_descript
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.StoppageHandleExample" resultMap="BaseResultMap">
     select
@@ -106,10 +109,12 @@
   <insert id="insert" parameterType="com.xt.entity.generation.StoppageHandle">
     insert into w_stoppage_handle (stoppage_handle_id, stoppage_id, handle_user_id, 
       handle_time, handle_duration, handle_status, 
-      handle_descript)
+      handle_descript, evaluate_time, evaluate_level, 
+      evaluate_descript)
     values (#{stoppageHandleId,jdbcType=VARCHAR}, #{stoppageId,jdbcType=VARCHAR}, #{handleUserId,jdbcType=VARCHAR}, 
       #{handleTime,jdbcType=TIMESTAMP}, #{handleDuration,jdbcType=BIGINT}, #{handleStatus,jdbcType=VARCHAR}, 
-      #{handleDescript,jdbcType=VARCHAR})
+      #{handleDescript,jdbcType=VARCHAR}, #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateLevel,jdbcType=CHAR}, 
+      #{evaluateDescript,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.StoppageHandle">
     insert into w_stoppage_handle
@@ -135,6 +140,15 @@
       <if test="handleDescript != null">
         handle_descript,
       </if>
+      <if test="evaluateTime != null">
+        evaluate_time,
+      </if>
+      <if test="evaluateLevel != null">
+        evaluate_level,
+      </if>
+      <if test="evaluateDescript != null">
+        evaluate_descript,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stoppageHandleId != null">
@@ -157,6 +171,15 @@
       </if>
       <if test="handleDescript != null">
         #{handleDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTime != null">
+        #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateLevel != null">
+        #{evaluateLevel,jdbcType=CHAR},
+      </if>
+      <if test="evaluateDescript != null">
+        #{evaluateDescript,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -190,6 +213,15 @@
       <if test="record.handleDescript != null">
         handle_descript = #{record.handleDescript,jdbcType=VARCHAR},
       </if>
+      <if test="record.evaluateTime != null">
+        evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.evaluateLevel != null">
+        evaluate_level = #{record.evaluateLevel,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateDescript != null">
+        evaluate_descript = #{record.evaluateDescript,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -203,7 +235,10 @@
       handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
       handle_duration = #{record.handleDuration,jdbcType=BIGINT},
       handle_status = #{record.handleStatus,jdbcType=VARCHAR},
-      handle_descript = #{record.handleDescript,jdbcType=VARCHAR}
+      handle_descript = #{record.handleDescript,jdbcType=VARCHAR},
+      evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+      evaluate_level = #{record.evaluateLevel,jdbcType=CHAR},
+      evaluate_descript = #{record.evaluateDescript,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -229,6 +264,15 @@
       <if test="handleDescript != null">
         handle_descript = #{handleDescript,jdbcType=VARCHAR},
       </if>
+      <if test="evaluateTime != null">
+        evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateLevel != null">
+        evaluate_level = #{evaluateLevel,jdbcType=CHAR},
+      </if>
+      <if test="evaluateDescript != null">
+        evaluate_descript = #{evaluateDescript,jdbcType=VARCHAR},
+      </if>
     </set>
     where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </update>
@@ -239,7 +283,10 @@
       handle_time = #{handleTime,jdbcType=TIMESTAMP},
       handle_duration = #{handleDuration,jdbcType=BIGINT},
       handle_status = #{handleStatus,jdbcType=VARCHAR},
-      handle_descript = #{handleDescript,jdbcType=VARCHAR}
+      handle_descript = #{handleDescript,jdbcType=VARCHAR},
+      evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      evaluate_level = #{evaluateLevel,jdbcType=CHAR},
+      evaluate_descript = #{evaluateDescript,jdbcType=VARCHAR}
     where stoppage_handle_id = #{stoppageHandleId,jdbcType=VARCHAR}
   </update>
 </mapper>

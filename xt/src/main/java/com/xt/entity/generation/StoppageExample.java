@@ -175,6 +175,76 @@ public class StoppageExample {
             return (Criteria) this;
         }
 
+        public Criteria andOperatorIdIsNull() {
+            addCriterion("operator_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdIsNotNull() {
+            addCriterion("operator_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdEqualTo(String value) {
+            addCriterion("operator_id =", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdNotEqualTo(String value) {
+            addCriterion("operator_id <>", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdGreaterThan(String value) {
+            addCriterion("operator_id >", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdGreaterThanOrEqualTo(String value) {
+            addCriterion("operator_id >=", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdLessThan(String value) {
+            addCriterion("operator_id <", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdLessThanOrEqualTo(String value) {
+            addCriterion("operator_id <=", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdLike(String value) {
+            addCriterion("operator_id like", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdNotLike(String value) {
+            addCriterion("operator_id not like", value, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdIn(List<String> values) {
+            addCriterion("operator_id in", values, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdNotIn(List<String> values) {
+            addCriterion("operator_id not in", values, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdBetween(String value1, String value2) {
+            addCriterion("operator_id between", value1, value2, "operatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIdNotBetween(String value1, String value2) {
+            addCriterion("operator_id not between", value1, value2, "operatorId");
+            return (Criteria) this;
+        }
+
         public Criteria andStoppageNoIsNull() {
             addCriterion("stoppage_no is null");
             return (Criteria) this;
@@ -605,53 +675,123 @@ public class StoppageExample {
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeEqualTo(Date value) {
+        public Criteria andOccurTimeEqualTo(String value) {
             addCriterion("occur_time =", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeNotEqualTo(Date value) {
+        public Criteria andOccurTimeNotEqualTo(String value) {
             addCriterion("occur_time <>", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeGreaterThan(Date value) {
+        public Criteria andOccurTimeGreaterThan(String value) {
             addCriterion("occur_time >", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andOccurTimeGreaterThanOrEqualTo(String value) {
             addCriterion("occur_time >=", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeLessThan(Date value) {
+        public Criteria andOccurTimeLessThan(String value) {
             addCriterion("occur_time <", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeLessThanOrEqualTo(Date value) {
+        public Criteria andOccurTimeLessThanOrEqualTo(String value) {
             addCriterion("occur_time <=", value, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeIn(List<Date> values) {
+        public Criteria andOccurTimeLike(String value) {
+            addCriterion("occur_time like", value, "occurTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOccurTimeNotLike(String value) {
+            addCriterion("occur_time not like", value, "occurTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOccurTimeIn(List<String> values) {
             addCriterion("occur_time in", values, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeNotIn(List<Date> values) {
+        public Criteria andOccurTimeNotIn(List<String> values) {
             addCriterion("occur_time not in", values, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeBetween(Date value1, Date value2) {
+        public Criteria andOccurTimeBetween(String value1, String value2) {
             addCriterion("occur_time between", value1, value2, "occurTime");
             return (Criteria) this;
         }
 
-        public Criteria andOccurTimeNotBetween(Date value1, Date value2) {
+        public Criteria andOccurTimeNotBetween(String value1, String value2) {
             addCriterion("occur_time not between", value1, value2, "occurTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
 

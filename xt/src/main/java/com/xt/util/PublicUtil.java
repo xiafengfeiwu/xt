@@ -28,6 +28,8 @@ import com.xt.entity.generation.WeatherData;
 import com.xt.service.CityWeatherService;
 
 import net.sf.json.JSONObject;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPubSub;
 
 public class PublicUtil {
 	final static _Sequence sequence = new _Sequence(1);
@@ -330,9 +332,22 @@ public class PublicUtil {
 		// String areaCode = "1102002017030002";
 		// // areaCode = areaCode.substring(1, 13);
 		// System.out.println(getNextPumpCode(areaCode));
-		System.out.println(initId());
-		System.out.println(initId());
-		System.out.println(initId());
-		System.out.println(initId());
+		// System.out.println(initId());
+		// System.out.println(initId());
+		// System.out.println(initId());
+		// System.out.println(initId());
+		Jedis jedis = RedisConfig.getJedis();
+		System.out.println(RedisUtil.getString("version"));
+
+		JedisPubSub jedisPubSub = new JedisPubSub() {
+			@Override
+			public void onMessage(String channel, String message) {
+				System.out.println("channel:" + channel + ", message:" + message);
+			}
+		};
+		jedis.subscribe(jedisPubSub, "redisChat");
+		
+
+		jedis.publish("redisChat", "123");
 	}
 }

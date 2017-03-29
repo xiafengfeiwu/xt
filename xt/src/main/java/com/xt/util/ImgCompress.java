@@ -18,12 +18,6 @@ import javax.imageio.stream.ImageInputStream;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-/**
- * 图片压缩处理
- * 
- * @author 崔素强
- */
-@SuppressWarnings("restriction")
 public class ImgCompress {
 	private Image img;
 	private int width;

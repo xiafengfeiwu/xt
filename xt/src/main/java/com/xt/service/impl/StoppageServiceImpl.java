@@ -6,17 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xt.dao.custom.MPumpMapper;
-import com.xt.dao.generation.StoppageHandleEvaluateMapper;
 import com.xt.dao.generation.StoppageHandleMapper;
 import com.xt.dao.generation.StoppageMapper;
 import com.xt.entity.custom.MPumpStoppage;
 import com.xt.entity.generation.Stoppage;
 import com.xt.entity.generation.StoppageExample;
 import com.xt.entity.generation.StoppageHandle;
-import com.xt.entity.generation.StoppageHandleEvaluate;
-import com.xt.entity.generation.StoppageHandleEvaluateExample;
 import com.xt.entity.generation.StoppageHandleExample;
 import com.xt.service.StoppageService;
+import com.xt.util.PublicUtil;
 
 @Service
 public class StoppageServiceImpl implements StoppageService {
@@ -25,8 +23,6 @@ public class StoppageServiceImpl implements StoppageService {
 	StoppageMapper stoppageMapper;
 	@Autowired
 	StoppageHandleMapper handleMapper;
-	@Autowired
-	StoppageHandleEvaluateMapper evaluateMapper;
 	@Autowired
 	MPumpMapper mPumpMapper;
 
@@ -69,15 +65,7 @@ public class StoppageServiceImpl implements StoppageService {
 	}
 
 	@Override
-	public List<Stoppage> getByOriginatorId(String userId) {
-		StoppageExample example = new StoppageExample();
-		example.createCriteria().andOriginatorIdEqualTo(userId);
-		example.setOrderByClause("occur_time desc");
-		return stoppageMapper.selectByExample(example);
-	}
-
-	@Override
-	public List<StoppageHandle> getByStoppageId(String stoppageId) {
+	public List<StoppageHandle> getHandleByStoppageId(String stoppageId) {
 		StoppageHandleExample example = new StoppageHandleExample();
 		example.createCriteria().andStoppageIdEqualTo(stoppageId);
 		example.setOrderByClause("handle_time desc");
@@ -90,25 +78,22 @@ public class StoppageServiceImpl implements StoppageService {
 	}
 
 	@Override
-	public void deleteHandle(String handleId) {
-		handleMapper.deleteByPrimaryKey(handleId);
+	public StoppageHandle getHandleById(String handleId) {
+		return handleMapper.selectByPrimaryKey(handleId);
 	}
 
 	@Override
-	public StoppageHandleEvaluate getByHeadleId(String handlerId) {
-		StoppageHandleEvaluateExample example = new StoppageHandleEvaluateExample();
-		example.createCriteria().andStoppageHandleIdEqualTo(handlerId);
-		example.setOrderByClause("evaluate_time desc limit 0, 1");
-		List<StoppageHandleEvaluate> evaluates = evaluateMapper.selectByExample(example);
-		if (evaluates == null || evaluates.isEmpty()) {
-			return null;
+	public void handleEvaluate(StoppageHandle evaluate) {
+		handleMapper.updateByPrimaryKey(evaluate);
+	}
+
+	@Override
+	public List<Stoppage> getByNoAllot(String no, int page) {
+		StoppageExample example = new StoppageExample();
+		if (PublicUtil.isNotEmpty(no)) {
+			example.createCriteria().andOperatorIdIsNull().andStoppageNoLike("%" + no + "%");
 		}
-		return evaluates.get(0);
+		example.setOrderByClause("create_time asc limit " + (page - 1) * 20 + ", 20");
+		return stoppageMapper.selectByExample(example);
 	}
-
-	@Override
-	public void createHandleEvaluate(StoppageHandleEvaluate evaluate) {
-		evaluateMapper.insert(evaluate);
-	}
-
 }

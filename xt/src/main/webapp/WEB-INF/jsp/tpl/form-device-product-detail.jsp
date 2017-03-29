@@ -13,7 +13,7 @@
 					<div class="item-label">产品名称：</div>{{ product.productName }}
 				</div>
 				<div class="col-xs-6">
-					<div class="item-label">产品类别：</div>{{ product.productType=='R'?'热泵产品':'其他产品' }}
+					<div class="item-label">产品类别：</div>{{ product.productType=='R'?'热泵产品':'采集产品' }}
 				</div>
 				<div class="col-xs-6">
 					<div class="item-label">产品厂家：</div>{{ product.productVenderName }}

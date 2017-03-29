@@ -37,7 +37,7 @@
     <li menu-toggle path="/service" name="运维服务" icon="md md-mood">
       <a menu-link href="#/service/support" name="技术支持" icon="md md-help">技术支持</a>
       <a menu-link href="#/service/repair" name="故障报修" icon="md md-error">故障报修</a>
-      <a menu-link href="#/service/handling" name="告警处理" icon="md md-new-releases">告警处理</a>
+      <a menu-link href="#/service/handling" name="故障处理" icon="md md-new-releases">故障处理</a>
     </li>
     <li menu-toggle path="/auth" name="用户授权" icon="md md-verified-user">
       <a menu-link href="#/auth/users" name="用户管理" icon="md md-people">用户管理</a>

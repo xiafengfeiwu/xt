@@ -6,8 +6,8 @@
         <button type="button" class="close" data-ng-click="$hide()">&times;</button>
         <h4 class="modal-title">新增热泵</h4>
       </div>
-      <div class="modal-body">
-		<form class="form-floating" novalidate="novalidate">
+      <div class="modal-body"  ng-if="products.length">
+			<form class="form-floating" novalidate="novalidate">
 	          <div class="row">
 	          	<div class="col-xs-6">
 		          <div class="form-group filled">
@@ -36,7 +36,7 @@
 	          	<div class="col-xs-6">
 		          <div class="form-group filled">
 		            <label class="control-label">设备产品</label>
-		            <ui-select ng-model="products.selected" class="f13" theme="select2" search-enabled="true" required>
+		            <ui-select ng-model="products.selected" class="f13" theme="select2" search-enabled="false">
 		              <ui-select-match placeholder="选择一个设备产品"><span data-ng-bind="$select.selected.productName"></span></ui-select-match>
 		              <ui-select-choices repeat="product in products | filter: $select.search">
 		                <div data-ng-bind-html="product.productName | highlight: $select.search"></div>
@@ -65,8 +65,11 @@
 	          </div>
 	      </form>
       </div>
+      <div class="modal-body"  ng-if="!products.length">
+      	 <p style="color:red">* 无厂家热泵产品信息，请先添加热泵厂家及产品信息</p>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-ng-click="savePump()">提交</button>
+        <button type="button" class="btn btn-primary" data-ng-click="savePump()" ng-if="products.length">提交</button>
         <button type="button" class="btn btn-default" data-ng-click="$hide()">关闭</button>
       </div>
     </div>

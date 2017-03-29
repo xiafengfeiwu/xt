@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<section class="forms-basic" ng-controller="HandlingController">
+<section class="forms-basic" data-ng-controller="HandlingController">
 	<div class="page-header">
 		<h1>
 			故障处理
@@ -14,13 +14,13 @@
 				<button class="btn btn-link filter ng-binding ng-scope"
 					ng-click="changeTab('N')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='N']">
-					未处理
+					未分配
 					<div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope"
 					ng-click="changeTab('D')"
 					ng-class="{true: 'active', false: ''}[tabFlag=='D']">
-					正在处理
+					待处理
 					<div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope"
@@ -38,29 +38,23 @@
 			<div class="table-responsive well no-padding white no-margin">
 				<table class="table table-hover table-full m-b-60" id="table-handling-n-2172158" >
 					<thead>
-						<tr fsm-sticky-header scroll-body="'#table-handling-n-2172158'" scroll-stop="64">
+						<tr data-fsm-sticky-header data-scroll-body="'#table-handling-n-2172158'" data-scroll-stop="64">
 							<th width="156">工单编号</th>
-							<th>热泵</th>
-							<th>业主</th>
-							<th class="text-center">联系方式</th>
-							<th>故障描述</th>
-							<th class="text-center">提交时间</th>
-							<th class="text-center">操作</th>
+							<th>描述</th>
+							<th class="text-center" width="146">创建时间</th>
+							<th class="text-center" width="86">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>W6538098863931312</td>
-							<td>热泵1</td>
-							<td>司仲夏</td>
-							<td class="text-center">18518436862</td>
-							<td>{{'热泵故障描述' | cut:true:10:' ...'}}</td>
-							<td class="text-center">2017-03-04</td>
-							<td class="text-center" ng-click="$event.stopPropagation()">
-								<button type="button" class="btn btn-link btn-round" ng-click="detail()" data-title="详情" data-placement="bottom" bs-tooltip>
+						<tr data-ng-repeat="(key, data) in noAllotPageData">
+							<td>{{data.stoppageNo}}</td>
+							<td>{{data.descript | cut:true:20:' ...'}}</td>
+							<td class="text-center">{{data.createTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+							<td class="text-center" data-ng-click="$event.stopPropagation()">
+								<button type="button" class="btn btn-link btn-round" data-ng-click="detail()" data-title="详情" data-placement="bottom" bs-tooltip>
 									<i class="md md-info"></i>
 								</button>
-								<button type="button" class="btn btn-link btn-round" data-title="抢修" data-placement="bottom" bs-tooltip>
+								<button type="button" class="btn btn-link btn-round" data-title="抢修" data-placement="bottom" data-bs-tooltip>
 									<i class="md md-flash-on"></i>
 								</button>
 							</td>
@@ -69,7 +63,7 @@
 				</table>
 			</div>
 		</div>
-		<div ng-show="tabFlag=='D'" class="col-sm-12 well">
+		<div data-ng-show="tabFlag=='D'" class="col-sm-12 well">
 			<p class="lead">运维人员正在抢修处理的记录。</p>
 			<div class="table-responsive well no-padding white no-margin">
 				<table class="table table-hover table-full m-b-60" id="table-handling-n-2172158" >

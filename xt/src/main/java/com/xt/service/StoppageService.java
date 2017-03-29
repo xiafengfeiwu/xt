@@ -5,7 +5,6 @@ import java.util.List;
 import com.xt.entity.custom.MPumpStoppage;
 import com.xt.entity.generation.Stoppage;
 import com.xt.entity.generation.StoppageHandle;
-import com.xt.entity.generation.StoppageHandleEvaluate;
 
 public interface StoppageService {
 
@@ -23,15 +22,13 @@ public interface StoppageService {
 
 	List<MPumpStoppage> getByPumpIds(List<String> pumpIds);
 
-	List<Stoppage> getByOriginatorId(String userId);
+	List<StoppageHandle> getHandleByStoppageId(String stoppageId);
 
-	List<StoppageHandle> getByStoppageId(String stoppageId);
+	StoppageHandle getHandleById(String handleId);
 
 	void createHandle(StoppageHandle handle);
 
-	void deleteHandle(String handleId);
+	void handleEvaluate(StoppageHandle handle);
 
-	StoppageHandleEvaluate getByHeadleId(String handlerId);
-
-	void createHandleEvaluate(StoppageHandleEvaluate evaluate);
+	List<Stoppage> getByNoAllot(String no, int page);
 }

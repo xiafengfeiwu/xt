@@ -42,9 +42,9 @@ public class RedisUtil {
 		if (null == key || null == value) {
 			return false;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.set(key, value);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return true;
 	}
 
@@ -76,9 +76,9 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		byte[] val = jedis.get(key);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return val;
 	}
 
@@ -91,7 +91,7 @@ public class RedisUtil {
 		if (null == key) {
 			return true;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.del(key);
 		return true;
 	}
@@ -124,9 +124,9 @@ public class RedisUtil {
 		if (keyValues == null) {
 			return false;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.mset(keyValues);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return true;
 	}
 
@@ -140,27 +140,27 @@ public class RedisUtil {
 		if (null == key || null == map) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.hmset(key, map);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	public static void addMapVal(String key, String field, String value) {
 		if (null == key || field == null || null == value) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.hsetnx(key, field, value);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	public static void addMapVal(byte[] key, byte[] field, byte[] value) {
 		if (null == key || field == null || null == value) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.hsetnx(key, field, value);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	/**
@@ -173,9 +173,9 @@ public class RedisUtil {
 		if (null == key || null == mapByte) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.hmset(key, mapByte);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	/**
@@ -188,14 +188,14 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		List<String> rtnList = null;
 		if (null == fields || fields.length == 0) {
 			rtnList = jedis.hvals(key);
 		} else {
 			rtnList = jedis.hmget(key, fields);
 		}
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return rtnList;
 	}
 
@@ -210,7 +210,7 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		if (!jedis.exists(key)) {
 			return null;
 		}
@@ -233,7 +233,7 @@ public class RedisUtil {
 		if (null == key || values == null) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.sadd(key, values);
 	}
 
@@ -245,18 +245,18 @@ public class RedisUtil {
 			del(key.getBytes(UTF_8));
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.srem(key, fields);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	public static void addSetBytes(byte[] key, byte[]... values) {
 		if (null == key || values == null) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.sadd(key, values);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	public static void delSetVal(byte[] key, byte[]... values) {
@@ -267,9 +267,9 @@ public class RedisUtil {
 			del(key);
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.srem(key, values);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	/**
@@ -281,7 +281,7 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		Set<byte[]> rtnList = jedis.smembers(key);
 		return rtnList;
 	}
@@ -290,9 +290,9 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		Set<String> rtnSet = jedis.smembers(key);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return rtnSet;
 	}
 
@@ -307,9 +307,9 @@ public class RedisUtil {
 		if (null == key || field == null) {
 			return false;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		boolean isContain = jedis.sismember(key, field);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return isContain;
 	}
 
@@ -317,9 +317,9 @@ public class RedisUtil {
 		if (null == key || field == null) {
 			return false;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		boolean isSuccess = jedis.sismember(key, field);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return isSuccess;
 	}
 
@@ -333,7 +333,7 @@ public class RedisUtil {
 		if (null == key) {
 			return 0L;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		Long length = jedis.scard(key);
 		return length;
 	}
@@ -342,9 +342,9 @@ public class RedisUtil {
 		if (null == key) {
 			return 0L;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		Long length = jedis.scard(key);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return length;
 	}
 
@@ -358,9 +358,9 @@ public class RedisUtil {
 		if (null == key || values == null) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.rpush(key, values);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	/**
@@ -373,9 +373,9 @@ public class RedisUtil {
 		if (null == key || values == null) {
 			return;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		jedis.rpush(key, values);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 	}
 
 	/**
@@ -390,9 +390,9 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		List<String> rtnList = jedis.lrange(key, start, end);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return rtnList;
 	}
 
@@ -408,9 +408,9 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		List<byte[]> rtnList = jedis.lrange(key, start, end);
-		RedisTool.returnResource(jedis);
+		RedisConfig.returnResource(jedis);
 		return rtnList;
 	}
 
@@ -432,7 +432,7 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		return jedis.lpop(key);
 	}
 
@@ -440,7 +440,7 @@ public class RedisUtil {
 		if (null == key) {
 			return null;
 		}
-		Jedis jedis = RedisTool.getJedis();
+		Jedis jedis = RedisConfig.getJedis();
 		return jedis.lpop(key);
 	}
 }

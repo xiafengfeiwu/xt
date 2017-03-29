@@ -19,7 +19,7 @@
 					热泵 <div class="ripple-wrapper"></div>
 				</button>
 				<button class="btn btn-link filter ng-binding ng-scope" ng-click="changeTab('C')" ng-class="{true: 'active', false: ''}[tabFlag=='C']">
-					其他 <div class="ripple-wrapper"></div>
+					采集器 <div class="ripple-wrapper"></div>
 				</button>
 			</div> 
 		</div>

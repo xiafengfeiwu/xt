@@ -5,6 +5,8 @@ import java.util.Date;
 public class Stoppage {
     private String stoppageId;
 
+    private String operatorId;
+
     private String stoppageNo;
 
     private String pumpId;
@@ -17,7 +19,9 @@ public class Stoppage {
 
     private String originatorId;
 
-    private Date occurTime;
+    private String occurTime;
+
+    private Date createTime;
 
     private String handleStatus;
 
@@ -29,6 +33,14 @@ public class Stoppage {
 
     public void setStoppageId(String stoppageId) {
         this.stoppageId = stoppageId;
+    }
+
+    public String getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 
     public String getStoppageNo() {
@@ -79,12 +91,20 @@ public class Stoppage {
         this.originatorId = originatorId;
     }
 
-    public Date getOccurTime() {
+    public String getOccurTime() {
         return occurTime;
     }
 
-    public void setOccurTime(Date occurTime) {
+    public void setOccurTime(String occurTime) {
         this.occurTime = occurTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getHandleStatus() {

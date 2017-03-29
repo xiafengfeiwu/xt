@@ -3,13 +3,15 @@
 <mapper namespace="com.xt.dao.generation.StoppageMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.Stoppage">
     <id column="stoppage_id" jdbcType="VARCHAR" property="stoppageId" />
+    <result column="operator_id" jdbcType="VARCHAR" property="operatorId" />
     <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
     <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
     <result column="pump_warn_id" jdbcType="VARCHAR" property="pumpWarnId" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
     <result column="attach_id" jdbcType="VARCHAR" property="attachId" />
     <result column="originator_id" jdbcType="VARCHAR" property="originatorId" />
-    <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
+    <result column="occur_time" jdbcType="VARCHAR" property="occurTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="handle_status" jdbcType="CHAR" property="handleStatus" />
     <result column="handle_modify_time" jdbcType="TIMESTAMP" property="handleModifyTime" />
   </resultMap>
@@ -72,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stoppage_id, stoppage_no, pump_id, pump_warn_id, descript, attach_id, originator_id, 
-    occur_time, handle_status, handle_modify_time
+    stoppage_id, operator_id, stoppage_no, pump_id, pump_warn_id, descript, attach_id, 
+    originator_id, occur_time, create_time, handle_status, handle_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.StoppageExample" resultMap="BaseResultMap">
     select
@@ -107,20 +109,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.Stoppage">
-    insert into w_stoppage (stoppage_id, stoppage_no, pump_id, 
-      pump_warn_id, descript, attach_id, 
-      originator_id, occur_time, handle_status, 
-      handle_modify_time)
-    values (#{stoppageId,jdbcType=VARCHAR}, #{stoppageNo,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, 
-      #{pumpWarnId,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=VARCHAR}, 
-      #{originatorId,jdbcType=VARCHAR}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
-      #{handleModifyTime,jdbcType=TIMESTAMP})
+    insert into w_stoppage (stoppage_id, operator_id, stoppage_no, 
+      pump_id, pump_warn_id, descript, 
+      attach_id, originator_id, occur_time, 
+      create_time, handle_status, handle_modify_time
+      )
+    values (#{stoppageId,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, #{stoppageNo,jdbcType=VARCHAR}, 
+      #{pumpId,jdbcType=VARCHAR}, #{pumpWarnId,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{attachId,jdbcType=VARCHAR}, #{originatorId,jdbcType=VARCHAR}, #{occurTime,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, #{handleModifyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.Stoppage">
     insert into w_stoppage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stoppageId != null">
         stoppage_id,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
       </if>
       <if test="stoppageNo != null">
         stoppage_no,
@@ -143,6 +150,9 @@
       <if test="occurTime != null">
         occur_time,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
       <if test="handleStatus != null">
         handle_status,
       </if>
@@ -153,6 +163,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stoppageId != null">
         #{stoppageId,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
       </if>
       <if test="stoppageNo != null">
         #{stoppageNo,jdbcType=VARCHAR},
@@ -173,7 +186,10 @@
         #{originatorId,jdbcType=VARCHAR},
       </if>
       <if test="occurTime != null">
-        #{occurTime,jdbcType=TIMESTAMP},
+        #{occurTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleStatus != null">
         #{handleStatus,jdbcType=CHAR},
@@ -195,6 +211,9 @@
       <if test="record.stoppageId != null">
         stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
       </if>
+      <if test="record.operatorId != null">
+        operator_id = #{record.operatorId,jdbcType=VARCHAR},
+      </if>
       <if test="record.stoppageNo != null">
         stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       </if>
@@ -214,7 +233,10 @@
         originator_id = #{record.originatorId,jdbcType=VARCHAR},
       </if>
       <if test="record.occurTime != null">
-        occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
+        occur_time = #{record.occurTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.handleStatus != null">
         handle_status = #{record.handleStatus,jdbcType=CHAR},
@@ -230,13 +252,15 @@
   <update id="updateByExample" parameterType="map">
     update w_stoppage
     set stoppage_id = #{record.stoppageId,jdbcType=VARCHAR},
+      operator_id = #{record.operatorId,jdbcType=VARCHAR},
       stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       pump_id = #{record.pumpId,jdbcType=VARCHAR},
       pump_warn_id = #{record.pumpWarnId,jdbcType=VARCHAR},
       descript = #{record.descript,jdbcType=VARCHAR},
       attach_id = #{record.attachId,jdbcType=VARCHAR},
       originator_id = #{record.originatorId,jdbcType=VARCHAR},
-      occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
+      occur_time = #{record.occurTime,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       handle_status = #{record.handleStatus,jdbcType=CHAR},
       handle_modify_time = #{record.handleModifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -246,6 +270,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xt.entity.generation.Stoppage">
     update w_stoppage
     <set>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+      </if>
       <if test="stoppageNo != null">
         stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       </if>
@@ -265,7 +292,10 @@
         originator_id = #{originatorId,jdbcType=VARCHAR},
       </if>
       <if test="occurTime != null">
-        occur_time = #{occurTime,jdbcType=TIMESTAMP},
+        occur_time = #{occurTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="handleStatus != null">
         handle_status = #{handleStatus,jdbcType=CHAR},
@@ -278,13 +308,15 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.Stoppage">
     update w_stoppage
-    set stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+    set operator_id = #{operatorId,jdbcType=VARCHAR},
+      stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       pump_id = #{pumpId,jdbcType=VARCHAR},
       pump_warn_id = #{pumpWarnId,jdbcType=VARCHAR},
       descript = #{descript,jdbcType=VARCHAR},
       attach_id = #{attachId,jdbcType=VARCHAR},
       originator_id = #{originatorId,jdbcType=VARCHAR},
-      occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      occur_time = #{occurTime,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       handle_status = #{handleStatus,jdbcType=CHAR},
       handle_modify_time = #{handleModifyTime,jdbcType=TIMESTAMP}
     where stoppage_id = #{stoppageId,jdbcType=VARCHAR}

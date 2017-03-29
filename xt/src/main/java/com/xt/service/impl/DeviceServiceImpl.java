@@ -49,41 +49,10 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public Long getDeviceCount(String searchWord) {
+	public List<Device> getDevicesByPumpId(String pumpId) {
 		DeviceExample example = new DeviceExample();
-		if (PublicUtil.isNotEmpty(searchWord)) {
-			searchWord = "%" + searchWord + "%";
-			example.or().andDeviceSnLike(searchWord);
-			example.or().andDeviceNameLike(searchWord);
-		}
-		return deviceMapper.countByExample(example);
-	}
-
-	@Override
-	public List<Device> getDeviceData(String searchWord, String field, String order, int page, int length) {
-		DeviceExample example = new DeviceExample();
-		if (PublicUtil.isNotEmpty(searchWord)) {
-			searchWord = "%" + searchWord + "%";
-			example.or().andDeviceSnLike(searchWord);
-			example.or().andDeviceNameLike(searchWord);
-		}
-		if (PublicUtil.isNotEmpty(field) && PublicUtil.isNotEmpty(order)) {
-			example.setOrderByClause(field + " " + order);
-		}
-		// example.setPage(new Page(page, length));
-		return deviceMapper.selectByExample(example);
-	}
-
-	@Override
-	public List<Device> getTop5BySearchWord(String searchWord) {
-		DeviceExample example = new DeviceExample();
-		if (PublicUtil.isNotEmpty(searchWord)) {
-			searchWord = "%" + searchWord + "%";
-			example.or().andDeviceSnLike(searchWord);
-			example.or().andDeviceNameLike(searchWord);
-		}
+		example.createCriteria().andPumpIdEqualTo(pumpId);
 		example.setOrderByClause("device_sn asc");
-		// example.setPage(new Page(1, 5));
 		return deviceMapper.selectByExample(example);
 	}
 

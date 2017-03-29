@@ -574,6 +574,206 @@ public class StoppageHandleExample {
             addCriterion("handle_descript not between", value1, value2, "handleDescript");
             return (Criteria) this;
         }
+
+        public Criteria andEvaluateTimeIsNull() {
+            addCriterion("evaluate_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeIsNotNull() {
+            addCriterion("evaluate_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeEqualTo(Date value) {
+            addCriterion("evaluate_time =", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeNotEqualTo(Date value) {
+            addCriterion("evaluate_time <>", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeGreaterThan(Date value) {
+            addCriterion("evaluate_time >", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("evaluate_time >=", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeLessThan(Date value) {
+            addCriterion("evaluate_time <", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("evaluate_time <=", value, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeIn(List<Date> values) {
+            addCriterion("evaluate_time in", values, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeNotIn(List<Date> values) {
+            addCriterion("evaluate_time not in", values, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeBetween(Date value1, Date value2) {
+            addCriterion("evaluate_time between", value1, value2, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("evaluate_time not between", value1, value2, "evaluateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelIsNull() {
+            addCriterion("evaluate_level is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelIsNotNull() {
+            addCriterion("evaluate_level is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelEqualTo(String value) {
+            addCriterion("evaluate_level =", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelNotEqualTo(String value) {
+            addCriterion("evaluate_level <>", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelGreaterThan(String value) {
+            addCriterion("evaluate_level >", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelGreaterThanOrEqualTo(String value) {
+            addCriterion("evaluate_level >=", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelLessThan(String value) {
+            addCriterion("evaluate_level <", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelLessThanOrEqualTo(String value) {
+            addCriterion("evaluate_level <=", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelLike(String value) {
+            addCriterion("evaluate_level like", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelNotLike(String value) {
+            addCriterion("evaluate_level not like", value, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelIn(List<String> values) {
+            addCriterion("evaluate_level in", values, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelNotIn(List<String> values) {
+            addCriterion("evaluate_level not in", values, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelBetween(String value1, String value2) {
+            addCriterion("evaluate_level between", value1, value2, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateLevelNotBetween(String value1, String value2) {
+            addCriterion("evaluate_level not between", value1, value2, "evaluateLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptIsNull() {
+            addCriterion("evaluate_descript is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptIsNotNull() {
+            addCriterion("evaluate_descript is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptEqualTo(String value) {
+            addCriterion("evaluate_descript =", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptNotEqualTo(String value) {
+            addCriterion("evaluate_descript <>", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptGreaterThan(String value) {
+            addCriterion("evaluate_descript >", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptGreaterThanOrEqualTo(String value) {
+            addCriterion("evaluate_descript >=", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptLessThan(String value) {
+            addCriterion("evaluate_descript <", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptLessThanOrEqualTo(String value) {
+            addCriterion("evaluate_descript <=", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptLike(String value) {
+            addCriterion("evaluate_descript like", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptNotLike(String value) {
+            addCriterion("evaluate_descript not like", value, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptIn(List<String> values) {
+            addCriterion("evaluate_descript in", values, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptNotIn(List<String> values) {
+            addCriterion("evaluate_descript not in", values, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptBetween(String value1, String value2) {
+            addCriterion("evaluate_descript between", value1, value2, "evaluateDescript");
+            return (Criteria) this;
+        }
+
+        public Criteria andEvaluateDescriptNotBetween(String value1, String value2) {
+            addCriterion("evaluate_descript not between", value1, value2, "evaluateDescript");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

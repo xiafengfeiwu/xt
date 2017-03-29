@@ -15,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.xt.entity.custom.MPumpWarnGroup;
 import com.xt.entity.custom.MPumpWarnGroupParam;
+import com.xt.entity.generation.Device;
 import com.xt.entity.generation.DeviceProduct;
 import com.xt.entity.generation.DeviceVender;
 import com.xt.entity.generation.Project;
 import com.xt.entity.generation.ProjectArea;
 import com.xt.entity.generation.Pump;
+import com.xt.entity.generation.PumpWarn;
 import com.xt.entity.generation.PumpWarnGroup;
 import com.xt.entity.generation.PumpWarnGroupKey;
 import com.xt.entity.generation.Res;
@@ -30,10 +32,12 @@ import com.xt.entity.generation.WeatherAlarm;
 import com.xt.entity.generation.WeatherData;
 import com.xt.service.CityWeatherService;
 import com.xt.service.DeviceProductService;
+import com.xt.service.DeviceService;
 import com.xt.service.DeviceVenderService;
 import com.xt.service.ProjectAreaService;
 import com.xt.service.ProjectService;
 import com.xt.service.PumpService;
+import com.xt.service.PumpWarnService;
 import com.xt.service.ResService;
 import com.xt.service.WarnGroupService;
 import com.xt.util.PublicUtil;
@@ -62,6 +66,10 @@ public class TxMonitorController {
 	DeviceVenderService deviceVenderService;
 	@Autowired
 	ResService resService;
+	@Autowired
+	PumpWarnService pumpWarnService;
+	@Autowired
+	DeviceService deviceService;
 
 	@RequiresAuthentication
 	@RequestMapping("pump")
@@ -120,6 +128,8 @@ public class TxMonitorController {
 		List<MPumpWarnGroup> warnGroups = pumpService.selectPumpWarnGroups(pumpId);
 		WeatherData weather = cityWeatherService.findCityWeatherByCode(projectArea.getWeatherCode());
 		WeatherAlarm weatherAlarm = cityWeatherService.findWeatherAlarmByCode(projectArea.getWeatherCode());
+		List<PumpWarn> pumpWarns = pumpWarnService.getByPumpId(pumpId);
+		List<Device> devices = deviceService.getDevicesByPumpId(pumpId);
 
 		data.put("success", true);
 		data.put("pump", pump);
@@ -130,6 +140,8 @@ public class TxMonitorController {
 		data.put("deviceVender", deviceVender);
 		data.put("weather", weather);
 		data.put("weatherAlarm", weatherAlarm);
+		data.put("pumpWarns", pumpWarns);
+		data.put("devices", devices);
 		return data;
 	}
 
@@ -190,7 +202,7 @@ public class TxMonitorController {
 	public Map<String, Object> pumpWarnGroupData(String pumpId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
-		if (pumpId == null) {
+		if (PublicUtil.isEmpty(pumpId)) {
 			data.put("message", "请传入热泵ID");
 			return data;
 		}
@@ -206,6 +218,65 @@ public class TxMonitorController {
 
 	@ResponseBody
 	@RequiresAuthentication
+	@RequestMapping("save-collect-device")
+	public Map<String, Object> saveCollectDevice(@RequestBody(required = true) Device device) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (device == null) {
+			data.put("message", "请传入参数");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getPumpId())) {
+			data.put("message", "请传入热泵ID");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceName())) {
+			data.put("message", "请传入设备名称");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceSn())) {
+			data.put("message", "请传入设备SN");
+			return data;
+		}
+
+		Device _device = deviceService.findBySn(device.getDeviceSn());
+		if (_device != null) {
+			data.put("message", "当前设备序列号已存在");
+			return data;
+		}
+
+		Pump pump = pumpService.getById(device.getPumpId());
+		if (pump == null) {
+			data.put("message", "无效的热泵ID");
+			return data;
+		}
+		if (PublicUtil.isNotEmpty(device.getDeviceProductId())) {
+			DeviceProduct deviceProduct = deviceProductService.findById(device.getDeviceProductId());
+			if (deviceProduct == null) {
+				data.put("message", "无效的产品ID");
+				return data;
+			}
+		}
+
+		device.setDeviceId(PublicUtil.initId());
+		device.setCreateTime(new Date());
+		device.setCreatorId(PublicUtil.sessionUid());
+
+		try {
+			deviceService.save(device);
+		} catch (Exception e) {
+			data.put("message", "操作失败，请稍后重试");
+			return data;
+		}
+
+		data.put("success", true);
+		data.put("device", device);
+		data.put("message", "操作成功");
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
 	@RequestMapping("add-pump-warn-group")
 	public Map<String, Object> addPumpWarnGroup(@RequestBody(required = true) MPumpWarnGroupParam groupParam) {
 		Map<String, Object> data = new HashMap<>();
@@ -214,11 +285,11 @@ public class TxMonitorController {
 			data.put("message", "请传入参数");
 			return data;
 		}
-		if (groupParam.getPumpId() == null) {
+		if (PublicUtil.isEmpty(groupParam.getPumpId())) {
 			data.put("message", "请传入热泵ID");
 			return data;
 		}
-		if (groupParam.getGroupId() == null) {
+		if (PublicUtil.isEmpty(groupParam.getGroupId())) {
 			data.put("message", "请传入告警组ID");
 			return data;
 		}
@@ -260,11 +331,11 @@ public class TxMonitorController {
 			data.put("message", "请传入参数");
 			return data;
 		}
-		if (groupParam.getPumpId() == null) {
+		if (PublicUtil.isEmpty(groupParam.getPumpId())) {
 			data.put("message", "请传入热泵ID");
 			return data;
 		}
-		if (groupParam.getGroupId() == null) {
+		if (PublicUtil.isEmpty(groupParam.getGroupId())) {
 			data.put("message", "请传入告警组ID");
 			return data;
 		}
@@ -380,7 +451,7 @@ public class TxMonitorController {
 	public Map<String, Object> deleteWarnGroup(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
-		if (warnGroupId == null) {
+		if (PublicUtil.isEmpty(warnGroupId)) {
 			data.put("message", "请传入告警组ID");
 			return data;
 		}
@@ -406,7 +477,7 @@ public class TxMonitorController {
 	public Map<String, Object> warnGroupItems(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
-		if (warnGroupId == null) {
+		if (PublicUtil.isEmpty(warnGroupId)) {
 			data.put("message", "请传入告警组ID");
 			return data;
 		}
@@ -430,7 +501,7 @@ public class TxMonitorController {
 			data.put("message", "无效的数据");
 			return data;
 		}
-		if (warnGroupItem.getWarnGroupId() == null) {
+		if (PublicUtil.isEmpty(warnGroupItem.getWarnGroupId())) {
 			data.put("message", "无效的告警组ID");
 			return data;
 		}
@@ -493,7 +564,7 @@ public class TxMonitorController {
 	public Map<String, Object> deleteWarnGroupItem(String warnGroupItemId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
-		if (warnGroupItemId == null) {
+		if (PublicUtil.isEmpty(warnGroupItemId)) {
 			data.put("message", "请传入告警项ID");
 			return data;
 		}
@@ -523,7 +594,7 @@ public class TxMonitorController {
 			data.put("message", "无效的数据");
 			return data;
 		}
-		if (warnGroupItem.getItemId() == null) {
+		if (PublicUtil.isEmpty(warnGroupItem.getItemId())) {
 			data.put("message", "无效的告警项ID");
 			return data;
 		}
@@ -594,7 +665,7 @@ public class TxMonitorController {
 	public Map<String, Object> pumpWarnGroupDetail(String warnGroupId) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("success", false);
-		if (warnGroupId == null) {
+		if (PublicUtil.isEmpty(warnGroupId)) {
 			data.put("message", "无效的告警组ID");
 			return data;
 		}

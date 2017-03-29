@@ -17,6 +17,12 @@ public class StoppageHandle {
 
     private String handleDescript;
 
+    private Date evaluateTime;
+
+    private String evaluateLevel;
+
+    private String evaluateDescript;
+
     public String getStoppageHandleId() {
         return stoppageHandleId;
     }
@@ -71,5 +77,29 @@ public class StoppageHandle {
 
     public void setHandleDescript(String handleDescript) {
         this.handleDescript = handleDescript;
+    }
+
+    public Date getEvaluateTime() {
+        return evaluateTime;
+    }
+
+    public void setEvaluateTime(Date evaluateTime) {
+        this.evaluateTime = evaluateTime;
+    }
+
+    public String getEvaluateLevel() {
+        return evaluateLevel;
+    }
+
+    public void setEvaluateLevel(String evaluateLevel) {
+        this.evaluateLevel = evaluateLevel;
+    }
+
+    public String getEvaluateDescript() {
+        return evaluateDescript;
+    }
+
+    public void setEvaluateDescript(String evaluateDescript) {
+        this.evaluateDescript = evaluateDescript;
     }
 }

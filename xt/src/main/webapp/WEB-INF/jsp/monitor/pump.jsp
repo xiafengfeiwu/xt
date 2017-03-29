@@ -32,6 +32,12 @@
 						<div class="ripple-wrapper"></div>
 					</button>
 					<button class="btn btn-link filter ng-binding ng-scope"
+						ng-click="changeTab('monitor-warn')"
+						ng-class="{true: 'active', false: ''}[tabFlag=='monitor-warn']">
+						采集告警
+						<div class="ripple-wrapper"></div>
+					</button>
+					<button ng-if="0" class="btn btn-link filter ng-binding ng-scope"
 						ng-click="changeTab('eser')"
 						ng-class="{true: 'active', false: ''}[tabFlag=='eser']">
 						耗能减排
@@ -137,8 +143,8 @@
 						</div>
 					</div>
 					<div class="row" ng-show="!showPumpMap" style="margin-top: 14px;">
-						<div class="col-xs-12 well">
-							<div style="color:red">未设置经纬度</div>
+						<div class="col-xs-12 well text-center">
+							<span style="color:red">未设置经纬度</span>
 						</div>
 					</div>
 				</blockquote>
@@ -162,11 +168,25 @@
 						<div class="col-xs-12">
 							<h5><i class="md md-chevron-right"></i> 采集设备
 								<div class="pull-right" style="margin-top: -8px;">
-         							<button type="button" class="btn btn-round-sm btn-link ng-scope" data-placement="left" data-bs-tooltip data-title="新增采集设备">
+         							<button type="button" class="btn btn-round-sm btn-link ng-scope" data-ng-click="createCollectDevice(pumpd.base)" data-placement="left" data-bs-tooltip data-title="新增采集设备">
          								<i class="md md-add"></i>
          							</button>
          						</div>
          					</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12" data-ng-if="pumpd.devices.length">
+							<div class="card">
+						        <div class="list-group" data-ng-repeat="(key, device) in pumpd.devices">
+						          <a href="javascript:;" class="list-group-item">
+						          	<h4 class="list-group-item-heading">{{ device.deviceName }} ({{ device.deviceSn }})</h4>
+						          </a>
+						        </div>
+							</div>
+						</div>
+						<div class="col-xs-12 text-center" data-ng-if="!pumpd.devices.length">
+							无采集设备
 						</div>
 					</div>
 					<div class="row">
@@ -181,7 +201,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-12" data-ng-if="pumpd.warnGroup.length">
 							<div class="card">
 						        <div class="list-group" data-ng-repeat="(key, warnGroup) in pumpd.warnGroup">
 						          <a href="javascript:;" ng-click="showPumpWarnGroupItems(warnGroup.groupId)" class="list-group-item">
@@ -190,6 +210,9 @@
 						          </a>
 						        </div>
 							</div>
+						</div>
+						<div class="col-xs-12 text-center" data-ng-if="!pumpd.warnGroup.length">
+							无告警组
 						</div>
 					</div>
 					<div class="row" data-ng-if="false">
@@ -233,7 +256,7 @@
 					</div>
 				</blockquote>
 				
-				<blockquote ng-show="tabFlag=='eser' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
+				<blockquote ng-show="0 && tabFlag=='eser' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
 					<div class="row">
 						<div class="col-xs-12">
 							<h5>耗能减排</h5>
@@ -248,13 +271,38 @@
 					</div>
 				</blockquote>
 				
-				<blockquote ng-show="tabFlag=='monitor-history' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
+				<blockquote data-ng-show="tabFlag=='monitor-warn' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
 					<div class="row">
-						<div class="col-xs-12">
-							<h5>历史数据</h5>
+						<div class="col-xs-12" data-ng-if="pumpd.pumpWarns.length">
+					        <div data-title="{{pumpWarn.warnLevel}}" data-placement="left" data-bs-tooltip data-ng-repeat="(key, pumpWarn) in pumpd.pumpWarns">
+					          <p data-ng-class="{'告警': 'text-warning', '信息': 'text-info', '故障': 'text-danger'}[pumpWarn.warnLevel]">【{{ pumpWarn.warnHappenTime | date:'yyyy-MM-dd HH:mm:ss'}}】 {{ pumpWarn.warnDescript }}</p>
+					        </div>
+						</div>
+						<div class="col-xs-12 text-center" data-ng-if="!pumpd.pumpWarns.length">
+							无告警信息
 						</div>
 					</div>
+				</blockquote>
 				
+				<blockquote data-ng-show="tabFlag=='monitor-history' || showAll" style="font-size: 12.68px;line-height: 34px;margin: 0 0 1px;border-left:0px solid rgba(255, 255, 255, 0)">
+					<div class="row">
+						<div class="col-xs-6">
+							<h5>历史数据</h5>
+						</div>
+						<div class="col-xs-4 col-xs-offset-2">
+							<div class="input-group pull-right">
+			                	<input type="text" class="form-control ng-valid text-center" data-ng-model="historyDate" data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="1" data-bs-datepicker=""/>
+			                  	<span class="input-group-btn p-l-10">
+			                    	<button class="btn btn-default" type="button">查询</button>
+			                  	</span>
+			              	</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+						
+						</div>
+					</div>
 				</blockquote>
 			</div>
 		</div>

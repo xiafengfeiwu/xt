@@ -16,7 +16,7 @@
             </div>
             <div class="radio-inline">
               <label>
-                <input type="radio" name="productType" ng-click="changeType('C')"> 其他产品
+                <input type="radio" name="productType" ng-click="changeType('C')"> 采集产品
               </label>
             </div>
           </div>

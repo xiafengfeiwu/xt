@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <button type="button" class="close" data-ng-click="$hide()">&times;</button>
         <h4 class="modal-title">{{ pumpd.base.pumpName }} - 产品信息</h4>
       </div>
       <div class="modal-body">
@@ -43,7 +43,7 @@
 		</blockquote>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" ng-click="$hide()">关闭</button>
+        <button type="button" class="btn btn-default" data-ng-click="$hide()">关闭</button>
       </div>
     </div>
   </div>

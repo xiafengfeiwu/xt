@@ -6,6 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<properties>
+		<java.home>C:\Program Files\Java\jdk1.8.0_121</java.home>
 		<!-- spring版本号 -->
 		<spring.version>4.3.2.RELEASE</spring.version>
 		<!-- log4j日志文件管理包版本 -->
@@ -78,7 +79,10 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-				</configuration>
+					<compilerArguments>  
+			          <bootclasspath>${java.home}\jre\lib\rt.jar;${java.home}\jre\lib\jce.jar</bootclasspath>  
+			        </compilerArguments> 
+				</configuration> 
 			</plugin>
 		</plugins>
 	</build>
