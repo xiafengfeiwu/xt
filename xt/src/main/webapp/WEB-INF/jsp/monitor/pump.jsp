@@ -179,7 +179,7 @@
 						<div class="col-xs-12" data-ng-if="pumpd.devices.length">
 							<div class="card">
 						        <div class="list-group" data-ng-repeat="(key, device) in pumpd.devices">
-						          <a href="javascript:;" class="list-group-item">
+						          <a href="javascript:;" data-ng-click="updateCollectDevice(device)" class="list-group-item">
 						          	<h4 class="list-group-item-heading">{{ device.deviceName }} ({{ device.deviceSn }})</h4>
 						          </a>
 						        </div>

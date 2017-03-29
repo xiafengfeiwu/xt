@@ -277,6 +277,100 @@ public class TxMonitorController {
 
 	@ResponseBody
 	@RequiresAuthentication
+	@RequestMapping("update-collect-device")
+	public Map<String, Object> updateCollectDevice(@RequestBody(required = true) Device device) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (device == null) {
+			data.put("message", "请传入参数");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceId())) {
+			data.put("message", "请传入设备ID");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceName())) {
+			data.put("message", "请传入设备名称");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceSn())) {
+			data.put("message", "请传入设备SN");
+			return data;
+		}
+
+		Device _device = deviceService.findBySn(device.getDeviceSn());
+		if (_device != null && !_device.getDeviceId().equals(device.getDeviceId())) {
+			data.put("message", "当前设备序列号已存在");
+			return data;
+		}
+
+		_device = deviceService.findById(device.getDeviceId());
+		if (_device == null) {
+			data.put("message", "无效的设备ID");
+			return data;
+		}
+
+		if (PublicUtil.isNotEmpty(device.getDeviceProductId())) {
+			DeviceProduct deviceProduct = deviceProductService.findById(device.getDeviceProductId());
+			if (deviceProduct == null) {
+				data.put("message", "无效的产品ID");
+				return data;
+			}
+			_device.setDeviceProductId(device.getDeviceProductId());
+		}
+
+		_device.setDeviceName(device.getDeviceName());
+		_device.setDeviceSn(device.getDeviceSn());
+		_device.setModifyTime(new Date());
+
+		try {
+			deviceService.update(_device);
+		} catch (Exception e) {
+			data.put("message", "操作失败，请稍后重试");
+			return data;
+		}
+
+		data.put("success", true);
+		data.put("device", _device);
+		data.put("message", "操作成功");
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("remove-collect-device")
+	public Map<String, Object> deleteCollectDevice(@RequestBody(required = true) Device device) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		if (device == null) {
+			data.put("message", "请传入参数");
+			return data;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceId())) {
+			data.put("message", "请传入设备ID");
+			return data;
+		}
+
+		Device _device = deviceService.findById(device.getDeviceId());
+		if (_device == null) {
+			data.put("message", "无效的设备ID");
+			return data;
+		}
+
+		try {
+			deviceService.delete(_device.getDeviceId());
+		} catch (Exception e) {
+			data.put("message", "操作失败，请稍后重试");
+			return data;
+		}
+
+		data.put("success", true);
+		data.put("message", "操作成功");
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
 	@RequestMapping("add-pump-warn-group")
 	public Map<String, Object> addPumpWarnGroup(@RequestBody(required = true) MPumpWarnGroupParam groupParam) {
 		Map<String, Object> data = new HashMap<>();
