@@ -10,11 +10,20 @@ import net.sf.json.JSONObject;
 public final class SmsUtil {
 	protected final static Logger logger = Logger.getLogger(SmsUtil.class);
 
-	/** 您的验证码是#code#。如非本人操作，请忽略本短信。 */
+	/** 【热泵在线】当前短信验证码为#code#，有效期30分钟。 */
 	public static boolean sendVerificationCode(String mobile, String code) {
 		StringBuffer tpl_value = new StringBuffer("#code#=");
 		tpl_value.append(code);
-		return sendSMS(mobile, "17947", tpl_value.toString());
+		return sendSMS(mobile, "31221", tpl_value.toString());
+	}
+	
+	/** 【热泵在线】热泵 #pumpName# 产生了一条#type#信息，请登录平台及时处理。 */
+	public static boolean sendPumpWarn(String mobile, String pumpName, String type) {
+		StringBuffer tpl_value = new StringBuffer("#pumpName#=");
+		tpl_value.append(pumpName);
+		tpl_value.append("&#type#=");
+		tpl_value.append(type);
+		return sendSMS(mobile, "31223", tpl_value.toString());
 	}
 
 	/***
@@ -44,5 +53,10 @@ public final class SmsUtil {
 			logger.error(e.getMessage());
 		}
 		return false;
+	}
+	
+	public static void main(String[] args) {
+		sendVerificationCode("18518435862", "2133");
+		sendPumpWarn("18518436862", "测试热泵", "告警");
 	}
 }

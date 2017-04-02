@@ -293,14 +293,14 @@
 							<div class="input-group pull-right">
 			                	<input type="text" class="form-control ng-valid text-center" data-ng-model="historyDate" data-date-format="yyyy-MM-dd" data-max-date="today" data-autoclose="1" data-bs-datepicker=""/>
 			                  	<span class="input-group-btn p-l-10">
-			                    	<button class="btn btn-default" type="button">查询</button>
+			                    	<button data-ng-click="searchPumpHistoryData()" class="btn btn-default" type="button">查询</button>
 			                  	</span>
 			              	</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12">
-						
+							<div id="history_echart_box" style="width: 100%; height: 420px"></div>
 						</div>
 					</div>
 				</blockquote>

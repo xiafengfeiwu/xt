@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.dao.generation.PacketQueryMapper">
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PacketQuery">
-    <id column="packet_id" jdbcType="VARCHAR" property="packetId" />
+    <id column="packet_id" jdbcType="BIGINT" property="packetId" />
     <result column="packet_type" jdbcType="VARCHAR" property="packetType" />
     <result column="packet_data" jdbcType="VARCHAR" property="packetData" />
     <result column="packet_status" jdbcType="CHAR" property="packetStatus" />
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_packet_query
-    where packet_id = #{packetId,jdbcType=VARCHAR}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from w_packet_query
-    where packet_id = #{packetId,jdbcType=VARCHAR}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.xt.entity.generation.PacketQueryExample">
     delete from w_packet_query
@@ -103,7 +103,7 @@
   <insert id="insert" parameterType="com.xt.entity.generation.PacketQuery">
     insert into w_packet_query (packet_id, packet_type, packet_data, 
       packet_status, collect_time)
-    values (#{packetId,jdbcType=VARCHAR}, #{packetType,jdbcType=VARCHAR}, #{packetData,jdbcType=VARCHAR}, 
+    values (#{packetId,jdbcType=BIGINT}, #{packetType,jdbcType=VARCHAR}, #{packetData,jdbcType=VARCHAR}, 
       #{packetStatus,jdbcType=CHAR}, #{collectTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.PacketQuery">
@@ -127,7 +127,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="packetId != null">
-        #{packetId,jdbcType=VARCHAR},
+        #{packetId,jdbcType=BIGINT},
       </if>
       <if test="packetType != null">
         #{packetType,jdbcType=VARCHAR},
@@ -153,7 +153,7 @@
     update w_packet_query
     <set>
       <if test="record.packetId != null">
-        packet_id = #{record.packetId,jdbcType=VARCHAR},
+        packet_id = #{record.packetId,jdbcType=BIGINT},
       </if>
       <if test="record.packetType != null">
         packet_type = #{record.packetType,jdbcType=VARCHAR},
@@ -174,7 +174,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_packet_query
-    set packet_id = #{record.packetId,jdbcType=VARCHAR},
+    set packet_id = #{record.packetId,jdbcType=BIGINT},
       packet_type = #{record.packetType,jdbcType=VARCHAR},
       packet_data = #{record.packetData,jdbcType=VARCHAR},
       packet_status = #{record.packetStatus,jdbcType=CHAR},
@@ -199,7 +199,7 @@
         collect_time = #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where packet_id = #{packetId,jdbcType=VARCHAR}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PacketQuery">
     update w_packet_query
@@ -207,6 +207,6 @@
       packet_data = #{packetData,jdbcType=VARCHAR},
       packet_status = #{packetStatus,jdbcType=CHAR},
       collect_time = #{collectTime,jdbcType=TIMESTAMP}
-    where packet_id = #{packetId,jdbcType=VARCHAR}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
 </mapper>

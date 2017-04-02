@@ -1,5 +1,6 @@
 package com.xt.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,22 @@ public class PumpWarnServiceImpl implements PumpWarnService {
 	@Override
 	public List<PumpWarn> getByPumpId(String pumpId) {
 		PumpWarnExample example = new PumpWarnExample();
-		example.createCriteria().andPumpIdEqualTo(pumpId);
-		example.setOrderByClause("warn_happen_time desc");
+		long times = new Date().getTime() - 7 * 24 * 60 * 60 * 1000;
+		example.createCriteria().andPumpIdEqualTo(pumpId).andWarnHappenTimeGreaterThanOrEqualTo(new Date(times));
+		example.setOrderByClause("warn_happen_time desc limit 0, 50");
 		return pumpWarnMapper.selectByExample(example);
+	}
+
+	@Override
+	public PumpWarn getLastOneByPumpId(String pumpId) {
+		PumpWarnExample example = new PumpWarnExample();
+		example.createCriteria().andPumpIdEqualTo(pumpId);
+		example.setOrderByClause("warn_happen_time desc limit 0,1");
+		List<PumpWarn> pumpWarns = pumpWarnMapper.selectByExample(example);
+		if (pumpWarns != null) {
+			return pumpWarns.get(0);
+		}
+		return null;
 	}
 
 }

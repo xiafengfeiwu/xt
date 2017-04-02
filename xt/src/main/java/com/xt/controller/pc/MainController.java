@@ -27,11 +27,14 @@ import com.xt.entity.custom.MIdParam;
 import com.xt.entity.custom.MPumpMonitor;
 import com.xt.entity.generation.ProjectArea;
 import com.xt.entity.generation.Role;
+import com.xt.entity.generation.User;
 import com.xt.entity.generation.UserAuth;
 import com.xt.service.ProjectAreaService;
 import com.xt.service.ProjectService;
 import com.xt.service.PumpService;
 import com.xt.service.UserAuthService;
+import com.xt.service.UserService;
+import com.xt.service.VerificationCodeService;
 import com.xt.util.PublicUtil;
 
 @Controller
@@ -45,6 +48,10 @@ public class MainController {
 	ProjectAreaService projectAreaService;
 	@Autowired
 	UserAuthService userAuthService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	VerificationCodeService verificationCodeService;
 
 	@RequiresAuthentication
 	@RequestMapping("index")
@@ -57,6 +64,34 @@ public class MainController {
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView("login");
 		return modelAndView;
+	}
+
+	@RequestMapping("forgetpwd")
+	public ModelAndView forgetpwd() {
+		ModelAndView modelAndView = new ModelAndView("forgetpwd");
+		return modelAndView;
+	}
+
+	@ResponseBody
+	@RequestMapping("send-vcode")
+	public Map<String, Object> sendVcode(String phoneNo) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("success", false);
+		if (PublicUtil.isEmpty(phoneNo)) {
+			map.put("message", "请传入手机号");
+			return map;
+		}
+		User user = userService.findByPhoneNo(phoneNo);
+		if (user == null) {
+			map.put("message", "无效的手机号");
+			return map;
+		}
+		if (!verificationCodeService.sendVerificationCode(phoneNo)) {
+			map.put("message", "发送失败，请稍候重试或联系管理员");
+			return map;
+		}
+		map.put("success", true);
+		return map;
 	}
 
 	@RequestMapping("logout")

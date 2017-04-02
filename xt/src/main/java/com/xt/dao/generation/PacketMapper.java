@@ -10,7 +10,7 @@ public interface PacketMapper {
 
     int deleteByExample(PacketExample example);
 
-    int deleteByPrimaryKey(String packetId);
+    int deleteByPrimaryKey(Long packetId);
 
     int insert(Packet record);
 
@@ -18,7 +18,7 @@ public interface PacketMapper {
 
     List<Packet> selectByExample(PacketExample example);
 
-    Packet selectByPrimaryKey(String packetId);
+    Packet selectByPrimaryKey(Long packetId);
 
     int updateByExampleSelective(@Param("record") Packet record, @Param("example") PacketExample example);
 

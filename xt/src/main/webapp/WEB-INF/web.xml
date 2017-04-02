@@ -57,12 +57,12 @@
 	</filter>
 
 	<servlet>
-		<display-name>analysisQuartzServlet</display-name>
-		<servlet-name>analysisQuartzServlet</servlet-name>
+		<display-name>pumpEleStatisticsQuartzServlet</display-name>
+		<servlet-name>pumpEleStatisticsQuartzServlet</servlet-name>
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0/10 * * * * ?</param-value>
+			<param-value>0 0 0/1 * * ?</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>

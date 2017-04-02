@@ -3,6 +3,7 @@ package com.xt.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -28,8 +29,6 @@ import com.xt.entity.generation.WeatherData;
 import com.xt.service.CityWeatherService;
 
 import net.sf.json.JSONObject;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPubSub;
 
 public class PublicUtil {
 	final static _Sequence sequence = new _Sequence(1);
@@ -173,8 +172,43 @@ public class PublicUtil {
 		}
 	}
 
+	public static String getCurrentStrDate() {
+		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	}
 	public static String getCurrentYearMonth() {
 		return new SimpleDateFormat("yyyyMM").format(new Date());
+	}
+
+	public static String getCurrentHour() {
+		return new SimpleDateFormat("HH").format(new Date());
+	}
+
+	public static Date getTodayMinTime(Date date) {
+		String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		String minDataStr = dateStr + " 00:00:00";
+		try {
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(minDataStr);
+		} catch (ParseException e) {
+		}
+		return null;
+	}
+
+	public static Date getTodayMaxTime(Date date) {
+		String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		String minDataStr = dateStr + " 23:59:59";
+		try {
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(minDataStr);
+		} catch (ParseException e) {
+		}
+		return null;
+	}
+
+	public static Date getStringDate(String date) {
+		try {
+			return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+		} catch (ParseException e) {
+		}
+		return null;
 	}
 
 	public static String getNextCode(String lastCode) {
@@ -336,18 +370,25 @@ public class PublicUtil {
 		// System.out.println(initId());
 		// System.out.println(initId());
 		// System.out.println(initId());
-		Jedis jedis = RedisConfig.getJedis();
-		System.out.println(RedisUtil.getString("version"));
-
-		JedisPubSub jedisPubSub = new JedisPubSub() {
-			@Override
-			public void onMessage(String channel, String message) {
-				System.out.println("channel:" + channel + ", message:" + message);
-			}
-		};
-		jedis.subscribe(jedisPubSub, "redisChat");
-		
-
-		jedis.publish("redisChat", "123");
+		// Jedis jedis = RedisConfig.getJedis();
+		// System.out.println(RedisUtil.getString("version"));
+		//
+		// JedisPubSub jedisPubSub = new JedisPubSub() {
+		// @Override
+		// public void onMessage(String channel, String message) {
+		// System.out.println("channel:" + channel + ", message:" + message);
+		// }
+		// };
+		// jedis.subscribe(jedisPubSub, "redisChat");
+		// while (true) {
+		// Long r = jedis.publish("redisChat", "wangting");
+		// System.out.println(r);
+		// try {
+		// Thread.sleep(1000);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
 	}
 }

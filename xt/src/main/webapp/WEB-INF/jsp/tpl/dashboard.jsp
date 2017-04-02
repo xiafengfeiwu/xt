@@ -4,7 +4,7 @@
 	<div class="row no-gutter">
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<div id="m-map" style="width: 100%; height: 1px;"></div>
-			<div data-title="刷新数据" data-placement="left" data-bs-tooltip style="position:absolute;bottom:10px;right:10px;width:42px;height:42px;border:1px solid #ccc;background-color:hsla(0,0%,100%,.8);z-index:9999;">
+			<div data-title="刷新数据" data-placement="left" data-bs-tooltip style="position:absolute;top:10px;right:10px;width:42px;height:42px;border:1px solid #ccc;background-color:hsla(0,0%,100%,.8);z-index:9999;">
 				<button id="refreshMapDataBtn" data-ng-click="refreshMapData()" class="dropdown-toggle pointer btn btn-round-sm btn-link">
 		          <i class="md md-refresh f20"></i>
 		        </button>

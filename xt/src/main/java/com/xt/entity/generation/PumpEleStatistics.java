@@ -1,11 +1,14 @@
 package com.xt.entity.generation;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class PumpEleStatistics {
     private String dataId;
 
     private String pumpId;
+
+    private Date intervalDate;
 
     private Short intervalHour;
 
@@ -27,6 +30,14 @@ public class PumpEleStatistics {
 
     public void setPumpId(String pumpId) {
         this.pumpId = pumpId;
+    }
+
+    public Date getIntervalDate() {
+        return intervalDate;
+    }
+
+    public void setIntervalDate(Date intervalDate) {
+        this.intervalDate = intervalDate;
     }
 
     public Short getIntervalHour() {

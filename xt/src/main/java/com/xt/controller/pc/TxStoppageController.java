@@ -121,7 +121,7 @@ public class TxStoppageController {
 
 		Pump pump = pumpService.getById(mStoppage.getPumpId());
 		if (pump == null) {
-			data.put("message", "无效的电站ID");
+			data.put("message", "无效的热泵ID");
 			return data;
 		}
 

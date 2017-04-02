@@ -26,7 +26,7 @@
 				title: 0,
 				closeBtn: 0,
 				skin: 'layui-layer-rim',
-				area: ['420px', '260px'],
+				area: ['420px', '360px'],
 				resize: 0,
 				shadeClose: 1,
 				scrollbar: 0,

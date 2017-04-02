@@ -1,5 +1,6 @@
 package com.xt.controller.pc;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import com.xt.entity.generation.DeviceVender;
 import com.xt.entity.generation.Project;
 import com.xt.entity.generation.ProjectArea;
 import com.xt.entity.generation.Pump;
+import com.xt.entity.generation.PumpHistoryData;
 import com.xt.entity.generation.PumpWarn;
 import com.xt.entity.generation.PumpWarnGroup;
 import com.xt.entity.generation.PumpWarnGroupKey;
@@ -36,6 +38,7 @@ import com.xt.service.DeviceService;
 import com.xt.service.DeviceVenderService;
 import com.xt.service.ProjectAreaService;
 import com.xt.service.ProjectService;
+import com.xt.service.PumpCollectService;
 import com.xt.service.PumpService;
 import com.xt.service.PumpWarnService;
 import com.xt.service.ResService;
@@ -70,6 +73,8 @@ public class TxMonitorController {
 	PumpWarnService pumpWarnService;
 	@Autowired
 	DeviceService deviceService;
+	@Autowired
+	PumpCollectService pumpCollectService;
 
 	@RequiresAuthentication
 	@RequestMapping("pump")
@@ -142,6 +147,72 @@ public class TxMonitorController {
 		data.put("weatherAlarm", weatherAlarm);
 		data.put("pumpWarns", pumpWarns);
 		data.put("devices", devices);
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("pump-history-data")
+	public Map<String, Object> pumpHistoryData(String pumpId, String date) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+
+		if (PublicUtil.isEmpty(pumpId)) {
+			data.put("message", "请输入的热泵ID");
+			return data;
+		}
+		if (PublicUtil.isEmpty(date)) {
+			date = PublicUtil.getCurrentStrDate();
+		}
+
+		Date d = PublicUtil.getStringDate(date);
+
+		if (d == null) {
+			data.put("message", "无效的历史查询时间");
+			return data;
+		}
+
+		List<PumpHistoryData> historyDatas = pumpCollectService.getPumpDayCollectData(pumpId, d);
+		List<Object[]> setUpTemps = new ArrayList<>();
+		List<Object[]> backWaterTemps = new ArrayList<>();
+		List<Object[]> outWaterTemps = new ArrayList<>();
+		List<Object[]> environmentTemps = new ArrayList<>();
+		List<Object[]> compressorCurrents = new ArrayList<>();
+		List<Object[]> waterTankTemps = new ArrayList<>();
+		List<Object[]> backAirTemps = new ArrayList<>();
+		List<Object[]> outAirTemps = new ArrayList<>();
+		List<Object[]> indoorTemps = new ArrayList<>();
+
+		if (historyDatas != null && !historyDatas.isEmpty()) {
+			for (PumpHistoryData hd : historyDatas) {
+				Date dt = hd.getCollectTime();
+				setUpTemps.add(new Object[] { dt, hd.getSetUpTemp() });
+				backWaterTemps.add(new Object[] { dt, hd.getBackWaterTemp() });
+				outWaterTemps.add(new Object[] { dt, hd.getOutWaterTemp() });
+				environmentTemps.add(new Object[] { dt, hd.getEnvironmentTemp() });
+				compressorCurrents.add(new Object[] { dt, hd.getCompressorCurrent() });
+				waterTankTemps.add(new Object[] { dt, hd.getWaterTankTemp() });
+				backAirTemps.add(new Object[] { dt, hd.getBackAirTemp() });
+				outAirTemps.add(new Object[] { dt, hd.getOutAirTemp() });
+				indoorTemps.add(new Object[] { dt, hd.getIndoorTemp() });
+			}
+		}
+
+		data.put("success", true);
+		
+		data.put("setUpTemps", setUpTemps);
+		data.put("backWaterTemps", backWaterTemps);
+		data.put("outWaterTemps", outWaterTemps);
+		data.put("environmentTemps", environmentTemps);
+		data.put("compressorCurrents", compressorCurrents);
+		data.put("waterTankTemps", waterTankTemps);
+		data.put("backAirTemps", backAirTemps);
+		data.put("outAirTemps", outAirTemps);
+		data.put("indoorTemps", indoorTemps);
+
+		data.put("minTime", PublicUtil.getTodayMinTime(d));
+		data.put("maxTime", PublicUtil.getTodayMaxTime(d));
+
 		return data;
 	}
 

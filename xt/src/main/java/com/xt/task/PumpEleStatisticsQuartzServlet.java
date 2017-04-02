@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
-@Component("analysisQuartzServlet")
-public class AnalysisQuartzServlet extends HttpServlet {
-	private static final Logger logger = Logger.getLogger(AnalysisQuartzServlet.class);
+@Component("pumpEleStatisticsQuartzServlet")
+public class PumpEleStatisticsQuartzServlet extends HttpServlet {
+	private static final Logger logger = Logger.getLogger(PumpEleStatisticsQuartzServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -25,12 +25,12 @@ public class AnalysisQuartzServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		String name = "analysisDataName";
-		String group = "analysisDataGroup";
+		String name = "pumpEleStatisticsName";
+		String group = "pumpEleStatisticsGroup";
 		// 获取调度程序
 		// schedulerFactoryBean 由spring创建注入
 		Scheduler scheduler = schedulerFactoryBean.getScheduler();
-		JobDetail jobDetail = JobBuilder.newJob(AnalysisQuartzJob.class).withIdentity(name, group).build();
+		JobDetail jobDetail = JobBuilder.newJob(PumpEleStatisticsQuartzJob.class).withIdentity(name, group).build();
 		// 表达式调度构建器
 		CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(config.getInitParameter("cronSchedule"));
 		try {

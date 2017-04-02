@@ -13,4 +13,7 @@ public interface PumpWarnService {
 	PumpWarn getById(String pumpWarnId);
 
 	List<PumpWarn> getByPumpId(String pumpId);
+
+	// 获取最新的告警信息
+	PumpWarn getLastOneByPumpId(String pumpId);
 }

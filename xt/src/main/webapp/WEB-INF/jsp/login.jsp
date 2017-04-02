@@ -66,13 +66,13 @@ p{width: 278px;margin: auto;font-size: 12px;line-height: 24px;text-align: left;}
 </style>
 </head>
 <body>
-	<div class="login-box">
+	<div class="login-box" style="margin-top: 64px">
 		<h1>热泵在线 - 登录</h1>
 		<form method="post" action="login-action.jspx">
 			<input type="text" required="required" placeholder="用户名" name="username" value="admin"/>
 			<input type="password" required="required" placeholder="密码" name="password" value="123456"/>
 			<button class="but" type="submit">登录</button>
-			<p><span style="color:red">${message }</span> &nbsp; <a style="float: right;" href="javascript:void(0);">忘记密码？</a></p>
+			<p><span style="color:red">${message }</span> &nbsp; <a style="float: right;" href="forgetpwd.jspx">忘记密码？</a></p>
 		</form>
 	</div>
 </body>
