@@ -93,11 +93,38 @@ p{width: 278px;margin: auto;font-size: 12px;line-height: 24px;text-align: left;}
 	<script src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var sending = false;
+			var def = "获取验证码";
+			var timStr = function(s){
+				return  s + "s重新获取";
+			};
+			var tim = 60;
+			var timer = null;
 			$("#sendCodeBtn").on("click", function(){
+				if(sending) {
+					return;
+				}
+				sending = true;
+				var _this = this;
+				if(timer) {
+					window.clearInterval(timer);
+				}
+				timer = window.setInterval(function(){
+					if(tim == 0) {
+						$(_this).text(def);
+						window.clearInterval(timer);
+						sending = false;
+					} else {
+						$(_this).text(timStr(--tim));
+					}
+				}, 1000);
 				$.get("send-vcode.jspx?phoneNo=" + $("input[name=phoneNo]").val(), function(data){
-					console.info(data)
 					if(!data.success) {
 						$("#messageBox").html(data.message);
+						window.clearInterval(timer);
+						sending = false;
+					} else {
+						$("#messageBox").html("发送成功");
 					}
 				}, "json");
 			})

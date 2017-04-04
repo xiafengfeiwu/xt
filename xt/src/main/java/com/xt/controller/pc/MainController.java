@@ -270,7 +270,7 @@ public class MainController {
 			color = "#FF9800";
 			map.put("status", "离线");
 		}
-		if (!PublicUtil.isEmpty(pm.getWarnCode())) {
+		if (!PublicUtil.isEmpty(pm.getWarnCode()) && !"0".equals(pm.getWarnCode())) {
 			color = "#E91E63";
 			map.put("status", "故障");
 		}

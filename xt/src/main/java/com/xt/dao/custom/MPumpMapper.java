@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.xt.entity.custom.MAreaPump;
 import com.xt.entity.custom.MLastCode;
+import com.xt.entity.custom.MPumpEleStatistics;
 import com.xt.entity.custom.MPumpMonitor;
 import com.xt.entity.custom.MPumpStoppage;
 import com.xt.entity.custom.MPumpWarnGroup;
@@ -41,4 +42,12 @@ public interface MPumpMapper {
 	List<MPumpStoppage> selectStoppagesByPumpIds(@Param("pumpIds") List<String> pumpIds);
 
 	List<MPumpStoppage> selectAllStoppages();
+
+	List<MPumpEleStatistics> selelctPumpEleDayStatistics(@Param("pumpIds") List<String> pumpIds, @Param("year") Short year, @Param("month") Short month, @Param("day") Short day);
+
+	List<MPumpEleStatistics> selelctPumpEleMonthStatistics(@Param("pumpIds") List<String> pumpIds, @Param("year") Short year, @Param("month") Short month);
+
+	List<MPumpEleStatistics> selelctPumpEleYearStatistics(@Param("pumpIds") List<String> pumpIds, @Param("year") Short year);
+	
+	List<MPumpEleStatistics> selelctPumpEleAllStatistics(@Param("pumpIds") List<String> pumpIds);
 }

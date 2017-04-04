@@ -151,4 +151,53 @@
 		p.pump_id asc
 	</select>
 
+
+	<select id="selelctPumpEleDayStatistics" resultType="MPumpEleStatistics">
+		select s.interval_hour as intervalTime, sum(s.ele_interval) as
+		ele_interval from w_pump_ele_statistics s where s.pump_id in
+		<foreach collection="pumpIds" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		and s.interval_year = ${year} and s.interval_month = ${month} and
+		s.interval_day = ${day} group by interval_hour order by
+		s.interval_hour asc
+	</select>
+
+	<select id="selelctPumpEleMonthStatistics" resultType="MPumpEleStatistics">
+		select s.interval_day as intervalTime, sum(s.ele_interval) as
+		ele_interval from w_pump_ele_statistics s where s.pump_id in
+		<foreach collection="pumpIds" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		and s.interval_year = ${year} and s.interval_month = ${month}
+		group by
+		interval_day order by
+		s.interval_day asc
+	</select>
+
+	<select id="selelctPumpEleYearStatistics" resultType="MPumpEleStatistics">
+		select s.interval_month as intervalTime, sum(s.ele_interval) as
+		ele_interval from w_pump_ele_statistics s where s.pump_id in
+		<foreach collection="pumpIds" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		and s.interval_year = ${year}
+		group by interval_month order by
+		s.interval_month asc
+	</select>
+
+	<select id="selelctPumpEleAllStatistics" resultType="MPumpEleStatistics">
+		select s.interval_year as intervalTime, sum(s.ele_interval) as
+		ele_interval from w_pump_ele_statistics s where s.pump_id in
+		<foreach collection="pumpIds" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+		group by interval_year order by
+		s.interval_year asc
+	</select>
+
 </mapper>

@@ -4,7 +4,9 @@
   <resultMap id="BaseResultMap" type="com.xt.entity.generation.PumpEleStatistics">
     <id column="data_id" jdbcType="VARCHAR" property="dataId" />
     <result column="pump_id" jdbcType="VARCHAR" property="pumpId" />
-    <result column="interval_date" jdbcType="DATE" property="intervalDate" />
+    <result column="interval_year" jdbcType="SMALLINT" property="intervalYear" />
+    <result column="interval_month" jdbcType="SMALLINT" property="intervalMonth" />
+    <result column="interval_day" jdbcType="SMALLINT" property="intervalDay" />
     <result column="interval_hour" jdbcType="SMALLINT" property="intervalHour" />
     <result column="ele_interval" jdbcType="DECIMAL" property="eleInterval" />
     <result column="ele_total" jdbcType="DECIMAL" property="eleTotal" />
@@ -68,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    data_id, pump_id, interval_date, interval_hour, ele_interval, ele_total
+    data_id, pump_id, interval_year, interval_month, interval_day, interval_hour, ele_interval, 
+    ele_total
   </sql>
   <select id="selectByExample" parameterType="com.xt.entity.generation.PumpEleStatisticsExample" resultMap="BaseResultMap">
     select
@@ -102,12 +105,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xt.entity.generation.PumpEleStatistics">
-    insert into w_pump_ele_statistics (data_id, pump_id, interval_date, 
-      interval_hour, ele_interval, ele_total
-      )
-    values (#{dataId,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, #{intervalDate,jdbcType=DATE}, 
-      #{intervalHour,jdbcType=SMALLINT}, #{eleInterval,jdbcType=DECIMAL}, #{eleTotal,jdbcType=DECIMAL}
-      )
+    insert into w_pump_ele_statistics (data_id, pump_id, interval_year, 
+      interval_month, interval_day, interval_hour, 
+      ele_interval, ele_total)
+    values (#{dataId,jdbcType=VARCHAR}, #{pumpId,jdbcType=VARCHAR}, #{intervalYear,jdbcType=SMALLINT}, 
+      #{intervalMonth,jdbcType=SMALLINT}, #{intervalDay,jdbcType=SMALLINT}, #{intervalHour,jdbcType=SMALLINT}, 
+      #{eleInterval,jdbcType=DECIMAL}, #{eleTotal,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.xt.entity.generation.PumpEleStatistics">
     insert into w_pump_ele_statistics
@@ -118,8 +121,14 @@
       <if test="pumpId != null">
         pump_id,
       </if>
-      <if test="intervalDate != null">
-        interval_date,
+      <if test="intervalYear != null">
+        interval_year,
+      </if>
+      <if test="intervalMonth != null">
+        interval_month,
+      </if>
+      <if test="intervalDay != null">
+        interval_day,
       </if>
       <if test="intervalHour != null">
         interval_hour,
@@ -138,8 +147,14 @@
       <if test="pumpId != null">
         #{pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="intervalDate != null">
-        #{intervalDate,jdbcType=DATE},
+      <if test="intervalYear != null">
+        #{intervalYear,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalMonth != null">
+        #{intervalMonth,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalDay != null">
+        #{intervalDay,jdbcType=SMALLINT},
       </if>
       <if test="intervalHour != null">
         #{intervalHour,jdbcType=SMALLINT},
@@ -167,8 +182,14 @@
       <if test="record.pumpId != null">
         pump_id = #{record.pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="record.intervalDate != null">
-        interval_date = #{record.intervalDate,jdbcType=DATE},
+      <if test="record.intervalYear != null">
+        interval_year = #{record.intervalYear,jdbcType=SMALLINT},
+      </if>
+      <if test="record.intervalMonth != null">
+        interval_month = #{record.intervalMonth,jdbcType=SMALLINT},
+      </if>
+      <if test="record.intervalDay != null">
+        interval_day = #{record.intervalDay,jdbcType=SMALLINT},
       </if>
       <if test="record.intervalHour != null">
         interval_hour = #{record.intervalHour,jdbcType=SMALLINT},
@@ -188,7 +209,9 @@
     update w_pump_ele_statistics
     set data_id = #{record.dataId,jdbcType=VARCHAR},
       pump_id = #{record.pumpId,jdbcType=VARCHAR},
-      interval_date = #{record.intervalDate,jdbcType=DATE},
+      interval_year = #{record.intervalYear,jdbcType=SMALLINT},
+      interval_month = #{record.intervalMonth,jdbcType=SMALLINT},
+      interval_day = #{record.intervalDay,jdbcType=SMALLINT},
       interval_hour = #{record.intervalHour,jdbcType=SMALLINT},
       ele_interval = #{record.eleInterval,jdbcType=DECIMAL},
       ele_total = #{record.eleTotal,jdbcType=DECIMAL}
@@ -202,8 +225,14 @@
       <if test="pumpId != null">
         pump_id = #{pumpId,jdbcType=VARCHAR},
       </if>
-      <if test="intervalDate != null">
-        interval_date = #{intervalDate,jdbcType=DATE},
+      <if test="intervalYear != null">
+        interval_year = #{intervalYear,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalMonth != null">
+        interval_month = #{intervalMonth,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalDay != null">
+        interval_day = #{intervalDay,jdbcType=SMALLINT},
       </if>
       <if test="intervalHour != null">
         interval_hour = #{intervalHour,jdbcType=SMALLINT},
@@ -220,7 +249,9 @@
   <update id="updateByPrimaryKey" parameterType="com.xt.entity.generation.PumpEleStatistics">
     update w_pump_ele_statistics
     set pump_id = #{pumpId,jdbcType=VARCHAR},
-      interval_date = #{intervalDate,jdbcType=DATE},
+      interval_year = #{intervalYear,jdbcType=SMALLINT},
+      interval_month = #{intervalMonth,jdbcType=SMALLINT},
+      interval_day = #{intervalDay,jdbcType=SMALLINT},
       interval_hour = #{intervalHour,jdbcType=SMALLINT},
       ele_interval = #{eleInterval,jdbcType=DECIMAL},
       ele_total = #{eleTotal,jdbcType=DECIMAL}

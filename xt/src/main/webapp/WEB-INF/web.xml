@@ -79,6 +79,17 @@
 	</servlet>
 
 	<servlet>
+		<display-name>pumpCollectQuartzServlet</display-name>
+		<servlet-name>pumpCollectQuartzServlet</servlet-name>
+		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
+		<init-param>
+			<param-name>cronSchedule</param-name>
+			<param-value>0 0/5 * * * ?</param-value>
+		</init-param>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+
+	<servlet>
 		<display-name>collectMainServlet</display-name>
 		<servlet-name>collectMainServlet</servlet-name>
 		<init-param>

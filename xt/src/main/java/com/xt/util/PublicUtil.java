@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -175,11 +176,42 @@ public class PublicUtil {
 	public static String getCurrentStrDate() {
 		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
+
 	public static String getCurrentYearMonth() {
 		return new SimpleDateFormat("yyyyMM").format(new Date());
 	}
 
-	public static String getCurrentHour() {
+	public static String getCurrentYear(Date... dates) {
+		Date date = null;
+		if (dates == null || dates.length == 0) {
+			date = new Date();
+		} else {
+			date = dates[0];
+		}
+		return new SimpleDateFormat("yyyy").format(date);
+	}
+
+	public static String getCurrentMonth(Date... dates) {
+		Date date = null;
+		if (dates == null || dates.length == 0) {
+			date = new Date();
+		} else {
+			date = dates[0];
+		}
+		return new SimpleDateFormat("MM").format(date);
+	}
+
+	public static String getCurrentDay(Date... dates) {
+		Date date = null;
+		if (dates == null || dates.length == 0) {
+			date = new Date();
+		} else {
+			date = dates[0];
+		}
+		return new SimpleDateFormat("dd").format(date);
+	}
+
+	public static String getCurrentHour(Date... date) {
 		return new SimpleDateFormat("HH").format(new Date());
 	}
 
@@ -259,6 +291,16 @@ public class PublicUtil {
 			return delZero(src.substring(0, src.length() - 1));
 		else
 			return src;
+	}
+
+	public static int monthLastDay(int year, int month) {
+		Calendar a = Calendar.getInstance();
+		a.set(Calendar.YEAR, year);
+		a.set(Calendar.MONTH, month - 1);
+		a.set(Calendar.DATE, 1);
+		a.roll(Calendar.DATE, -1);
+		int maxDate = a.get(Calendar.DATE);
+		return maxDate;
 	}
 
 	public static WeatherData analysisWeatherDataJson(String json, CityWeatherService cityWeatherService) {

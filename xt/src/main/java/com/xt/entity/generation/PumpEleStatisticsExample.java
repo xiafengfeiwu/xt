@@ -2,8 +2,6 @@ package com.xt.entity.generation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class PumpEleStatisticsExample {
@@ -105,32 +103,6 @@ public class PumpEleStatisticsExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andDataIdIsNull() {
@@ -273,63 +245,183 @@ public class PumpEleStatisticsExample {
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateIsNull() {
-            addCriterion("interval_date is null");
+        public Criteria andIntervalYearIsNull() {
+            addCriterion("interval_year is null");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateIsNotNull() {
-            addCriterion("interval_date is not null");
+        public Criteria andIntervalYearIsNotNull() {
+            addCriterion("interval_year is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateEqualTo(Date value) {
-            addCriterionForJDBCDate("interval_date =", value, "intervalDate");
+        public Criteria andIntervalYearEqualTo(Short value) {
+            addCriterion("interval_year =", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("interval_date <>", value, "intervalDate");
+        public Criteria andIntervalYearNotEqualTo(Short value) {
+            addCriterion("interval_year <>", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("interval_date >", value, "intervalDate");
+        public Criteria andIntervalYearGreaterThan(Short value) {
+            addCriterion("interval_year >", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("interval_date >=", value, "intervalDate");
+        public Criteria andIntervalYearGreaterThanOrEqualTo(Short value) {
+            addCriterion("interval_year >=", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateLessThan(Date value) {
-            addCriterionForJDBCDate("interval_date <", value, "intervalDate");
+        public Criteria andIntervalYearLessThan(Short value) {
+            addCriterion("interval_year <", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("interval_date <=", value, "intervalDate");
+        public Criteria andIntervalYearLessThanOrEqualTo(Short value) {
+            addCriterion("interval_year <=", value, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateIn(List<Date> values) {
-            addCriterionForJDBCDate("interval_date in", values, "intervalDate");
+        public Criteria andIntervalYearIn(List<Short> values) {
+            addCriterion("interval_year in", values, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("interval_date not in", values, "intervalDate");
+        public Criteria andIntervalYearNotIn(List<Short> values) {
+            addCriterion("interval_year not in", values, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("interval_date between", value1, value2, "intervalDate");
+        public Criteria andIntervalYearBetween(Short value1, Short value2) {
+            addCriterion("interval_year between", value1, value2, "intervalYear");
             return (Criteria) this;
         }
 
-        public Criteria andIntervalDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("interval_date not between", value1, value2, "intervalDate");
+        public Criteria andIntervalYearNotBetween(Short value1, Short value2) {
+            addCriterion("interval_year not between", value1, value2, "intervalYear");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthIsNull() {
+            addCriterion("interval_month is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthIsNotNull() {
+            addCriterion("interval_month is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthEqualTo(Short value) {
+            addCriterion("interval_month =", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthNotEqualTo(Short value) {
+            addCriterion("interval_month <>", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthGreaterThan(Short value) {
+            addCriterion("interval_month >", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthGreaterThanOrEqualTo(Short value) {
+            addCriterion("interval_month >=", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthLessThan(Short value) {
+            addCriterion("interval_month <", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthLessThanOrEqualTo(Short value) {
+            addCriterion("interval_month <=", value, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthIn(List<Short> values) {
+            addCriterion("interval_month in", values, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthNotIn(List<Short> values) {
+            addCriterion("interval_month not in", values, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthBetween(Short value1, Short value2) {
+            addCriterion("interval_month between", value1, value2, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalMonthNotBetween(Short value1, Short value2) {
+            addCriterion("interval_month not between", value1, value2, "intervalMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayIsNull() {
+            addCriterion("interval_day is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayIsNotNull() {
+            addCriterion("interval_day is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayEqualTo(Short value) {
+            addCriterion("interval_day =", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayNotEqualTo(Short value) {
+            addCriterion("interval_day <>", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayGreaterThan(Short value) {
+            addCriterion("interval_day >", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayGreaterThanOrEqualTo(Short value) {
+            addCriterion("interval_day >=", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayLessThan(Short value) {
+            addCriterion("interval_day <", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayLessThanOrEqualTo(Short value) {
+            addCriterion("interval_day <=", value, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayIn(List<Short> values) {
+            addCriterion("interval_day in", values, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayNotIn(List<Short> values) {
+            addCriterion("interval_day not in", values, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayBetween(Short value1, Short value2) {
+            addCriterion("interval_day between", value1, value2, "intervalDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntervalDayNotBetween(Short value1, Short value2) {
+            addCriterion("interval_day not between", value1, value2, "intervalDay");
             return (Criteria) this;
         }
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<section class="cards" ng-controller="ConservationController">
+<section class="cards" data-ng-controller="ConservationController">
 	<div class="page-header">
 		<h1>
 			节能减排
@@ -21,7 +21,7 @@
 							style="width: 45px;">
 					</div>
 					<p class="text-center" style="white-space: nowrap">
-						<span style="color: #F44336; font-size: 14px; font-weight: bold;">400.<span style="font-size: 12px;">37</span></span>
+						<span style="color: #F44336; font-size: 14px; font-weight: bold;"><span id="bzm_z">0</span>.<span style="font-size: 12px;" id="bzm_l">00</span></span>
 					</p>
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 							style="width: 45px;">
 					</div>
 					<p class="text-center" style="white-space: nowrap">
-						<span style="color: #F44336; font-size: 14px; font-weight: bold;">272.<span style="font-size: 12px;">68</span></span>
+						<span style="color: #F44336; font-size: 14px; font-weight: bold;"><span id="fc_z">0</span>.<span style="font-size: 12px;" id="fc_l">00</span></span>
 					</p>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 							style="width: 45px;">
 					</div>
 					<p class="text-center" style="white-space: nowrap">
-						<span style="color: #F44336; font-size: 14px; font-weight: bold;">997.<span style="font-size: 12px;">17</span></span>
+						<span style="color: #F44336; font-size: 14px; font-weight: bold;"><span id="co2_z">0</span>.<span style="font-size: 12px;" id="co2_l">00</span></span>
 					</p>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 							style="width: 45px;">
 					</div>
 					<p class="text-center" style="white-space: nowrap">
-						<span style="color: #F44336; font-size: 14px; font-weight: bold;">30.<span style="font-size: 12px;">33</span></span>
+						<span style="color: #F44336; font-size: 14px; font-weight: bold;"><span id="so2_z">0</span>.<span style="font-size: 12px;" id="so2_l">00</span></span>
 					</p>
 				</div>
 			</div>
@@ -89,7 +89,7 @@
 							style="width: 45px;">
 					</div>
 					<p class="text-center" style="white-space: nowrap">
-						<span style="color: #F44336; font-size: 14px; font-weight: bold;">15.<span style="font-size: 12px;">23</span></span>
+						<span style="color: #F44336; font-size: 14px; font-weight: bold;"><span id="nox_z">0</span>.<span style="font-size: 12px;" id="nox_l">00</span></span>
 					</p>
 				</div>
 			</div>
@@ -109,14 +109,13 @@
 <script type="text/javascript">
 	(function() {
 		var paChart = echarts.init(document.getElementById("container_pa"));
-		var baseVal = 100;
+		var baseVal = 21361.22;
 		var paData = {
 			title : '采暖设备耗能对比',
 			axis : [ '空气源热泵', '燃煤锅炉', '天然气炉', '液化气锅炉', '电锅炉', '燃油锅炉' ],
 			data : [ baseVal * 1, baseVal * 1.47, baseVal * 1.96,
 					baseVal * 2.61, baseVal * 3.6, baseVal * 5.05 ]
 		};
-
 		function initOption(data) {
 			return {
 				title : {
@@ -161,10 +160,10 @@
 					barMinHeight : 25,
 					itemStyle : {
 						normal : {
-							color : '#5D72EC'
+							color : '#FFD4C4'
 						},
 						emphasis : {
-							color : '#FFE4C4'
+							color : 'red'
 						}
 					},
 					markLine : {
@@ -179,5 +178,18 @@
 		}
 
 		paChart.setOption(initOption(paData), true);
+		
+		$.get("monitor/pump-ele-constantly-data.jspx", function(result){
+			$("#bzm_z").text(result.bzm[0]);
+			$("#bzm_l").text(result.bzm[1]);
+			$("#fc_z").text(result.fc[0]);
+			$("#fc_l").text(result.fc[1]);
+			$("#co2_z").text(result.co2[0]);
+			$("#co2_l").text(result.co2[1]);
+			$("#so2_z").text(result.so2[0]);
+			$("#so2_l").text(result.so2[1]);
+			$("#nox_z").text(result.nox[0]);
+			$("#nox_l").text(result.nox[1]);
+		});
 	})()
 </script>

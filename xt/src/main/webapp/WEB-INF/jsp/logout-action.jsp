@@ -5,6 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<script type="text/javascript">window.parent.location.href="/xt";</script>
+<script type="text/javascript">window.parent.location.href="/";</script>
 </body>
 </html>

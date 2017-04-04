@@ -1,5 +1,7 @@
 package com.xt.controller.pc;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xt.entity.custom.MAreaPump;
+import com.xt.entity.custom.MPumpEleStatistics;
+import com.xt.entity.custom.MPumpMonitor;
 import com.xt.entity.custom.MPumpWarnGroup;
 import com.xt.entity.custom.MPumpWarnGroupParam;
 import com.xt.entity.generation.Device;
@@ -22,12 +27,14 @@ import com.xt.entity.generation.DeviceVender;
 import com.xt.entity.generation.Project;
 import com.xt.entity.generation.ProjectArea;
 import com.xt.entity.generation.Pump;
+import com.xt.entity.generation.PumpEleConstantly;
 import com.xt.entity.generation.PumpHistoryData;
 import com.xt.entity.generation.PumpWarn;
 import com.xt.entity.generation.PumpWarnGroup;
 import com.xt.entity.generation.PumpWarnGroupKey;
 import com.xt.entity.generation.Res;
 import com.xt.entity.generation.Role;
+import com.xt.entity.generation.UserAuth;
 import com.xt.entity.generation.WarnGroup;
 import com.xt.entity.generation.WarnGroupItem;
 import com.xt.entity.generation.WeatherAlarm;
@@ -42,6 +49,7 @@ import com.xt.service.PumpCollectService;
 import com.xt.service.PumpService;
 import com.xt.service.PumpWarnService;
 import com.xt.service.ResService;
+import com.xt.service.UserAuthService;
 import com.xt.service.WarnGroupService;
 import com.xt.util.PublicUtil;
 
@@ -75,6 +83,8 @@ public class TxMonitorController {
 	DeviceService deviceService;
 	@Autowired
 	PumpCollectService pumpCollectService;
+	@Autowired
+	UserAuthService userAuthService;
 
 	@RequiresAuthentication
 	@RequestMapping("pump")
@@ -199,7 +209,7 @@ public class TxMonitorController {
 		}
 
 		data.put("success", true);
-		
+
 		data.put("setUpTemps", setUpTemps);
 		data.put("backWaterTemps", backWaterTemps);
 		data.put("outWaterTemps", outWaterTemps);
@@ -213,6 +223,204 @@ public class TxMonitorController {
 		data.put("minTime", PublicUtil.getTodayMinTime(d));
 		data.put("maxTime", PublicUtil.getTodayMaxTime(d));
 
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("pump-ele-data")
+	public Map<String, Object> pumpEleDayData(String date) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		Short year = new Short(PublicUtil.getCurrentYear());
+		Short month = new Short(PublicUtil.getCurrentMonth());
+		Short day = new Short(PublicUtil.getCurrentDay());
+		if (PublicUtil.isNotEmpty(date)) {
+			Date d = PublicUtil.getStringDate(date);
+			if (d == null) {
+				data.put("message", "无效的查询时间");
+				return data;
+			}
+			year = new Short(PublicUtil.getCurrentYear(d));
+			month = new Short(PublicUtil.getCurrentMonth(d));
+			day = new Short(PublicUtil.getCurrentDay(d));
+		}
+
+		Role role = PublicUtil.sessionUserRole();
+		if (role == null) {
+			data.put("message", "无效的授权信息");
+			return data;
+		}
+		String roleId = role.getRoleId();
+
+		List<String> pumpIds = new ArrayList<>();
+
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(roleId)) {
+			// 系统管理员
+			List<MPumpMonitor> pms = pumpService.selectAllPumpMonitors();
+			if (PublicUtil.isNotEmpty(pms)) {
+				for (MPumpMonitor pm : pms) {
+					pumpIds.add(pm.getPumpId());
+				}
+			}
+		} else {
+			List<UserAuth> uas = userAuthService.findUserAll(PublicUtil.sessionUid());
+			if (PublicUtil.isNotEmpty(uas)) {
+				List<String> pumpCodes = new ArrayList<>();
+				for (UserAuth ua : uas) {
+					pumpCodes.add(ua.getAuthCode());
+				}
+				List<MAreaPump> aps = pumpService.selectPumpsByCodes(pumpCodes);
+				if (PublicUtil.isNotEmpty(aps)) {
+					for (MAreaPump pm : aps) {
+						pumpIds.add(pm.getId());
+					}
+				}
+			}
+		}
+
+		BigDecimal[] days = new BigDecimal[24];
+		for (int i = 0; i < 24; i++) {
+			days[i] = new BigDecimal("0.00");
+		}
+		BigDecimal dt = new BigDecimal("0");
+		BigDecimal dh = new BigDecimal("0");
+		List<MPumpEleStatistics> eleDays = pumpCollectService.getPumpEleData(pumpIds, year, month, day);
+		if (PublicUtil.isNotEmpty(eleDays)) {
+			for (MPumpEleStatistics mpe : eleDays) {
+				days[mpe.getIntervalTime()] = mpe.getEleInterval();
+				dt = dt.add(mpe.getEleInterval());
+			}
+		}
+		dh = dt.multiply(new BigDecimal("1"));
+		data.put("days", days);
+		data.put("dayT", dt);
+		data.put("dayH", dh);
+
+		BigDecimal mt = new BigDecimal("0");
+		BigDecimal mh = new BigDecimal("0");
+		int monthDays = PublicUtil.monthLastDay(year, month);
+		String[] dayAxis = new String[monthDays];
+		for (int i = 0; i < monthDays; i++) {
+			dayAxis[i] = (i + 1) + "日";
+		}
+		data.put("dayAxis", dayAxis);
+		BigDecimal[] months = new BigDecimal[monthDays];
+		for (int i = 0; i < monthDays; i++) {
+			months[i] = new BigDecimal("0.00");
+		}
+		List<MPumpEleStatistics> eleMonths = pumpCollectService.getPumpEleData(pumpIds, year, month, null);
+		if (PublicUtil.isNotEmpty(eleMonths)) {
+			for (MPumpEleStatistics mpe : eleMonths) {
+				months[mpe.getIntervalTime() - 1] = mpe.getEleInterval();
+				mt = mt.add(mpe.getEleInterval());
+			}
+		}
+		mh = mt.multiply(new BigDecimal("1"));
+		data.put("months", months);
+		data.put("monthT", mt);
+		data.put("monthH", mh);
+
+		BigDecimal yt = new BigDecimal("0");
+		BigDecimal yh = new BigDecimal("0");
+		BigDecimal[] years = new BigDecimal[12];
+		for (int i = 0; i < 12; i++) {
+			years[i] = new BigDecimal("0.00");
+		}
+		List<MPumpEleStatistics> eleYears = pumpCollectService.getPumpEleData(pumpIds, year, null, null);
+		if (PublicUtil.isNotEmpty(eleYears)) {
+			for (MPumpEleStatistics mpe : eleYears) {
+				years[mpe.getIntervalTime() - 1] = mpe.getEleInterval();
+				yt = yt.add(mpe.getEleInterval());
+			}
+		}
+		yh = yt.multiply(new BigDecimal("1"));
+		data.put("years", years);
+		data.put("yearT", yt);
+		data.put("yearH", yh);
+
+		BigDecimal at = new BigDecimal("0");
+		BigDecimal ah = new BigDecimal("0");
+		int yearSize = new Integer(PublicUtil.getCurrentYear()) - 2015 + 1;
+		String[] yearAxis = new String[yearSize];
+		for (int i = 0; i < yearSize; i++) {
+			yearAxis[i] = (i + 2015) + "年";
+		}
+		data.put("yearAxis", yearAxis);
+		BigDecimal[] alls = new BigDecimal[yearSize];
+		for (int i = 0; i < yearSize; i++) {
+			alls[i] = new BigDecimal("0.00");
+		}
+		List<MPumpEleStatistics> eleAlls = pumpCollectService.getPumpEleData(pumpIds, null, null, null);
+		if (PublicUtil.isNotEmpty(eleAlls)) {
+			for (MPumpEleStatistics mpe : eleAlls) {
+				alls[mpe.getIntervalTime() - 2015] = mpe.getEleInterval();
+				at = at.add(mpe.getEleInterval());
+			}
+		}
+		ah = at.multiply(new BigDecimal("1"));
+		data.put("alls", alls);
+		data.put("allT", at);
+		data.put("allH", ah);
+		data.put("success", true);
+		return data;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("pump-ele-constantly-data")
+	public Map<String, Object> pumpEleConstantlyData() {
+		Map<String, Object> data = new HashMap<>();
+		data.put("success", false);
+		Role role = PublicUtil.sessionUserRole();
+		if (role == null) {
+			data.put("message", "无效的授权信息");
+			return data;
+		}
+		String roleId = role.getRoleId();
+		List<String> pumpIds = new ArrayList<>();
+		if (PublicUtil.ROLE_SYSTEM_MANAGE_ID.equals(roleId)) {
+			// 系统管理员
+			List<MPumpMonitor> pms = pumpService.selectAllPumpMonitors();
+			if (PublicUtil.isNotEmpty(pms)) {
+				for (MPumpMonitor pm : pms) {
+					pumpIds.add(pm.getPumpId());
+				}
+			}
+		} else {
+			List<UserAuth> uas = userAuthService.findUserAll(PublicUtil.sessionUid());
+			if (PublicUtil.isNotEmpty(uas)) {
+				List<String> pumpCodes = new ArrayList<>();
+				for (UserAuth ua : uas) {
+					pumpCodes.add(ua.getAuthCode());
+				}
+				List<MAreaPump> aps = pumpService.selectPumpsByCodes(pumpCodes);
+				if (PublicUtil.isNotEmpty(aps)) {
+					for (MAreaPump pm : aps) {
+						pumpIds.add(pm.getId());
+					}
+				}
+			}
+		}
+		BigDecimal bd = new BigDecimal("0.00");
+		List<PumpEleConstantly> eles = pumpCollectService.getPumpsEleConstantlyData(pumpIds);
+		if (eles != null && !eles.isEmpty()) {
+			for (PumpEleConstantly ele : eles) {
+				bd = bd.add(ele.getElectricity());
+			}
+		}
+		data.put("success", true);
+		DecimalFormat myformat = new DecimalFormat("0.00");
+		String dat = myformat.format(bd.multiply(new BigDecimal("0.4")));
+		data.put("bzm", dat.split("[.]"));
+		dat = myformat.format(bd.multiply(new BigDecimal("0.272")));
+		data.put("fc", dat.split("[.]"));
+		dat = myformat.format(bd.multiply(new BigDecimal("0.997")));
+		data.put("co2", dat.split("[.]"));
+		dat = myformat.format(bd.multiply(new BigDecimal("0.03")));
+		data.put("so2", dat.split("[.]"));
+		dat = myformat.format(bd.multiply(new BigDecimal("0.015")));
+		data.put("nox", dat.split("[.]"));
 		return data;
 	}
 

@@ -1,7 +1,6 @@
 package com.xt.task;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -53,7 +52,9 @@ public class PumpEleStatisticsQuartzJob implements Job {
 			sPumpEleStatistics = new PumpEleStatistics();
 			sPumpEleStatistics.setDataId(PublicUtil.initId());
 			sPumpEleStatistics.setPumpId(pumpId);
-			sPumpEleStatistics.setIntervalDate(new Date());
+			sPumpEleStatistics.setIntervalYear(new Short(PublicUtil.getCurrentYear()));
+			sPumpEleStatistics.setIntervalMonth(new Short(PublicUtil.getCurrentMonth()));
+			sPumpEleStatistics.setIntervalDay(new Short(PublicUtil.getCurrentDay()));
 			sPumpEleStatistics.setIntervalHour(new Short(PublicUtil.getCurrentHour()));
 
 			if (pumpEleConstantly == null) {
