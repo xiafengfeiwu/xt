@@ -73,7 +73,7 @@
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0 0 8 * * ?</param-value>
+			<param-value>0 0 0/2 * * ?</param-value>
 		</init-param>
 		<load-on-startup>3</load-on-startup>
 	</servlet>
@@ -84,7 +84,7 @@
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0 0/5 * * * ?</param-value>
+			<param-value>0 0/1 * * * ?</param-value>
 		</init-param>
 		<load-on-startup>4</load-on-startup>
 	</servlet>
@@ -95,11 +95,12 @@
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0 0/5 * * * ?</param-value>
+			<param-value>0 0/3 * * * ?</param-value>
 		</init-param>
 		<load-on-startup>5</load-on-startup>
 	</servlet>
 
+<!-- 
 	<servlet>
 		<display-name>collectMainServlet</display-name>
 		<servlet-name>collectMainServlet</servlet-name>
@@ -110,7 +111,8 @@
 		<servlet-class>com.xt.factory.DelegatingServletProxy</servlet-class>
 		<load-on-startup>6</load-on-startup>
 	</servlet>
-
+ -->
+ 
 	<filter-mapping>
 		<filter-name>SetCharacterEncoding</filter-name>
 		<url-pattern>/*</url-pattern>

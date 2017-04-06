@@ -25,6 +25,9 @@ public class PumpCollectQuartzServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		
+		System.setProperty("org.terracotta.quartz.skipUpdateCheck","true");
+		
 		String name = "pumpCollectName";
 		String group = "pumpCollectGroup";
 		// 获取调度程序

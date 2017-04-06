@@ -26,10 +26,12 @@ public class WeatherAlarmQuartzJob implements Job {
 				"CN101010700", "CN101010800", "CN101010900", "CN101011000", "CN101011100", "CN101011200", "CN101011300",
 				"CN101011400", "CN101011500" };
 		WeatherAlarm alarm = WeatherHttpUtil.getWeatherAlarm();
-		if (alarm != null) {
-			for (String c : codes) {
+		for (String c : codes) {
+			if (alarm != null) {
 				alarm.setWeatherCityCode(c);
 				cityWeatherService.upInsertWeaterAlarm(alarm);
+			} else {
+				cityWeatherService.clearWeaterAlarm(c);
 			}
 		}
 	}

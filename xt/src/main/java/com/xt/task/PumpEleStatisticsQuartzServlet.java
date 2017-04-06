@@ -25,6 +25,9 @@ public class PumpEleStatisticsQuartzServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		
+		System.setProperty("org.terracotta.quartz.skipUpdateCheck","true");
+		
 		String name = "pumpEleStatisticsName";
 		String group = "pumpEleStatisticsGroup";
 		// 获取调度程序

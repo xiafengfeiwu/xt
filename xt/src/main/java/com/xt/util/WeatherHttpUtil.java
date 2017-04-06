@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
-import java.util.function.Consumer;
 
 import com.xt.entity.generation.WeatherAlarm;
 
@@ -84,7 +83,7 @@ public class WeatherHttpUtil {
 			// 获取接收数据
 			out = new PrintWriter(conn.getOutputStream());
 			out.flush();
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 			String line;
 			// 获取/拼装数据
 			while ((line = in.readLine()) != null) {
@@ -113,10 +112,8 @@ public class WeatherHttpUtil {
 		return getRequest(url);
 	}
 
-	@SuppressWarnings("unchecked")
 	public static WeatherAlarm getWeatherAlarm() {
-		String res = WeatherHttpUtil
-				.postRequest("http://product.weather.com.cn/alarm/grepalarm_cn.php?_=" + new Date().getTime());
+		String res = WeatherHttpUtil.postRequest("http://product.weather.com.cn/alarm/grepalarm_cn.php?_=" + new Date().getTime());
 		res = res.substring(14);
 		res = res.substring(0, res.length() - 1);
 		JSONObject obj = JSONObject.fromObject(res);
@@ -124,24 +121,28 @@ public class WeatherHttpUtil {
 		if (data == null || data.size() == 0) {
 			return null;
 		}
-		WeatherAlarm alarm = new WeatherAlarm();
-		data.forEach(new Consumer<JSONArray>() {
-			@Override
-			public void accept(JSONArray t) {
-				if (t.get(0).toString().indexOf("北京") > -1) {
-					String warn = getAlarmData((String) t.get(1));
-					warn = warn.substring(14);
-					JSONObject warnObj = JSONObject.fromObject(warn);
-					alarm.setEarlyWarnLevel((String) warnObj.get("SIGNALLEVEL"));
-					alarm.setEarlyWarnStat("预警中");
+		int size = data.size();
+		for (int i = 0; i < size; i++) {
+			JSONArray t = JSONArray.fromObject(data.get(i));
+			if (t.get(0).toString().indexOf("北京") > -1) {
+				String warn = getAlarmData((String) t.get(1));
+				warn = warn.substring(14);
+				JSONObject warnObj = JSONObject.fromObject(warn);
+				WeatherAlarm alarm = new WeatherAlarm();
+				alarm.setEarlyWarnLevel((String) warnObj.get("SIGNALLEVEL"));
+				alarm.setEarlyWarnStat("预警中");
+				if (warnObj.get("ISSUETIME") == null
+						|| PublicUtil.getStringDateTime((String) warnObj.get("ISSUETIME")) == null) {
+					alarm.setEarlyWarnTime(new Date());
+				} else {
 					alarm.setEarlyWarnTime(PublicUtil.getStringDateTime((String) warnObj.get("ISSUETIME")));
-					alarm.setEarlyWarnTitle((String) warnObj.get("ALERTID"));
-					alarm.setEarlyWarnTxt((String) warnObj.get("ISSUECONTENT"));
-					alarm.setEarlyWarnType((String) warnObj.get("SIGNALTYPE"));
-					return;
 				}
+				alarm.setEarlyWarnTitle((String) warnObj.get("ALERTID"));
+				alarm.setEarlyWarnTxt((String) warnObj.get("ISSUECONTENT"));
+				alarm.setEarlyWarnType((String) warnObj.get("SIGNALTYPE"));
+				return alarm;
 			}
-		});
-		return alarm;
+		}
+		return null;
 	}
 }
