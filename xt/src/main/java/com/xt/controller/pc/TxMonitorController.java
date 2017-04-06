@@ -285,7 +285,10 @@ public class TxMonitorController {
 		}
 		BigDecimal dt = new BigDecimal("0");
 		BigDecimal dh = new BigDecimal("0");
-		List<MPumpEleStatistics> eleDays = pumpCollectService.getPumpEleData(pumpIds, year, month, day);
+		List<MPumpEleStatistics> eleDays = null;
+		if (!pumpIds.isEmpty()) {
+			eleDays = pumpCollectService.getPumpEleData(pumpIds, year, month, day);
+		}
 		if (PublicUtil.isNotEmpty(eleDays)) {
 			for (MPumpEleStatistics mpe : eleDays) {
 				days[mpe.getIntervalTime()] = mpe.getEleInterval();
@@ -309,7 +312,10 @@ public class TxMonitorController {
 		for (int i = 0; i < monthDays; i++) {
 			months[i] = new BigDecimal("0.00");
 		}
-		List<MPumpEleStatistics> eleMonths = pumpCollectService.getPumpEleData(pumpIds, year, month, null);
+		List<MPumpEleStatistics> eleMonths = null;
+		if (!pumpIds.isEmpty()) {
+			eleMonths = pumpCollectService.getPumpEleData(pumpIds, year, month, null);
+		}
 		if (PublicUtil.isNotEmpty(eleMonths)) {
 			for (MPumpEleStatistics mpe : eleMonths) {
 				months[mpe.getIntervalTime() - 1] = mpe.getEleInterval();
@@ -327,7 +333,12 @@ public class TxMonitorController {
 		for (int i = 0; i < 12; i++) {
 			years[i] = new BigDecimal("0.00");
 		}
-		List<MPumpEleStatistics> eleYears = pumpCollectService.getPumpEleData(pumpIds, year, null, null);
+
+		List<MPumpEleStatistics> eleYears = null;
+		if (!pumpIds.isEmpty()) {
+			eleYears = pumpCollectService.getPumpEleData(pumpIds, year, null, null);
+		}
+
 		if (PublicUtil.isNotEmpty(eleYears)) {
 			for (MPumpEleStatistics mpe : eleYears) {
 				years[mpe.getIntervalTime() - 1] = mpe.getEleInterval();
@@ -351,7 +362,12 @@ public class TxMonitorController {
 		for (int i = 0; i < yearSize; i++) {
 			alls[i] = new BigDecimal("0.00");
 		}
-		List<MPumpEleStatistics> eleAlls = pumpCollectService.getPumpEleData(pumpIds, null, null, null);
+
+		List<MPumpEleStatistics> eleAlls = null;
+		if (!pumpIds.isEmpty()) {
+			eleAlls = pumpCollectService.getPumpEleData(pumpIds, null, null, null);
+		}
+
 		if (PublicUtil.isNotEmpty(eleAlls)) {
 			for (MPumpEleStatistics mpe : eleAlls) {
 				alls[mpe.getIntervalTime() - 2015] = mpe.getEleInterval();
@@ -403,8 +419,11 @@ public class TxMonitorController {
 			}
 		}
 		BigDecimal bd = new BigDecimal("0.00");
-		List<PumpEleConstantly> eles = pumpCollectService.getPumpsEleConstantlyData(pumpIds);
-		if (eles != null && !eles.isEmpty()) {
+		List<PumpEleConstantly> eles = null;
+		if (!pumpIds.isEmpty()) {
+			eles = pumpCollectService.getPumpsEleConstantlyData(pumpIds);
+		}
+		if (!PublicUtil.isEmpty(eles)) {
 			for (PumpEleConstantly ele : eles) {
 				bd = bd.add(ele.getElectricity());
 			}

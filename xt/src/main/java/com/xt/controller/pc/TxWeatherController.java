@@ -51,19 +51,6 @@ public class TxWeatherController {
 		Map<String, Object> data = new HashMap<>();
 		data.put("weather", cityWeatherService.findCityWeatherByCode(cityCode));
 		WeatherAlarm alarm = cityWeatherService.findWeatherAlarmByCode(cityCode);
-		if (alarm != null) {
-			long timeInterval = new Date().getTime() - alarm.getEarlyWarnTime().getTime();
-			int hour = 60 * 60 * 1000;
-			if (timeInterval > 24 * hour) {
-				if (timeInterval > 48 * hour) {
-					cityWeatherService.clearWeaterAlarm(cityCode);
-					alarm = null;
-				} else {
-					alarm.setEarlyWarnStat("已过期");
-					cityWeatherService.upInsertWeaterAlarm(alarm);
-				}
-			}
-		}
 		data.put("alarm", alarm);
 		return data;
 	}
@@ -230,8 +217,19 @@ public class TxWeatherController {
 		}
 		alarm.setEarlyWarnStat("预警中");
 		alarm.setEarlyWarnTime(new Date());
+		String[] codes = { "CN101010100", "CN101010200", "CN101010300", "CN101010400", "CN101010500", "CN101010600",
+				"CN101010700", "CN101010800", "CN101010900", "CN101011000", "CN101011100", "CN101011200", "CN101011300",
+				"CN101011400", "CN101011500" };
 		try {
-			cityWeatherService.upInsertWeaterAlarm(alarm);
+			if ("CN101010100".equals(alarm.getWeatherCityCode())) {
+				for (String c : codes) {
+					alarm.setWeatherCityCode(c);
+					cityWeatherService.upInsertWeaterAlarm(alarm);
+				}
+			} else {
+				cityWeatherService.upInsertWeaterAlarm(alarm);
+			}
+
 		} catch (Exception e) {
 			data.put("message", "操作失败，请稍后重试");
 			return data;

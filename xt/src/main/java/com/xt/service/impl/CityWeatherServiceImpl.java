@@ -1,5 +1,6 @@
 package com.xt.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,21 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 
 	@Override
 	public WeatherAlarm findWeatherAlarmByCode(String cityCode) {
-		return weatherAlarmMapper.selectByPrimaryKey(cityCode);
+		WeatherAlarm alarm = weatherAlarmMapper.selectByPrimaryKey(cityCode);
+		if (alarm != null) {
+			long timeInterval = new Date().getTime() - alarm.getEarlyWarnTime().getTime();
+			int hour = 60 * 60 * 1000;
+			if (timeInterval > 4 * 24 * hour) {
+				if (timeInterval > 8 * 48 * hour) {
+					clearWeaterAlarm(cityCode);
+					alarm = null;
+				} else {
+					alarm.setEarlyWarnStat("已过期");
+					upInsertWeaterAlarm(alarm);
+				}
+			}
+		}
+		return alarm;
 	}
 
 	@Override

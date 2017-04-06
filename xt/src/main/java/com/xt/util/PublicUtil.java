@@ -243,6 +243,14 @@ public class PublicUtil {
 		return null;
 	}
 
+	public static Date getStringDateTime(String dateTime) {
+		try {
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
+		} catch (ParseException e) {
+		}
+		return null;
+	}
+
 	public static String getNextCode(String lastCode) {
 		String no = lastCode.substring(13, 17);
 		Integer psNo = new Integer(no);
